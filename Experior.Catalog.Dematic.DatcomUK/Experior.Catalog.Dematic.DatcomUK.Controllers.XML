@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Experior.Catalog.Dematic.DatcomUK.Controllers</name>
+    </assembly>
+    <members>
+        <member name="T:Experior.Catalog.Dematic.DatcomUK.Assemblies.CasePLC_Datcom">
+            <summary>
+            This is a PLC that handels Datcom messages
+            </summary>
+        </member>
+        <member name="M:Experior.Catalog.Dematic.DatcomUK.Assemblies.CasePLC_Datcom.IsDivertSet(System.String,System.Collections.Generic.List{System.Int32[]})">
+            <summary>
+            A better name for DivertSet
+            </summary>
+        </member>
+        <member name="M:Experior.Catalog.Dematic.DatcomUK.Assemblies.CasePLC_Datcom.ValidateRoutingCode(System.String)">
+            <summary>
+            Takes the string input from the assembly that is entered by the user
+            and if valid then converts it into a List of integer array
+            </summary>
+            <param name="code">Routing code for routing: format w,b;w,b... where w = word and b = bit e.g. 1,1;2,1 - route to lhs if word 1 bit 1 or word 2 bit 1 is set in the PLC routing table</param>
+            <returns>List of integer array</returns>
+        </member>
+        <member name="T:Experior.Catalog.Dematic.DatcomUK.Assemblies.MHEController_Multishuttle">
+            <summary>
+            This is a PLC that handels Datcom messages
+            </summary>
+        </member>
+        <member name="M:Experior.Catalog.Dematic.DatcomUK.Assemblies.MHEController_Multishuttle.SetUpCaseMissionDataSet(System.String[],System.Int32)">
+            <summary>
+            Sets up the casedata for a Mission Data Set - see Dematic Multi-Shuttle Control principles 3.7
+            this is valid for message types 01,02,04,05,06,20,21,22,31.
+            </summary>
+            <param name="splitTelegram"></param>
+            <param name="blockNumber">The number of data sets in the telegram</param>
+            <returns> CaseData : Case_Load has a property of type casedata to hold specific information mainly regarding telegrams</returns>
+        </member>
+        <member name="M:Experior.Catalog.Dematic.DatcomUK.Assemblies.MHEController_Multishuttle.GetMultishuttleFromAisleNum(System.String[])">
+            <summary>
+            Uses a Mission Data Set to identify the correct aisle (multishuttle
+            </summary>
+            <param name="telegram">Telegram in the form of the Mission Data Set</param>
+            <returns>A multishuttle that is controlled by this controller</returns>
+        </member>
+        <member name="T:Experior.Catalog.Dematic.DatcomUK.Assemblies.MHEControl_CommPoint">
+            <summary>
+            This is your MHE control class it is instansuated by the controller (PLC etc) and passed back to the communicationPoint
+            it controlls the MHE and it the routing and decession making processes of the MHE.
+            </summary>
+        </member>
+        <member name="T:Experior.Catalog.Dematic.DatcomUK.Assemblies.MHEControl_MultiShuttle">
+            <summary>
+            This class is not strictly needed as only one controller will control a single aisle so everything here could go into the controller
+            however following the normal pattern of an assembly that is controllable we have this object. So this class is used to interface to the assembly. 
+            i.e. responding to events and creating shuttle and elevator tasks are all placed here.
+            </summary>
+        </member>
+        <member name="M:Experior.Catalog.Dematic.DatcomUK.Assemblies.MHEControl_MultiShuttle.TryGetNewElevatorTask(Experior.Catalog.Dematic.Storage.MultiShuttle.Assemblies.ElevatorTask,Experior.Dematic.Base.Case_Load,Experior.Dematic.Base.Case_Load)">
+            <summary>
+            After sending an 02 arrival then try to get a new elevator task but only if the loads that the 02 was sent is relevant to the current task
+            </summary>
+        </member>
+        <member name="M:Experior.Catalog.Dematic.DatcomUK.Assemblies.MHEControl_MultiShuttle.theMultishuttle_OnArrivedAtPickStationConvPosB(System.Object,Experior.Catalog.Dematic.Storage.MultiShuttle.Assemblies.PickDropStationArrivalEventArgs)">
+            <summary>
+            if there are 2 loads on the pick station then this would be in theMultishuttle_OnArrivedAtPickStationConvPosA event
+            </summary>
+        </member>
+        <member name="M:Experior.Catalog.Dematic.DatcomUK.Assemblies.MHEControl_MultiShuttle.SendElevatorArrivalMessage(Experior.Catalog.Dematic.Storage.MultiShuttle.Assemblies.ArrivedOnElevatorEventArgs)">
+            <summary>
+            Used in theMultishuttle_OnArrivedAtElevatorConvPosB to create the arrival on the elevator message 
+            </summary>
+            <param name="e"> The ArrivedOnElevatorEventArgs from the theMultishuttle_OnArrivedAtElevatorConvPosB event</param>
+        </member>
+        <member name="M:Experior.Catalog.Dematic.DatcomUK.Assemblies.MHEControl_MultiShuttle.CreateShuttleTask(System.String,System.String,Experior.Catalog.Dematic.DatcomUK.Assemblies.CaseData,Experior.Dematic.Base.ShuttleTaskTypes)">
+            Rack Location for an ElevatorTask takes the form: aasyyxz: a=aisle, s = side, y = level, x = input or output, Z = loc A or B e.g. 01R05OA
+            Source location for a shuttleTask takes the form: sxxxyydd: Side, xxx location, yy = level, dd = depth
+        </member>
+        <member name="M:Experior.Catalog.Dematic.DatcomUK.Assemblies.MHEControl_MultiShuttle.CreateElevatorTask(System.String,System.String,Experior.Catalog.Dematic.DatcomUK.Assemblies.CaseData,System.String,System.String,Experior.Catalog.Dematic.DatcomUK.Assemblies.CaseData,Experior.Dematic.Base.Cycle,Experior.Dematic.Base.Cycle)">
+            <summary>
+            Creates a PS to DS task for the elevator
+            Loads always travel from A to B
+            </summary>
+            <param name="originA">Load A origin</param>
+            <param name="destA">Load A destination</param>
+            <param name="cDataA">case data for load A</param>
+            <param name="originB">Load B origin</param>
+            <param name="destB">Load B destination</param>
+            <param name="cDataB"> case data for load B</param>
+            <param name="loadCycle">The load cycle type</param>
+            <param name="unloadCycle">The unload cycle type</param>
+        </member>
+        <member name="M:Experior.Catalog.Dematic.DatcomUK.Assemblies.MHEControl_Transfer.ReleaseLoadDefault(Experior.Dematic.Base.Side,Experior.Core.Loads.Load,System.Boolean)">
+            <summary>
+            Check if the load can be released to default, and release it.
+            </summary>
+            <param name="side">Which side is waiting to be released</param>
+            <param name="caseLoad">The load to be released</param>
+            <param name="waitTimeout">Should the load wait for the timeout or not i.e. should it go to default anyway</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

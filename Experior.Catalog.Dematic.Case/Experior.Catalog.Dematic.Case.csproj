@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <UsingTask TaskName="Experior.Build" AssemblyFile="$(OutputPath)Experior.Build.dll" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7E11A83F-65B5-47B2-897F-0EC5FF130E57}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Experior.Catalog</RootNamespace>
+    <AssemblyName>Experior.Catalog.Dematic.Case.Conveyors</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>C:\Xcelgo\Xcelgo Experior\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>C:\Xcelgo\Xcelgo Experior\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Deploy|AnyCPU'">
+    <OutputPath>bin\Deploy\</OutputPath>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Experior.Catalog.Logistic.Basic, Version=5.3.29138.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Xcelgo\Xcelgo Experior\Experior.Catalog.Logistic.Basic.DLL</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Experior.Catalog.Logistic.Track, Version=5.2.8142.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Xcelgo\Xcelgo Experior\Experior.Catalog.Logistic.Track.DLL</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Experior.Core, Version=5.2.34588.1, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Xcelgo\Xcelgo Experior\Experior.Core.DLL</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.DirectX, Version=1.0.2902.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Xcelgo.Core, Version=1.0.229.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Xcelgo\Xcelgo Experior\Xcelgo.Core.DLL</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Components\AngledDivert.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\AngledMerge.cs" />
+    <Compile Include="Components\BeltSorterEnd.cs" />
+    <Compile Include="Components\BeltSorterMerge.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\LoadRotateConveyor.cs" />
+    <Compile Include="Components\MiniloadDropStation.cs" />
+    <Compile Include="Components\MiniloadPickStation.cs" />
+    <Compile Include="Components\BeltSorterInduct.cs" />
+    <Compile Include="Components\BeltSorterDivert.cs" />
+    <Compile Include="Components\DivertTransferPlate.cs" />
+    <Compile Include="Components\PickDoubleLift.cs" />
+    <Compile Include="Components\StraightPhotocellConveyor.cs" />
+    <Compile Include="Components\Transfer.cs" />
+    <Compile Include="Components\StraightAccumulationConveyor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\StraightBeltConveyor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\StraightTransferPlate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\TrayDestacker.cs" />
+    <Compile Include="Components\TrayStacker.cs" />
+    <Compile Include="Components\TwoToOneMerge.cs" />
+    <Compile Include="Components\CurveBeltConveyor.cs" />
+    <Compile Include="Devices\CasePhotocell.cs" />
+    <Compile Include="Devices\InductConveyorConverter.cs" />
+    <Compile Include="Devices\LoadFeeder.cs" />
+    <Compile Include="Devices\LoadEater.cs" />
+    <Compile Include="Devices\PhotocellConverter.cs" />
+    <Compile Include="Devices\ConstructDevice.cs" />
+    <Compile Include="Devices\CommunicationPoint.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Components\MergeDivertConveyor.cs" />
+    <Compile Include="Components\CurveConveyor.cs" />
+    <Compile Include="Components\StraightConveyor.cs" />
+    <Compile Include="Components\BeltControl.cs" />
+    <Compile Include="ConstructAssembly.cs" />
+    <Compile Include="Catalogue.cs" />
+    <Compile Include="Enum.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon\dematic.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\staight.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Counterclockwise.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Clockwise.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\transfer.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Belt.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\RSPN.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\BK10PLC.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon\CurveClockwise.jpg" />
+    <EmbeddedResource Include="Icon\CurveCounterClockwise.jpg" />
+    <EmbeddedResource Include="Icon\SwitchDiverter.jpg" />
+    <EmbeddedResource Include="Icon\SwitchMerger.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon\Straight.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon\VerticalSortationUnitStart.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon\RapidPick.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon\MergeDivertConveyor.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon\TwoWayTransfer.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon\commpoint.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon\photoeye.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon\PacMan.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon\Feeder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon\DHDM.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon\2Way.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon\AngledDivert.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon\TransferPlate.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon\RaRoller.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon\TwoToOneMerge.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon\BeltSorterMerge.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon\BeltSorterInduct.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon\BeltSorterDivert.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon\BeltSorterDivertPopUp.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon\BeltSorterMergePopUp.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon\AngledMerge.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon\accumulation.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Experior.Dematic.Base\Experior.Dematic.Base.csproj">
+      <Project>{803cb223-5a12-4190-9cdd-e34a34a6f471}</Project>
+      <Name>Experior.Dematic.Base</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Icon\Divert45ConveyorLeft.jpg" />
+    <Content Include="Icon\Divert45ConveyorRight.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Target Name="AfterBuild">
+    <Experior.Build AssemblyFileLocation="$(OutputPath)$(TargetFileName)">
+    </Experior.Build>
+  </Target>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <UsingTask TaskName="BuildTasks.IncrementBuildNumber" AssemblyFile="$(OutputPath)Xcelgo.BuildTask.dll" />
+  <UsingTask TaskName="Experior.Build" AssemblyFile="$(OutputPath)Experior.Build.dll" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B9F8D766-257F-4984-9A6F-518B8704F655}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Experior.Catalog.Dematic.Storage.PalletCrane</RootNamespace>
+    <AssemblyName>Experior.Catalog.Dematic.Storage.PalletCrane</AssemblyName>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>C:\Xcelgo\Xcelgo Experior\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>C:\Xcelgo\Xcelgo Experior\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Deploy|AnyCPU'">
+    <OutputPath>bin\Deploy\</OutputPath>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Experior.Catalog.Logistic.Basic, Version=5.3.29138.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Xcelgo\Xcelgo Experior\Experior.Catalog.Logistic.Basic.DLL</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Experior.Catalog.Logistic.Storage, Version=5.2.3006.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Xcelgo\Xcelgo Experior\Experior.Catalog.Logistic.Storage.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Experior.Catalog.Logistic.Track, Version=5.2.8142.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Xcelgo\Xcelgo Experior\Experior.Catalog.Logistic.Track.DLL</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Experior.Core, Version=5.2.34588.1, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Xcelgo\Xcelgo Experior\Experior.Core.DLL</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.DirectX, Version=1.0.2902.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.DirectX.Direct3D, Version=1.0.2902.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.DirectX.Direct3DX, Version=1.0.2911.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Xcelgo.Core, Version=1.0.229.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Xcelgo\Xcelgo Experior\Xcelgo.Core.DLL</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Xcelgo.Utils, Version=1.0.1060.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Xcelgo\Xcelgo Experior\Xcelgo.Utils.DLL</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assemblies\PalletCrane.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Assemblies\PalletCraneInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Assemblies\PalletStation.cs" />
+    <Compile Include="ConstructAssembly.cs" />
+    <Compile Include="Catalogue.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Mesh\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon\DematicHBW.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon\dematic.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Experior.Catalog.Dematic.Pallet\Experior.Catalog.Dematic.Pallet.csproj">
+      <Project>{2b18812e-a543-4369-a1b4-31a36336661e}</Project>
+      <Name>Experior.Catalog.Dematic.Pallet</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Experior.Catalog.DematicExtra\Experior.Catalog.DematicExtra.csproj">
+      <Project>{f83d8e6d-2f36-4153-8b43-c65f94b80b0f}</Project>
+      <Name>Experior.Catalog.DematicExtra</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Experior.Dematic.Base\Experior.Dematic.Base.csproj">
+      <Project>{803cb223-5a12-4190-9cdd-e34a34a6f471}</Project>
+      <Name>Experior.Dematic.Base</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+    <Experior.Build AssemblyFileLocation="$(OutputPath)$(TargetFileName)">
+    </Experior.Build>
+  </Target>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+</Project>
