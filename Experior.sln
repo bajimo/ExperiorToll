@@ -3,22 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Experior.Catalog.Dematic.ATC", "Experior.Catalog.Dematic.ATC\Experior.Catalog.Dematic.ATC.csproj", "{0745B50D-FEC6-4326-99CD-079A684E2A2E}"
-	ProjectSection(ProjectDependencies) = postProject
-		{66CD6D1D-2AE7-43DC-88E7-3F1505A40F44} = {66CD6D1D-2AE7-43DC-88E7-3F1505A40F44}
-		{803CB223-5A12-4190-9CDD-E34A34A6F471} = {803CB223-5A12-4190-9CDD-E34A34A6F471}
-		{7E11A83F-65B5-47B2-897F-0EC5FF130E57} = {7E11A83F-65B5-47B2-897F-0EC5FF130E57}
-		{F83D8E6D-2F36-4153-8B43-C65F94B80B0F} = {F83D8E6D-2F36-4153-8B43-C65F94B80B0F}
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Experior.Catalog.Dematic.Case", "Experior.Catalog.Dematic.Case\Experior.Catalog.Dematic.Case.csproj", "{7E11A83F-65B5-47B2-897F-0EC5FF130E57}"
 	ProjectSection(ProjectDependencies) = postProject
+		{0E7AC913-F53E-40D3-A9AD-6472BA86B6BE} = {0E7AC913-F53E-40D3-A9AD-6472BA86B6BE}
 		{803CB223-5A12-4190-9CDD-E34A34A6F471} = {803CB223-5A12-4190-9CDD-E34A34A6F471}
 		{F83D8E6D-2F36-4153-8B43-C65F94B80B0F} = {F83D8E6D-2F36-4153-8B43-C65F94B80B0F}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Experior.Catalog.Dematic.Custom", "Experior.Catalog.Dematic.Custom\Experior.Catalog.Dematic.Custom.csproj", "{BE1D781E-6C84-4FCB-8987-EFCDA3879A09}"
 	ProjectSection(ProjectDependencies) = postProject
+		{0E7AC913-F53E-40D3-A9AD-6472BA86B6BE} = {0E7AC913-F53E-40D3-A9AD-6472BA86B6BE}
 		{803CB223-5A12-4190-9CDD-E34A34A6F471} = {803CB223-5A12-4190-9CDD-E34A34A6F471}
 		{7E11A83F-65B5-47B2-897F-0EC5FF130E57} = {7E11A83F-65B5-47B2-897F-0EC5FF130E57}
 		{F83D8E6D-2F36-4153-8B43-C65F94B80B0F} = {F83D8E6D-2F36-4153-8B43-C65F94B80B0F}
@@ -39,6 +33,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Experior.Catalog.Dematic.So
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Experior.Catalog.Dematic.Storage.Miniload", "Experior.Catalog.Dematic.Storage.Miniload\Experior.Catalog.Dematic.Storage.Miniload.csproj", "{999D276D-192A-4206-B986-AC93B596F417}"
 	ProjectSection(ProjectDependencies) = postProject
+		{0E7AC913-F53E-40D3-A9AD-6472BA86B6BE} = {0E7AC913-F53E-40D3-A9AD-6472BA86B6BE}
 		{803CB223-5A12-4190-9CDD-E34A34A6F471} = {803CB223-5A12-4190-9CDD-E34A34A6F471}
 		{7E11A83F-65B5-47B2-897F-0EC5FF130E57} = {7E11A83F-65B5-47B2-897F-0EC5FF130E57}
 		{F83D8E6D-2F36-4153-8B43-C65F94B80B0F} = {F83D8E6D-2F36-4153-8B43-C65F94B80B0F}
@@ -46,24 +41,39 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Experior.Catalog.Dematic.St
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Experior.Catalog.DematicExtra", "Experior.Catalog.DematicExtra\Experior.Catalog.DematicExtra.csproj", "{F83D8E6D-2F36-4153-8B43-C65F94B80B0F}"
 	ProjectSection(ProjectDependencies) = postProject
+		{0E7AC913-F53E-40D3-A9AD-6472BA86B6BE} = {0E7AC913-F53E-40D3-A9AD-6472BA86B6BE}
 		{803CB223-5A12-4190-9CDD-E34A34A6F471} = {803CB223-5A12-4190-9CDD-E34A34A6F471}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Experior.Dematic.Base", "Experior.Dematic.Base\Experior.Dematic.Base.csproj", "{803CB223-5A12-4190-9CDD-E34A34A6F471}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9F46AE77-20AC-41D9-88DF-83BBBDCC1AFF} = {9F46AE77-20AC-41D9-88DF-83BBBDCC1AFF}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Experior.Catalog.Dematic.Storage.MultiShuttle", "Experior.Catalog.Dematic.Storage.MultiShuttle\Branched - DriveThrough\Experior.Catalog.Dematic.Storage.MultiShuttle.csproj", "{66CD6D1D-2AE7-43DC-88E7-3F1505A40F44}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Experior.Catalog.Dematic.Pallet", "Experior.Catalog.Dematic.Pallet\Experior.Catalog.Dematic.Pallet.csproj", "{2B18812E-A543-4369-A1B4-31A36336661E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0E7AC913-F53E-40D3-A9AD-6472BA86B6BE} = {0E7AC913-F53E-40D3-A9AD-6472BA86B6BE}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Experior.Catalog.Dematic.Storage.PalletCrane", "Experior.Catalog.Dematic.Storage.PalletCrane\Experior.Catalog.Dematic.Storage.PalletCrane.csproj", "{B9F8D766-257F-4984-9A6F-518B8704F655}"
 	ProjectSection(ProjectDependencies) = postProject
+		{0E7AC913-F53E-40D3-A9AD-6472BA86B6BE} = {0E7AC913-F53E-40D3-A9AD-6472BA86B6BE}
 		{803CB223-5A12-4190-9CDD-E34A34A6F471} = {803CB223-5A12-4190-9CDD-E34A34A6F471}
 		{2B18812E-A543-4369-A1B4-31A36336661E} = {2B18812E-A543-4369-A1B4-31A36336661E}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Experior.Catalog.Dematic.DCI", "Experior.Catalog.Dematic.DCI\Experior.Catalog.Dematic.DCI.csproj", "{D65C9CF6-9C7B-47B4-91BD-5A08ABF2858D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0E7AC913-F53E-40D3-A9AD-6472BA86B6BE} = {0E7AC913-F53E-40D3-A9AD-6472BA86B6BE}
+		{BE1D781E-6C84-4FCB-8987-EFCDA3879A09} = {BE1D781E-6C84-4FCB-8987-EFCDA3879A09}
+		{9F46AE77-20AC-41D9-88DF-83BBBDCC1AFF} = {9F46AE77-20AC-41D9-88DF-83BBBDCC1AFF}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BK", "BK\BK.csproj", "{9F46AE77-20AC-41D9-88DF-83BBBDCC1AFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dematic.DCI", "Dematic.DCI\Dematic.DCI.csproj", "{0E7AC913-F53E-40D3-A9AD-6472BA86B6BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,18 +85,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0745B50D-FEC6-4326-99CD-079A684E2A2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0745B50D-FEC6-4326-99CD-079A684E2A2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0745B50D-FEC6-4326-99CD-079A684E2A2E}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{0745B50D-FEC6-4326-99CD-079A684E2A2E}.Debug|x86.Build.0 = Debug|Any CPU
-		{0745B50D-FEC6-4326-99CD-079A684E2A2E}.Deploy|Any CPU.ActiveCfg = Deploy|Any CPU
-		{0745B50D-FEC6-4326-99CD-079A684E2A2E}.Deploy|Any CPU.Build.0 = Deploy|Any CPU
-		{0745B50D-FEC6-4326-99CD-079A684E2A2E}.Deploy|x86.ActiveCfg = Deploy|Any CPU
-		{0745B50D-FEC6-4326-99CD-079A684E2A2E}.Deploy|x86.Build.0 = Deploy|Any CPU
-		{0745B50D-FEC6-4326-99CD-079A684E2A2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0745B50D-FEC6-4326-99CD-079A684E2A2E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0745B50D-FEC6-4326-99CD-079A684E2A2E}.Release|x86.ActiveCfg = Release|Any CPU
-		{0745B50D-FEC6-4326-99CD-079A684E2A2E}.Release|x86.Build.0 = Release|Any CPU
 		{7E11A83F-65B5-47B2-897F-0EC5FF130E57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7E11A83F-65B5-47B2-897F-0EC5FF130E57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E11A83F-65B5-47B2-897F-0EC5FF130E57}.Debug|x86.ActiveCfg = Debug|Any CPU
@@ -231,6 +229,18 @@ Global
 		{9F46AE77-20AC-41D9-88DF-83BBBDCC1AFF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9F46AE77-20AC-41D9-88DF-83BBBDCC1AFF}.Release|x86.ActiveCfg = Release|Any CPU
 		{9F46AE77-20AC-41D9-88DF-83BBBDCC1AFF}.Release|x86.Build.0 = Release|Any CPU
+		{0E7AC913-F53E-40D3-A9AD-6472BA86B6BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E7AC913-F53E-40D3-A9AD-6472BA86B6BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E7AC913-F53E-40D3-A9AD-6472BA86B6BE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0E7AC913-F53E-40D3-A9AD-6472BA86B6BE}.Debug|x86.Build.0 = Debug|Any CPU
+		{0E7AC913-F53E-40D3-A9AD-6472BA86B6BE}.Deploy|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E7AC913-F53E-40D3-A9AD-6472BA86B6BE}.Deploy|Any CPU.Build.0 = Debug|Any CPU
+		{0E7AC913-F53E-40D3-A9AD-6472BA86B6BE}.Deploy|x86.ActiveCfg = Debug|Any CPU
+		{0E7AC913-F53E-40D3-A9AD-6472BA86B6BE}.Deploy|x86.Build.0 = Debug|Any CPU
+		{0E7AC913-F53E-40D3-A9AD-6472BA86B6BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E7AC913-F53E-40D3-A9AD-6472BA86B6BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E7AC913-F53E-40D3-A9AD-6472BA86B6BE}.Release|x86.ActiveCfg = Release|Any CPU
+		{0E7AC913-F53E-40D3-A9AD-6472BA86B6BE}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
