@@ -1,0 +1,7 @@
+C:\Xcelgo\Xcelgo Experior\Experior.Plugin.BK.dll
+C:\Xcelgo\Xcelgo Experior\Experior.Plugin.BK.pdb
+D:\git\GitHub\Dematic\ExperiorToll\BK\obj\Debug\Experior.Plugin.Properties.Resources.resources
+D:\git\GitHub\Dematic\ExperiorToll\BK\obj\Debug\BK.csproj.GenerateResource.Cache
+D:\git\GitHub\Dematic\ExperiorToll\BK\obj\Debug\Experior.Plugin.BK.dll
+D:\git\GitHub\Dematic\ExperiorToll\BK\obj\Debug\Experior.Plugin.BK.pdb
+D:\git\GitHub\Dematic\ExperiorToll\BK\obj\Debug\BK.csprojResolveAssemblyReference.cache

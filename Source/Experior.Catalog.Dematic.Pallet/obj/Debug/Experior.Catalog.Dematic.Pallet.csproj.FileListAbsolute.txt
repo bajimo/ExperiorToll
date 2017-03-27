@@ -1,0 +1,5 @@
+C:\Xcelgo\Xcelgo Experior\Experior.Catalog.Dematic.Pallet.Conveyors.dll
+C:\Xcelgo\Xcelgo Experior\Experior.Catalog.Dematic.Pallet.Conveyors.pdb
+D:\git\GitHub\Dematic\ExperiorToll\Experior.Catalog.Dematic.Pallet\obj\Debug\Experior.Catalog.Dematic.Pallet.csprojResolveAssemblyReference.cache
+D:\git\GitHub\Dematic\ExperiorToll\Experior.Catalog.Dematic.Pallet\obj\Debug\Experior.Catalog.Dematic.Pallet.Conveyors.dll
+D:\git\GitHub\Dematic\ExperiorToll\Experior.Catalog.Dematic.Pallet\obj\Debug\Experior.Catalog.Dematic.Pallet.Conveyors.pdb

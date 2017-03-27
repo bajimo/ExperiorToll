@@ -1,0 +1,5 @@
+C:\Xcelgo\Xcelgo Experior\Experior.Catalog.Dematic.Custom.dll
+C:\Xcelgo\Xcelgo Experior\Experior.Catalog.Dematic.Custom.pdb
+D:\git\GitHub\Dematic\ExperiorToll\Experior.Catalog.Dematic.Custom\obj\Debug\Experior.Catalog.Dematic.Custom.csprojResolveAssemblyReference.cache
+D:\git\GitHub\Dematic\ExperiorToll\Experior.Catalog.Dematic.Custom\obj\Debug\Experior.Catalog.Dematic.Custom.dll
+D:\git\GitHub\Dematic\ExperiorToll\Experior.Catalog.Dematic.Custom\obj\Debug\Experior.Catalog.Dematic.Custom.pdb
