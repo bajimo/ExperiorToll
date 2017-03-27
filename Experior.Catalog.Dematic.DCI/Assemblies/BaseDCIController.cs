@@ -611,8 +611,8 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies
                 case TelegramTypes.StatusRequest:
                 case TelegramTypes.SetDateTime:
                 case TelegramTypes.LocationRequest:
-                case TelegramTypes.Startmaterialflow:
-                //case TelegramTypes.StopMaterialFlow:
+                case TelegramTypes.StartMaterialFlow:
+                case TelegramTypes.StopMaterialFlow:
                 case TelegramTypes.FaultTextReq:
                     return 44;
                 case TelegramTypes.Status:

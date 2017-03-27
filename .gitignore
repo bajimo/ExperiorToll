@@ -20,3 +20,5 @@ Experior.Catalog.Pallet/obj/
 Experior.Catalog.Dematic.Pallet/obj/
 Experior.Catalog.Dematic.Storage.PalletCrane/obj/
 BK/obj/
+/Dematic.DCI/obj/Debug
+/VirtualFlowController/bin/Debug
