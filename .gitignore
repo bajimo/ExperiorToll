@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Dematic.DCI/obj/
 Dematic.DCI/bin/
 Experior.Catalog.DematicExtra/obj/
@@ -18,3 +19,30 @@ Experior.Catalog.Pallet/obj/
 Experior.Catalog.Dematic.Pallet/obj/
 Experior.Catalog.Dematic.Storage.PalletCrane/obj/
 BK/obj/
+=======
+Source/Dematic.ATC/obj/
+Source/Dematic.ATC/bin/
+Source/Experior.Catalog.DematicExtra/obj/
+Source/Experior.Dematic.Base/obj/
+*.user
+Source/Experior.Catalog.Dematic.ATC/obj/
+Source/Experior.Catalog.Dematic.DCI/obj/
+Source/Experior.Catalog.Dematic.Case/obj/
+Source/Experior.Catalog.Dematic.Custom/obj/
+Source/Experior.Catalog.Dematic.DatcomUK/obj/
+Source/Experior.Catalog.Dematic.SimulationUK/obj/
+Source/Experior.Catalog.Dematic.Sorter/obj/
+Source/Experior.Catalog.Dematic.Storage.Miniload/obj/
+Source/Experior.Catalog.Dematic.Storage.MultiShuttle/obj/
+Source/Experior.Catalog.Dematic.Pallet/obj/
+Source/Experior.Controller.Version2Testing/obj/
+Source/Experior.Catalog.Dematic.Storage.MultiShuttle/Branched - DriveThrough/obj/
+Source/.vs/Experior/v14/.suo
+Source/Experior.Catalog.Pallet/obj/
+Source/Experior.Catalog.Dematic.Pallet/obj/
+Source/Experior.Catalog.Dematic.Storage.PalletCrane/obj/
+Source/BK/obj/
+Source//Dematic.DCI/obj/
+Source//VirtualFlowController/bin/
+*.suo
+>>>>>>> 327b91c1658afd2574411ca1733cdc8ba8ed9d63

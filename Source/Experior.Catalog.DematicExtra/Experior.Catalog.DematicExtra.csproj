@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <UsingTask TaskName="Experior.Build" AssemblyFile="$(OutputPath)Experior.Build.dll" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F83D8E6D-2F36-4153-8B43-C65F94B80B0F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Experior.Catalog.DematicExtra</RootNamespace>
+    <AssemblyName>Experior.Catalog.DematicExtra</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>C:\Xcelgo\Xcelgo Experior\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>C:\Xcelgo\Xcelgo Experior\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Deploy|AnyCPU'">
+    <OutputPath>bin\Deploy\</OutputPath>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Experior.Catalog.Logistic.Basic, Version=5.3.29138.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Xcelgo\Xcelgo Experior\Experior.Catalog.Logistic.Basic.DLL</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Experior.Core, Version=5.2.34588.1, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Xcelgo\Xcelgo Experior\Experior.Core.DLL</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.DirectX, Version=1.0.2902.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Xcelgo.Core, Version=1.0.229.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Xcelgo\Xcelgo Experior\Xcelgo.Core.DLL</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assemblies\DematicBox.cs" />
+    <Compile Include="Assemblies\Dematic Logo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Assemblies\Graphics.cs" />
+    <Compile Include="Assemblies\KUKAKR180.cs" />
+    <Compile Include="Assemblies\TextLabel3D.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ConstructAssembly.cs" />
+    <Compile Include="DematicExtra.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon\dematic.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Texture\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mesh\KUKAKR180.dae" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon\KUKAKR180.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mesh\Man1.x" />
+    <EmbeddedResource Include="Mesh\Man2.x" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon\Man1.jpg" />
+    <EmbeddedResource Include="Icon\Man2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon\Text.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon\DematicLogo.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon\Box.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Experior.Dematic.Base\Experior.Dematic.Base.csproj">
+      <Project>{803cb223-5a12-4190-9cdd-e34a34a6f471}</Project>
+      <Name>Experior.Dematic.Base</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Target Name="AfterBuild">
+    <Experior.Build AssemblyFileLocation="$(OutputPath)Experior.Catalog.DematicExtra.dll">
+    </Experior.Build>
+  </Target>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+</Project>

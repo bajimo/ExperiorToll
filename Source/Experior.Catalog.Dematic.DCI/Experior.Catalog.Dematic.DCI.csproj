@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <UsingTask TaskName="Experior.Core.Build" AssemblyFile="$(OutputPath)Experior.Core.dll" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D65C9CF6-9C7B-47B4-91BD-5A08ABF2858D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Experior.Catalog</RootNamespace>
+    <AssemblyName>Experior.Catalog.Dematic.DCI.Controllers</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>C:\Xcelgo\Xcelgo Experior\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <NoWarn>1591</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>C:\Xcelgo\Xcelgo Experior\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Deploy|AnyCPU'">
+    <OutputPath>bin\Deploy\</OutputPath>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dematic.DCI, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Xcelgo\Xcelgo Experior\Dematic.DCI.dll</HintPath>
+    </Reference>
+    <Reference Include="Experior.Catalog.Logistic.Basic, Version=5.3.29138.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Xcelgo\Xcelgo Experior\Experior.Catalog.Logistic.Basic.DLL</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Experior.Catalog.Logistic.Storage, Version=5.2.3006.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Xcelgo\Xcelgo Experior\Experior.Catalog.Logistic.Storage.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Experior.Catalog.Logistic.Track, Version=5.2.8142.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Xcelgo\Xcelgo Experior\Experior.Catalog.Logistic.Track.DLL</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Experior.Core, Version=5.2.34588.1, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Xcelgo\Xcelgo Experior\Experior.Core.DLL</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.DirectX, Version=1.0.2902.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="Microsoft.DirectX.Direct3D, Version=1.0.2902.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\Debug\Microsoft.DirectX.Direct3D.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assemblies\BaseDCIController.cs" />
+    <Compile Include="Assemblies\Storage\MHEController_MultiShuttle.cs" />
+    <Compile Include="Assemblies\Storage\MHEControl_MultiShuttle.cs" />
+    <Compile Include="DCICaseData.cs" />
+    <Compile Include="Catalog.cs" />
+    <Compile Include="Create.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon\MyAssembly.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon\DematicLogo.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon\dematic.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon\PLC.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Experior.Catalog.Dematic.Case\Experior.Catalog.Dematic.Case.csproj">
+      <Project>{7e11a83f-65b5-47b2-897f-0ec5ff130e57}</Project>
+      <Name>Experior.Catalog.Dematic.Case</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Experior.Catalog.Dematic.Pallet\Experior.Catalog.Dematic.Pallet.csproj">
+      <Project>{2b18812e-a543-4369-a1b4-31a36336661e}</Project>
+      <Name>Experior.Catalog.Dematic.Pallet</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Experior.Catalog.Dematic.Sorter\Experior.Catalog.Dematic.Sorter.csproj">
+      <Project>{3295a40f-bb49-49ca-99d6-3746f1788deb}</Project>
+      <Name>Experior.Catalog.Dematic.Sorter</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Experior.Catalog.Dematic.Storage.Miniload\Experior.Catalog.Dematic.Storage.Miniload.csproj">
+      <Project>{999d276d-192a-4206-b986-ac93b596f417}</Project>
+      <Name>Experior.Catalog.Dematic.Storage.Miniload</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Experior.Catalog.Dematic.Storage.MultiShuttle\Branched - DriveThrough\Experior.Catalog.Dematic.Storage.MultiShuttle.csproj">
+      <Project>{66cd6d1d-2ae7-43dc-88e7-3f1505a40f44}</Project>
+      <Name>Experior.Catalog.Dematic.Storage.MultiShuttle</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Experior.Catalog.Dematic.Storage.MultiShuttle\Branched - DriveThrough\Experior.Catalog.Dematic.Storage.MultiShuttle.csproj">
+      <Project>{66cd6d1d-2ae7-43dc-88e7-3f1505a40f44}</Project>
+      <Name>Experior.Catalog.Dematic.Storage.MultiShuttle</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Experior.Catalog.Dematic.Storage.MultiShuttle\Branched - DriveThrough\Experior.Catalog.Dematic.Storage.MultiShuttle.csproj">
+      <Project>{66cd6d1d-2ae7-43dc-88e7-3f1505a40f44}</Project>
+      <Name>Experior.Catalog.Dematic.Storage.MultiShuttle</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Experior.Catalog.Dematic.Storage.PalletCrane\Experior.Catalog.Dematic.Storage.PalletCrane.csproj">
+      <Project>{b9f8d766-257f-4984-9a6f-518b8704f655}</Project>
+      <Name>Experior.Catalog.Dematic.Storage.PalletCrane</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Experior.Catalog.DematicExtra\Experior.Catalog.DematicExtra.csproj">
+      <Project>{f83d8e6d-2f36-4153-8b43-c65f94b80b0f}</Project>
+      <Name>Experior.Catalog.DematicExtra</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Experior.Dematic.Base\Experior.Dematic.Base.csproj">
+      <Project>{803cb223-5a12-4190-9cdd-e34a34a6f471}</Project>
+      <Name>Experior.Dematic.Base</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Experior.Dematic.Base\Experior.Dematic.Base.csproj">
+      <Project>{803cb223-5a12-4190-9cdd-e34a34a6f471}</Project>
+      <Name>Experior.Dematic.Base</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Target Name="AfterBuild">
+    <Experior.Core.Build AssemblyFileLocation="$(OutputPath)$(TargetFileName)">
+    </Experior.Core.Build>
+  </Target>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+</Project>

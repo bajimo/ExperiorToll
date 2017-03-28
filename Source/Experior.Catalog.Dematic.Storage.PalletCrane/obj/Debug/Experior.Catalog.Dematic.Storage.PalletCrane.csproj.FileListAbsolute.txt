@@ -1,0 +1,5 @@
+C:\Xcelgo\Xcelgo Experior\Experior.Catalog.Dematic.Storage.PalletCrane.dll
+C:\Xcelgo\Xcelgo Experior\Experior.Catalog.Dematic.Storage.PalletCrane.pdb
+D:\git\GitHub\Dematic\ExperiorToll\Experior.Catalog.Dematic.Storage.PalletCrane\obj\Debug\Experior.Catalog.Dematic.Storage.PalletCrane.csprojResolveAssemblyReference.cache
+D:\git\GitHub\Dematic\ExperiorToll\Experior.Catalog.Dematic.Storage.PalletCrane\obj\Debug\Experior.Catalog.Dematic.Storage.PalletCrane.dll
+D:\git\GitHub\Dematic\ExperiorToll\Experior.Catalog.Dematic.Storage.PalletCrane\obj\Debug\Experior.Catalog.Dematic.Storage.PalletCrane.pdb

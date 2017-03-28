@@ -1,0 +1,5 @@
+C:\Xcelgo\Xcelgo Experior\Experior.Catalog.Dematic.Storage.MultiShuttle.dll
+C:\Xcelgo\Xcelgo Experior\Experior.Catalog.Dematic.Storage.MultiShuttle.pdb
+D:\git\GitHub\Dematic\ExperiorToll\Experior.Catalog.Dematic.Storage.MultiShuttle\Branched - DriveThrough\obj\Debug\Experior.Catalog.Dematic.Storage.MultiShuttle.csprojResolveAssemblyReference.cache
+D:\git\GitHub\Dematic\ExperiorToll\Experior.Catalog.Dematic.Storage.MultiShuttle\Branched - DriveThrough\obj\Debug\Experior.Catalog.Dematic.Storage.MultiShuttle.dll
+D:\git\GitHub\Dematic\ExperiorToll\Experior.Catalog.Dematic.Storage.MultiShuttle\Branched - DriveThrough\obj\Debug\Experior.Catalog.Dematic.Storage.MultiShuttle.pdb
