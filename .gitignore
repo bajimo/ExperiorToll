@@ -1,25 +1,3 @@
-<<<<<<< HEAD
-Dematic.DCI/obj/
-Dematic.DCI/bin/
-Experior.Catalog.DematicExtra/obj/
-Experior.Dematic.Base/obj/
-*.user
-Experior.Catalog.Dematic.DCI/obj/
-Experior.Catalog.Dematic.Case/obj/
-Experior.Catalog.Dematic.Custom/obj/
-Experior.Catalog.Dematic.DatcomUK/obj/
-Experior.Catalog.Dematic.SimulationUK/obj/
-Experior.Catalog.Dematic.Sorter/obj/
-Experior.Catalog.Dematic.Storage.Miniload/obj/
-Experior.Catalog.Dematic.Storage.MultiShuttle/obj/
-Experior.Catalog.Dematic.Pallet/obj/
-Experior.Catalog.Dematic.Storage.MultiShuttle/Branched - DriveThrough/obj/
-.vs/Experior/v14/.suo
-Experior.Catalog.Pallet/obj/
-Experior.Catalog.Dematic.Pallet/obj/
-Experior.Catalog.Dematic.Storage.PalletCrane/obj/
-BK/obj/
-=======
 Source/Dematic.ATC/obj/
 Source/Dematic.ATC/bin/
 Source/Experior.Catalog.DematicExtra/obj/
@@ -45,4 +23,3 @@ Source/BK/obj/
 Source//Dematic.DCI/obj/
 Source//VirtualFlowController/bin/
 *.suo
->>>>>>> 327b91c1658afd2574411ca1733cdc8ba8ed9d63
