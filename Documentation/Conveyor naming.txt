@@ -1,0 +1,4 @@
+Conveyor ID’s (Pnnxx) generally are shown on the plan drawings within the conveyor drawing group within L100 to L199. 
+
+The last 2 digits of the conveyor P number, usually are the relevant control cabinet number. The exception is the Finishing cabinet CC 61 which controls conveyors ending in “61”, as well as conveyors ending in “71” and the future conveyors ending in “74”.
+
