@@ -15,25 +15,16 @@ namespace Experior.Catalog.Dematic.Case.Components
 {
     public class PickPutStation : Assembly, IControllable
     {
-        PickPutStationInfo pickPutStationInfo;
-        //StraightConveyor liftConveyor;
-        StraightConveyor pickConveyorIn;
-        StraightConveyor putConveyorIn;
-        StraightConveyor pickConveyorOut;
-        StraightConveyor putConveyorOut;
-        ActionPoint pickIn, pickStation, putIn, putStation;
+        private readonly PickPutStationInfo pickPutStationInfo;
+        private readonly StraightConveyor pickConveyorIn;
+        private readonly StraightConveyor putConveyorIn;
+        private readonly StraightConveyor pickConveyorOut;
+        private readonly StraightConveyor putConveyorOut;
+        private readonly ActionPoint pickIn, pickStation, pickClear, putIn, putStation, putClear;
+        private readonly Cube leftSide, rightSide, front, bottom;
 
-        Cube leftSide, rightSide, front, bottom;
-        //ActionPoint feed, lower1, lower2, upper1, upper2, end;
-        //int loadCount = 0;
-        //Load feedToLower1 = null;
-        //Load lower1ToLower2 = null;
-        //Load lower2ToEnd = null;
-        //Load waitingToLower1 = null;
-        //Load waitingToLower2 = null;
-        //Load lowering1 = null;
-        //Load lowering2 = null;
-        //Load lastUpper2 = null;
+        //logic
+        private RapidLiftControl pickLiftControl, putLiftControl;
 
         //IControllable
         private MHEControl controllerProperties;
@@ -79,8 +70,19 @@ namespace Experior.Catalog.Dematic.Case.Components
             putConveyorOut.StartFixPoint.Dispose();
 
             pickIn = pickConveyorIn.TransportSection.Route.InsertActionPoint(1.2f);
-            pickStation = pickConveyorOut.TransportSection.Route.InsertActionPoint(0.2f);
+            pickStation = pickConveyorOut.TransportSection.Route.InsertActionPoint(0.35f);
+            pickClear = pickConveyorOut.TransportSection.Route.InsertActionPoint(0.7f);
+            pickClear.Edge = ActionPoint.Edges.Trailing;
 
+            putIn = putConveyorIn.TransportSection.Route.InsertActionPoint(1.2f);
+            putStation = putConveyorOut.TransportSection.Route.InsertActionPoint(0.35f);
+            putClear = putConveyorOut.TransportSection.Route.InsertActionPoint(0.7f);
+            putClear.Edge = ActionPoint.Edges.Trailing;
+
+            pickLiftControl = new RapidLiftControl(pickIn, pickStation, pickClear, ArrivedAtPickPosition);
+            putLiftControl = new RapidLiftControl(putIn, putStation, putClear, ArrivedAtPutPosition);
+
+            //Graphics
             leftSide = new Cube(Color.Gray, 1, 1.2f, 0.05f);
             Add(leftSide);
             leftSide.LocalPosition = new Vector3(-putConveyorIn.Length / 2 + leftSide.Length / 2, leftSide.Height / 2, putConveyorIn.LocalPosition.Z + putConveyorIn.Width / 2 + leftSide.Width / 2);
@@ -96,37 +98,6 @@ namespace Experior.Catalog.Dematic.Case.Components
             bottom = new Cube(Color.Gray, pickConveyorIn.Length + 1, 0.05f, front.Width);
             Add(bottom);
             bottom.LocalPosition = new Vector3(-0.5f, -0.025f, 0);
-
-            //liftConveyor = new StraightConveyor(NewStraightInfo(info));
-            //Add(liftConveyor);
-
-            //liftConveyor.ConveyorWidth = CaseConveyorWidth._500mm;
-            //liftConveyor.StartFixPoint.Visible = false;
-            //liftConveyor.EndFixPoint.Visible = false;
-            //liftConveyor.arrow.Visible = false;
-            //liftConveyor.LocalPosition = new Microsoft.DirectX.Vector3(liftConveyor.LocalPosition.X - 0.375f, liftConveyor.LocalPosition.Y + 0.5f, liftConveyor.LocalPosition.Z);
-            //liftConveyor.TransportSection.Route.Motor.Stop();
-
-            //feed = TransportSection.Route.InsertActionPoint(0.375f);
-            //lower1 = TransportSection.Route.InsertActionPoint(1.125f);
-            //lower2 = TransportSection.Route.InsertActionPoint(1.875f);
-            //end = TransportSection.Route.InsertActionPoint(Length);
-
-            //upper1 = liftConveyor.TransportSection.Route.InsertActionPoint(0.375f);
-            //upper2 = liftConveyor.TransportSection.Route.InsertActionPoint(1.125f);
-
-            //feed.OnEnter += Feed_OnEnter;
-            //lower1.OnEnter += Lower1_OnEnter;
-            //lower2.OnEnter += Lower2_OnEnter;
-            //upper1.OnEnter += Upper1_OnEnter;
-            //upper2.OnEnter += Upper2_OnEnter;
-            //end.OnEnter += End_OnEnter;
-
-            //feed.Visible = true;
-            //lower1.Visible = true;
-            //lower2.Visible = true;
-            //upper1.Visible = true;
-            //upper2.Visible = true;
 
             //OnNextRouteStatusAvailableChanged += PickDoubleLift_OnNextRouteStatusAvailableChanged;
             Core.Environment.Scene.OnLoaded += Scene_OnLoaded;
@@ -144,245 +115,36 @@ namespace Experior.Catalog.Dematic.Case.Components
         public override void Dispose()
         {
             Core.Environment.Scene.OnLoaded -= Scene_OnLoaded;
+            pickLiftControl.Dispose();
+            putLiftControl.Dispose();
             base.Dispose();
         }
-
-        //private void Feed_OnEnter(ActionPoint sender, Load load)
-        //{
-        //    load.Stop();
-        //    load.UserDeletable = false;
-        //   // ThisRouteStatus.Available = RouteStatuses.Blocked;
-        //    InfeedCheck();
-
-        //}
-        //private void InfeedCheck()
-        //{
-        //    if (feed.Active && lowering1 == null && (loadCount < 2 || (lower2.Active && (string)lower2.ActiveLoad.UserData == "PICKED" && upper2.Active && loadCount < 3)))
-        //    {
-        //        releaseFeed();
-        //    }
-        //}
-
-        //private void Lower1_OnEnter(ActionPoint sender, Load load)
-        //{
-        //    load.Stop();
-        //    if ((string)load.UserData != "PICKED")
-        //    {
-        //        feedToLower1 = null;
-        //        loadCount++;
-        //        //ThisRouteStatus.Available = RouteStatuses.Available;
-        //        if (lower2.Active || upper2.Active)
-        //        {
-        //            load.Translate(() => load.Switch(upper1, true), new Microsoft.DirectX.Vector3(0,0.5f,0), 1.5f);
-        //        }
-        //        else
-        //        {
-        //            releaseLower1();
-        //        }
-        //    }
-        //    else //load has been picked an lowered
-        //    {
-        //        lowering1 = null;
-        //        if (!lower2.Active && lowering2 == null)
-        //        {
-        //            releaseLower1();
-        //        }
-        //    }
-        //}
-
-        //private void Lower2_OnEnter(ActionPoint sender, Core.Loads.Load load)
-        //{
-        //    if ((string)load.UserData != "PICKED")
-        //    {
-        //        if (!upper2.Active)
-        //        {
-        //            load.Stop();
-        //            load.Translate(() => load.Switch(upper2, true), new Microsoft.DirectX.Vector3(0, 0.5f, 0), 1.5f);
-        //        }
-        //        else
-        //        {
-        //            Log.Write("There is a problem in the picking station, tell Barry he would love to fix it");
-        //            Pause();
-        //        }
-        //    }
-        //    else //load has been picked and either lowered or picked at the first station
-        //    {
-        //        if (lastUpper2 == load)
-        //        {
-        //            lowering2 = null;
-        //        }
-
-        //        //if (NextRouteStatus.Available != Experior.Dematic.Base.RouteStatuses.Available)
-        //        //{
-        //        //    load.Stop();
-        //        //}
-        //        //else
-        //        //{
-        //        //    releaseLower2();
-        //        //}
-        //    }
-
-        //    //if the load has arrived from the 
-        //    if (lower1ToLower2 == load)
-        //    {
-        //        lower1ToLower2 = null;
-        //        if (waitingToLower1 != null)
-        //        {
-        //            StartLower1();
-        //        }
-        //        else
-        //        {
-        //            InfeedCheck();
-        //        }
-        //    }
-        //}
-
-        //private void Upper1_OnEnter(ActionPoint sender, Core.Loads.Load load)
-        //{
-        //    load.UserData = "PICKED";
-        //    ArrivedAtPickPosition(new PickPutStationArrivalArgs(load));
-        //}
-
-        //public void SendAwayPosition1()
-        //{
-        //    if (feedToLower1 == null && lower1ToLower2 == null && !lower1.Active)
-        //    {
-        //        StartLower1();
-        //    }
-        //    else
-        //    {
-        //        waitingToLower1 = upper1.ActiveLoad;
-        //    }
-        //}
-
-        //private void StartLower1()
-        //{
-        //    waitingToLower1 = null;
-        //    upper1.ActiveLoad.Translate(() => upper1.ActiveLoad.Switch(lower1, true), new Microsoft.DirectX.Vector3(0, -0.5f, 0), 1.5f);
-        //    lowering1 = upper1.ActiveLoad;
-        //}
-
-        //private void Upper2_OnEnter(ActionPoint sender, Core.Loads.Load load)
-        //{
-        //    lastUpper2 = load;
-        //    load.UserData = "PICKED";
-
-        //    //Is there something at lower1 that could be released?
-        //    if (lower1.Active && (string)lower1.ActiveLoad.UserData == "PICKED")
-        //    {
-        //        releaseLower1();
-        //    }
-        //    ArrivedAtPutPosition(new PickPutStationArrivalArgs(load));
-        //}
-
-        //public void SendAwayPosition2()
-        //{
-        //    if (lower1ToLower2 == null && lower2ToEnd == null && !lower2.Active)
-        //    {
-        //        StartLower2();
-        //    }
-        //    else
-        //    {
-        //        waitingToLower2 = upper2.ActiveLoad;
-        //    }
-        //}
-
-        //private void StartLower2()
-        //{
-        //    waitingToLower2 = null;
-        //    upper2.ActiveLoad.Translate(() => upper2.ActiveLoad.Switch(lower2, true), new Microsoft.DirectX.Vector3(0, -0.5f, 0), 1.5f);
-        //    lowering2 = upper2.ActiveLoad;
-        //}
-
-        //private void End_OnEnter(ActionPoint sender, Core.Loads.Load load)
-        //{
-        //    lower2ToEnd = null;
-        //    load.UserDeletable = true;
-        //    load.UserData = null;
-        //    loadCount--;
-
-        //    if (waitingToLower2 != null)
-        //    {
-        //        StartLower2();
-        //    }
-        //    else
-        //    {
-        //        if (lower1.Active && (string)lower1.ActiveLoad.UserData == "PICKED")
-        //        {
-        //            releaseLower1();
-        //        }
-        //    }
-
-        //    InfeedCheck();
-        //}
-
-        //private void PickDoubleLift_OnNextRouteStatusAvailableChanged(object sender, Experior.Dematic.Base.Devices.RouteStatusChangedEventArgs e)
-        //{
-        //    if (e._available == Experior.Dematic.Base.RouteStatuses.Available && lower2.Active && (string)lower2.ActiveLoad.UserData == "PICKED")
-        //    {
-        //        releaseLower2();
-        //    }
-        //}
-
-        //private void releaseFeed()
-        //{
-        //    if (feed.Active)
-        //    {
-        //        feedToLower1 = feed.ActiveLoad;
-        //        feed.ActiveLoad.Release();
-        //    }
-        //}
-
-        //private void releaseLower1()
-        //{
-        //    if (lower1.Active)
-        //    {
-        //        lower1ToLower2 = lower1.ActiveLoad;
-        //        lower1.ActiveLoad.Release();
-        //    }
-        //}
-
-        //private void releaseLower2()
-        //{
-        //    if (lower2.Active)
-        //    {
-        //        lower2ToEnd = lower2.ActiveLoad;
-        //        lower2.ActiveLoad.Release();
-        //    }
-        //}
 
         public override void Reset()
         {
             base.Reset();
-            //loadCount = 0;
-            //ThisRouteStatus.Available = Experior.Dematic.Base.RouteStatuses.Available;
-            //feedToLower1 = null;
-            //lower1ToLower2 = null;
-            //lower2ToEnd = null;
-            //waitingToLower1 = null;
-            //waitingToLower2 = null;
-            //lowering1 = null;
-            //lowering2 = null;
-            //lastUpper2 = null;
+            pickLiftControl.Reset();
+            putLiftControl.Reset();
         }
 
-        //[Browsable(false)]
-        //public string Upper1Barcode
-        //{
-        //    get { return upper1.Active ? ((Case_Load)upper1.ActiveLoad).SSCCBarcode : null; }
-        //}
+        [Browsable(false)]
+        public string PickBarcode
+        {
+            get { return pickStation.ActiveLoad is Case_Load ? ((Case_Load)pickStation.ActiveLoad).SSCCBarcode : null; }
+        }
 
-        //[Browsable(false)]
-        //public string Upper2Barcode
-        //{
-        //    get { return upper2.Active ? ((Case_Load)upper2.ActiveLoad).SSCCBarcode : null; }
-        //}
+        [Browsable(false)]
+        public string PutBarcode
+        {
+            get { return putStation.ActiveLoad is Case_Load ? ((Case_Load)putStation.ActiveLoad).SSCCBarcode : null; }
+        }
 
         private StraightConveyorInfo NewStraightInfo()
         {
             StraightConveyorInfo straightInfo = new StraightConveyorInfo();
             straightInfo.Length = 1.6f;
             straightInfo.Speed = 1;
+            straightInfo.spacing = 0.1f;
             straightInfo.thickness = 0.05f;
             straightInfo.color = Color.DarkGray;
             straightInfo.conveyorWidth = CaseConveyorWidth._600mm;
@@ -493,8 +255,75 @@ namespace Experior.Catalog.Dematic.Case.Components
             attributes.IsBrowsable = Controller != null;
         }
 
-        public override string Category { get; } = "Rapid pick station";
+        public override string Category { get; } = "GTP";
         public override Image Image { get; }
+
+        private class RapidLiftControl
+        {
+            private readonly ActionPoint bottom, top, clear;
+            private bool lifting;
+            private readonly Action<PickPutStationArrivalArgs> arrivalAction;
+            public RapidLiftControl(ActionPoint bottom, ActionPoint top, ActionPoint clear, Action<PickPutStationArrivalArgs> arrival)
+            {
+                this.arrivalAction = arrival;
+                this.bottom = bottom;
+                this.top = top;
+                this.clear = clear;
+
+                bottom.OnEnter += Bottom_OnEnter;
+                top.OnEnter += Top_OnEnter;
+                clear.OnEnter += Clear_OnEnter;
+            }
+
+            private void Clear_OnEnter(ActionPoint sender, Load load)
+            {
+                if (lifting)
+                    return;
+                if (top.Active)
+                    return;
+
+                if (bottom.Active)
+                {
+                    Bottom_OnEnter(bottom, bottom.ActiveLoad);
+                }
+            }
+
+            private void Top_OnEnter(ActionPoint sender, Load load)
+            {
+                lifting = false;
+                arrivalAction(new PickPutStationArrivalArgs(load));
+            }
+
+            private void Bottom_OnEnter(ActionPoint sender, Load load)
+            {
+                load.Stop();
+
+                if (lifting)
+                    return;
+
+                if (top.Active)
+                    return;
+
+                lifting = true;
+
+                var distance = top.Position - bottom.Position;
+                load.Translate(() => load.Switch(top, true), distance, 1.5f);
+            }
+
+            public void Reset()
+            {
+                lifting = false;
+            }
+
+            public void Dispose()
+            {
+                bottom.OnEnter -= Bottom_OnEnter;
+                top.OnEnter -= Top_OnEnter;
+                clear.OnEnter -= Clear_OnEnter;
+            }
+        }
+
+
 
         #endregion
     }
