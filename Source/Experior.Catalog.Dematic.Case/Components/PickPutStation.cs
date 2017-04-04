@@ -21,10 +21,11 @@ namespace Experior.Catalog.Dematic.Case.Components
         private readonly StraightConveyor pickConveyorOut;
         private readonly StraightConveyor putConveyorOut;
         private readonly ActionPoint pickIn, pickStation, pickClear, putIn, putStation, putClear;
+        private readonly ActionPoint leavingPick, leavingPut, enteringPick, enteringPut;
         private readonly Cube leftSide, rightSide, front, bottom;
 
         //logic
-        private RapidLiftControl pickLiftControl, putLiftControl;
+        private readonly RapidLiftControl pickLiftControl, putLiftControl;
 
         //IControllable
         private MHEControl controllerProperties;
@@ -79,8 +80,24 @@ namespace Experior.Catalog.Dematic.Case.Components
             putClear = putConveyorOut.TransportSection.Route.InsertActionPoint(0.7f);
             putClear.Edge = ActionPoint.Edges.Trailing;
 
-            pickLiftControl = new RapidLiftControl(pickIn, pickStation, pickClear, ArrivedAtPickPosition);
-            putLiftControl = new RapidLiftControl(putIn, putStation, putClear, ArrivedAtPutPosition);
+            pickLiftControl = new RapidLiftControl(pickIn, pickStation, pickClear, ArrivedAtPickPosition, UpdatePickConveyorStatus);
+            putLiftControl = new RapidLiftControl(putIn, putStation, putClear, ArrivedAtPutPosition, UpdatePutConveyorStatus);
+
+            enteringPick = pickConveyorIn.TransportSection.Route.InsertActionPoint(0);
+            enteringPick.Edge = ActionPoint.Edges.Trailing;
+            enteringPick.OnEnter += EnteringPick_OnEnter;
+
+            leavingPick = pickConveyorOut.TransportSection.Route.InsertActionPoint(pickConveyorOut.Length - 0.05f);
+            leavingPick.Edge = ActionPoint.Edges.Leading;
+            leavingPick.OnEnter += LeavingPick_OnEnter;
+
+            enteringPut = putConveyorIn.TransportSection.Route.InsertActionPoint(0);
+            enteringPut.Edge = ActionPoint.Edges.Trailing;
+            enteringPut.OnEnter += EnteringPut_OnEnter;
+
+            leavingPut = putConveyorOut.TransportSection.Route.InsertActionPoint(putConveyorOut.Length - 0.05f);
+            leavingPut.Edge = ActionPoint.Edges.Leading;
+            leavingPut.OnEnter += LeavingPut_OnEnter;
 
             //Graphics
             leftSide = new Cube(Color.Gray, 1, 1.2f, 0.05f);
@@ -99,8 +116,71 @@ namespace Experior.Catalog.Dematic.Case.Components
             Add(bottom);
             bottom.LocalPosition = new Vector3(-0.5f, -0.025f, 0);
 
-            //OnNextRouteStatusAvailableChanged += PickDoubleLift_OnNextRouteStatusAvailableChanged;
+            pickConveyorOut.OnNextRouteStatusAvailableChanged += PickConveyorOut_OnNextRouteStatusAvailableChanged;
+            putConveyorOut.OnNextRouteStatusAvailableChanged += PutConveyorOut_OnNextRouteStatusAvailableChanged;
             Core.Environment.Scene.OnLoaded += Scene_OnLoaded;
+        }
+
+        private void EnteringPut_OnEnter(ActionPoint sender, Load load)
+        {
+            UpdatePutConveyorStatus();
+        }
+
+        private void EnteringPick_OnEnter(ActionPoint sender, Load load)
+        {
+            UpdatePickConveyorStatus();
+        }
+
+        private void UpdatePickConveyorStatus()
+        {
+            if (pickConveyorIn.TransportSection.Route.Loads.Count >= 2)
+            {
+                pickConveyorIn.RouteAvailable = RouteStatuses.Blocked;
+            }
+            else
+            {
+                pickConveyorIn.RouteAvailable = RouteStatuses.Available;
+            }
+        }
+
+        private void UpdatePutConveyorStatus()
+        {
+            if (putConveyorIn.TransportSection.Route.Loads.Count >= 2)
+            {
+                putConveyorIn.RouteAvailable = RouteStatuses.Blocked;
+            }
+            else
+            {
+                putConveyorIn.RouteAvailable = RouteStatuses.Available;
+            }
+        }
+
+        private void LeavingPut_OnEnter(ActionPoint sender, Load load)
+        {
+            if (putConveyorOut.NextRouteStatus.Available != RouteStatuses.Available)
+                load.Stop();
+        }
+
+        private void PutConveyorOut_OnNextRouteStatusAvailableChanged(object sender, Experior.Dematic.Base.Devices.RouteStatusChangedEventArgs e)
+        {
+            if (e._available == RouteStatuses.Available && leavingPut.Active)
+            {
+                leavingPut.Release();
+            }
+        }
+
+        private void LeavingPick_OnEnter(ActionPoint sender, Load load)
+        {
+            if (pickConveyorOut.NextRouteStatus.Available != RouteStatuses.Available)
+                load.Stop();
+        }
+
+        private void PickConveyorOut_OnNextRouteStatusAvailableChanged(object sender, Experior.Dematic.Base.Devices.RouteStatusChangedEventArgs e)
+        {
+            if (e._available == RouteStatuses.Available && leavingPick.Active)
+            {
+                leavingPick.Release();
+            }
         }
 
         public void Scene_OnLoaded()
@@ -114,7 +194,13 @@ namespace Experior.Catalog.Dematic.Case.Components
 
         public override void Dispose()
         {
+            enteringPick.OnEnter -= EnteringPick_OnEnter;
+            enteringPut.OnEnter -= EnteringPut_OnEnter;
+            pickConveyorOut.OnNextRouteStatusAvailableChanged -= PickConveyorOut_OnNextRouteStatusAvailableChanged;
+            putConveyorOut.OnNextRouteStatusAvailableChanged -= PutConveyorOut_OnNextRouteStatusAvailableChanged;
             Core.Environment.Scene.OnLoaded -= Scene_OnLoaded;
+            leavingPick.OnEnter -= LeavingPick_OnEnter;
+            leavingPut.OnEnter -= LeavingPut_OnEnter;
             pickLiftControl.Dispose();
             putLiftControl.Dispose();
             base.Dispose();
@@ -125,6 +211,8 @@ namespace Experior.Catalog.Dematic.Case.Components
             base.Reset();
             pickLiftControl.Reset();
             putLiftControl.Reset();
+            pickConveyorIn.RouteAvailable = RouteStatuses.Available;
+            putConveyorIn.RouteAvailable = RouteStatuses.Available;
         }
 
         [Browsable(false)]
@@ -262,10 +350,13 @@ namespace Experior.Catalog.Dematic.Case.Components
         {
             private readonly ActionPoint bottom, top, clear;
             private bool lifting;
-            private readonly Action<PickPutStationArrivalArgs> arrivalAction;
-            public RapidLiftControl(ActionPoint bottom, ActionPoint top, ActionPoint clear, Action<PickPutStationArrivalArgs> arrival)
+            private readonly Action<PickPutStationArrivalArgs> arrival;
+            private readonly Action liftingFinished;
+
+            public RapidLiftControl(ActionPoint bottom, ActionPoint top, ActionPoint clear, Action<PickPutStationArrivalArgs> arrival, Action liftingFinished)
             {
-                this.arrivalAction = arrival;
+                this.arrival = arrival;
+                this.liftingFinished = liftingFinished;
                 this.bottom = bottom;
                 this.top = top;
                 this.clear = clear;
@@ -291,7 +382,8 @@ namespace Experior.Catalog.Dematic.Case.Components
             private void Top_OnEnter(ActionPoint sender, Load load)
             {
                 lifting = false;
-                arrivalAction(new PickPutStationArrivalArgs(load));
+                liftingFinished();
+                arrival(new PickPutStationArrivalArgs(load));
             }
 
             private void Bottom_OnEnter(ActionPoint sender, Load load)
