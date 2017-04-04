@@ -376,6 +376,20 @@ namespace Experior.Catalog.Dematic.Case
             return new PickDoubleLift(info);
         }
 
+        public static Assembly PickPutStation(string title, string subtitle, object properties)
+        {
+            var info = new PickPutStationInfo
+            {
+                //thickness = 0.05f,
+                //spacing = 0.1f,
+                width = 0.5f,
+                length = 2.25f,
+                height = 0.7f,
+                //speed = 0.7f,
+                name = Assembly.GetValidName("GTP ")
+            };
+            return new PickPutStation(info);
+        }
 
         //public static Assembly ConveyorUnits(string title, string subtitle, object properties)
         //{

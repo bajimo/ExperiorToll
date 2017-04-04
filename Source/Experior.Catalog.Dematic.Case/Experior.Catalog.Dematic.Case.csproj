@@ -105,6 +105,7 @@
     <Compile Include="Components\BeltSorterInduct.cs" />
     <Compile Include="Components\BeltSorterDivert.cs" />
     <Compile Include="Components\DivertTransferPlate.cs" />
+    <Compile Include="Components\PickPutStation.cs" />
     <Compile Include="Components\PickDoubleLift.cs" />
     <Compile Include="Components\StraightPhotocellConveyor.cs" />
     <Compile Include="Components\Transfer.cs" />
