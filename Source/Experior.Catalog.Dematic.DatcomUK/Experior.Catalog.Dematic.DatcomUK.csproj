@@ -90,6 +90,7 @@
     <Compile Include="Assemblies\MHEControl_ManualPicking.cs" />
     <Compile Include="Assemblies\MHEControl_BeltSorterDivert.cs" />
     <Compile Include="Assemblies\MHEControl_MultiShuttle.cs" />
+    <Compile Include="Assemblies\MHEControl_PickPutStation.cs" />
     <Compile Include="Assemblies\MHEControl_ThreeWaySwitch.cs" />
     <Compile Include="Assemblies\MHEControl_Transfer.cs" />
     <Compile Include="Assemblies\MHEControl_PickDoubleLift.cs" />

@@ -97,6 +97,10 @@ namespace Experior.Catalog.Dematic.DatcomUK.Assemblies
             {
                 protocolConfig = CreateMHEControlGeneric<PickDoubleLiftDatcomInfo, MHEControl_PickDoubleLift>(assem, info);
             }
+            else if (assem is PickPutStation)
+            {
+                protocolConfig = CreateMHEControlGeneric<PickPutStationDatcomInfo, MHEControl_PickPutStation>(assem, info);
+            }
             else
             {
                 Experior.Core.Environment.Log.Write("Can't create MHE Control, object is not defined in the 'CreateMHEControl' of the controller");

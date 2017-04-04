@@ -1,0 +1,2389 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--DEMATIC Virtual Flow Controller Configuration File-->
+<Configuration VFCVERSION="1.0">
+  <SystemConfiguration>
+    <BK10BarcodeLength>10</BK10BarcodeLength>
+    <BK10BarcodePrefix>00</BK10BarcodePrefix>
+    <NextCartonBarcode>1</NextCartonBarcode>
+    <TelegramValidation Name="DATCOMBK10">
+      <DefaultFormatPadding>
+        <ASCII>
+          <Padding>Right</Padding>
+          <PaddingChar xml:space="preserve"> </PaddingChar>
+        </ASCII>
+        <NUMERIC>
+          <Padding>Left</Padding>
+          <PaddingChar>0</PaddingChar>
+        </NUMERIC>
+      </DefaultFormatPadding>
+      <Acknowledge Identifier="A" />
+      <Header>
+        <Field>
+          <Name>Start</Name>
+          <Format>ASCII</Format>
+          <Length>1</Length>
+          <Type>Normal</Type>
+          <Value>/</Value>
+        </Field>
+        <Field>
+          <Name>Cycle</Name>
+          <Format>ASCII</Format>
+          <Length>1</Length>
+          <Type>AckIdentifier</Type>
+        </Field>
+        <Field>
+          <Name>Type</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Identifier</Type>
+        </Field>
+        <Field>
+          <Name>Sender</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Receiver</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Number of Blocks</Name>
+          <Format>U16</Format>
+          <Length>2</Length>
+          <Type>BodyQuantity</Type>
+        </Field>
+      </Header>
+      <Tail>
+        <Field>
+          <Name>Filler</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+        <Field>
+          <Name>End1</Name>
+          <Format>BYTE</Format>
+          <Length>1</Length>
+          <Type>Normal</Type>
+          <Value>[13]</Value>
+        </Field>
+        <Field>
+          <Name>End2</Name>
+          <Format>BYTE</Format>
+          <Length>1</Length>
+          <Type>Normal</Type>
+          <Value>[10]</Value>
+        </Field>
+      </Tail>
+      <Message Identifier="01">
+        <Name>Routing Table Update</Name>
+        <BodyType>Repeat</BodyType>
+        <Field>
+          <Name>Unit Load Identifier</Name>
+          <Format>ASCII</Format>
+          <Length>10</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+        <Field>
+          <Name>Destinations#1</Name>
+          <Format>U16</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Destinations#2</Name>
+          <Format>U16</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Destinations#3</Name>
+          <Format>U16</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Destinations#4</Name>
+          <Format>U16</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+      </Message>
+      <Message Identifier="04">
+        <Name>Purge Routing Table</Name>
+        <BodyType>NoBody</BodyType>
+      </Message>
+      <Message Identifier="13">
+        <Name>Node Status Report</Name>
+        <BodyType>Single</BodyType>
+        <Field>
+          <Name>Status</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+      </Message>
+      <Message Identifier="26">
+        <Name>Call Forward</Name>
+        <BodyType>Repeat</BodyType>
+        <Field>
+          <Name>Location</Name>
+          <Format>ASCII</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Quantity</Name>
+          <Format>U16</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+      </Message>
+      <Message Identifier="02">
+        <Name>Divert Confirmation</Name>
+        <BodyType>Repeat</BodyType>
+        <Field>
+          <Name>Unit Load Identifier</Name>
+          <Format>ASCII</Format>
+          <Length>10</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Location</Name>
+          <Format>ASCII</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+      </Message>
+      <Message Identifier="06">
+        <Name>Routing Exception</Name>
+        <BodyType>Repeat</BodyType>
+        <Field>
+          <Name>Unit Load Identifier</Name>
+          <Format>ASCII</Format>
+          <Length>10</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Location</Name>
+          <Format>ASCII</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Reason Code</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+      </Message>
+      <Message Identifier="10">
+        <Name>Routing Table Status</Name>
+        <BodyType>Single</BodyType>
+        <Field>
+          <Name>Status</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+      </Message>
+      <Message Identifier="23">
+        <Name>Unit Load Information</Name>
+        <BodyType>Repeat</BodyType>
+        <Field>
+          <Name>Location</Name>
+          <Format>ASCII</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Left TM Barcode</Name>
+          <Format>ASCII</Format>
+          <Length>10</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Right TM Barcode</Name>
+          <Format>ASCII</Format>
+          <Length>10</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Front TM Barcode</Name>
+          <Format>ASCII</Format>
+          <Length>10</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Weight</Name>
+          <Format>ASCII</Format>
+          <Length>6</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Height</Name>
+          <Format>ASCII</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Width</Name>
+          <Format>ASCII</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Depth</Name>
+          <Format>ASCII</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Height 1</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Weight 2</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+      </Message>
+      <Message Identifier="25">
+        <Name>Crane Input Station (EP) Arrival</Name>
+        <BodyType>Repeat</BodyType>
+        <Field>
+          <Name>Crane</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Position 1 Barcode</Name>
+          <Format>ASCII</Format>
+          <Length>8</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Position 2 Barcode</Name>
+          <Format>ASCII</Format>
+          <Length>8</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Status</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+      </Message>
+      <Message Identifier="27">
+        <Name>Call Forward Exception</Name>
+        <BodyType>Repeat</BodyType>
+        <Field>
+          <Name>Location</Name>
+          <Format>ASCII</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Quantity</Name>
+          <Format>U16</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+      </Message>
+      <Message Identifier="28">
+        <Name>Lane Occupancy</Name>
+        <BodyType>Repeat</BodyType>
+        <Field>
+          <Name>Location</Name>
+          <Format>ASCII</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Quantity</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+      </Message>
+      <Message Identifier="83">
+        <Name>Despatch Lane Selector Switch Mode</Name>
+        <BodyType>Repeat</BodyType>
+        <Field>
+          <Name>Location</Name>
+          <Format>ASCII</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Despatch Switch Status</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Returns Swicth Status</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+      </Message>
+      <Message Identifier="84">
+        <Name>Despatch Lane Beacon Status</Name>
+        <BodyType>Repeat</BodyType>
+        <Field>
+          <Name>Location</Name>
+          <Format>ASCII</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Ambient Beacon Status</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Chilled Beacon Status</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Returns Beacon Status</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+      </Message>
+      <Message Identifier="85">
+        <Name>Decant / GTP Help Beacon Status</Name>
+        <BodyType>Repeat</BodyType>
+        <Field>
+          <Name>Location 1</Name>
+          <Format>ASCII</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Beacon Status 1</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Location 2</Name>
+          <Format>ASCII</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Beacon Status 2</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+      </Message>
+      <Message Identifier="86">
+        <Name>Call Forward with ULID</Name>
+        <BodyType>Repeat</BodyType>
+        <Field>
+          <Name>Location</Name>
+          <Format>ASCII</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Quantity</Name>
+          <Format>U16</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Unit Load ID</Name>
+          <Format>ASCII</Format>
+          <Length>10</Length>
+          <Type>Normal</Type>
+        </Field>
+      </Message>
+      <Message Identifier="87">
+        <Name>Insert Exchange Instruction</Name>
+        <BodyType>Repeat</BodyType>
+        <Field>
+          <Name>Location</Name>
+          <Format>ASCII</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Unit Load ID 1</Name>
+          <Format>ASCII</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Tray 1, Insert 1</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Tray 1, Insert 2</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Unit Load ID 2</Name>
+          <Format>ASCII</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Tray 2, Insert 1</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Tray 2, Insert 2</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+      </Message>
+      <Message Identifier="88">
+        <Name>Exchange Exception</Name>
+        <BodyType>Single</BodyType>
+        <Field>
+          <Name>Location</Name>
+          <Format>ASCII</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Unit Load ID 1</Name>
+          <Format>ASCII</Format>
+          <Length>8</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Unit Load ID 2</Name>
+          <Format>ASCII</Format>
+          <Length>8</Length>
+          <Type>Normal</Type>
+        </Field>
+      </Message>
+      <Message Identifier="89">
+        <Name>GTP Pick Indicator Status</Name>
+        <BodyType>Repeat</BodyType>
+        <Field>
+          <Name>Location</Name>
+          <Format>ASCII</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Pick Lamp Status 1</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Pick Lamp Status 2</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Pick Lamp Status 3</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Pick Lamp Status 4</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Pick Lamp Status 5</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Pick Lamp Status 6</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Pick Lamp Status 7</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Pick Lamp Status 8</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+      </Message>
+      <Message Identifier="90">
+        <Name>GTP Loop Status</Name>
+        <BodyType>Single</BodyType>
+        <Field>
+          <Name>GTP Loop A Status</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>GTP Loop B Status</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>PBL Loop 1 Status</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+        <Field>
+          <Name>PBL Loop 2 Status</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+        <Field>
+          <Name>PBL Loop Status</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+        <Field>
+          <Name>Despatch Loop Status</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+      </Message>
+      <Message Identifier="80">
+        <Name>GTP Occupancy Status</Name>
+        <BodyType>Repeat</BodyType>
+        <Field>
+          <Name>Location</Name>
+          <Format>ASCII</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Occupied Status</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Tote ID</Name>
+          <Format>ASCII</Format>
+          <Length>10</Length>
+          <Type>Normal</Type>
+        </Field>
+      </Message>
+      <Message Identifier="91">
+        <Name>Tote Exchanger Arrival</Name>
+        <BodyType>Single</BodyType>
+        <Field>
+          <Name>Location</Name>
+          <Format>ASCII</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Tray 1 ULID</Name>
+          <Format>ASCII</Format>
+          <Length>8</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Tray 1 Leading Insert</Name>
+          <Format>ASCII</Format>
+          <Length>8</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Tray 2 ULID</Name>
+          <Format>ASCII</Format>
+          <Length>8</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Tray 2 Leading Insert</Name>
+          <Format>ASCII</Format>
+          <Length>8</Length>
+          <Type>Normal</Type>
+        </Field>
+      </Message>
+      <Message Identifier="03">
+        <Name>Left Message</Name>
+        <BodyType>Repeat</BodyType>
+        <Field>
+          <Name>Unit Load Identifier</Name>
+          <Format>ASCII</Format>
+          <Length>10</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Location</Name>
+          <Format>ASCII</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+      </Message>
+      <Message Identifier="56">
+        <Name>test msg</Name>
+        <BodyType>Repeat</BodyType>
+        <Field>
+          <Name>Test 1</Name>
+          <Format>ASCII</Format>
+          <Length>20</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+        <Field>
+          <Name>
+          </Name>
+          <Format>ASCII</Format>
+          <Length>0</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+        <Field>
+          <Name>
+          </Name>
+          <Format>ASCII</Format>
+          <Length>0</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+      </Message>
+    </TelegramValidation>
+    <TelegramValidation Name="DMS DCI 1.52">
+      <DefaultFormatPadding>
+        <ASCII>
+          <Padding>Right</Padding>
+          <PaddingChar>.</PaddingChar>
+        </ASCII>
+        <NUMERIC>
+          <Padding>Left</Padding>
+          <PaddingChar>0</PaddingChar>
+        </NUMERIC>
+      </DefaultFormatPadding>
+      <Acknowledge Identifier="A" />
+      <Header>
+        <Field>
+          <Name>Start</Name>
+          <Format>ASCII</Format>
+          <Length>1</Length>
+          <Type>Normal</Type>
+          <Value>/</Value>
+        </Field>
+        <Field>
+          <Name>Flow Control</Name>
+          <Format>ASCII</Format>
+          <Length>1</Length>
+          <Type>AckIdentifier</Type>
+        </Field>
+        <Field>
+          <Name>Name</Name>
+          <Format>ASCII</Format>
+          <Length>4</Length>
+          <Type>Identifier</Type>
+        </Field>
+        <Field>
+          <Name>Sender</Name>
+          <Format>ASCII</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Receiver</Name>
+          <Format>ASCII</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Cycle Number</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Return Code</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Number Of Blocks</Name>
+          <Format>NUMERIC</Format>
+          <Length>2</Length>
+          <Type>BodyQuantity</Type>
+        </Field>
+        <Field>
+          <Name>Type Of Blocks</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Length of Message</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+      </Header>
+      <Tail>
+        <Field>
+          <Name>End Of Message</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+          <Value>##</Value>
+        </Field>
+      </Tail>
+      <Message Identifier="TUMI">
+        <Name>Transport Unit Mission</Name>
+        <BodyType>Repeat</BodyType>
+        <Field>
+          <Name>Source Location</Name>
+          <Format>ASCII</Format>
+          <Length>14</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Current Location</Name>
+          <Format>ASCII</Format>
+          <Length>14</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Destination Location</Name>
+          <Format>ASCII</Format>
+          <Length>14</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Identifier</Name>
+          <Format>ASCII</Format>
+          <Length>22</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Type</Name>
+          <Format>ASCII</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Length</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Width </Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Height</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Weight</Name>
+          <Format>NUMERIC</Format>
+          <Length>8</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Event Code</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Drop Index</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Shuttle Dynamics</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+        <Field>
+          <Name>Lift Dynamics</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+        <Field>
+          <Name>Source Shuttle Extension</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+        <Field>
+          <Name>Destination Shuttle Extension</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+      </Message>
+      <Message Identifier="TUCA">
+        <Name>Transport Unit Cancel</Name>
+        <BodyType>Repeat</BodyType>
+        <Field>
+          <Name>Source Location</Name>
+          <Format>ASCII</Format>
+          <Length>14</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Current Location</Name>
+          <Format>ASCII</Format>
+          <Length>14</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Destination Location</Name>
+          <Format>ASCII</Format>
+          <Length>14</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Identifier</Name>
+          <Format>ASCII</Format>
+          <Length>22</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Type</Name>
+          <Format>ASCII</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Length</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Width </Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Height</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Weight</Name>
+          <Format>NUMERIC</Format>
+          <Length>8</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Event Code</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Drop Index</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Shuttle Dynamics</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+        <Field>
+          <Name>Lift Dynamics</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+        <Field>
+          <Name>Source Shuttle Extension</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+        <Field>
+          <Name>Destination Shuttle Extension</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+      </Message>
+      <Message Identifier="TUMC">
+        <Name>Transport Unit Mission Cancel</Name>
+        <BodyType>Repeat</BodyType>
+        <Field>
+          <Name>Source Location</Name>
+          <Format>ASCII</Format>
+          <Length>14</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Current Location</Name>
+          <Format>ASCII</Format>
+          <Length>14</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Destination Location</Name>
+          <Format>ASCII</Format>
+          <Length>14</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Identifier</Name>
+          <Format>ASCII</Format>
+          <Length>22</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Type</Name>
+          <Format>ASCII</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Length</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Width </Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Height</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Weight</Name>
+          <Format>NUMERIC</Format>
+          <Length>8</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Event Code</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Drop Index</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Shuttle Dynamics</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+        <Field>
+          <Name>Lift Dynamics</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+        <Field>
+          <Name>Source Shuttle Extension</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+        <Field>
+          <Name>Destination Shuttle Extension</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+      </Message>
+      <Message Identifier="TUEX">
+        <Name>Transport Unit Exception</Name>
+        <BodyType>Repeat</BodyType>
+        <Field>
+          <Name>Source Location</Name>
+          <Format>ASCII</Format>
+          <Length>14</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Current Location</Name>
+          <Format>ASCII</Format>
+          <Length>14</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Destination Location</Name>
+          <Format>ASCII</Format>
+          <Length>14</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Identifier</Name>
+          <Format>ASCII</Format>
+          <Length>22</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Type</Name>
+          <Format>ASCII</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Length</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Width </Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Height</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Weight</Name>
+          <Format>NUMERIC</Format>
+          <Length>8</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Event Code</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Drop Index</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Shuttle Dynamics</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+        <Field>
+          <Name>Lift Dynamics</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+        <Field>
+          <Name>Source Shuttle Extension</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+        <Field>
+          <Name>Destination Shuttle Extension</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+      </Message>
+      <Message Identifier="TUNO">
+        <Name>Transport Unit Notification</Name>
+        <BodyType>Repeat</BodyType>
+        <Field>
+          <Name>Source Location</Name>
+          <Format>ASCII</Format>
+          <Length>14</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Current Location</Name>
+          <Format>ASCII</Format>
+          <Length>14</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Destination Location</Name>
+          <Format>ASCII</Format>
+          <Length>14</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Identifier</Name>
+          <Format>ASCII</Format>
+          <Length>22</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Type</Name>
+          <Format>ASCII</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Length</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Width </Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Height</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Weight</Name>
+          <Format>NUMERIC</Format>
+          <Length>8</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Event Code</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Drop Index</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Shuttle Dynamics</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+        <Field>
+          <Name>Lift Dynamics</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+        <Field>
+          <Name>Source Shuttle Extension</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+        <Field>
+          <Name>Destination Shuttle Extension</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+      </Message>
+      <Message Identifier="TURP">
+        <Name>Transport Unit Report</Name>
+        <BodyType>Repeat</BodyType>
+        <Field>
+          <Name>Source Location</Name>
+          <Format>ASCII</Format>
+          <Length>14</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Current Location</Name>
+          <Format>ASCII</Format>
+          <Length>14</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Destination Location</Name>
+          <Format>ASCII</Format>
+          <Length>14</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Identifier</Name>
+          <Format>ASCII</Format>
+          <Length>22</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Type</Name>
+          <Format>ASCII</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Length</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Width </Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Height</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Weight</Name>
+          <Format>NUMERIC</Format>
+          <Length>8</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Event Code</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Drop Index</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Shuttle Dynamics</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+        <Field>
+          <Name>Lift Dynamics</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+        <Field>
+          <Name>Source Shuttle Extension</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+        <Field>
+          <Name>Destination Shuttle Extension</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+      </Message>
+      <Message Identifier="TUDR">
+        <Name>Transport Unit Data Request</Name>
+        <BodyType>Repeat</BodyType>
+        <Field>
+          <Name>Source Location</Name>
+          <Format>ASCII</Format>
+          <Length>14</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Current Location</Name>
+          <Format>ASCII</Format>
+          <Length>14</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Destination Location</Name>
+          <Format>ASCII</Format>
+          <Length>14</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Identifier</Name>
+          <Format>ASCII</Format>
+          <Length>22</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Type</Name>
+          <Format>ASCII</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Length</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Width </Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Height</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Weight</Name>
+          <Format>NUMERIC</Format>
+          <Length>8</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Event Code</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Drop Index</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Shuttle Dynamics</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+        <Field>
+          <Name>Lift Dynamics</Name>
+          <Format>ASCII</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+        <Field>
+          <Name>Source Shuttle Extension</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+        <Field>
+          <Name>Destination Shuttle Extension</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+      </Message>
+      <Message Identifier="TULL">
+        <Name>Transport Unit Location Left</Name>
+        <BodyType>Repeat</BodyType>
+        <Field>
+          <Name>Source Location</Name>
+          <Format>ASCII</Format>
+          <Length>14</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Current Location</Name>
+          <Format>ASCII</Format>
+          <Length>14</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Destination Location</Name>
+          <Format>ASCII</Format>
+          <Length>14</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Identifier</Name>
+          <Format>ASCII</Format>
+          <Length>22</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Type</Name>
+          <Format>ASCII</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Length</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Width </Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Height</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>TU Weight</Name>
+          <Format>NUMERIC</Format>
+          <Length>8</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Event Code</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Drop Index</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Shuttle Dynamics</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+        <Field>
+          <Name>Lift Dynamics</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+        <Field>
+          <Name>Source Shuttle Extension</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+        <Field>
+          <Name>Destination Shuttle Extension</Name>
+          <Format>NUMERIC</Format>
+          <Length>4</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+      </Message>
+      <Message Identifier="STRQ">
+        <Name>Status Request</Name>
+        <BodyType>Single</BodyType>
+        <Field>
+          <Name>Device Identifier</Name>
+          <Format>ASCII</Format>
+          <Length>14</Length>
+          <Type>Normal</Type>
+        </Field>
+      </Message>
+      <Message Identifier="STAT">
+        <Name>Status Message</Name>
+        <BodyType>Repeat</BodyType>
+        <Field>
+          <Name>Device Identifier</Name>
+          <Format>ASCII</Format>
+          <Length>14</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Availability Status</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+      </Message>
+      <Message Identifier="STMF">
+        <Name>Status Material Flow</Name>
+        <BodyType>Single</BodyType>
+        <Field>
+          <Name>Device Identifier</Name>
+          <Format>ASCII</Format>
+          <Length>14</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Status</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+      </Message>
+      <Message Identifier="STEN">
+        <Name>Status End</Name>
+        <BodyType>NoBody</BodyType>
+      </Message>
+      <Message Identifier="STAX">
+        <Name>Extended Status</Name>
+        <BodyType>Single</BodyType>
+        <Field>
+          <Name>Device Identifier</Name>
+          <Format>ASCII</Format>
+          <Length>14</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+        <Field>
+          <Name>Fault Code</Name>
+          <Format>ASCII</Format>
+          <Length>6</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+        <Field>
+          <Name>Classification</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+        <Field>
+          <Name>Text Version Counter</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+        <Field>
+          <Name>Transport Unit ID</Name>
+          <Format>ASCII</Format>
+          <Length>22</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+        <Field>
+          <Name>ABS X Pos</Name>
+          <Format>ASCII</Format>
+          <Length>6</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+        <Field>
+          <Name>ABS Y Pos</Name>
+          <Format>ASCII</Format>
+          <Length>6</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+        <Field>
+          <Name>ABS Z Pos</Name>
+          <Format>ASCII</Format>
+          <Length>6</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+      </Message>
+      <Message Identifier="SETT">
+        <Name>Set Date &amp; Time</Name>
+        <BodyType>Single</BodyType>
+        <Field>
+          <Name>Date</Name>
+          <Format>ASCII</Format>
+          <Length>8</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Time</Name>
+          <Format>ASCII</Format>
+          <Length>6</Length>
+          <Type>Normal</Type>
+        </Field>
+      </Message>
+      <Message Identifier="LIVE">
+        <Name>Watchdog</Name>
+        <BodyType>NoBody</BodyType>
+      </Message>
+      <Message Identifier="MOMI">
+        <Name>Move Mission</Name>
+        <BodyType>Repeat</BodyType>
+        <Field>
+          <Name>Device Identifier</Name>
+          <Format>ASCII</Format>
+          <Length>14</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Destination Location</Name>
+          <Format>ASCII</Format>
+          <Length>14</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Event Code</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+      </Message>
+      <Message Identifier="MORP">
+        <Name>Move Report</Name>
+        <BodyType>Repeat</BodyType>
+        <Field>
+          <Name>Device Identifier</Name>
+          <Format>ASCII</Format>
+          <Length>14</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Destination Location</Name>
+          <Format>ASCII</Format>
+          <Length>14</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Event Code</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+      </Message>
+      <Message Identifier="LORQ">
+        <Name>Location Request</Name>
+        <BodyType>Repeat</BodyType>
+        <Field>
+          <Name>Location</Name>
+          <Format>ASCII</Format>
+          <Length>14</Length>
+          <Type>Normal</Type>
+        </Field>
+      </Message>
+      <Message Identifier="MFST">
+        <Name>Start Material Flow</Name>
+        <BodyType>Single</BodyType>
+        <Field>
+          <Name>Device Identifier</Name>
+          <Format>ASCII</Format>
+          <Length>14</Length>
+          <Type>Normal</Type>
+        </Field>
+      </Message>
+      <Message Identifier="MFSP">
+        <Name>Stop Material Flow</Name>
+        <BodyType>Single</BodyType>
+        <Field>
+          <Name>Device Identifier</Name>
+          <Format>ASCII</Format>
+          <Length>14</Length>
+          <Type>Normal</Type>
+        </Field>
+      </Message>
+      <Message Identifier="SETD">
+        <Name>Set Device</Name>
+        <BodyType>Single</BodyType>
+        <Field>
+          <Name>Device Identifier</Name>
+          <Format>ASCII</Format>
+          <Length>14</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Forced Status</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+      </Message>
+      <Message Identifier="FTRQ">
+        <Name>Fault Text Request</Name>
+        <BodyType>Single</BodyType>
+        <Field>
+          <Name>Fault Code</Name>
+          <Format>NUMERIC</Format>
+          <Length>6</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Language</Name>
+          <Format>ASCII</Format>
+          <Length>8</Length>
+          <Type>Normal</Type>
+        </Field>
+      </Message>
+      <Message Identifier="FTDF">
+        <Name>Fault Text Definition</Name>
+        <BodyType>Repeat</BodyType>
+        <Field>
+          <Name>Fault Code</Name>
+          <Format>NUMERIC</Format>
+          <Length>6</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Language</Name>
+          <Format>ASCII</Format>
+          <Length>8</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Event Code</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Character Set</Name>
+          <Format>ASCII</Format>
+          <Length>10</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Text</Name>
+          <Format>ASCII</Format>
+          <Length>180</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Text Version Counter</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+      </Message>
+    </TelegramValidation>
+  </SystemConfiguration>
+  <Projects>
+  </Projects>
+  <ProjectExtensions>
+  </ProjectExtensions>
+  <Connections>
+    <Connection Name="PLC51" Type="SingleRFC1006">
+      <Category>
+      </Category>
+      <Port>7051</Port>
+      <IPAddress>127.0.0.1</IPAddress>
+      <LocalTSAP>WCS51</LocalTSAP>
+      <RemoteTSAP>PLC51</RemoteTSAP>
+    </Connection>
+    <Connection Name="PLC52" Type="SingleRFC1006">
+      <Category>
+      </Category>
+      <Port>7052</Port>
+      <IPAddress>127.0.0.1</IPAddress>
+      <LocalTSAP>WCS52</LocalTSAP>
+      <RemoteTSAP>PLC52</RemoteTSAP>
+    </Connection>
+    <Connection Name="PLC53" Type="SingleRFC1006">
+      <Category>
+      </Category>
+      <Port>7053</Port>
+      <IPAddress>127.0.0.1</IPAddress>
+      <LocalTSAP>WCS53</LocalTSAP>
+      <RemoteTSAP>PLC53</RemoteTSAP>
+    </Connection>
+    <Connection Name="PLC54" Type="SingleRFC1006">
+      <Category>
+      </Category>
+      <Port>7054</Port>
+      <IPAddress>127.0.0.1</IPAddress>
+      <LocalTSAP>WCS54</LocalTSAP>
+      <RemoteTSAP>PLC54</RemoteTSAP>
+    </Connection>
+    <Connection Name="PLC61" Type="SingleRFC1006">
+      <Category>
+      </Category>
+      <Port>7061</Port>
+      <IPAddress>127.0.0.1</IPAddress>
+      <LocalTSAP>WCS61</LocalTSAP>
+      <RemoteTSAP>PLC61</RemoteTSAP>
+    </Connection>
+    <Connection Name="PLC62" Type="SingleRFC1006">
+      <Category>
+      </Category>
+      <Port>7062</Port>
+      <IPAddress>127.0.0.1</IPAddress>
+      <LocalTSAP>WCS62</LocalTSAP>
+      <RemoteTSAP>PLC62</RemoteTSAP>
+    </Connection>
+    <Connection Name="PLC63" Type="SingleRFC1006">
+      <Category>
+      </Category>
+      <Port>7063</Port>
+      <IPAddress>127.0.0.1</IPAddress>
+      <LocalTSAP>WCS63</LocalTSAP>
+      <RemoteTSAP>PLC63</RemoteTSAP>
+    </Connection>
+    <Connection Name="01E1" Type="DCI_TCPIP">
+      <Category>DMS</Category>
+      <Port>8001</Port>
+      <Server>False</Server>
+      <AutoListen>False</AutoListen>
+      <IPAddress>127.0.0.1</IPAddress>
+    </Connection>
+  </Connections>
+  <Controllers>
+    <Controller Name="PLC51" Type="BK10DATCOMUK">
+      <Category>
+      </Category>
+      <SendKeepAlive>False</SendKeepAlive>
+      <rtBarcode>
+      </rtBarcode>
+      <cfLocation>
+      </cfLocation>
+      <cfQty>
+      </cfQty>
+      <cfLocationULID>
+      </cfLocationULID>
+      <cfBarcodeULID>
+      </cfBarcodeULID>
+      <omType>
+      </omType>
+      <omField1>
+      </omField1>
+      <omField2>
+      </omField2>
+      <omField3>
+      </omField3>
+      <omField4>
+      </omField4>
+      <omField5>
+      </omField5>
+      <omField6>
+      </omField6>
+      <omField7>
+      </omField7>
+      <omField8>
+      </omField8>
+      <Enabled>True</Enabled>
+      <LogAll>False</LogAll>
+      <connection>PLC51</connection>
+      <VFCIdentifier>01</VFCIdentifier>
+      <PLCIdentifier>51</PLCIdentifier>
+      <telegramValidation>DATCOMBK10</telegramValidation>
+    </Controller>
+    <Controller Name="PLC52" Type="BK10DATCOMUK">
+      <Category>
+      </Category>
+      <SendKeepAlive>False</SendKeepAlive>
+      <rtBarcode>
+      </rtBarcode>
+      <cfLocation>
+      </cfLocation>
+      <cfQty>
+      </cfQty>
+      <cfLocationULID>
+      </cfLocationULID>
+      <cfBarcodeULID>
+      </cfBarcodeULID>
+      <omType>
+      </omType>
+      <omField1>
+      </omField1>
+      <omField2>
+      </omField2>
+      <omField3>
+      </omField3>
+      <omField4>
+      </omField4>
+      <omField5>
+      </omField5>
+      <omField6>
+      </omField6>
+      <omField7>
+      </omField7>
+      <omField8>
+      </omField8>
+      <Enabled>True</Enabled>
+      <LogAll>False</LogAll>
+      <connection>PLC52</connection>
+      <VFCIdentifier>01</VFCIdentifier>
+      <PLCIdentifier>52</PLCIdentifier>
+      <telegramValidation>DATCOMBK10</telegramValidation>
+    </Controller>
+    <Controller Name="PLC53" Type="BK10DATCOMUK">
+      <Category>
+      </Category>
+      <SendKeepAlive>False</SendKeepAlive>
+      <rtBarcode>
+      </rtBarcode>
+      <cfLocation>
+      </cfLocation>
+      <cfQty>
+      </cfQty>
+      <cfLocationULID>
+      </cfLocationULID>
+      <cfBarcodeULID>
+      </cfBarcodeULID>
+      <omType>
+      </omType>
+      <omField1>
+      </omField1>
+      <omField2>
+      </omField2>
+      <omField3>
+      </omField3>
+      <omField4>
+      </omField4>
+      <omField5>
+      </omField5>
+      <omField6>
+      </omField6>
+      <omField7>
+      </omField7>
+      <omField8>
+      </omField8>
+      <Enabled>True</Enabled>
+      <LogAll>False</LogAll>
+      <connection>PLC53</connection>
+      <VFCIdentifier>01</VFCIdentifier>
+      <PLCIdentifier>53</PLCIdentifier>
+      <telegramValidation>DATCOMBK10</telegramValidation>
+    </Controller>
+    <Controller Name="PLC54" Type="BK10DATCOMUK">
+      <Category>
+      </Category>
+      <SendKeepAlive>False</SendKeepAlive>
+      <rtBarcode>
+      </rtBarcode>
+      <cfLocation>
+      </cfLocation>
+      <cfQty>
+      </cfQty>
+      <cfLocationULID>
+      </cfLocationULID>
+      <cfBarcodeULID>
+      </cfBarcodeULID>
+      <omType>
+      </omType>
+      <omField1>
+      </omField1>
+      <omField2>
+      </omField2>
+      <omField3>
+      </omField3>
+      <omField4>
+      </omField4>
+      <omField5>
+      </omField5>
+      <omField6>
+      </omField6>
+      <omField7>
+      </omField7>
+      <omField8>
+      </omField8>
+      <Enabled>True</Enabled>
+      <LogAll>False</LogAll>
+      <connection>PLC54</connection>
+      <VFCIdentifier>01</VFCIdentifier>
+      <PLCIdentifier>54</PLCIdentifier>
+      <telegramValidation>DATCOMBK10</telegramValidation>
+    </Controller>
+    <Controller Name="PLC61" Type="BK10DATCOMUK">
+      <Category>
+      </Category>
+      <SendKeepAlive>False</SendKeepAlive>
+      <rtBarcode>
+      </rtBarcode>
+      <cfLocation>
+      </cfLocation>
+      <cfQty>
+      </cfQty>
+      <cfLocationULID>
+      </cfLocationULID>
+      <cfBarcodeULID>
+      </cfBarcodeULID>
+      <omType>
+      </omType>
+      <omField1>
+      </omField1>
+      <omField2>
+      </omField2>
+      <omField3>
+      </omField3>
+      <omField4>
+      </omField4>
+      <omField5>
+      </omField5>
+      <omField6>
+      </omField6>
+      <omField7>
+      </omField7>
+      <omField8>
+      </omField8>
+      <Enabled>True</Enabled>
+      <LogAll>False</LogAll>
+      <connection>PLC61</connection>
+      <VFCIdentifier>01</VFCIdentifier>
+      <PLCIdentifier>61</PLCIdentifier>
+      <telegramValidation>DATCOMBK10</telegramValidation>
+    </Controller>
+    <Controller Name="PLC62" Type="BK10DATCOMUK">
+      <Category>
+      </Category>
+      <SendKeepAlive>False</SendKeepAlive>
+      <rtBarcode>
+      </rtBarcode>
+      <cfLocation>
+      </cfLocation>
+      <cfQty>
+      </cfQty>
+      <cfLocationULID>
+      </cfLocationULID>
+      <cfBarcodeULID>
+      </cfBarcodeULID>
+      <omType>
+      </omType>
+      <omField1>
+      </omField1>
+      <omField2>
+      </omField2>
+      <omField3>
+      </omField3>
+      <omField4>
+      </omField4>
+      <omField5>
+      </omField5>
+      <omField6>
+      </omField6>
+      <omField7>
+      </omField7>
+      <omField8>
+      </omField8>
+      <Enabled>True</Enabled>
+      <LogAll>False</LogAll>
+      <connection>PLC62</connection>
+      <VFCIdentifier>01</VFCIdentifier>
+      <PLCIdentifier>62</PLCIdentifier>
+      <telegramValidation>DATCOMBK10</telegramValidation>
+    </Controller>
+    <Controller Name="PLC63" Type="BK10DATCOMUK">
+      <Category>
+      </Category>
+      <SendKeepAlive>False</SendKeepAlive>
+      <rtBarcode>
+      </rtBarcode>
+      <cfLocation>
+      </cfLocation>
+      <cfQty>
+      </cfQty>
+      <cfLocationULID>
+      </cfLocationULID>
+      <cfBarcodeULID>
+      </cfBarcodeULID>
+      <omType>
+      </omType>
+      <omField1>
+      </omField1>
+      <omField2>
+      </omField2>
+      <omField3>
+      </omField3>
+      <omField4>
+      </omField4>
+      <omField5>
+      </omField5>
+      <omField6>
+      </omField6>
+      <omField7>
+      </omField7>
+      <omField8>
+      </omField8>
+      <Enabled>True</Enabled>
+      <LogAll>False</LogAll>
+      <connection>PLC63</connection>
+      <VFCIdentifier>01</VFCIdentifier>
+      <PLCIdentifier>63</PLCIdentifier>
+      <telegramValidation>DATCOMBK10</telegramValidation>
+    </Controller>
+    <Controller Name="01E1" Type="DMSDCI">
+      <Category>DMS</Category>
+      <AisleNumber>01</AisleNumber>
+      <NumberOfElevators>0</NumberOfElevators>
+      <RackType>Fixed</RackType>
+      <Depth>2</Depth>
+      <XLocations>100</XLocations>
+      <NumberOfLevels>10</NumberOfLevels>
+      <LoadType>0000</LoadType>
+      <InRoutingType>Intermediate</InRoutingType>
+      <InRoutingMode>Auto</InRoutingMode>
+      <OutRoutingType>Intermediate</OutRoutingType>
+      <OutRoutingMode>Auto</OutRoutingMode>
+      <GroupedPSTUMI>False</GroupedPSTUMI>
+      <shuttleRule1>Random</shuttleRule1>
+      <shuttleRule2>AnyAvailableLocation</shuttleRule2>
+      <LiftLocation>0</LiftLocation>
+      <DefaultShuttleDynamics>100</DefaultShuttleDynamics>
+      <DefaultLiftDynamics>100</DefaultLiftDynamics>
+      <DefaultConveyorDynamics>100</DefaultConveyorDynamics>
+      <mType>
+      </mType>
+      <mField1>
+      </mField1>
+      <mField2>
+      </mField2>
+      <mField3>
+      </mField3>
+      <mField4>
+      </mField4>
+      <mField5>
+      </mField5>
+      <mField6>
+      </mField6>
+      <mField7>
+      </mField7>
+      <mField8>
+      </mField8>
+      <mField9>
+      </mField9>
+      <mField10>
+      </mField10>
+      <oType>
+      </oType>
+      <oField1>
+      </oField1>
+      <oField2>
+      </oField2>
+      <oField3>
+      </oField3>
+      <oField4>
+      </oField4>
+      <oField5>
+      </oField5>
+      <oField6>
+      </oField6>
+      <oField7>
+      </oField7>
+      <oField8>
+      </oField8>
+      <oField9>
+      </oField9>
+      <LiveTelegrams>True</LiveTelegrams>
+      <LiveInterval>30</LiveInterval>
+      <Enabled>True</Enabled>
+      <LogAll>False</LogAll>
+      <connection>01E1</connection>
+      <SubController Name="01E1 Level 01" Type="DMSDCIShuttle">
+        <LevelHeight>0</LevelHeight>
+        <ExMode>Internal</ExMode>
+        <ExTimeDelay>0</ExTimeDelay>
+        <ExOutDest>Random</ExOutDest>
+        <DatabaseChanged>False</DatabaseChanged>
+        <MachineMoves>0</MachineMoves>
+        <Enabled>True</Enabled>
+      </SubController>
+      <SubController Name="01E1 Level 02" Type="DMSDCIShuttle">
+        <LevelHeight>0</LevelHeight>
+        <ExMode>Internal</ExMode>
+        <ExTimeDelay>0</ExTimeDelay>
+        <ExOutDest>Random</ExOutDest>
+        <DatabaseChanged>False</DatabaseChanged>
+        <MachineMoves>0</MachineMoves>
+        <Enabled>True</Enabled>
+      </SubController>
+      <SubController Name="01E1 Level 03" Type="DMSDCIShuttle">
+        <LevelHeight>0</LevelHeight>
+        <ExMode>Internal</ExMode>
+        <ExTimeDelay>0</ExTimeDelay>
+        <ExOutDest>Random</ExOutDest>
+        <DatabaseChanged>False</DatabaseChanged>
+        <MachineMoves>0</MachineMoves>
+        <Enabled>True</Enabled>
+      </SubController>
+      <SubController Name="01E1 Level 04" Type="DMSDCIShuttle">
+        <LevelHeight>0</LevelHeight>
+        <ExMode>Internal</ExMode>
+        <ExTimeDelay>0</ExTimeDelay>
+        <ExOutDest>Random</ExOutDest>
+        <DatabaseChanged>False</DatabaseChanged>
+        <MachineMoves>0</MachineMoves>
+        <Enabled>True</Enabled>
+      </SubController>
+      <SubController Name="01E1 Level 05" Type="DMSDCIShuttle">
+        <LevelHeight>0</LevelHeight>
+        <ExMode>Internal</ExMode>
+        <ExTimeDelay>0</ExTimeDelay>
+        <ExOutDest>Random</ExOutDest>
+        <DatabaseChanged>False</DatabaseChanged>
+        <MachineMoves>0</MachineMoves>
+        <Enabled>True</Enabled>
+      </SubController>
+      <SubController Name="01E1 Level 06" Type="DMSDCIShuttle">
+        <LevelHeight>0</LevelHeight>
+        <ExMode>Internal</ExMode>
+        <ExTimeDelay>0</ExTimeDelay>
+        <ExOutDest>Random</ExOutDest>
+        <DatabaseChanged>False</DatabaseChanged>
+        <MachineMoves>0</MachineMoves>
+        <Enabled>True</Enabled>
+      </SubController>
+      <SubController Name="01E1 Level 07" Type="DMSDCIShuttle">
+        <LevelHeight>0</LevelHeight>
+        <ExMode>Internal</ExMode>
+        <ExTimeDelay>0</ExTimeDelay>
+        <ExOutDest>Random</ExOutDest>
+        <DatabaseChanged>False</DatabaseChanged>
+        <MachineMoves>0</MachineMoves>
+        <Enabled>True</Enabled>
+      </SubController>
+      <SubController Name="01E1 Level 08" Type="DMSDCIShuttle">
+        <LevelHeight>0</LevelHeight>
+        <ExMode>Internal</ExMode>
+        <ExTimeDelay>0</ExTimeDelay>
+        <ExOutDest>Random</ExOutDest>
+        <DatabaseChanged>False</DatabaseChanged>
+        <MachineMoves>0</MachineMoves>
+        <Enabled>True</Enabled>
+      </SubController>
+      <SubController Name="01E1 Level 09" Type="DMSDCIShuttle">
+        <LevelHeight>0</LevelHeight>
+        <ExMode>Internal</ExMode>
+        <ExTimeDelay>0</ExTimeDelay>
+        <ExOutDest>Random</ExOutDest>
+        <DatabaseChanged>False</DatabaseChanged>
+        <MachineMoves>0</MachineMoves>
+        <Enabled>True</Enabled>
+      </SubController>
+      <SubController Name="01E1 Level 10" Type="DMSDCIShuttle">
+        <LevelHeight>0</LevelHeight>
+        <ExMode>Internal</ExMode>
+        <ExTimeDelay>0</ExTimeDelay>
+        <ExOutDest>Random</ExOutDest>
+        <DatabaseChanged>False</DatabaseChanged>
+        <MachineMoves>0</MachineMoves>
+        <Enabled>True</Enabled>
+      </SubController>
+      <VFCIdentifier>MFC1</VFCIdentifier>
+      <PLCIdentifier>01E1</PLCIdentifier>
+      <telegramValidation>DMS DCI 1.52</telegramValidation>
+    </Controller>
+  </Controllers>
+  <Routings>
+  </Routings>
+  <Functions>
+  </Functions>
+</Configuration>

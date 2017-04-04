@@ -48,6 +48,7 @@ namespace Experior.Catalog.Dematic.Case
             Add(Common.Icons.Get("InProgess"), "Tray Stacker", "", Environment.Simulation.Events, Create.TrayStacker);
             Add(Common.Icons.Get("InProgess"), "Tray Destacker", "", Environment.Simulation.Events, Create.TrayDestacker);
             Add(Common.Icons.Get("Straight"), "Pick Stn Double", "", Environment.Simulation.Events, Create.PickDoubleLift);
+            Add(Common.Icons.Get("Straight"), "Pick Put Stn", "", Environment.Simulation.Events, Create.PickPutStation);
             //Add(Common.Icons.Get("3Way"), "Transfer", "3 Way", Environment.Simulation.Events);
             //Add(Common.Icons.Get("Straight"),"Conveyor Units", Environment.Simulation.Events);
         }
