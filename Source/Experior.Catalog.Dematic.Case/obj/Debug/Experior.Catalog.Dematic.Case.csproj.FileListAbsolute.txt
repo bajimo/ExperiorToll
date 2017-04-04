@@ -1,6 +1,0 @@
-C:\Xcelgo\Xcelgo Experior\Experior.Catalog.Dematic.Case.Conveyors.dll
-C:\Xcelgo\Xcelgo Experior\Experior.Catalog.Dematic.Case.Conveyors.pdb
-D:\git\GitHub\Dematic\ExperiorToll\Experior.Catalog.Dematic.Case\obj\Debug\Experior.Catalog.Properties.Resources.resources
-D:\git\GitHub\Dematic\ExperiorToll\Experior.Catalog.Dematic.Case\obj\Debug\Experior.Catalog.Dematic.Case.csproj.GenerateResource.Cache
-D:\git\GitHub\Dematic\ExperiorToll\Experior.Catalog.Dematic.Case\obj\Debug\Experior.Catalog.Dematic.Case.Conveyors.dll
-D:\git\GitHub\Dematic\ExperiorToll\Experior.Catalog.Dematic.Case\obj\Debug\Experior.Catalog.Dematic.Case.Conveyors.pdb

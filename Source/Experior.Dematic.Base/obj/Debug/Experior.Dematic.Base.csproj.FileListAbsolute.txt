@@ -1,6 +1,0 @@
-C:\Xcelgo\Xcelgo Experior\Experior.Dematic.Base.dll
-C:\Xcelgo\Xcelgo Experior\Experior.Dematic.Base.pdb
-C:\Xcelgo\Xcelgo Experior\Experior.Dematic.Base.XML
-D:\git\GitHub\Dematic\ExperiorToll\Experior.Dematic.Base\obj\Debug\Experior.Dematic.Base.dll
-D:\git\GitHub\Dematic\ExperiorToll\Experior.Dematic.Base\obj\Debug\Experior.Dematic.Base.pdb
-D:\git\GitHub\Dematic\ExperiorToll\Experior.Dematic.Base\obj\Debug\Experior.Dematic.Base.csprojResolveAssemblyReference.cache

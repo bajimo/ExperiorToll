@@ -1,5 +1,0 @@
-D:\git\GitHub\Dematic\ExperiorToll\VirtualFlowController\bin\Debug\Dematic.DCI.dll
-D:\git\GitHub\Dematic\ExperiorToll\VirtualFlowController\bin\Debug\Dematic.DCI.pdb
-D:\git\GitHub\Dematic\ExperiorToll\Dematic.DCI\obj\Debug\Dematic.DCI.dll
-D:\git\GitHub\Dematic\ExperiorToll\Dematic.DCI\obj\Debug\Dematic.DCI.pdb
-D:\git\GitHub\Dematic\ExperiorToll\Dematic.DCI\obj\Debug\Dematic.DCI.csprojResolveAssemblyReference.cache

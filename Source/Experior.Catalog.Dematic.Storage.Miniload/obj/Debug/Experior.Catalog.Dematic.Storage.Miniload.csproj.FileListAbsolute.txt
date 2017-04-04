@@ -1,5 +1,0 @@
-C:\Xcelgo\Xcelgo Experior\Experior.Catalog.Dematic.Storage.Miniload.dll
-C:\Xcelgo\Xcelgo Experior\Experior.Catalog.Dematic.Storage.Miniload.pdb
-D:\git\GitHub\Dematic\ExperiorToll\Experior.Catalog.Dematic.Storage.Miniload\obj\Debug\Experior.Catalog.Dematic.Storage.Miniload.csprojResolveAssemblyReference.cache
-D:\git\GitHub\Dematic\ExperiorToll\Experior.Catalog.Dematic.Storage.Miniload\obj\Debug\Experior.Catalog.Dematic.Storage.Miniload.dll
-D:\git\GitHub\Dematic\ExperiorToll\Experior.Catalog.Dematic.Storage.Miniload\obj\Debug\Experior.Catalog.Dematic.Storage.Miniload.pdb

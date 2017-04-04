@@ -1,7 +1,0 @@
-C:\Xcelgo\Xcelgo Experior\Experior.Catalog.Dematic.Sorter.dll
-C:\Xcelgo\Xcelgo Experior\Experior.Catalog.Dematic.Sorter.pdb
-D:\git\GitHub\Dematic\ExperiorToll\Experior.Catalog.Dematic.Sorter\obj\Debug\Experior.Catalog.Dematic.Sorter.csprojResolveAssemblyReference.cache
-D:\git\GitHub\Dematic\ExperiorToll\Experior.Catalog.Dematic.Sorter\obj\Debug\Experior.Catalog.Dematic.Sorter.Properties.Resources.resources
-D:\git\GitHub\Dematic\ExperiorToll\Experior.Catalog.Dematic.Sorter\obj\Debug\Experior.Catalog.Dematic.Sorter.csproj.GenerateResource.Cache
-D:\git\GitHub\Dematic\ExperiorToll\Experior.Catalog.Dematic.Sorter\obj\Debug\Experior.Catalog.Dematic.Sorter.dll
-D:\git\GitHub\Dematic\ExperiorToll\Experior.Catalog.Dematic.Sorter\obj\Debug\Experior.Catalog.Dematic.Sorter.pdb
