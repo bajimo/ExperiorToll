@@ -276,6 +276,7 @@ namespace Experior.Catalog.Dematic.Case.Components
 
             LoadisWaiting = false;
             ThisRouteStatus.Available = RouteStatuses.Available; //This will release the load
+            TransportSection.Route.Motor.Start();
             LoadInDivert = true;
 
             if (NextRouteStatus != null && route == DivertRoute.Straight && NextRouteStatus.Available == RouteStatuses.Available)
