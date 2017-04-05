@@ -280,6 +280,7 @@
   <ItemGroup>
     <Content Include="Icon\Divert45ConveyorLeft.jpg" />
     <Content Include="Icon\Divert45ConveyorRight.jpg" />
+    <EmbeddedResource Include="Icon\PickPutStation.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="AfterBuild">
