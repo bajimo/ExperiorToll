@@ -117,7 +117,10 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
 
             if (PLC_State == CasePLC_State.Ready)
             {
+                CaseData caseData = load.Case_Data as CaseData;
+                caseData.CurrentPosition = location;
                 var telegram = CreateTelegramFromLoad(TelegramTypes.Arrival, load);
+                //telegram = telegram.SetFieldValue(this, TelegramFields.Current, location);
                 SendTelegram(telegram);
             }
         }

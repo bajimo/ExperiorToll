@@ -138,7 +138,6 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         {
             if (SendConnection != null && plcConnected)
             {
-                //TODO add header fields here?
                 SendConnection.Send(telegram);
                 if (logMessage)
                     LogTelegrams(DateTime.Now + " MFH<PLC: " + SenderId + " " + telegram, Color.Black);
@@ -331,7 +330,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             telegram = telegram.SetFieldValue(this, TelegramFields.Height, (caseData.Height * 1000).ToString("0000"));
             telegram = telegram.SetFieldValue(this, TelegramFields.Weight, (caseData.Weight * 1000).ToString("000000"));
             telegram = telegram.SetFieldValue(this, TelegramFields.Type, caseData.ULType);        
-            telegram = telegram.SetFieldValue(this, TelegramFields.Profile, caseData.ProfileStatus);
+            //telegram = telegram.SetFieldValue(this, TelegramFields.Profile, caseData.ProfileStatus);
             return telegram;
         }
 
