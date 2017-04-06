@@ -107,16 +107,18 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             return protocolConfig;
         }
 
-        public void SendDivertConfirmation(string location, string SSCCBarcode)
+        public void SendArrivalMessage(string location, Case_Load load)
         {
             if (string.IsNullOrWhiteSpace(location))
-            {
+                return;  
+
+            if (load == null)
                 return;
-            }
 
             if (PLC_State == CasePLC_State.Ready)
             {
-                SendTelegram("02", SSCCBarcode + "," + location);
+                var telegram = CreateTelegramFromLoad(TelegramTypes.Arrival, load);
+                SendTelegram(telegram);
             }
         }
 
@@ -357,9 +359,10 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
 
             if (newcount > MaxRoutingTableEntries && newcount > count)
             {
+                //TODO do AUS datcom do this?
                 //New entry added to the routing table and routing table exceeds limit.
-                string status = "01"; //Status 01 means routing Table critically full.
-                SendTelegram("10", status);
+                //string status = "01"; //Status 01 means routing Table critically full.
+                //SendTelegram("10", status);
             }
         }
 

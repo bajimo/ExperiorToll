@@ -25,7 +25,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         {
             //Send Arrival message at the conveyor location 
             caseLoad = e._load as Case_Load;
-            casePLC.SendDivertConfirmation(theConveyor.Name, caseLoad.SSCCBarcode);
+            casePLC.SendArrivalMessage(theConveyor.Name, caseLoad);
         }
 
         public void CallForwardReceived(string barcode)

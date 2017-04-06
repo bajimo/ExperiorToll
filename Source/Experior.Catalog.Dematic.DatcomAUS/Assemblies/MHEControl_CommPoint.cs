@@ -113,11 +113,11 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         private void ToteArrived(CommunicationPoint commPoint, Case_Load caseload)
         {
             if (AlwaysArrival) //Always send arrival message
-                casePLC.SendDivertConfirmation(location: commPoint.Name, SSCCBarcode: caseload.SSCCBarcode);
+                casePLC.SendArrivalMessage(commPoint.Name, caseload);
             else if (!casePLC.RoutingTable.ContainsKey(caseload.SSCCBarcode))
             {
                 //Only send arrival message if ULID not found in routing table
-                casePLC.SendDivertConfirmation(location: commPoint.Name, SSCCBarcode: caseload.SSCCBarcode);
+                casePLC.SendArrivalMessage(commPoint.Name, caseload);
                 return;
             }
         }

@@ -61,13 +61,13 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             if (e._direction != selectedRoute && !string.IsNullOrEmpty(FailedToDivertLocation))
             {
                 //Send failed to divert message
-                casePLC.SendDivertConfirmation(FailedToDivertLocation, caseLoad.SSCCBarcode);
+                casePLC.SendArrivalMessage(FailedToDivertLocation, caseLoad);
 
             }
             else if (e._direction == DivertRoute.Divert && !string.IsNullOrEmpty(DivertRoutingLocation))
             {
                 //Send Diverted message
-                casePLC.SendDivertConfirmation(DivertRoutingLocation, caseLoad.SSCCBarcode);
+                casePLC.SendArrivalMessage(DivertRoutingLocation, caseLoad);
             }
         }
         #endregion

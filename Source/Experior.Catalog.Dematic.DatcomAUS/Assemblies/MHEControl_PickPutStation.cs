@@ -42,12 +42,12 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
 
         private void TheLift_OnArrivedAtPickPosition(object sender, PickPutStationArrivalArgs e)
         {
-            casePLC.SendDivertConfirmation(PickPositionName, ((Case_Load)e.Load).SSCCBarcode);
+            casePLC.SendArrivalMessage(PickPositionName, ((Case_Load)e.Load));
         }
 
         private void TheLift_OnArrivedAtPutPosition(object sender, PickPutStationArrivalArgs e)
         {
-            casePLC.SendDivertConfirmation(PutPositionName, ((Case_Load)e.Load).SSCCBarcode);
+            casePLC.SendArrivalMessage(PutPositionName, ((Case_Load)e.Load));
         }
 
         [DisplayName("Pick Position Name")]

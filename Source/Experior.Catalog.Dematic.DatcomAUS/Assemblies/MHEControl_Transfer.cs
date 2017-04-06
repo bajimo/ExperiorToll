@@ -58,15 +58,15 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             //First check if the load has failed to divert
             if (theTransfer.PreferredLoadRoutes.ContainsKey(caseLoad) && theTransfer.PreferredLoadRoutes[caseLoad] != e._divertedRoute && !string.IsNullOrEmpty(FailedRoutingLocation))
             {
-                casePLC.SendDivertConfirmation(FailedRoutingLocation, caseLoad.SSCCBarcode);
+                casePLC.SendArrivalMessage(FailedRoutingLocation, caseLoad);
             }
             else if (e._divertedRoute == Side.Right && !string.IsNullOrEmpty(RHSRoutingLocation))
             {
-                casePLC.SendDivertConfirmation(RHSRoutingLocation, caseLoad.SSCCBarcode);
+                casePLC.SendArrivalMessage(RHSRoutingLocation, caseLoad);
             }
             else if (e._divertedRoute == Side.Left && !string.IsNullOrEmpty(LHSRoutingLocation))
             {
-                casePLC.SendDivertConfirmation(LHSRoutingLocation, caseLoad.SSCCBarcode);
+                casePLC.SendArrivalMessage(LHSRoutingLocation, caseLoad);
             }
 
             if (theTransfer.PreferredLoadRoutes.ContainsKey(caseLoad))

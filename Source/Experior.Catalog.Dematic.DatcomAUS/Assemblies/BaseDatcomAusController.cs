@@ -129,20 +129,19 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             get { return Common.Icons.Get("Controller2"); }
         }
 
-        public void SendTelegram(string tlgType, string body)
+        public void SendTelegram(string telegram)
         {
-            SendTelegram(tlgType, body, true);
+            SendTelegram(telegram, true);
         }
 
-        public void SendTelegram(string tlgType, string body, bool LogMessage)
+        public void SendTelegram(string telegram, bool logMessage)
         {
             if (SendConnection != null && plcConnected)
             {
-                string telegramHeader = "/,," + tlgType + ",,01,,";
-                string telegram = telegramHeader + body + telegramTail;
-                this.SendConnection.Send(telegram);
-                if (LogMessage)
-                    this.LogTelegrams(DateTime.Now.ToString() + " MFH<PLC: " + SenderId.ToString() + " " + telegram, Color.Black);
+                //TODO add header fields here?
+                SendConnection.Send(telegram);
+                if (logMessage)
+                    LogTelegrams(DateTime.Now + " MFH<PLC: " + SenderId + " " + telegram, Color.Black);
             }
         }
 
@@ -316,6 +315,24 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                 Experior.Core.Environment.Log.Write("Exception recieving telegram: ");
                 Experior.Core.Environment.Log.Write(e);
             }
+        }
+
+        public string CreateTelegramFromLoad(TelegramTypes telegramType, Case_Load load)
+        {
+            string telegram = Template.CreateTelegram(this, telegramType);
+            CaseData caseData = load.Case_Data as CaseData;
+
+            //TODO Populate the correct field values
+            telegram = telegram.SetFieldValue(this, TelegramFields.Current, caseData.CurrentPosition);
+            telegram = telegram.SetFieldValue(this, TelegramFields.Destination, caseData.DestinationPosition);
+            telegram = telegram.SetFieldValue(this, TelegramFields.ULIdentification, load.Identification);
+            telegram = telegram.SetFieldValue(this, TelegramFields.Width, (caseData.Width * 1000).ToString("0000"));
+            telegram = telegram.SetFieldValue(this, TelegramFields.Length, (caseData.Length * 1000).ToString("0000"));
+            telegram = telegram.SetFieldValue(this, TelegramFields.Height, (caseData.Height * 1000).ToString("0000"));
+            telegram = telegram.SetFieldValue(this, TelegramFields.Weight, (caseData.Weight * 1000).ToString("000000"));
+            telegram = telegram.SetFieldValue(this, TelegramFields.Type, caseData.ULType);        
+            telegram = telegram.SetFieldValue(this, TelegramFields.Profile, caseData.ProfileStatus);
+            return telegram;
         }
 
         public abstract void HandleTelegrams(TelegramTypes type, string telegram);

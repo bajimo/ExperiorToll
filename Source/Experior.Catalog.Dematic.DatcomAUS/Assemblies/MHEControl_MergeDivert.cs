@@ -102,7 +102,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         {
             if (mergeDivertConveyor.failedToDivertLoad == caseLoad && FailedToDivertLocation != null) //Load has been routed to Default route so send failed to divert location
             {
-                casePLC.SendDivertConfirmation(FailedToDivertLocation, caseLoad.SSCCBarcode);
+                casePLC.SendArrivalMessage(FailedToDivertLocation, caseLoad);
                 return true;
             }
             else
@@ -113,7 +113,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         {
             Case_Load caseLoad = load as Case_Load;
             if (!loadRoutedFailedToDivert(caseLoad) && StraightRoutingLocation != string.Empty)
-                casePLC.SendDivertConfirmation(StraightRoutingLocation, caseLoad.SSCCBarcode);
+                casePLC.SendArrivalMessage(StraightRoutingLocation, caseLoad);
             loadReleasedComplete(caseLoad);
             return true;
         }
@@ -122,7 +122,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         {
             Case_Load caseLoad = load as Case_Load;
             if (!loadRoutedFailedToDivert(caseLoad) && LeftRoutingLocation != string.Empty)
-                casePLC.SendDivertConfirmation(LeftRoutingLocation, caseLoad.SSCCBarcode);
+                casePLC.SendArrivalMessage(LeftRoutingLocation, caseLoad);
             loadReleasedComplete(caseLoad);
             return true;
         }
@@ -131,7 +131,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         {
             Case_Load caseLoad = load as Case_Load;
             if (!loadRoutedFailedToDivert(caseLoad) && RightRoutingLocation != string.Empty)
-                casePLC.SendDivertConfirmation(RightRoutingLocation, caseLoad.SSCCBarcode);
+                casePLC.SendArrivalMessage(RightRoutingLocation, caseLoad);
             loadReleasedComplete(caseLoad);
             return true;
         }

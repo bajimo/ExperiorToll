@@ -66,7 +66,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             }
             else //No routing found send 02
             {
-                casePLCcontroller.SendDivertConfirmation(((StraightConveyor)threeWayRoutes[e._fromSide].PreviousConveyor).Name, e._load.Identification);
+                casePLCcontroller.SendArrivalMessage(((StraightConveyor)threeWayRoutes[e._fromSide].PreviousConveyor).Name, e._load as Case_Load);
             }
         }
 
