@@ -10,62 +10,57 @@ namespace Experior.Catalog.Dematic.DatcomUK.Assemblies
     class MHEControl_PickPutStation : MHEControl
     {
         private PickPutStationDatcomInfo transferDatcomInfo;
-        private PickPutStation theLift;
+        private PickPutStation rapidPickStation;
         private CasePLC_Datcom casePLC;
 
-        public MHEControl_PickPutStation(PickPutStationDatcomInfo info, PickPutStation lift)
+        public MHEControl_PickPutStation(PickPutStationDatcomInfo info, PickPutStation pickStation)
         {
             Info               = info;  // set this to save properties 
             transferDatcomInfo = info;
-            theLift            = lift;
-            casePLC            = lift.Controller as CasePLC_Datcom;
+            rapidPickStation   = pickStation;
+            casePLC            = pickStation.Controller as CasePLC_Datcom;
 
             //Add event subscriptions here
-            theLift.OnArrivedAtPickPosition += TheLift_OnArrivedAtPickPosition;
-            theLift.OnArrivedAtPutPosition += TheLift_OnArrivedAtPutPosition;
-        }
-
-        public MHEControl_PickPutStation()
-        {
-
+            rapidPickStation.OnArrivedAtRightPosition += RapidPickStationOnArrivedAtRightPosition;
+            rapidPickStation.OnArrivedAtLeftPosition += RapidPickStationOnArrivedAtLeftPosition;
         }
 
         public override void Dispose()
         {
             //Add event un-subscriptions here
-            theLift.OnArrivedAtPickPosition -= TheLift_OnArrivedAtPickPosition;
-            theLift.OnArrivedAtPutPosition -= TheLift_OnArrivedAtPutPosition;
+            rapidPickStation.OnArrivedAtRightPosition -= RapidPickStationOnArrivedAtRightPosition;
+            rapidPickStation.OnArrivedAtLeftPosition -= RapidPickStationOnArrivedAtLeftPosition;
 
-            theLift = null;
+            rapidPickStation = null;
             transferDatcomInfo = null;
         }   
 
-        private void TheLift_OnArrivedAtPickPosition(object sender, PickPutStationArrivalArgs e)
+        private void RapidPickStationOnArrivedAtRightPosition(object sender, PickPutStationArrivalArgs e)
         {
-            casePLC.SendDivertConfirmation(PickPositionName, ((Case_Load)e.Load).SSCCBarcode);
+            casePLC.SendDivertConfirmation(RightPositionName, ((Case_Load)e.Load).SSCCBarcode);
         }
 
-        private void TheLift_OnArrivedAtPutPosition(object sender, PickPutStationArrivalArgs e)
+        private void RapidPickStationOnArrivedAtLeftPosition(object sender, PickPutStationArrivalArgs e)
         {
-            casePLC.SendDivertConfirmation(PutPositionName, ((Case_Load)e.Load).SSCCBarcode);
+            casePLC.SendDivertConfirmation(LeftPositionName, ((Case_Load)e.Load).SSCCBarcode);
         }
 
-        [DisplayName("Pick Position Name")]
-        [Description("Name of the Right Hand Side Conveyor - from picker poin of view")]
+        [DisplayName("Right Position Name")]
+        [Description("Name of the Right Hand Side Conveyor - from picker point of view")]
         [PropertyOrder(1)]
-        public string PickPositionName
+        public string RightPositionName
         {
-            get { return transferDatcomInfo.PickPositionName; }
-            set { transferDatcomInfo.PickPositionName = value; }
+            get { return transferDatcomInfo.RightPositionName; }
+            set { transferDatcomInfo.RightPositionName = value; }
         }
 
-        [DisplayName("Put Position Name")]
+        [DisplayName("Left Position Name")]
         [Description("Name of the Left Hand Side Conveyor - from picker point of view")]
         [PropertyOrder(2)]
-        public string PutPositionName
+        public string LeftPositionName
         {
-            get { return transferDatcomInfo.PutPositionName; }
-            set { transferDatcomInfo.PutPositionName = value; }
+            get { return transferDatcomInfo.LeftPositionName; }
+            set { transferDatcomInfo.LeftPositionName = value; }
         }
     }
 
@@ -73,7 +68,7 @@ namespace Experior.Catalog.Dematic.DatcomUK.Assemblies
     [XmlInclude(typeof(PickPutStationDatcomInfo))]
     public class PickPutStationDatcomInfo : ProtocolInfo
     {
-        public string PickPositionName;
-        public string PutPositionName;
+        public string RightPositionName;
+        public string LeftPositionName;
     }
 }

@@ -7,7 +7,6 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Xml.Serialization;
 using Experior.Core.Assemblies;
-using Experior.Core.Motors;
 using Experior.Core.Parts;
 using Microsoft.DirectX;
 
@@ -16,170 +15,170 @@ namespace Experior.Catalog.Dematic.Case.Components
     public class PickPutStation : Assembly, IControllable
     {
         private readonly PickPutStationInfo pickPutStationInfo;
-        private readonly StraightConveyor pickConveyorIn;
-        private readonly StraightConveyor putConveyorIn;
-        private readonly StraightConveyor pickConveyorOut;
-        private readonly StraightConveyor putConveyorOut;
-        private readonly ActionPoint pickIn, pickStation, pickClear, putIn, putStation, putClear;
-        private readonly ActionPoint leavingPick, leavingPut, enteringPick, enteringPut;
+        private readonly StraightConveyor rightConveyorIn;
+        private readonly StraightConveyor leftConveyorIn;
+        private readonly StraightConveyor rightConveyorOut;
+        private readonly StraightConveyor leftConveyorOut;
+        private readonly ActionPoint rightIn, rightStation, rightClear, leftIn, leftStation, leftClear;
+        private readonly ActionPoint leavingRight, leavingLeft, enteringRight, enteringLeft;
         private readonly Cube leftSide, rightSide, front, bottom;
 
         //logic
-        private readonly RapidLiftControl pickLiftControl, putLiftControl;
+        private readonly RapidLiftControl rightLiftControl, leftLiftControl;
 
         //IControllable
         private MHEControl controllerProperties;
         private IController controller;
 
         //Events
-        public event EventHandler<PickPutStationArrivalArgs> OnArrivedAtPickPosition;
-        protected virtual void ArrivedAtPickPosition(PickPutStationArrivalArgs e)
+        public event EventHandler<PickPutStationArrivalArgs> OnArrivedAtRightPosition;
+        protected virtual void ArrivedAtRightPosition(PickPutStationArrivalArgs e)
         {
-            OnArrivedAtPickPosition?.Invoke(this, e);
+            OnArrivedAtRightPosition?.Invoke(this, e);
         }
 
-        public event EventHandler<PickPutStationArrivalArgs> OnArrivedAtPutPosition;
-        protected virtual void ArrivedAtPutPosition(PickPutStationArrivalArgs e)
+        public event EventHandler<PickPutStationArrivalArgs> OnArrivedAtLeftPosition;
+        protected virtual void ArrivedAtLeftPosition(PickPutStationArrivalArgs e)
         {
-            OnArrivedAtPutPosition?.Invoke(this, e);
+            OnArrivedAtLeftPosition?.Invoke(this, e);
         }
 
         public PickPutStation(PickPutStationInfo info) : base(info)
         {
             pickPutStationInfo = info;
 
-            pickConveyorIn = new StraightConveyor(NewStraightInfo());
-            Add(pickConveyorIn);
-            pickConveyorIn.LocalPosition = new Vector3(0, 0, -0.4f);
-            putConveyorIn = new StraightConveyor(NewStraightInfo());
-            Add(putConveyorIn);
-            putConveyorIn.LocalPosition = new Vector3(0, 0, 0.4f);
+            rightConveyorIn = new StraightConveyor(NewStraightInfo());
+            Add(rightConveyorIn);
+            rightConveyorIn.LocalPosition = new Vector3(0, 0, -0.4f);
+            leftConveyorIn = new StraightConveyor(NewStraightInfo());
+            Add(leftConveyorIn);
+            leftConveyorIn.LocalPosition = new Vector3(0, 0, 0.4f);
 
-            pickConveyorIn.EndFixPoint.Dispose();
-            putConveyorIn.EndFixPoint.Dispose();
+            rightConveyorIn.EndFixPoint.Dispose();
+            leftConveyorIn.EndFixPoint.Dispose();
 
-            pickConveyorOut = new StraightConveyor(NewStraightInfo());
-            Add(pickConveyorOut);
-            pickConveyorOut.LocalPosition = new Vector3(0, 0.85f, -0.4f);
-            pickConveyorOut.LocalYaw = (float)Math.PI;
-            putConveyorOut = new StraightConveyor(NewStraightInfo());
-            Add(putConveyorOut);
-            putConveyorOut.LocalPosition = new Vector3(0, 0.85f, 0.4f);
-            putConveyorOut.LocalYaw = (float)Math.PI;
+            rightConveyorOut = new StraightConveyor(NewStraightInfo());
+            Add(rightConveyorOut);
+            rightConveyorOut.LocalPosition = new Vector3(0, 0.85f, -0.4f);
+            rightConveyorOut.LocalYaw = (float)Math.PI;
+            leftConveyorOut = new StraightConveyor(NewStraightInfo());
+            Add(leftConveyorOut);
+            leftConveyorOut.LocalPosition = new Vector3(0, 0.85f, 0.4f);
+            leftConveyorOut.LocalYaw = (float)Math.PI;
 
-            pickConveyorOut.StartFixPoint.Dispose();
-            putConveyorOut.StartFixPoint.Dispose();
+            rightConveyorOut.StartFixPoint.Dispose();
+            leftConveyorOut.StartFixPoint.Dispose();
 
-            pickIn = pickConveyorIn.TransportSection.Route.InsertActionPoint(1.2f);
-            pickStation = pickConveyorOut.TransportSection.Route.InsertActionPoint(0.35f);
-            pickClear = pickConveyorOut.TransportSection.Route.InsertActionPoint(0.7f);
-            pickClear.Edge = ActionPoint.Edges.Trailing;
+            rightIn = rightConveyorIn.TransportSection.Route.InsertActionPoint(1.2f);
+            rightStation = rightConveyorOut.TransportSection.Route.InsertActionPoint(0.35f);
+            rightClear = rightConveyorOut.TransportSection.Route.InsertActionPoint(0.7f);
+            rightClear.Edge = ActionPoint.Edges.Trailing;
 
-            putIn = putConveyorIn.TransportSection.Route.InsertActionPoint(1.2f);
-            putStation = putConveyorOut.TransportSection.Route.InsertActionPoint(0.35f);
-            putClear = putConveyorOut.TransportSection.Route.InsertActionPoint(0.7f);
-            putClear.Edge = ActionPoint.Edges.Trailing;
+            leftIn = leftConveyorIn.TransportSection.Route.InsertActionPoint(1.2f);
+            leftStation = leftConveyorOut.TransportSection.Route.InsertActionPoint(0.35f);
+            leftClear = leftConveyorOut.TransportSection.Route.InsertActionPoint(0.7f);
+            leftClear.Edge = ActionPoint.Edges.Trailing;
 
-            pickLiftControl = new RapidLiftControl(pickIn, pickStation, pickClear, ArrivedAtPickPosition, UpdatePickConveyorStatus);
-            putLiftControl = new RapidLiftControl(putIn, putStation, putClear, ArrivedAtPutPosition, UpdatePutConveyorStatus);
+            rightLiftControl = new RapidLiftControl(rightIn, rightStation, rightClear, ArrivedAtRightPosition, UpdateRightConveyorStatus);
+            leftLiftControl = new RapidLiftControl(leftIn, leftStation, leftClear, ArrivedAtLeftPosition, UpdateLeftConveyorStatus);
 
-            enteringPick = pickConveyorIn.TransportSection.Route.InsertActionPoint(0);
-            enteringPick.Edge = ActionPoint.Edges.Trailing;
-            enteringPick.OnEnter += EnteringPick_OnEnter;
+            enteringRight = rightConveyorIn.TransportSection.Route.InsertActionPoint(0);
+            enteringRight.Edge = ActionPoint.Edges.Trailing;
+            enteringRight.OnEnter += EnteringRightOnEnter;
 
-            leavingPick = pickConveyorOut.TransportSection.Route.InsertActionPoint(pickConveyorOut.Length - 0.05f);
-            leavingPick.Edge = ActionPoint.Edges.Leading;
-            leavingPick.OnEnter += LeavingPick_OnEnter;
+            leavingRight = rightConveyorOut.TransportSection.Route.InsertActionPoint(rightConveyorOut.Length - 0.05f);
+            leavingRight.Edge = ActionPoint.Edges.Leading;
+            leavingRight.OnEnter += LeavingRightOnEnter;
 
-            enteringPut = putConveyorIn.TransportSection.Route.InsertActionPoint(0);
-            enteringPut.Edge = ActionPoint.Edges.Trailing;
-            enteringPut.OnEnter += EnteringPut_OnEnter;
+            enteringLeft = leftConveyorIn.TransportSection.Route.InsertActionPoint(0);
+            enteringLeft.Edge = ActionPoint.Edges.Trailing;
+            enteringLeft.OnEnter += EnteringLeftOnEnter;
 
-            leavingPut = putConveyorOut.TransportSection.Route.InsertActionPoint(putConveyorOut.Length - 0.05f);
-            leavingPut.Edge = ActionPoint.Edges.Leading;
-            leavingPut.OnEnter += LeavingPut_OnEnter;
+            leavingLeft = leftConveyorOut.TransportSection.Route.InsertActionPoint(leftConveyorOut.Length - 0.05f);
+            leavingLeft.Edge = ActionPoint.Edges.Leading;
+            leavingLeft.OnEnter += LeavingLeftOnEnter;
 
             //Graphics
             leftSide = new Cube(Color.Gray, 1, 1.2f, 0.05f);
             Add(leftSide);
-            leftSide.LocalPosition = new Vector3(-putConveyorIn.Length / 2 + leftSide.Length / 2, leftSide.Height / 2, putConveyorIn.LocalPosition.Z + putConveyorIn.Width / 2 + leftSide.Width / 2);
+            leftSide.LocalPosition = new Vector3(-leftConveyorIn.Length / 2 + leftSide.Length / 2, leftSide.Height / 2, leftConveyorIn.LocalPosition.Z + leftConveyorIn.Width / 2 + leftSide.Width / 2);
 
             rightSide = new Cube(Color.Gray, 1, 1.2f, 0.05f);
             Add(rightSide);
-            rightSide.LocalPosition = new Vector3(-putConveyorIn.Length / 2 + leftSide.Length / 2, leftSide.Height / 2, pickConveyorIn.LocalPosition.Z - pickConveyorIn.Width / 2 - leftSide.Width / 2);
+            rightSide.LocalPosition = new Vector3(-leftConveyorIn.Length / 2 + leftSide.Length / 2, leftSide.Height / 2, rightConveyorIn.LocalPosition.Z - rightConveyorIn.Width / 2 - leftSide.Width / 2);
 
             front = new Cube(Color.Gray, 0.05f, 1.0f, leftSide.LocalPosition.Z - rightSide.LocalPosition.Z + leftSide.Width);
             Add(front);
-            front.LocalPosition = new Vector3(-putConveyorIn.Length / 2 - front.Length / 2, front.Height / 2, 0);
+            front.LocalPosition = new Vector3(-leftConveyorIn.Length / 2 - front.Length / 2, front.Height / 2, 0);
 
-            bottom = new Cube(Color.Gray, pickConveyorIn.Length + 1, 0.05f, front.Width);
+            bottom = new Cube(Color.Gray, rightConveyorIn.Length + 1, 0.05f, front.Width);
             Add(bottom);
             bottom.LocalPosition = new Vector3(-0.5f, -0.025f, 0);
 
-            pickConveyorOut.OnNextRouteStatusAvailableChanged += PickConveyorOut_OnNextRouteStatusAvailableChanged;
-            putConveyorOut.OnNextRouteStatusAvailableChanged += PutConveyorOut_OnNextRouteStatusAvailableChanged;
+            rightConveyorOut.OnNextRouteStatusAvailableChanged += RightConveyorOutOnNextRouteStatusAvailableChanged;
+            leftConveyorOut.OnNextRouteStatusAvailableChanged += LeftConveyorOutOnNextRouteStatusAvailableChanged;
             Core.Environment.Scene.OnLoaded += Scene_OnLoaded;
         }
 
-        private void EnteringPut_OnEnter(ActionPoint sender, Load load)
+        private void EnteringLeftOnEnter(ActionPoint sender, Load load)
         {
-            UpdatePutConveyorStatus();
+            UpdateLeftConveyorStatus();
         }
 
-        private void EnteringPick_OnEnter(ActionPoint sender, Load load)
+        private void EnteringRightOnEnter(ActionPoint sender, Load load)
         {
-            UpdatePickConveyorStatus();
+            UpdateRightConveyorStatus();
         }
 
-        private void UpdatePickConveyorStatus()
+        private void UpdateRightConveyorStatus()
         {
-            if (pickConveyorIn.TransportSection.Route.Loads.Count >= 2)
+            if (rightConveyorIn.TransportSection.Route.Loads.Count >= 2)
             {
-                pickConveyorIn.RouteAvailable = RouteStatuses.Blocked;
+                rightConveyorIn.RouteAvailable = RouteStatuses.Blocked;
             }
             else
             {
-                pickConveyorIn.RouteAvailable = RouteStatuses.Available;
+                rightConveyorIn.RouteAvailable = RouteStatuses.Available;
             }
         }
 
-        private void UpdatePutConveyorStatus()
+        private void UpdateLeftConveyorStatus()
         {
-            if (putConveyorIn.TransportSection.Route.Loads.Count >= 2)
+            if (leftConveyorIn.TransportSection.Route.Loads.Count >= 2)
             {
-                putConveyorIn.RouteAvailable = RouteStatuses.Blocked;
+                leftConveyorIn.RouteAvailable = RouteStatuses.Blocked;
             }
             else
             {
-                putConveyorIn.RouteAvailable = RouteStatuses.Available;
+                leftConveyorIn.RouteAvailable = RouteStatuses.Available;
             }
         }
 
-        private void LeavingPut_OnEnter(ActionPoint sender, Load load)
+        private void LeavingLeftOnEnter(ActionPoint sender, Load load)
         {
-            if (putConveyorOut.NextRouteStatus.Available != RouteStatuses.Available)
+            if (leftConveyorOut.NextRouteStatus.Available != RouteStatuses.Available)
                 load.Stop();
         }
 
-        private void PutConveyorOut_OnNextRouteStatusAvailableChanged(object sender, Experior.Dematic.Base.Devices.RouteStatusChangedEventArgs e)
+        private void LeftConveyorOutOnNextRouteStatusAvailableChanged(object sender, Experior.Dematic.Base.Devices.RouteStatusChangedEventArgs e)
         {
-            if (e._available == RouteStatuses.Available && leavingPut.Active)
+            if (e._available == RouteStatuses.Available && leavingLeft.Active)
             {
-                leavingPut.Release();
+                leavingLeft.Release();
             }
         }
 
-        private void LeavingPick_OnEnter(ActionPoint sender, Load load)
+        private void LeavingRightOnEnter(ActionPoint sender, Load load)
         {
-            if (pickConveyorOut.NextRouteStatus.Available != RouteStatuses.Available)
+            if (rightConveyorOut.NextRouteStatus.Available != RouteStatuses.Available)
                 load.Stop();
         }
 
-        private void PickConveyorOut_OnNextRouteStatusAvailableChanged(object sender, Experior.Dematic.Base.Devices.RouteStatusChangedEventArgs e)
+        private void RightConveyorOutOnNextRouteStatusAvailableChanged(object sender, Experior.Dematic.Base.Devices.RouteStatusChangedEventArgs e)
         {
-            if (e._available == RouteStatuses.Available && leavingPick.Active)
+            if (e._available == RouteStatuses.Available && leavingRight.Active)
             {
-                leavingPick.Release();
+                leavingRight.Release();
             }
         }
 
@@ -194,37 +193,37 @@ namespace Experior.Catalog.Dematic.Case.Components
 
         public override void Dispose()
         {
-            enteringPick.OnEnter -= EnteringPick_OnEnter;
-            enteringPut.OnEnter -= EnteringPut_OnEnter;
-            pickConveyorOut.OnNextRouteStatusAvailableChanged -= PickConveyorOut_OnNextRouteStatusAvailableChanged;
-            putConveyorOut.OnNextRouteStatusAvailableChanged -= PutConveyorOut_OnNextRouteStatusAvailableChanged;
+            enteringRight.OnEnter -= EnteringRightOnEnter;
+            enteringLeft.OnEnter -= EnteringLeftOnEnter;
+            rightConveyorOut.OnNextRouteStatusAvailableChanged -= RightConveyorOutOnNextRouteStatusAvailableChanged;
+            leftConveyorOut.OnNextRouteStatusAvailableChanged -= LeftConveyorOutOnNextRouteStatusAvailableChanged;
             Core.Environment.Scene.OnLoaded -= Scene_OnLoaded;
-            leavingPick.OnEnter -= LeavingPick_OnEnter;
-            leavingPut.OnEnter -= LeavingPut_OnEnter;
-            pickLiftControl.Dispose();
-            putLiftControl.Dispose();
+            leavingRight.OnEnter -= LeavingRightOnEnter;
+            leavingLeft.OnEnter -= LeavingLeftOnEnter;
+            rightLiftControl.Dispose();
+            leftLiftControl.Dispose();
             base.Dispose();
         }
 
         public override void Reset()
         {
             base.Reset();
-            pickLiftControl.Reset();
-            putLiftControl.Reset();
-            pickConveyorIn.RouteAvailable = RouteStatuses.Available;
-            putConveyorIn.RouteAvailable = RouteStatuses.Available;
+            rightLiftControl.Reset();
+            leftLiftControl.Reset();
+            rightConveyorIn.RouteAvailable = RouteStatuses.Available;
+            leftConveyorIn.RouteAvailable = RouteStatuses.Available;
         }
 
         [Browsable(false)]
-        public string PickBarcode
+        public string RightBarcode
         {
-            get { return pickStation.ActiveLoad is Case_Load ? ((Case_Load)pickStation.ActiveLoad).SSCCBarcode : null; }
+            get { return rightStation.ActiveLoad is Case_Load ? ((Case_Load)rightStation.ActiveLoad).SSCCBarcode : null; }
         }
 
         [Browsable(false)]
-        public string PutBarcode
+        public string LeftBarcode
         {
-            get { return putStation.ActiveLoad is Case_Load ? ((Case_Load)putStation.ActiveLoad).SSCCBarcode : null; }
+            get { return leftStation.ActiveLoad is Case_Load ? ((Case_Load)leftStation.ActiveLoad).SSCCBarcode : null; }
         }
 
         private StraightConveyorInfo NewStraightInfo()
@@ -257,7 +256,7 @@ namespace Experior.Catalog.Dematic.Case.Components
                     value.OnControllerDeletedEvent += controller_OnControllerDeletedEvent;
                     value.OnControllerRenamedEvent += controller_OnControllerRenamedEvent;
                 }
-                else if (controller != null && value == null)
+                else if (controller != null)
                 {
                     controller.OnControllerDeletedEvent -= controller_OnControllerDeletedEvent;
                     controller.OnControllerRenamedEvent -= controller_OnControllerRenamedEvent;
@@ -334,11 +333,11 @@ namespace Experior.Catalog.Dematic.Case.Components
                 {
                     Controller = null;
                 }
-                Experior.Core.Environment.Properties.Refresh();
+                Core.Environment.Properties.Refresh();
             }
         }
 
-        public void DynamicPropertyAssemblyPLCconfig(Core.Properties.PropertyAttributes attributes)
+        public void DynamicPropertyAssemblyPLCconfig(PropertyAttributes attributes)
         {
             attributes.IsBrowsable = Controller != null;
         }

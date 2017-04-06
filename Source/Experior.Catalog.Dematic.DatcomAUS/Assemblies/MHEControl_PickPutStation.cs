@@ -21,51 +21,46 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             casePLC            = lift.Controller as MHEControllerAUS_Case;
 
             //Add event subscriptions here
-            theLift.OnArrivedAtPickPosition += TheLift_OnArrivedAtPickPosition;
-            theLift.OnArrivedAtPutPosition += TheLift_OnArrivedAtPutPosition;
-        }
-
-        public MHEControl_PickPutStation()
-        {
-
+            theLift.OnArrivedAtRightPosition += TheLiftOnArrivedAtRightPosition;
+            theLift.OnArrivedAtLeftPosition += TheLiftOnArrivedAtLeftPosition;
         }
 
         public override void Dispose()
         {
             //Add event un-subscriptions here
-            theLift.OnArrivedAtPickPosition -= TheLift_OnArrivedAtPickPosition;
-            theLift.OnArrivedAtPutPosition -= TheLift_OnArrivedAtPutPosition;
+            theLift.OnArrivedAtRightPosition -= TheLiftOnArrivedAtRightPosition;
+            theLift.OnArrivedAtLeftPosition -= TheLiftOnArrivedAtLeftPosition;
 
             theLift = null;
             transferDatcomInfo = null;
         }   
 
-        private void TheLift_OnArrivedAtPickPosition(object sender, PickPutStationArrivalArgs e)
+        private void TheLiftOnArrivedAtRightPosition(object sender, PickPutStationArrivalArgs e)
         {
-            casePLC.SendArrivalMessage(PickPositionName, ((Case_Load)e.Load));
+            casePLC.SendArrivalMessage(RightPositionName, ((Case_Load)e.Load));
         }
 
-        private void TheLift_OnArrivedAtPutPosition(object sender, PickPutStationArrivalArgs e)
+        private void TheLiftOnArrivedAtLeftPosition(object sender, PickPutStationArrivalArgs e)
         {
-            casePLC.SendArrivalMessage(PutPositionName, ((Case_Load)e.Load));
+            casePLC.SendArrivalMessage(LeftPositionName, ((Case_Load)e.Load));
         }
 
-        [DisplayName("Pick Position Name")]
-        [Description("Name of the Right Hand Side Conveyor - from picker poin of view")]
+        [DisplayName("Right Position Name")]
+        [Description("Name of the Right Hand Side Conveyor - from picker point of view")]
         [PropertyOrder(1)]
-        public string PickPositionName
+        public string RightPositionName
         {
-            get { return transferDatcomInfo.PickPositionName; }
-            set { transferDatcomInfo.PickPositionName = value; }
+            get { return transferDatcomInfo.RightPositionName; }
+            set { transferDatcomInfo.RightPositionName = value; }
         }
 
-        [DisplayName("Put Position Name")]
+        [DisplayName("Left Position Name")]
         [Description("Name of the Left Hand Side Conveyor - from picker point of view")]
         [PropertyOrder(2)]
-        public string PutPositionName
+        public string LeftPositionName
         {
-            get { return transferDatcomInfo.PutPositionName; }
-            set { transferDatcomInfo.PutPositionName = value; }
+            get { return transferDatcomInfo.LeftPositionName; }
+            set { transferDatcomInfo.LeftPositionName = value; }
         }
     }
 
@@ -73,7 +68,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
     [XmlInclude(typeof(PickPutStationDatcomAusInfo))]
     public class PickPutStationDatcomAusInfo : ProtocolInfo
     {
-        public string PickPositionName;
-        public string PutPositionName;
+        public string RightPositionName;
+        public string LeftPositionName;
     }
 }
