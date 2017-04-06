@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <UsingTask TaskName="Experior.Core.Build" AssemblyFile="$(OutputPath)Experior.Core.dll" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9F46EF99-481B-47BC-9849-F991CF5E0DF0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Experior.Catalog.Dematic.DatcomAUS</RootNamespace>
+    <AssemblyName>Experior.Catalog.Dematic.DatcomAUS.Controllers</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>C:\Xcelgo\Xcelgo Experior\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <DocumentationFile>Experior.Catalog.Dematic.DatcomUK.Controllers.XML</DocumentationFile>
+    <NoWarn>1591</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>C:\Xcelgo\Xcelgo Experior\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Deploy|AnyCPU'">
+    <OutputPath>bin\Deploy\</OutputPath>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Experior.Catalog.Logistic.Basic, Version=5.3.29138.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Xcelgo\Xcelgo Experior\Experior.Catalog.Logistic.Basic.DLL</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Experior.Catalog.Logistic.Track, Version=5.2.8142.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Xcelgo\Xcelgo Experior\Experior.Catalog.Logistic.Track.DLL</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Experior.Core, Version=5.2.34588.1, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Xcelgo\Xcelgo Experior\Experior.Core.DLL</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.DirectX, Version=1.0.2902.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.DirectX.Direct3D, Version=1.0.2902.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\Debug\Microsoft.DirectX.Direct3D.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assemblies\BaseDatcomAusController.cs" />
+    <Compile Include="Assemblies\CaseData.cs" />
+    <Compile Include="Assemblies\MHEControllerAUS_Case.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Assemblies\MHEControl_AngledDivert.cs" />
+    <Compile Include="Assemblies\MHEControl_CommPoint.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Assemblies\MHEControl_ManualPicking.cs" />
+    <Compile Include="Assemblies\MHEControl_BeltSorterDivert.cs" />
+    <Compile Include="Assemblies\MHEControl_PickPutStation.cs" />
+    <Compile Include="Assemblies\MHEControl_ThreeWaySwitch.cs" />
+    <Compile Include="Assemblies\MHEControl_Transfer.cs" />
+    <Compile Include="Assemblies\MHEControl_PickDoubleLift.cs" />
+    <Compile Include="Assemblies\MHEControl_MergeDivert.cs" />
+    <Compile Include="ConstructAssembly.cs" />
+    <Compile Include="Catalog.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon\MyAssembly.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon\DematicLogo.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon\dematic.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon\PLC.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Dematic.DATCOMAUS\Dematic.DATCOMAUS.csproj">
+      <Project>{99ebdd47-7603-4076-bb64-3854b1fd59a1}</Project>
+      <Name>Dematic.DATCOMAUS</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Experior.Catalog.Dematic.Case\Experior.Catalog.Dematic.Case.csproj">
+      <Project>{7e11a83f-65b5-47b2-897f-0ec5ff130e57}</Project>
+      <Name>Experior.Catalog.Dematic.Case</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Experior.Catalog.Dematic.Custom\Experior.Catalog.Dematic.Custom.csproj">
+      <Project>{be1d781e-6c84-4fcb-8987-efcda3879a09}</Project>
+      <Name>Experior.Catalog.Dematic.Custom</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Experior.Dematic.Base\Experior.Dematic.Base.csproj">
+      <Project>{803cb223-5a12-4190-9cdd-e34a34a6f471}</Project>
+      <Name>Experior.Dematic.Base</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Target Name="AfterBuild">
+    <Experior.Core.Build AssemblyFileLocation="$(OutputPath)$(TargetFileName)">
+    </Experior.Core.Build>
+  </Target>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Experior.Catalog.Dematic.DatcomAUS.Controllers</name>
+    </assembly>
+    <members>
+        <member name="F:Experior.Catalog.Dematic.DatcomAUS.Assemblies.BaseDatcomAusController.HandleTelegram">
+            <summary>
+            Handle project specific telegrams. If false is returned then the plc will handle it. If true is returned the plc expects the user to handle the telegram.
+            </summary>
+        </member>
+        <member name="M:Experior.Catalog.Dematic.DatcomAUS.Assemblies.BaseDatcomAusController.HandleTelegrams(System.String[],System.String,System.UInt16)">
+            <summary>
+            The actual controller will handle the telegrams, this method is called when a telegram has been received
+            </summary>
+            <param name="telegramFields"></param>
+            <param name="type"></param>
+            <param name="number_of_blocks"></param>
+        </member>
+        <member name="T:Experior.Catalog.Dematic.DatcomAUS.Assemblies.MHEControllerAUS_Case">
+            <summary>
+            This is a PLC that handels Datcom AUS messages
+            </summary>
+        </member>
+        <member name="M:Experior.Catalog.Dematic.DatcomAUS.Assemblies.MHEControllerAUS_Case.IsDivertSet(System.String,System.Collections.Generic.List{System.Int32[]})">
+            <summary>
+            A better name for DivertSet
+            </summary>
+        </member>
+        <member name="M:Experior.Catalog.Dematic.DatcomAUS.Assemblies.MHEControllerAUS_Case.ValidateRoutingCode(System.String)">
+            <summary>
+            Takes the string input from the assembly that is entered by the user
+            and if valid then converts it into a List of integer array
+            </summary>
+            <param name="code">Routing code for routing: format w,b;w,b... where w = word and b = bit e.g. 1,1;2,1 - route to lhs if word 1 bit 1 or word 2 bit 1 is set in the PLC routing table</param>
+            <returns>List of integer array</returns>
+        </member>
+        <member name="T:Experior.Catalog.Dematic.DatcomAUS.Assemblies.MHEControl_CommPoint">
+            <summary>
+            This is your MHE control class it is instansuated by the controller (PLC etc) and passed back to the communicationPoint
+            it controlls the MHE and it the routing and decession making processes of the MHE.
+            </summary>
+        </member>
+        <member name="M:Experior.Catalog.Dematic.DatcomAUS.Assemblies.MHEControl_Transfer.ReleaseLoadDefault(Experior.Dematic.Base.Side,Experior.Core.Loads.Load,System.Boolean)">
+            <summary>
+            Check if the load can be released to default, and release it.
+            </summary>
+            <param name="side">Which side is waiting to be released</param>
+            <param name="caseLoad">The load to be released</param>
+            <param name="waitTimeout">Should the load wait for the timeout or not i.e. should it go to default anyway</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
