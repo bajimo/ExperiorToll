@@ -11,7 +11,7 @@ using Environment = Experior.Core.Environment;
 
 namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
 {
-    public class BaseDatcomAusController : Assembly //, IDATCOMAUSTelegrams
+    public abstract class BaseDatcomAusController : Assembly, IDATCOMAUSTelegrams
     {
         public event EventHandler OnControllerDeletedEvent;
         public event EventHandler OnControllerRenamedEvent;
@@ -23,7 +23,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         private static string telegramTail = ",,13,10";
         //public static event EventHandler<PLCStatusChangeEventArgs> OnPLCStatusChanged;//Static Routing Script Events
 
-        public delegate bool TelegramRecievedHandle(BaseDatcomAusController sender, string type, string[] telegramFields);
+        public delegate bool TelegramRecievedHandle(BaseDatcomAusController sender, TelegramTypes type, string telegram);
         /// <summary>
         /// Handle project specific telegrams. If false is returned then the plc will handle it. If true is returned the plc expects the user to handle the telegram.
         /// </summary>
@@ -57,12 +57,12 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
 
             if (info.receiverID != 0)
             {
-                ReceiverID = info.receiverID;
+                ReceiverId = info.receiverID;
             }
 
             if (info.senderID != 0)
             {
-                SenderID = info.senderID;
+                SenderId = info.senderID;
             }
 
         }
@@ -134,32 +134,28 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             SendTelegram(tlgType, body, true);
         }
 
-
         public void SendTelegram(string tlgType, string body, bool LogMessage)
         {
             if (SendConnection != null && plcConnected)
             {
-                string telegramHeader = "/,," + tlgType + "," + SystemIdentifier + ",01,,";
+                string telegramHeader = "/,," + tlgType + ",,01,,";
                 string telegram = telegramHeader + body + telegramTail;
                 this.SendConnection.Send(telegram);
                 if (LogMessage)
-                    this.LogTelegrams(DateTime.Now.ToString() + " MFH<PLC: " + SenderID.ToString() + " " + telegram, Color.Black);
+                    this.LogTelegrams(DateTime.Now.ToString() + " MFH<PLC: " + SenderId.ToString() + " " + telegram, Color.Black);
             }
         }
 
         public void LogTelegrams(string message, Color colour)
         {
-            //if (TlgSuppression == SupressBK10Telegrams.Never)
-            //{
-            Experior.Core.Environment.Log.Write(message, colour);
-            //}
+            Environment.Log.Write(message, colour);
         }
 
         [Category("Configuration")]
-        [DisplayName("Receiver ID")]
+        [DisplayName("Receiver connection")]
         [PropertyOrder(4)]
-        [Description("Communicaion must be defined before this value can be set. Receiver ID must be the same as Communication id")]
-        public int ReceiverID
+        [Description("Connection must be defined before this value can be set. Value must be the same as connection id")]
+        public int ReceiverId
         {
             get
             {
@@ -167,13 +163,13 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             }
             set
             {
-                Experior.Core.Communication.Connection connectionTemp = Experior.Core.Communication.Connection.Get(value);
+                Core.Communication.Connection connectionTemp = Core.Communication.Connection.Get(value);
 
                 if (connectionTemp is Core.Communication.TCPIP.Connection && connectionTemp != null & value != 0)
                 {
                     RecieveConnection = (Core.Communication.TCPIP.Connection)connectionTemp;
                     baseControllerInfo.receiverID = value;
-                    Core.Environment.Log.Write(DateTime.Now.ToString() + " " + this.Name + " is linked to communication ID " + value.ToString());
+                    Environment.Log.Write(DateTime.Now + " " + this.Name + " is linked to communication ID " + value);
 
                     if (baseControllerInfo.receiverID != 0)
                     {
@@ -184,16 +180,16 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                 }
                 else
                 {
-                    Experior.Core.Environment.Log.Write(DateTime.Now.ToString() + "Communication id must be equal to Receiver ID and not 0 (zero). Set communication id to a value first", Color.Red);
+                    Environment.Log.Write(DateTime.Now + "Communication id must be equal to Receiver ID and not 0 (zero). Set communication id to a value first", Color.Red);
                 }
             }
         }
 
         [Category("Configuration")]
-        [DisplayName("Sender ID")]
+        [DisplayName("Sender connection")]
         [PropertyOrder(5)]
-        [Description("Communicaion must be defined before this value can be set. Sender ID must be the same as Communication id")]
-        public int SenderID
+        [Description("Connection must be defined before this value can be set. Value must be the same as connection id")]
+        public int SenderId
         {
             get
             {
@@ -201,13 +197,13 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             }
             set
             {
-                Experior.Core.Communication.Connection connectionTemp = Experior.Core.Communication.Connection.Get(value);
+                Core.Communication.Connection connectionTemp = Core.Communication.Connection.Get(value);
 
                 if (connectionTemp is Core.Communication.TCPIP.Connection && connectionTemp != null & value != 0)
                 {
                     SendConnection = (Core.Communication.TCPIP.Connection)connectionTemp;
                     baseControllerInfo.senderID = value;
-                    Experior.Core.Environment.Log.Write(DateTime.Now.ToString() + " " + this.Name + " is linked to communication ID " + value.ToString());
+                    Environment.Log.Write(DateTime.Now + " " + this.Name + " is linked to communication ID " + value);
 
                     if (baseControllerInfo.senderID != 0)
                     {
@@ -218,7 +214,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                 }
                 else
                 {
-                    Experior.Core.Environment.Log.Write(DateTime.Now.ToString() + "Communication id must be equal to Sender ID and not 0 (zero). Set communication id to a value first", Color.Red);
+                    Environment.Log.Write(DateTime.Now + "Communication id must be equal to Sender ID and not 0 (zero). Set communication id to a value first", Color.Red);
                 }
             }
         }
@@ -296,74 +292,57 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             }
             try
             {
-                string[] telegramFields = telegram.Split(sender.MVTSeparator.ToCharArray());
-                string type = telegramFields[2];
-                string telegramsender = telegramFields[3];
-                string telegramreciever = telegramFields[4];
-                ushort number_of_blocks = ushort.Parse(telegramFields[5]);
-                bool heartbeat = false;
+                var type = telegram.GetTelegramType(this);
 
-                if (type == "13")
-                {
-                    if (telegramFields[6] == "07")
-                    {
-                        // type 13 Heartbeat status 07
-                        heartbeat = true;
-                    }
-                }
+                bool heartbeat = type == TelegramTypes.HeartBeat;
 
                 if (!heartbeat)
-                    Experior.Core.Environment.Log.Write(DateTime.Now.ToString() + " MFH>PLC: " + sender.Id.ToString() + " " + telegram);
+                    Environment.Log.Write(DateTime.Now + " MFH>PLC: " + sender.Id.ToString() + " " + telegram);
 
                 if (LogHeartBeat && heartbeat)
-                    Experior.Core.Environment.Log.Write(DateTime.Now.ToString() + " MFH>PLC: " + sender.Id.ToString() + " " + telegram);
+                    Environment.Log.Write(DateTime.Now + " MFH>PLC: " + sender.Id.ToString() + " " + telegram);
 
                 if (HandleTelegram != null)
                 {
                     //If user method returns true then it is handled by the user.
-                    if (HandleTelegram(this, type, telegramFields))
+                    if (HandleTelegram(this, type, telegram))
                         return;
                 }
 
-                HandleTelegrams(telegramFields, type);
-
+                HandleTelegrams(type, telegram);
             }
-            catch (Exception se)
+            catch (Exception e)
             {
                 Experior.Core.Environment.Log.Write("Exception recieving telegram: ");
-                Experior.Core.Environment.Log.Write(se);
+                Experior.Core.Environment.Log.Write(e);
             }
         }
 
-        /// <summary>
-        /// The actual controller will handle the telegrams, this method is called when a telegram has been received
-        /// </summary>
-        /// <param name="telegramFields"></param>
-        /// <param name="type"></param>
-        /// <param name="number_of_blocks"></param>
-        public virtual void HandleTelegrams(string[] telegramFields, string type) { }
+        public abstract void HandleTelegrams(TelegramTypes type, string telegram);
 
-        //private CasePLC_State _PLC_State = CasePLC_State.Unknown;
-        //[Browsable(false)]
-        //public CasePLC_State PLC_State
-        //{
-        //    get { return _PLC_State; }
-        //    set
-        //    {
-        //        _PLC_State = value;
-        //        if (OnPLCStatusChanged != null)
-        //            OnPLCStatusChanged(this, new PLCStatusChangeEventArgs(value));
-        //    }
-        //}
+        public int GetTelegramLength(TelegramTypes telegramType)
+        {
+            return 122;
+        }
 
         [Category("Configuration")]
-        [DisplayName("System Identifier")]
+        [DisplayName("Receiver Identifier")]
         [PropertyOrder(6)]
-        [Description("The system identifier is part of the header, and indicate where the message originated and is destined.")]
-        public string SystemIdentifier
+        [Description("The receiver identifier is part of the header, and indicate where the message originated.")]
+        public string ReceiverIdentifier
         {
-            get { return baseControllerInfo.SystemIdentifier; }
-            set { baseControllerInfo.SystemIdentifier = value; }
+            get { return baseControllerInfo.ReceiverIdentifier; }
+            set { baseControllerInfo.ReceiverIdentifier = value; }
+        }
+
+        [Category("Configuration")]
+        [DisplayName("Sender Identifier")]
+        [PropertyOrder(6)]
+        [Description("The sender identifier is part of the header, and indicate where the message is destinated.")]
+        public string SenderIdentifier
+        {
+            get { return baseControllerInfo.SenderIdentifier; }
+            set { baseControllerInfo.SenderIdentifier = value; }
         }
 
         [Category("Configuration")]
@@ -375,6 +354,9 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             get { return baseControllerInfo.LogHeartBeat; }
             set { baseControllerInfo.LogHeartBeat = value; }
         }
+
+        [Browsable(false)]
+        public TelegramTemplate Template { get; } = new TelegramTemplate();
     }
 
     [Serializable]
@@ -382,9 +364,10 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
     public class BaseDatcomAusControllerInfo : AssemblyInfo
     {
         public int receiverID;
-        public bool LogHeartBeat;
-        public string SystemIdentifier;
         public int senderID;
+        public bool LogHeartBeat;
+        public string ReceiverIdentifier;
+        public string SenderIdentifier;
     }
 
     public class PLCStateChangeEventArgs : EventArgs

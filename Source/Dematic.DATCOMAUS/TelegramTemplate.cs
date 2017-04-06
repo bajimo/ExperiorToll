@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 namespace Dematic.DATCOMAUS
 {
     public class TelegramTemplate
@@ -25,7 +23,6 @@ namespace Dematic.DATCOMAUS
         public HashSet<Telegram> TelegramsData = new HashSet<Telegram>();
         public TelegramTemplate()
         {
-
             //Initialise the message formats
             List<TelegramFields> fieldList = new List<TelegramFields>();
             fieldList = new List<TelegramFields>
@@ -192,8 +189,8 @@ namespace Dematic.DATCOMAUS
             string header = string.Format("{0},,{1},{2},{3},{4},",
                 "/", //Start - cycle number is just a space
                 GetTelegramName(type),
-                controller.VFCIdentifier, //Sender
-                controller.PLCIdentifier, //Receiver
+                controller.SenderIdentifier, //Sender
+                controller.ReceiverIdentifier, //Receiver
                 "00"); //Program Ident
 
             string body = "".PadLeft(GetTelegramFieldCount(type) - 9, ','); //Only adds the place holders for the message fields
@@ -213,8 +210,8 @@ namespace Dematic.DATCOMAUS
         {
             string newTelegram = telegram;
             newTelegram = newTelegram.SetFieldValue(controller, TelegramFields.Type, TelegramsData.First(x => x.Type == type).Name);
-            newTelegram = newTelegram.SetFieldValue(controller, TelegramFields.SenderIdent, controller.VFCIdentifier);
-            newTelegram = newTelegram.SetFieldValue(controller, TelegramFields.ReceiverIdent, controller.PLCIdentifier);
+            newTelegram = newTelegram.SetFieldValue(controller, TelegramFields.SenderIdent, controller.SenderIdentifier);
+            newTelegram = newTelegram.SetFieldValue(controller, TelegramFields.ReceiverIdent, controller.ReceiverIdentifier);
             return newTelegram;
         }
     }

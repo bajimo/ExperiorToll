@@ -95,7 +95,6 @@
     <Compile Include="Assemblies\MHEControl_PickPutStation.cs" />
     <Compile Include="Assemblies\MHEControl_ThreeWaySwitch.cs" />
     <Compile Include="Assemblies\MHEControl_Transfer.cs" />
-    <Compile Include="Assemblies\MHEControl_PickDoubleLift.cs" />
     <Compile Include="Assemblies\MHEControl_MergeDivert.cs" />
     <Compile Include="ConstructAssembly.cs" />
     <Compile Include="Catalog.cs" />

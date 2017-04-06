@@ -9,14 +9,6 @@
             Handle project specific telegrams. If false is returned then the plc will handle it. If true is returned the plc expects the user to handle the telegram.
             </summary>
         </member>
-        <member name="M:Experior.Catalog.Dematic.DatcomAUS.Assemblies.BaseDatcomAusController.HandleTelegrams(System.String[],System.String)">
-            <summary>
-            The actual controller will handle the telegrams, this method is called when a telegram has been received
-            </summary>
-            <param name="telegramFields"></param>
-            <param name="type"></param>
-            <param name="number_of_blocks"></param>
-        </member>
         <member name="T:Experior.Catalog.Dematic.DatcomAUS.Assemblies.MHEControllerAUS_Case">
             <summary>
             This is a PLC that handels Datcom AUS messages
