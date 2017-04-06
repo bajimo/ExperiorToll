@@ -23,7 +23,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         private static string telegramTail = ",,13,10";
         //public static event EventHandler<PLCStatusChangeEventArgs> OnPLCStatusChanged;//Static Routing Script Events
 
-        public delegate bool TelegramRecievedHandle(BaseDatcomAusController sender, string type, string[] telegramFields, ushort number_of_blocks);
+        public delegate bool TelegramRecievedHandle(BaseDatcomAusController sender, string type, string[] telegramFields);
         /// <summary>
         /// Handle project specific telegrams. If false is returned then the plc will handle it. If true is returned the plc expects the user to handle the telegram.
         /// </summary>
@@ -129,17 +129,17 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             get { return Common.Icons.Get("Controller2"); }
         }
 
-        public void SendTelegram(string tlgType, string body, ushort blocks)
+        public void SendTelegram(string tlgType, string body)
         {
-            SendTelegram(tlgType, body, blocks, true);
+            SendTelegram(tlgType, body, true);
         }
 
 
-        public void SendTelegram(string tlgType, string body, ushort blocks, bool LogMessage)
+        public void SendTelegram(string tlgType, string body, bool LogMessage)
         {
             if (SendConnection != null && plcConnected)
             {
-                string telegramHeader = "/,," + tlgType + "," + SystemIdentifier + ",01," + blocks + ",";
+                string telegramHeader = "/,," + tlgType + "," + SystemIdentifier + ",01,,";
                 string telegram = telegramHeader + body + telegramTail;
                 this.SendConnection.Send(telegram);
                 if (LogMessage)
@@ -321,11 +321,11 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                 if (HandleTelegram != null)
                 {
                     //If user method returns true then it is handled by the user.
-                    if (HandleTelegram(this, type, telegramFields, number_of_blocks))
+                    if (HandleTelegram(this, type, telegramFields))
                         return;
                 }
 
-                HandleTelegrams(telegramFields, type, number_of_blocks);
+                HandleTelegrams(telegramFields, type);
 
             }
             catch (Exception se)
@@ -341,7 +341,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         /// <param name="telegramFields"></param>
         /// <param name="type"></param>
         /// <param name="number_of_blocks"></param>
-        public virtual void HandleTelegrams(string[] telegramFields, string type, ushort number_of_blocks) { }
+        public virtual void HandleTelegrams(string[] telegramFields, string type) { }
 
         //private CasePLC_State _PLC_State = CasePLC_State.Unknown;
         //[Browsable(false)]

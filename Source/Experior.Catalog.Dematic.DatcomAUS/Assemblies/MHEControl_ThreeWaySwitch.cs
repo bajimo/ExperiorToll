@@ -17,9 +17,9 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
 
         //These lists are used to store the values routing codes and they are converted to List<int[]> by
         //using MHEControllerAUS_Case.ValidateRoutingCode()
-        public List<int[]> leftRoutes = null;
-        public List<int[]> rightRoutes = null;
-        public List<int[]> centerRoutes = null;
+        public List<string> leftRoutes = null;
+        public List<string> rightRoutes = null;
+        public List<string> centerRoutes = null;
 
         //Lookup table for helping with routeLoad
         private Dictionary<ThreeWayRoutes, ThreeWaySwitch.StraightThrough> threeWayRoutes = new Dictionary<ThreeWayRoutes, ThreeWaySwitch.StraightThrough>();
@@ -81,7 +81,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         }
 
         [DisplayName("Right Routing Code")]
-        [Description("Routing code for rhs routing: format w,b;w,b... where w = word and b = bit e.g. 1,1;2,1 - route to rhs if word 1 bit 1 or word 2 bit 1 is set in the PLC routing table")]
+        [Description("Routing code for rhs routing: format destination1,destination2,...,destionation n")]
         [PropertyOrder(7)]
         public string RightRoutingCode
         {
@@ -94,7 +94,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                     return;
                 }
 
-                List<int[]> routes = casePLCcontroller.ValidateRoutingCode(value);
+                List<string> routes = casePLCcontroller.ValidateRoutingCode(value);
                 if (routes != null)
                 {
                     rightRoutes = routes;
@@ -104,7 +104,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         }
 
         [DisplayName("Left Routing Code")]
-        [Description("Routing code for lhs routing: format w,b;w,b... where w = word and b = bit e.g. 1,1;2,1 - route to lhs if word 1 bit 1 or word 2 bit 1 is set in the PLC routing table")]
+        [Description("Routing code for lhs routing: format destination1,destination2,...,destionation n")]
         [PropertyOrder(7)]
         public string LeftRoutingCode
         {
@@ -117,7 +117,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                     return;
                 }
 
-                List<int[]> routes = casePLCcontroller.ValidateRoutingCode(value);
+                List<string> routes = casePLCcontroller.ValidateRoutingCode(value);
                 if (routes != null)
                 {
                     leftRoutes = routes;
@@ -127,7 +127,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         }
 
         [DisplayName("Center Routing Code")]
-        [Description("Routing code for lhs routing: format w,b;w,b... where w = word and b = bit e.g. 1,1;2,1 - route to lhs if word 1 bit 1 or word 2 bit 1 is set in the PLC routing table")]
+        [Description("Routing code for lhs routing: format destination1,destination2,...,destionation n")]
         [PropertyOrder(7)]
         public string CenterRoutingCode
         {
@@ -140,7 +140,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                     return;
                 }
 
-                List<int[]> routes = casePLCcontroller.ValidateRoutingCode(value);
+                List<string> routes = casePLCcontroller.ValidateRoutingCode(value);
                 if (routes != null)
                 {
                     centerRoutes = routes;

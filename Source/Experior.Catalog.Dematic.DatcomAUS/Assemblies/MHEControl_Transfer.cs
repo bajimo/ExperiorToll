@@ -17,13 +17,12 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         private Transfer theTransfer;
         private MHEControllerAUS_Case casePLC;
 
-        private List<int[]> LeftRoutes = null; 
-        private List<int[]> RightRoutes = null; 
-        private List<int[]> PriorityRoutes = null;
+        private List<string> LeftRoutes = null; 
+        private List<string> RightRoutes = null; 
+        private List<string> PriorityRoutes = null;
 
         Timer LeftBlockedTimer = new Timer(1);
         Timer RightBlockedTimer = new Timer(1);
-
 
         public MHEControl_Transfer(TransferDatcomAusInfo info, Transfer transfer)
         {
@@ -316,7 +315,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
 
         [Category("RHS Divert")]
         [DisplayName("RHS Routing Code")]
-        [Description("Routing code for rhs routing: format w,b;w,b... where w = word and b = bit e.g. 1,1;2,1 - route to rhs if word 1 bit 1 or word 2 bit 1 is set in the PLC routing table")]
+        [Description("Routing code for rhs routing: format destination1,destination2,...,destionation n")]
         [PropertyAttributesProvider("DynamicPropertyRightModeDivert")]
         [PropertyOrder(7)]
         public string RHSRoutingCode
@@ -330,7 +329,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                     return;
                 }
 
-                List<int[]> routes = casePLC.ValidateRoutingCode(value); //convert to a list of codes
+                List<string> routes = casePLC.ValidateRoutingCode(value); //convert to a list of codes
                 if (routes != null)
                 {
                     RightRoutes = routes; 
@@ -340,7 +339,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         }
 
         [DisplayName("LHS Routing Code")]
-        [Description("Routing code for lhs routing: format w,b;w,b... where w = word and b = bit e.g. 1,1;2,1 - route to lhs if word 1 bit 1 or word 2 bit 1 is set in the PLC routing table")]
+        [Description("Routing code for lhs routing: format destination1,destination2,...,destionation n")]
         [PropertyAttributesProvider("DynamicPropertyLeftModeDivert")]
         [PropertyOrder(7)]
         public string LHSRoutingCode
@@ -354,7 +353,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                     return;
                 }
 
-                List<int[]> routes = casePLC.ValidateRoutingCode(value);
+                List<string> routes = casePLC.ValidateRoutingCode(value);
                 if (routes != null)
                 {
                     LeftRoutes = routes;
@@ -430,7 +429,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         }
 
         [DisplayName("Priority Routing Code")]
-        [Description("Routing code for priority routing: format w,b;w,b... where w = word and b = bit e.g. 1,1;2,1 - priority bit set if word 1 bit 1 or word 2 bit 1 is set in the PLC routing table")]
+        [Description("Routing code for priority routing: format destination1,destination2")]
         [PropertyOrder(13)]
         public string PriorityRoutingCode
         {
@@ -443,7 +442,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                     return;
                 }
 
-                List<int[]> routes = casePLC.ValidateRoutingCode(value);
+                List<string> routes = casePLC.ValidateRoutingCode(value);
                 if (routes != null)
                 {
                     PriorityRoutes = routes;

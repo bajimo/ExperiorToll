@@ -14,7 +14,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         private AngledDivertDatcomAusInfo divertDatcomInfo;
         private AngledDivert divertConveyor;
         private MHEControllerAUS_Case casePLC;
-        private List<int[]> DivertRoutes = null;
+        private List<string> DivertRoutes = null;
         //private List<int[]> RightRoutes = null;
         //private List<int[]> PriorityRoutes = null;
         DivertRoute selectedRoute = DivertRoute.None;
@@ -76,7 +76,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                 else if (FailedToDivertMessageType == FailedDatcomAusMessageType._06)
                 {
                     string body = string.Format("{0},{1},{2}", caseLoad.SSCCBarcode, FailedToDivertLocation, FailedToDivertMessageReasonCode);
-                    casePLC.SendTelegram("06", body, 1, true);
+                    casePLC.SendTelegram("06", body, true);
                 }
             }
             else if (e._direction == DivertRoute.Divert && !string.IsNullOrEmpty(DivertRoutingLocation))
@@ -190,7 +190,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         }
 
         [DisplayName("Straight Routing Code")]
-        [Description("Routing code for straight routing: format w,b;w,b... where w = word and b = bit e.g. 1,1;2,1 - route straight if word 1 bit 1 or word 2 bit 1 is set in the PLC routing table")]
+        [Description("Routing code for straight routing: format destination1,destination2,...,destionation n")]
         [PropertyAttributesProvider("DynamicPropertyStraightModeDivert")]
         [PropertyOrder(7)]
         public string StraightRoutingCode
@@ -205,7 +205,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                     return;
                 }
 
-                List<int[]> routes = casePLC.ValidateRoutingCode(value);
+                List<string> routes = casePLC.ValidateRoutingCode(value);
                 if (routes != null)
                 {
                     StraightRoutes = routes;
@@ -214,7 +214,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             }
         }
 
-        private List<int[]> StraightRoutes = null;
+        private List<string> StraightRoutes = null;
 
         [DisplayName("Straight Route Location")]
         [Description("Location name in divert confirmation message when successfully diverted, if blank then no divert confirmation message will be sent")]
@@ -234,7 +234,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         }
 
         [DisplayName("Divert Routing Code")]
-        [Description("Routing code for divert routing: format w,b;w,b... where w = word and b = bit e.g. 1,1;2,1 - route straight if word 1 bit 1 or word 2 bit 1 is set in the PLC routing table")]
+        [Description("Routing code for divert routing: format destination1,destination2,...,destionation n")]
         [PropertyOrder(9)]
         public string DivertRoutingCode
         {
@@ -248,7 +248,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                     return;
                 }
 
-                List<int[]> routes = casePLC.ValidateRoutingCode(value);
+                List<string> routes = casePLC.ValidateRoutingCode(value);
                 if (routes != null)
                 {
                     DivertRoutes = routes;

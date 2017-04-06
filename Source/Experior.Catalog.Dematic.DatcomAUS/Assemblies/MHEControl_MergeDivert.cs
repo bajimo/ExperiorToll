@@ -14,17 +14,17 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         private MergeDivertDatcomAusInfo mergeDivertDatcomInfo;
         private MergeDivertConveyor mergeDivertConveyor;
         private MHEControllerAUS_Case casePLC;
-        private List<int[]> LeftRoutes = null;
-        private List<int[]> RightRoutes = null;
-        private List<int[]> StraightRoutes = null;
-        private List<int[]> PriorityRoutes = null;
+        private List<string> LeftRoutes = null;
+        private List<string> RightRoutes = null;
+        private List<string> StraightRoutes = null;
+        private List<string> PriorityRoutes = null;
         //Check if the load should divert if in the correct loop
-        private List<int[]> StraightAndRoutes = null;
-        private List<int[]> LeftAndRoutes = null;
-        private List<int[]> RightAndRoutes = null;
-        private List<int[]> StraightOrRoutes = null;
-        private List<int[]> LeftOrRoutes = null;
-        private List<int[]> RightOrRoutes = null;
+        private List<string> StraightAndRoutes = null;
+        private List<string> LeftAndRoutes = null;
+        private List<string> RightAndRoutes = null;
+        private List<string> StraightOrRoutes = null;
+        private List<string> LeftOrRoutes = null;
+        private List<string> RightOrRoutes = null;
 
         public MHEControl_MergeDivert(MergeDivertDatcomAusInfo info, MergeDivertConveyor mergeDivert)
         {
@@ -79,7 +79,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
 
             //Check if the load has the priority bit set
             bool priority = false;
-            if (casePLC.DivertSet(caseload.SSCCBarcode, new List<int[]> { new int[] { 4, 16 } }))
+            if (casePLC.DivertSet(caseload.SSCCBarcode, new List<string>()))
             {
                 priority = true;
             }
@@ -201,7 +201,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
 
         [Category("Straight Divert")]
         [DisplayName("Straight Routing Code")]
-        [Description("Routing code for straight routing: format w,b;w,b... where w = word and b = bit e.g. 1,1;2,1 - route straight if word 1 bit 1 or word 2 bit 1 is set in the PLC routing table")]
+        [Description("Routing code for straight routing. format destination1,destination2")]
         [PropertyAttributesProvider("DynamicPropertyStraightModeDivert")]
         [PropertyOrder(7)]
         public string StraightRoutingCode
@@ -277,7 +277,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
 
         [Category("Left Divert")]
         [DisplayName("Left Routing Code")]
-        [Description("Routing code for straight routing: format w,b;w,b... where w = word and b = bit e.g. 1,1;2,1 - route straight if word 1 bit 1 or word 2 bit 1 is set in the PLC routing table")]
+        [Description("Routing code for straight routing: format destination1,destination2")]
         [PropertyAttributesProvider("DynamicPropertyLeftModeDivert")]
         [PropertyOrder(9)]
         public string LeftRoutingCode
@@ -285,20 +285,6 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             get { return mergeDivertDatcomInfo.leftRoutingCode; }
             set
             {
-                //if (value == null || value == "")
-                //{
-                //    mergeDivertDatcomInfo.leftRoutingCode = null;
-                //    LeftRoutes = null;
-                //    return;
-                //}
-
-                //List<int[]> routes = casePLC.ValidateRoutingCode(value);
-                //if (routes != null)
-                //{
-                //    LeftRoutes = routes;
-                //    mergeDivertDatcomInfo.leftRoutingCode = value;
-                //}
-
                 if (value == null || value == "")
                 {
                     mergeDivertDatcomInfo.leftRoutingCode = null;
@@ -368,7 +354,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
 
         [Category("Right Divert")]
         [DisplayName("Right Routing Code")]
-        [Description("Routing code for straight routing: format w,b;w,b... where w = word and b = bit e.g. 1,1;2,1 - route straight if word 1 bit 1 or word 2 bit 1 is set in the PLC routing table")]
+        [Description("Routing code for straight routing: format destination1,destination2")]
         [PropertyAttributesProvider("DynamicPropertyRightModeDivert")]
         [PropertyOrder(11)]
         public string RightRoutingCode
@@ -376,20 +362,6 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             get { return mergeDivertDatcomInfo.rightRoutingCode; }
             set
             {
-                //if (value == null || value == "")
-                //{
-                //    mergeDivertDatcomInfo.rightRoutingCode = null;
-                //    RightRoutes = null;
-                //    return;
-                //}
-
-                //List<int[]> routes = casePLC.ValidateRoutingCode(value);
-                //if (routes != null)
-                //{
-                //    RightRoutes = routes;
-                //    mergeDivertDatcomInfo.rightRoutingCode = value;
-                //}
-
                 if (value == null || value == "")
                 {
                     mergeDivertDatcomInfo.rightRoutingCode = null;
@@ -459,7 +431,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
 
         [Category("Priority Divert")]
         [DisplayName("Priority Routing Code")]
-        [Description("Routing code for priority loads: format w,b;w,b... where w = word and b = bit e.g. 4,16 - priority set if word 4 bit 16 is set in the PLC routing table")]
+        [Description("Routing code for priority loads: format destination1,destination2,...,destionation n")]
         [PropertyAttributesProvider("DynamicPropertyRouteBlockedTimeout")]
         [PropertyOrder(13)]
         public string PriorityRoutingCode
@@ -474,7 +446,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                     return;
                 }
 
-                List<int[]> routes = casePLC.ValidateRoutingCode(value);
+                List<string> routes = casePLC.ValidateRoutingCode(value);
                 if (routes != null)
                 {
                     PriorityRoutes = routes;
