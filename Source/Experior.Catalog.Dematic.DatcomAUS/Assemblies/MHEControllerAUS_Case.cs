@@ -343,7 +343,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                 caseload.Case_Data = caseData;
             }
 
-            RoutingTable[SSCCBarcode] = telegram.GetFieldValue(this, TelegramFields.Destination);
+            RoutingTable[SSCCBarcode] = telegram.GetFieldValue(this, TelegramFields.Destination).Trim();
 
             //Remove if destinations is empty? (or does not exist?)
             
