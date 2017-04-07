@@ -274,7 +274,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             }
 
             string reply = Template.CreateTelegram(this, TelegramTypes.SystemStatusReport);
-            reply.SetFieldValue(this, TelegramFields.SystemStatus, status);
+            reply = reply.SetFieldValue(this, TelegramFields.SystemStatus, status);
             SendTelegram(reply);
         }
 
