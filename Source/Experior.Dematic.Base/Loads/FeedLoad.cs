@@ -12,7 +12,7 @@ namespace Experior.Dematic.Base
     public static class FeedLoad
     {
         public static long nextSSCC = 55710319008100001;
-        public static int barcodeLength = 10;
+        public static int barcodeLength = 8;
 
         //  public static List<ICaseControllerCommon> CaseControllers = new List<ICaseControllerCommon>(); 
 
