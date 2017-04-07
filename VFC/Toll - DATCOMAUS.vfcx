@@ -2205,6 +2205,54 @@
           <Type>Normal</Type>
         </Field>
       </Message>
+      <Message Identifier="12">
+        <Name>Set System Status</Name>
+        <BodyType>Single</BodyType>
+        <Field>
+          <Name>filler1</Name>
+          <Format>ASCII</Format>
+          <Length>30</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+        <Field>
+          <Name>System status</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Filler3</Name>
+          <Format>ASCII</Format>
+          <Length>76</Length>
+          <Type>Normal</Type>
+        </Field>
+      </Message>
+      <Message Identifier="13">
+        <Name>System Status</Name>
+        <BodyType>Single</BodyType>
+        <Field>
+          <Name>filler1</Name>
+          <Format>ASCII</Format>
+          <Length>30</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+        <Field>
+          <Name>System status</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+        </Field>
+        <Field>
+          <Name>Filler3</Name>
+          <Format>ASCII</Format>
+          <Length>76</Length>
+          <Type>Normal</Type>
+        </Field>
+      </Message>
     </TelegramValidation>
   </SystemConfiguration>
   <Projects>
