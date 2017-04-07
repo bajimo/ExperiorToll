@@ -12881,7 +12881,7 @@
           <PrintFormat>DEC</PrintFormat>
           <ProtocolDataType>ASCII</ProtocolDataType>
           <Repetition>false</Repetition>
-          <Selected>true</Selected>
+          <Selected>false</Selected>
           <Terminate>false</Terminate>
           <Width>119</Width>
           <X>1500</X>
@@ -12948,6 +12948,5176 @@
           <Terminate>false</Terminate>
           <Width>39</Width>
           <X>1860</X>
+          <Y>18</Y>
+        </Field>
+      </List>
+    </Message>
+    <Message>
+      <List>
+        <Field>
+          <Comment>Start of message</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>1</Length>
+          <NextLength>false</NextLength>
+          <No>0</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>19</Width>
+          <X>20</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>flow control</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>1</Length>
+          <NextLength>false</NextLength>
+          <No>1</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>19</Width>
+          <X>40</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>message name</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification>TUMI</Identification>
+          <Identifier>true</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>2</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>60</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Sender</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>3</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>140</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Receiver</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>4</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>220</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Cycle number</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>5</No>
+          <Pad>LEFT</Pad>
+          <PadChar>,0,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>300</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Return code</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>6</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>380</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Number of blocks</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>7</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>420</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Type of blocks</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>8</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>460</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Length of message</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>9</No>
+          <Pad>LEFT</Pad>
+          <PadChar>,0,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>500</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Tail</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>10</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>580</X>
+          <Y>18</Y>
+        </Field>
+      </List>
+    </Message>
+    <Message>
+      <List>
+        <Field>
+          <Comment>Start of message</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>1</Length>
+          <NextLength>false</NextLength>
+          <No>0</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>19</Width>
+          <X>20</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>flow control</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>1</Length>
+          <NextLength>false</NextLength>
+          <No>1</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>19</Width>
+          <X>40</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>message name</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification>TURP</Identification>
+          <Identifier>true</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>2</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>60</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Sender</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>3</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>140</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Receiver</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>4</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>220</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Cycle number</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>5</No>
+          <Pad>LEFT</Pad>
+          <PadChar>,0,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>300</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Return code</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>6</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>380</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Number of blocks</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>7</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>420</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Type of blocks</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>8</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>460</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Length of message</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>9</No>
+          <Pad>LEFT</Pad>
+          <PadChar>,0,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>500</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Tail</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>10</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>580</X>
+          <Y>18</Y>
+        </Field>
+      </List>
+    </Message>
+    <Message>
+      <List>
+        <Field>
+          <Comment>Start of message</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>1</Length>
+          <NextLength>false</NextLength>
+          <No>0</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>19</Width>
+          <X>20</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>flow control</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>1</Length>
+          <NextLength>false</NextLength>
+          <No>1</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>19</Width>
+          <X>40</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>message name</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification>TUNO</Identification>
+          <Identifier>true</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>2</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>60</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Sender</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>3</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>140</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Receiver</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>4</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>220</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Cycle number</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>5</No>
+          <Pad>LEFT</Pad>
+          <PadChar>,0,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>300</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Return code</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>6</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>380</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Number of blocks</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>7</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>420</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Type of blocks</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>8</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>460</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Length of message</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>9</No>
+          <Pad>LEFT</Pad>
+          <PadChar>,0,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>500</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Tail</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>10</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>580</X>
+          <Y>18</Y>
+        </Field>
+      </List>
+    </Message>
+    <Message>
+      <List>
+        <Field>
+          <Comment>Start of message</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>1</Length>
+          <NextLength>false</NextLength>
+          <No>0</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>19</Width>
+          <X>20</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>flow control</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>1</Length>
+          <NextLength>false</NextLength>
+          <No>1</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>19</Width>
+          <X>40</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>message name</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification>TUEX</Identification>
+          <Identifier>true</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>2</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>60</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Sender</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>3</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>140</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Receiver</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>4</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>220</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Cycle number</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>5</No>
+          <Pad>LEFT</Pad>
+          <PadChar>,0,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>300</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Return code</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>6</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>380</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Number of blocks</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>7</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>420</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Type of blocks</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>8</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>460</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Length of message</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>9</No>
+          <Pad>LEFT</Pad>
+          <PadChar>,0,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>500</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Tail</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>10</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>580</X>
+          <Y>18</Y>
+        </Field>
+      </List>
+    </Message>
+    <Message>
+      <List>
+        <Field>
+          <Comment>Start of message</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>1</Length>
+          <NextLength>false</NextLength>
+          <No>0</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>19</Width>
+          <X>20</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>flow control</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>1</Length>
+          <NextLength>false</NextLength>
+          <No>1</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>19</Width>
+          <X>40</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>message name</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification>TUDR</Identification>
+          <Identifier>true</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>2</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>60</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Sender</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>3</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>140</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Receiver</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>4</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>220</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Cycle number</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>5</No>
+          <Pad>LEFT</Pad>
+          <PadChar>,0,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>300</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Return code</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>6</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>380</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Number of blocks</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>7</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>420</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Type of blocks</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>8</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>460</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Length of message</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>9</No>
+          <Pad>LEFT</Pad>
+          <PadChar>,0,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>500</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Tail</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>10</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>580</X>
+          <Y>18</Y>
+        </Field>
+      </List>
+    </Message>
+    <Message>
+      <List>
+        <Field>
+          <Comment>Start of message</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>1</Length>
+          <NextLength>false</NextLength>
+          <No>0</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>19</Width>
+          <X>20</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>flow control</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>1</Length>
+          <NextLength>false</NextLength>
+          <No>1</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>19</Width>
+          <X>40</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>message name</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification>TULL</Identification>
+          <Identifier>true</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>2</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>60</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Sender</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>3</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>140</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Receiver</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>4</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>220</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Cycle number</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>5</No>
+          <Pad>LEFT</Pad>
+          <PadChar>,0,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>300</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Return code</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>6</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>380</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Number of blocks</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>7</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>420</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Type of blocks</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>8</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>460</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Length of message</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>9</No>
+          <Pad>LEFT</Pad>
+          <PadChar>,0,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>500</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Tail</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>10</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>580</X>
+          <Y>18</Y>
+        </Field>
+      </List>
+    </Message>
+    <Message>
+      <List>
+        <Field>
+          <Comment>Start of message</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>1</Length>
+          <NextLength>false</NextLength>
+          <No>0</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>19</Width>
+          <X>20</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>flow control</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>1</Length>
+          <NextLength>false</NextLength>
+          <No>1</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>19</Width>
+          <X>40</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>message name</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification>TUMC</Identification>
+          <Identifier>true</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>2</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>60</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Sender</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>3</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>140</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Receiver</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>4</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>220</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Cycle number</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>5</No>
+          <Pad>LEFT</Pad>
+          <PadChar>,0,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>300</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Return code</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>6</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>380</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Number of blocks</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>7</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>420</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Type of blocks</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>8</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>460</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Length of message</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>9</No>
+          <Pad>LEFT</Pad>
+          <PadChar>,0,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>500</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Tail</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>10</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>580</X>
+          <Y>18</Y>
+        </Field>
+      </List>
+    </Message>
+    <Message>
+      <List>
+        <Field>
+          <Comment>Start of message</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>1</Length>
+          <NextLength>false</NextLength>
+          <No>0</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>19</Width>
+          <X>20</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>flow control</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>1</Length>
+          <NextLength>false</NextLength>
+          <No>1</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>19</Width>
+          <X>40</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>message name</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification>TUCA</Identification>
+          <Identifier>true</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>2</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>60</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Sender</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>3</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>140</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Receiver</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>4</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>220</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Cycle number</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>5</No>
+          <Pad>LEFT</Pad>
+          <PadChar>,0,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>300</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Return code</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>6</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>380</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Number of blocks</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>7</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>420</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Type of blocks</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>8</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>460</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Length of message</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>9</No>
+          <Pad>LEFT</Pad>
+          <PadChar>,0,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>500</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Tail</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>10</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>580</X>
+          <Y>18</Y>
+        </Field>
+      </List>
+    </Message>
+    <Message>
+      <List>
+        <Field>
+          <Comment>Start of message</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>1</Length>
+          <NextLength>false</NextLength>
+          <No>0</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>19</Width>
+          <X>20</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>flow control</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>1</Length>
+          <NextLength>false</NextLength>
+          <No>1</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>19</Width>
+          <X>40</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>message name</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification>STRQ</Identification>
+          <Identifier>true</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>2</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>60</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Sender</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>3</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>140</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Receiver</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>4</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>220</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Cycle number</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>5</No>
+          <Pad>LEFT</Pad>
+          <PadChar>,0,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>300</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Return code</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>6</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>380</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Number of blocks</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>7</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>420</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Type of blocks</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>8</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>460</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Length of message</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>9</No>
+          <Pad>LEFT</Pad>
+          <PadChar>,0,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>500</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Tail</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>10</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>580</X>
+          <Y>18</Y>
+        </Field>
+      </List>
+    </Message>
+    <Message>
+      <List>
+        <Field>
+          <Comment>Start of message</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>1</Length>
+          <NextLength>false</NextLength>
+          <No>0</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>19</Width>
+          <X>20</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>flow control</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>1</Length>
+          <NextLength>false</NextLength>
+          <No>1</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>19</Width>
+          <X>40</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>message name</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification>STAT</Identification>
+          <Identifier>true</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>2</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>60</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Sender</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>3</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>140</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Receiver</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>4</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>220</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Cycle number</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>5</No>
+          <Pad>LEFT</Pad>
+          <PadChar>,0,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>300</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Return code</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>6</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>380</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Number of blocks</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>7</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>420</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Type of blocks</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>8</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>460</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Length of message</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>9</No>
+          <Pad>LEFT</Pad>
+          <PadChar>,0,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>500</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Tail</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>10</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>580</X>
+          <Y>18</Y>
+        </Field>
+      </List>
+    </Message>
+    <Message>
+      <List>
+        <Field>
+          <Comment>Start of message</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>1</Length>
+          <NextLength>false</NextLength>
+          <No>0</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>19</Width>
+          <X>20</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>flow control</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>1</Length>
+          <NextLength>false</NextLength>
+          <No>1</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>19</Width>
+          <X>40</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>message name</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification>STMF</Identification>
+          <Identifier>true</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>2</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>60</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Sender</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>3</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>140</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Receiver</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>4</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>220</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Cycle number</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>5</No>
+          <Pad>LEFT</Pad>
+          <PadChar>,0,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>300</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Return code</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>6</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>380</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Number of blocks</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>7</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>420</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Type of blocks</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>8</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>460</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Length of message</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>9</No>
+          <Pad>LEFT</Pad>
+          <PadChar>,0,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>500</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Tail</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>10</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>580</X>
+          <Y>18</Y>
+        </Field>
+      </List>
+    </Message>
+    <Message>
+      <List>
+        <Field>
+          <Comment>Start of message</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>1</Length>
+          <NextLength>false</NextLength>
+          <No>0</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>19</Width>
+          <X>20</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>flow control</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>1</Length>
+          <NextLength>false</NextLength>
+          <No>1</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>19</Width>
+          <X>40</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>message name</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification>STEN</Identification>
+          <Identifier>true</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>2</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>60</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Sender</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>3</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>140</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Receiver</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>4</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>220</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Cycle number</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>5</No>
+          <Pad>LEFT</Pad>
+          <PadChar>,0,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>300</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Return code</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>6</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>380</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Number of blocks</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>7</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>420</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Type of blocks</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>8</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>460</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Length of message</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>9</No>
+          <Pad>LEFT</Pad>
+          <PadChar>,0,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>500</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Tail</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>10</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>580</X>
+          <Y>18</Y>
+        </Field>
+      </List>
+    </Message>
+    <Message>
+      <List>
+        <Field>
+          <Comment>Start of message</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>1</Length>
+          <NextLength>false</NextLength>
+          <No>0</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>19</Width>
+          <X>20</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>flow control</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>1</Length>
+          <NextLength>false</NextLength>
+          <No>1</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>19</Width>
+          <X>40</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>message name</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification>LORQ</Identification>
+          <Identifier>true</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>2</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>60</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Sender</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>3</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>140</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Receiver</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>4</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>220</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Cycle number</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>5</No>
+          <Pad>LEFT</Pad>
+          <PadChar>,0,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>300</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Return code</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>6</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>380</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Number of blocks</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>7</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>420</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Type of blocks</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>8</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>460</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Length of message</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>9</No>
+          <Pad>LEFT</Pad>
+          <PadChar>,0,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>500</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Tail</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>10</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>580</X>
+          <Y>18</Y>
+        </Field>
+      </List>
+    </Message>
+    <Message>
+      <List>
+        <Field>
+          <Comment>Start of message</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>1</Length>
+          <NextLength>false</NextLength>
+          <No>0</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>19</Width>
+          <X>20</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>flow control</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>1</Length>
+          <NextLength>false</NextLength>
+          <No>1</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>19</Width>
+          <X>40</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>message name</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification>MFST</Identification>
+          <Identifier>true</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>2</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>60</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Sender</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>3</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>140</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Receiver</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>4</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>220</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Cycle number</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>5</No>
+          <Pad>LEFT</Pad>
+          <PadChar>,0,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>300</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Return code</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>6</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>380</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Number of blocks</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>7</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>420</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Type of blocks</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>8</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>460</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Length of message</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>9</No>
+          <Pad>LEFT</Pad>
+          <PadChar>,0,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>500</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Tail</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>10</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>580</X>
+          <Y>18</Y>
+        </Field>
+      </List>
+    </Message>
+    <Message>
+      <List>
+        <Field>
+          <Comment>Start of message</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>1</Length>
+          <NextLength>false</NextLength>
+          <No>0</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>19</Width>
+          <X>20</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>flow control</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>1</Length>
+          <NextLength>false</NextLength>
+          <No>1</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>19</Width>
+          <X>40</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>message name</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification>MFSP</Identification>
+          <Identifier>true</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>2</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>60</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Sender</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>3</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>140</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Receiver</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>4</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>220</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Cycle number</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>5</No>
+          <Pad>LEFT</Pad>
+          <PadChar>,0,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>300</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Return code</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>6</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>380</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Number of blocks</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>7</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>420</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Type of blocks</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>8</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>460</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Length of message</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>9</No>
+          <Pad>LEFT</Pad>
+          <PadChar>,0,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>500</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Tail</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>10</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>580</X>
+          <Y>18</Y>
+        </Field>
+      </List>
+    </Message>
+    <Message>
+      <List>
+        <Field>
+          <Comment>Start of message</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>1</Length>
+          <NextLength>false</NextLength>
+          <No>0</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>19</Width>
+          <X>20</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>flow control</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>1</Length>
+          <NextLength>false</NextLength>
+          <No>1</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>19</Width>
+          <X>40</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>message name</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification>MOMI</Identification>
+          <Identifier>true</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>2</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>60</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Sender</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>3</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>140</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Receiver</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>4</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>220</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Cycle number</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>5</No>
+          <Pad>LEFT</Pad>
+          <PadChar>,0,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>300</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Return code</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>6</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>380</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Number of blocks</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>7</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>420</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Type of blocks</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>8</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>460</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Length of message</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>9</No>
+          <Pad>LEFT</Pad>
+          <PadChar>,0,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>500</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Tail</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>10</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>580</X>
+          <Y>18</Y>
+        </Field>
+      </List>
+    </Message>
+    <Message>
+      <List>
+        <Field>
+          <Comment>Start of message</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>1</Length>
+          <NextLength>false</NextLength>
+          <No>0</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>19</Width>
+          <X>20</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>flow control</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>1</Length>
+          <NextLength>false</NextLength>
+          <No>1</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>19</Width>
+          <X>40</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>message name</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification>MORP</Identification>
+          <Identifier>true</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>2</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>60</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Sender</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>3</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>140</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Receiver</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>4</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>220</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Cycle number</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>5</No>
+          <Pad>LEFT</Pad>
+          <PadChar>,0,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>300</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Return code</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>6</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>380</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Number of blocks</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>7</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>420</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Type of blocks</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>8</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>460</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Length of message</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>9</No>
+          <Pad>LEFT</Pad>
+          <PadChar>,0,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>500</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Tail</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>10</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>580</X>
+          <Y>18</Y>
+        </Field>
+      </List>
+    </Message>
+    <Message>
+      <List>
+        <Field>
+          <Comment>Start of message</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>1</Length>
+          <NextLength>false</NextLength>
+          <No>0</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>19</Width>
+          <X>20</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>flow control</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>1</Length>
+          <NextLength>false</NextLength>
+          <No>1</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>19</Width>
+          <X>40</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>message name</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification>SETD</Identification>
+          <Identifier>true</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>2</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>60</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Sender</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>3</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>140</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Receiver</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>4</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>220</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Cycle number</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>5</No>
+          <Pad>LEFT</Pad>
+          <PadChar>,0,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>300</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Return code</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>6</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>380</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Number of blocks</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>7</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>420</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Type of blocks</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>8</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>460</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Length of message</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>9</No>
+          <Pad>LEFT</Pad>
+          <PadChar>,0,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>500</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Tail</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>10</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>580</X>
+          <Y>18</Y>
+        </Field>
+      </List>
+    </Message>
+    <Message>
+      <List>
+        <Field>
+          <Comment>Start of message</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>1</Length>
+          <NextLength>false</NextLength>
+          <No>0</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>19</Width>
+          <X>20</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>flow control</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>1</Length>
+          <NextLength>false</NextLength>
+          <No>1</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>19</Width>
+          <X>40</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>message name</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification>SETT</Identification>
+          <Identifier>true</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>2</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>60</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Sender</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>3</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>140</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Receiver</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>4</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>220</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Cycle number</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>5</No>
+          <Pad>LEFT</Pad>
+          <PadChar>,0,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>300</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Return code</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>6</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>380</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Number of blocks</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>7</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>420</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Type of blocks</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>8</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>460</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Length of message</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>9</No>
+          <Pad>LEFT</Pad>
+          <PadChar>,0,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>500</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Tail</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>10</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>580</X>
+          <Y>18</Y>
+        </Field>
+      </List>
+    </Message>
+    <Message>
+      <List>
+        <Field>
+          <Comment>Start of message</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>1</Length>
+          <NextLength>false</NextLength>
+          <No>0</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>19</Width>
+          <X>20</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>flow control</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>1</Length>
+          <NextLength>false</NextLength>
+          <No>1</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>19</Width>
+          <X>40</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>message name</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification>LIVE</Identification>
+          <Identifier>true</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>2</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>60</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Sender</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>3</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>140</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Receiver</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>4</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>220</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Cycle number</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>5</No>
+          <Pad>LEFT</Pad>
+          <PadChar>,0,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>300</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Return code</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>6</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>380</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Number of blocks</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>7</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>420</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Type of blocks</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>8</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>460</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Length of message</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>9</No>
+          <Pad>LEFT</Pad>
+          <PadChar>,0,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>500</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Tail</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>10</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>580</X>
+          <Y>18</Y>
+        </Field>
+      </List>
+    </Message>
+    <Message>
+      <List>
+        <Field>
+          <Comment>Start of message</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>1</Length>
+          <NextLength>false</NextLength>
+          <No>0</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>19</Width>
+          <X>20</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>flow control</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>1</Length>
+          <NextLength>false</NextLength>
+          <No>1</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>19</Width>
+          <X>40</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>message name</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification>STSC</Identification>
+          <Identifier>true</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>2</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>60</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Sender</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>3</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>140</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Receiver</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>4</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>220</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Cycle number</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>5</No>
+          <Pad>LEFT</Pad>
+          <PadChar>,0,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>300</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Return code</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>6</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>380</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Number of blocks</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>7</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>420</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Type of blocks</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>8</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>460</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Length of message</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>9</No>
+          <Pad>LEFT</Pad>
+          <PadChar>,0,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>500</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Tail</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>10</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>580</X>
+          <Y>18</Y>
+        </Field>
+      </List>
+    </Message>
+    <Message>
+      <List>
+        <Field>
+          <Comment>Start of message</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>1</Length>
+          <NextLength>false</NextLength>
+          <No>0</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>19</Width>
+          <X>20</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>flow control</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>1</Length>
+          <NextLength>false</NextLength>
+          <No>1</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>19</Width>
+          <X>40</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>message name</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification>STAX</Identification>
+          <Identifier>true</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>2</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>60</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Sender</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>3</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>140</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Receiver</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>4</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>220</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Cycle number</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>5</No>
+          <Pad>LEFT</Pad>
+          <PadChar>,0,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>300</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Return code</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>6</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>380</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Number of blocks</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>7</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>420</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Type of blocks</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>8</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>460</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Length of message</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>4</Length>
+          <NextLength>false</NextLength>
+          <No>9</No>
+          <Pad>LEFT</Pad>
+          <PadChar>,0,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>79</Width>
+          <X>500</X>
+          <Y>18</Y>
+        </Field>
+        <Field>
+          <Comment>Tail</Comment>
+          <DataFormat>ASCII</DataFormat>
+          <Height>20</Height>
+          <Identification />
+          <Identifier>false</Identifier>
+          <IgnoreLength>false</IgnoreLength>
+          <Length>2</Length>
+          <NextLength>false</NextLength>
+          <No>10</No>
+          <Pad>RIGHT</Pad>
+          <PadChar>, ,</PadChar>
+          <PrintFormat>DEC</PrintFormat>
+          <ProtocolDataType>ASCII</ProtocolDataType>
+          <Repetition>false</Repetition>
+          <Selected>false</Selected>
+          <Terminate>false</Terminate>
+          <Width>39</Width>
+          <X>580</X>
           <Y>18</Y>
         </Field>
       </List>
