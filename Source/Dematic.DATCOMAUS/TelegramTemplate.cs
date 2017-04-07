@@ -194,7 +194,7 @@ namespace Dematic.DATCOMAUS
                 "00"); //Program Ident
 
             string body = "".PadLeft(GetTelegramFieldCount(type) - 9, ','); //Only adds the place holders for the message fields
-            string tail = ",<13>,<10>";
+            string tail = ",13,10";
 
             return string.Format("{0}{1}{2}", header, body, tail);
         }
