@@ -64,6 +64,19 @@ namespace VirtualFlowController.DATCOMAUS.Controllers
             set { _Template = value; }
         }
 
+        public string ReceiverIdentifier
+        {
+            get { return PLCIdentifier; }
+        }
+
+        public string SenderIdentifier
+        {
+            get
+            {
+                return VFCIdentifier;
+            }
+        }
+
         public int GetTelegramLength(TelegramTypes telegramType)
         {
             if (telegramValidation != null)

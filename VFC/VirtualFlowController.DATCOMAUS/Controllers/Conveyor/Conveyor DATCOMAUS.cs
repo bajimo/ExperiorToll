@@ -150,9 +150,10 @@ namespace VirtualFlowController.DATCOMAUS.Controllers
                 if (e._connectionStatus == ConnectionStatus.Connected)
                 {
                     controllerStatus = ControllerStatus.Running;
-                    //string telegram = Template.CreateTelegram(this, TelegramTypes.StatusRequest);
+                    string telegram = Template.CreateTelegram(this, TelegramTypes.SetSystemStatus);
+                    telegram = telegram.SetFieldValue(this, TelegramFields.SystemStatus, "02"); //Set ready status
                     //telegram = telegram.SetFieldValue(this, TelegramFields.DeviceIdent, "ALL");
-                    //Send(telegram);
+                    Send(telegram);
 
                     //Start the live timer
                     liveTimer.Interval = LiveInterval * 1000;

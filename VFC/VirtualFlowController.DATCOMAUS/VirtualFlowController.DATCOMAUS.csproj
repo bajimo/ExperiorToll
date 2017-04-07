@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\VirtualFlowController\bin\Debug\</OutputPath>
+    <OutputPath>C:\Program Files %28x86%29\Dematic\Virtual Flow Controller\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -32,6 +32,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dematic.DATCOMAUS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Xcelgo\Xcelgo Experior\Dematic.DATCOMAUS.dll</HintPath>
+    </Reference>
     <Reference Include="LiteDB, Version=3.0.1.0, Culture=neutral, PublicKeyToken=4ee40123013c9f27, processorArchitecture=MSIL">
       <HintPath>..\packages\LiteDB.3.0.1\lib\net35\LiteDB.dll</HintPath>
       <Private>True</Private>
@@ -56,6 +60,10 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="VirtualFlowController, Version=1.0.6283.26890, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Dematic\Virtual Flow Controller\VirtualFlowController.exe</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="Xceed.Wpf.Toolkit, Version=3.3.17121.18230, Culture=neutral, PublicKeyToken=ba83ff368b7563c6, processorArchitecture=MSIL">
       <HintPath>..\packages\Xceed.Wpf.Toolkit.3.3.17121.18230\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
@@ -77,18 +85,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Dematic.DATCOMAUS\Dematic.DATCOMAUS.csproj">
-      <Project>{99ebdd47-7603-4076-bb64-3854b1fd59a1}</Project>
-      <Name>Dematic.DATCOMAUS</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\VirtualFlowController\VirtualFlowController.csproj">
-      <Project>{7ba0dfa8-859a-4383-a45d-9fa6ba6f8b37}</Project>
-      <Name>VirtualFlowController</Name>
-      <Private>False</Private>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
