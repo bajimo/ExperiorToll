@@ -232,10 +232,10 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
 
         void Connection_OnConnected(Core.Communication.Connection connection)
         {
-            if (RecieveConnection.State == Experior.Core.Communication.State.Connected && SendConnection.State == Core.Communication.State.Connected)
+            if ((RecieveConnection == null || RecieveConnection.State == Experior.Core.Communication.State.Connected) && SendConnection.State == Core.Communication.State.Connected)
             {
                 DisplayText.Color = Color.LightGreen;  // PLC object text
-                Experior.Core.Environment.Log.Write(DateTime.Now.ToString() + " " + this.Name + " connection established for ID " + RecieveConnection.Id.ToString() + " on IP " + RecieveConnection.Ip.ToString() + " and port " + RecieveConnection.Port.ToString(), Color.DarkGreen);
+                Environment.Log.Write(DateTime.Now + " " + this.Name + " connection established for ID " + SendConnection?.Id + " on IP " + SendConnection?.Ip + " and port " + SendConnection?.Port, Color.DarkGreen);
                 plcConnected = true;
             }
             else
@@ -246,7 +246,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
 
         public void Connection_OnTelegramReceived(Core.Communication.TCPIP.Connection sender, string telegram)
         {
-            if (sender == SendConnection && (SendConnection != RecieveConnection))
+            if (sender == SendConnection && (RecieveConnection != null))
             {
                 return; //Only ack telegrams should be received on this connection. For now just ignore...
             }
