@@ -129,8 +129,14 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         {
             switch (type)
             {
-                case TelegramTypes.TransportOrder:
+                case TelegramTypes.TransportOrder: //01
                     TransportOrderRecieved(telegram);
+                    break;
+                case TelegramTypes.ModifyMission: //05
+                    TransportOrderRecieved(telegram); //Just update routing destination?
+                    break;
+                case TelegramTypes.CancelMission: //04
+                    CancelMissionRecieved(telegram);
                     break;
                 //case "04":
                 //    PurgeRoutingTableRecieved(telegram);
@@ -320,6 +326,13 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         //    string status = "00"; //Routing table no longer critically full.  Status 01 means routing Table critically full.
         //    SendTelegram("10", status);
         //}
+
+        public void CancelMissionRecieved(string telegram)
+        {
+            //Just remove from routing table?
+            var SSCCBarcode = telegram.GetFieldValue(this, TelegramFields.ULIdentification);
+            RoutingTable.Remove(SSCCBarcode);
+        }
 
         public void TransportOrderRecieved(string telegram)
         {
