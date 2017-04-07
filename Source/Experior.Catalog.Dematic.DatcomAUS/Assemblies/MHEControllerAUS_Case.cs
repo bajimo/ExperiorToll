@@ -144,8 +144,8 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                 //case "09":
                 //    CraneForkStatusRecieved(telegram);
                 //    break;
-                case TelegramTypes.SystemStatusReport:
-                    SystemStatusReportRecieved(telegram);
+                case TelegramTypes.SetSystemStatus:
+                    SetSystemStatusRecieved(telegram);
                     break;
                 //case "26":
                 //    CallForwardRecieved(telegram);
@@ -160,7 +160,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
 
         void CasePLC_Datcom_OnPLCStateChange(object sender, PLCStateChangeEventArgs e)
         {
-            PLC_State = e._CaseState;
+            PLC_State = e.CaseState;
         }
 
         public static event EventHandler<PlcStatusChangeEventArgs> OnCasePLCStatusChanged;
@@ -260,35 +260,22 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         //    SendTelegram("28", location + "," + status);
         //}
 
-        public void SystemStatusReportRecieved(string telegram)
+        public void SetSystemStatusRecieved(string telegram)
         {
             string status = telegram.GetFieldValue(this, TelegramFields.SystemStatus);
 
-            ////Status 02 ready during remap. For Heartbeat status 07 always just reply with the same status:
-            //bool heartbeat = false;
-            //if (status == "07")
-            //    heartbeat = true;
+            if (status == "02")
+            {
+                PLC_State = CasePLC_State.Ready;
+            }
+            if (status == "00")
+            {
+                PLC_State = CasePLC_State.Unknown;
+            }
 
-            //bool log = true;
-
-            //if (!LogHeartBeat && heartbeat)
-            //    log = false;
-
-            //SendTelegram("13", status, log);
-
-            //if (status == "02")
-            //{
-            //    int count = RoutingTable.Count;
-            //    string routingTablestatus = "00";
-            //    if (count > MaxRoutingTableEntries)
-            //    {
-            //        routingTablestatus = "01"; //Status 01 means routing Table critically full.
-            //    }
-
-            //    SendTelegram("10", routingTablestatus);
-
-            //    PLC_State = CasePLC_State.Ready;
-            //}
+            string reply = Template.CreateTelegram(this, TelegramTypes.SystemStatusReport);
+            reply.SetFieldValue(this, TelegramFields.SystemStatus, status);
+            SendTelegram(reply);
         }
 
         //public void CraneForkStatusRecieved(string[] telegramFields)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.Globalization;
 using Dematic.DATCOMAUS;
 using Experior.Core.Assemblies;
 using Experior.Core.Parts;
@@ -20,16 +21,15 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         public Text3D DisplayText;
         private Cube plcCube, door1, door2, plinth;
         public bool plcConnected;
-        private static string telegramTail = ",,13,10";
-        //public static event EventHandler<PLCStatusChangeEventArgs> OnPLCStatusChanged;//Static Routing Script Events
 
         public delegate bool TelegramRecievedHandle(BaseDatcomAusController sender, TelegramTypes type, string telegram);
+       
         /// <summary>
         /// Handle project specific telegrams. If false is returned then the plc will handle it. If true is returned the plc expects the user to handle the telegram.
         /// </summary>
         public TelegramRecievedHandle HandleTelegram;
 
-        public Experior.Core.Communication.TCPIP.Connection RecieveConnection, SendConnection;
+        public Core.Communication.TCPIP.Connection RecieveConnection, SendConnection;
 
         protected BaseDatcomAusController(BaseDatcomAusControllerInfo info)
             : base(info)
@@ -43,17 +43,16 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             Font f = new Font("Helvetica", 0.4f, FontStyle.Bold, GraphicsUnit.Pixel);
             DisplayText = new Text3D(Color.Red, 0.4f, 0.3f, f);
             DisplayText.Pitch = (float)Math.PI / 2;
-            Add((RigidPart)DisplayText, new Vector3(-0.62f, 1.25f, -0.125f));
+            Add(DisplayText, new Vector3(-0.62f, 1.25f, -0.125f));
 
-            Add((RigidPart)plcCube, new Vector3(0, 0.45f, 0));
-            Add((RigidPart)door1, new Vector3(-0.325f, 0.5425f, -0.1f));
-            Add((RigidPart)door2, new Vector3(0.325f, 0.5425f, -0.1f));
-            Add((RigidPart)plinth, new Vector3(0, -0.355f, 0));
+            Add(plcCube, new Vector3(0, 0.45f, 0));
+            Add(door1, new Vector3(-0.325f, 0.5425f, -0.1f));
+            Add(door2, new Vector3(0.325f, 0.5425f, -0.1f));
+            Add(plinth, new Vector3(0, -0.355f, 0));
 
             DisplayText.Text = info.name;
 
             OnNameChanged += CaseDatcom_OnNameChanged;
-
 
             if (info.receiverID != 0)
             {
@@ -64,24 +63,17 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             {
                 SenderId = info.senderID;
             }
-
         }
 
         public override void Dispose()
         {
-            if (OnControllerDeletedEvent != null)
-            {
-                OnControllerDeletedEvent(this, new EventArgs());
-            }
+            OnControllerDeletedEvent?.Invoke(this, new EventArgs());
             base.Dispose();
         }
 
         void CaseDatcom_OnNameChanged(Assembly sender, string current, string old)
         {
-            if (OnControllerRenamedEvent != null)
-            {
-                OnControllerRenamedEvent(this, new EventArgs());
-            }
+            OnControllerRenamedEvent?.Invoke(this, new EventArgs());
             DisplayText.Text = Name;
         }
 
@@ -113,7 +105,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             }
             catch (Exception e)
             {
-                Experior.Core.Environment.Log.Write("Can't create control!", Color.Red);
+                Environment.Log.Write("Can't create control!", Color.Red);
                 Environment.Log.Write(e.Message, Color.Red);
             }
             return protocolConfig;
@@ -222,42 +214,18 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         void SendConnection_OnDisconnected(Core.Communication.Connection connection)
         {
             DisplayText.Color = Color.Red;  // PLC object text
-            Experior.Core.Environment.Log.Write(DateTime.Now.ToString() + " " + this.Name + " connection dropped for ID " + SendConnection.Id + " on IP " + SendConnection.Ip.ToString() + " and port " + SendConnection.Port.ToString(), Color.Red);
+            Environment.Log.Write(DateTime.Now.ToString(CultureInfo.InvariantCulture) + " " + Name + " connection dropped for ID " + SendConnection.Id + " on IP " + SendConnection.Ip + " and port " + SendConnection.Port, Color.Red);
             SendConnection.AutoConnect = true;
             plcConnected = false;
-
-            string obj = this.GetType().Name;
-
-            if (this.GetType().Name == "MHEController_Multishuttle")
-            {
-                if (OnPLCStateChange != null)
-                {
-                    OnPLCStateChange(this, new PLCStateChangeEventArgs(null, MultiShuttlePLC_State.Unknown_00));
-                }
-            }
-            else if (this.GetType().Name == "CasePLC_Datcom") //TODO change the name of this assembly
-            {
-                if (OnPLCStateChange != null)
-                {
-                    OnPLCStateChange(this, new PLCStateChangeEventArgs(CasePLC_State.NotReady, null));
-                }
-                //PLC_State = CasePLC_State.NotReady;
-            }
-            else
-            {
-                Log.Write("ERROR in SendConnection_OnDisconnected, cant find controller type", Color.Red);
-            }
-
+            OnPLCStateChange?.Invoke(this, new PLCStateChangeEventArgs(CasePLC_State.NotReady, null));
         }
-
 
         void Connection_OnDisconnected(Core.Communication.Connection connection)
         {
             DisplayText.Color = Color.Red;  // PLC object text
-            Experior.Core.Environment.Log.Write(DateTime.Now.ToString() + " " + this.Name + " connection dropped for ID " + RecieveConnection.Id + " on IP " + RecieveConnection.Ip.ToString() + " and port " + RecieveConnection.Port.ToString(), Color.Red);
+            Environment.Log.Write(DateTime.Now.ToString(CultureInfo.InvariantCulture) + " " + Name + " connection dropped for ID " + RecieveConnection.Id + " on IP " + RecieveConnection.Ip + " and port " + RecieveConnection.Port, Color.Red);
             RecieveConnection.AutoConnect = true;
             plcConnected = false;
-            object obj = this.GetType();
 
             // PLC_State = CasePLC_State.NotReady;
         }
@@ -295,10 +263,10 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                 bool heartbeat = type == TelegramTypes.HeartBeat;
 
                 if (!heartbeat)
-                    Environment.Log.Write(DateTime.Now + " MFH>PLC: " + sender.Id.ToString() + " " + telegram);
+                    Environment.Log.Write(DateTime.Now + " MFH>PLC: " + sender.Id + " " + telegram);
 
                 if (LogHeartBeat && heartbeat)
-                    Environment.Log.Write(DateTime.Now + " MFH>PLC: " + sender.Id.ToString() + " " + telegram);
+                    Environment.Log.Write(DateTime.Now + " MFH>PLC: " + sender.Id + " " + telegram);
 
                 if (HandleTelegram != null)
                 {
@@ -311,8 +279,8 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             }
             catch (Exception e)
             {
-                Experior.Core.Environment.Log.Write("Exception recieving telegram: ");
-                Experior.Core.Environment.Log.Write(e);
+                Environment.Log.Write("Exception recieving telegram: ");
+                Environment.Log.Write(e);
             }
         }
 
@@ -329,7 +297,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             telegram = telegram.SetFieldValue(this, TelegramFields.Length, (caseData.Length * 1000).ToString("0000"));
             telegram = telegram.SetFieldValue(this, TelegramFields.Height, (caseData.Height * 1000).ToString("0000"));
             telegram = telegram.SetFieldValue(this, TelegramFields.Weight, (caseData.Weight * 1000).ToString("000000"));
-     
+
             //telegram = telegram.SetFieldValue(this, TelegramFields.Profile, caseData.ProfileStatus);
             return telegram;
         }
@@ -388,25 +356,25 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
 
     public class PLCStateChangeEventArgs : EventArgs
     {
-        public readonly CasePLC_State? _CaseState;
-        public readonly MultiShuttlePLC_State? _MSState;
+        public readonly CasePLC_State? CaseState;
+        public readonly MultiShuttlePLC_State? MsState;
 
-        public PLCStateChangeEventArgs(CasePLC_State? CaseState, MultiShuttlePLC_State? MSState)
+        public PLCStateChangeEventArgs(CasePLC_State? caseState, MultiShuttlePLC_State? msState)
         {
-            _CaseState = CaseState;
-            _MSState = MSState;
+            CaseState = caseState;
+            MsState = msState;
         }
     }
 
     internal class Common
     {
-        public static Experior.Core.Resources.Meshes Meshes;
-        public static Experior.Core.Resources.Icons Icons;
+        public static Core.Resources.Meshes Meshes;
+        public static Core.Resources.Icons Icons;
 
         static Common()
         {
-            Meshes = new Experior.Core.Resources.Meshes(System.Reflection.Assembly.GetExecutingAssembly());
-            Icons = new Experior.Core.Resources.Icons(System.Reflection.Assembly.GetExecutingAssembly());
+            Meshes = new Core.Resources.Meshes(System.Reflection.Assembly.GetExecutingAssembly());
+            Icons = new Core.Resources.Icons(System.Reflection.Assembly.GetExecutingAssembly());
         }
     }
 }
