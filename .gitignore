@@ -6,4 +6,5 @@ obj/
 Debug/
 Release/
 *.BACKUP
-Layout/Toll Enterprise Live Mezz Equipment.bak
+*.bak
+packages/
