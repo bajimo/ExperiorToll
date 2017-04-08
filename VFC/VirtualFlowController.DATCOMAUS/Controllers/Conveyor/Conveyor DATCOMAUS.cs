@@ -214,7 +214,7 @@ namespace VirtualFlowController.DATCOMAUS.Controllers
             {
                 if (eType.ToString() == type.ToString()) //First check if the message type is valid for routings
                 {
-                    string location = telegram.GetFieldValue(this, TelegramFields.Current);
+                    string location = telegram.GetFieldValue(this, TelegramFields.Current).Trim();
                     if (location != null && vfc.AllRoutings.ContainsKey(location)) //Then check if the location matches a routing
                     {
                         DATCOMAUSRouting routing = vfc.AllRoutings[location] as DATCOMAUSRouting;

@@ -2640,16 +2640,16 @@
     </Controller>
   </Controllers>
   <Routings>
-    <Routing Name="GTP01" Type="DATCOMAUSRouting">
+    <Routing Name="PICK01A1" Type="DATCOMAUSRouting">
       <Category>
       </Category>
       <triggerMessType>Disabled</triggerMessType>
       <RoutingTrigger>Arrival</RoutingTrigger>
       <Distribution>Random</Distribution>
-      <DestinationCode>GTP01,GTP02</DestinationCode>
+      <DestinationCode>TEST</DestinationCode>
       <DestinationCodeSecondary>
       </DestinationCodeSecondary>
-      <TelegramDelay>0</TelegramDelay>
+      <TelegramDelay>4</TelegramDelay>
       <RoutePercentage>100</RoutePercentage>
       <RouteController>PLC51</RouteController>
     </Routing>
