@@ -51,11 +51,11 @@ namespace Experior.Catalog.Dematic.DatcomUK.Assemblies
             get { return Common.Icons.Get("PLC"); }
         }
 
-        public void RemoveSSCCBarcode(string ULID)
+        public void RemoveFromRoutingTable(string barcode)
         {
-            if (RoutingTable.ContainsKey(ULID))
+            if (RoutingTable.ContainsKey(barcode))
             {
-                RoutingTable.Remove(ULID);
+                RoutingTable.Remove(barcode);
             }
         }
 

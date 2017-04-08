@@ -75,7 +75,7 @@ namespace Experior.Catalog.Dematic.DatcomUK.Assemblies
             return protocolConfig as MHEControl;
         }
 
-        public void RemoveSSCCBarcode(string ULID)            //IController
+        public void RemoveFromRoutingTable(string barcode)            //IController
         {
             throw new NotImplementedException();
         }

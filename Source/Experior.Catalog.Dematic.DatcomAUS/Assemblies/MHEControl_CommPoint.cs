@@ -59,7 +59,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                     IController oldplc = Experior.Core.Assemblies.Assembly.Items[((CaseData)caseload.Case_Data).PLCName] as IController;
 
                     if (oldplc != null)
-                        oldplc.RemoveSSCCBarcode(caseload.SSCCBarcode);
+                        oldplc.RemoveFromRoutingTable(caseload.SSCCBarcode);
                 }
 
                 ((CaseData)caseload.Case_Data).PLCName = CommPoint.ControllerName;
@@ -76,7 +76,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
 
                     if (RemoveFromRoutingTableArrival)
                     {
-                        casePLC.RemoveSSCCBarcode(caseload.SSCCBarcode);
+                        casePLC.RemoveFromRoutingTable(caseload.SSCCBarcode);
                     }
                     break;
 

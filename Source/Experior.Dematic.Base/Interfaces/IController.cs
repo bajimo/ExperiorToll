@@ -15,7 +15,7 @@ namespace Experior.Dematic.Base
         MHEControl CreateMHEControl(IControllable assem, ProtocolInfo info);
         event EventHandler OnControllerDeletedEvent;
         event EventHandler OnControllerRenamedEvent;
-        void RemoveSSCCBarcode(string ULID);
+        void RemoveFromRoutingTable(string barcode);
         Case_Load CreateCaseLoad(BaseCaseData caseData);
         EuroPallet CreateEuroPallet(BasePalletData baseData);
     }

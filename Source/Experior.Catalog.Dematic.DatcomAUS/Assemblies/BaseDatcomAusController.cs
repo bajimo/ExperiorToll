@@ -292,13 +292,12 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             //TODO Populate the correct field values
             telegram = telegram.SetFieldValue(this, TelegramFields.Current, caseData.CurrentPosition);
             telegram = telegram.SetFieldValue(this, TelegramFields.Destination, caseData.DestinationPosition);
-            telegram = telegram.SetFieldValue(this, TelegramFields.ULIdentification, load.Identification);
+            telegram = telegram.SetFieldValue(this, TelegramFields.Barcode1, load.Identification);
             telegram = telegram.SetFieldValue(this, TelegramFields.Width, (caseData.Width * 1000).ToString("0000"));
             telegram = telegram.SetFieldValue(this, TelegramFields.Length, (caseData.Length * 1000).ToString("0000"));
             telegram = telegram.SetFieldValue(this, TelegramFields.Height, (caseData.Height * 1000).ToString("0000"));
             telegram = telegram.SetFieldValue(this, TelegramFields.Weight, (caseData.Weight * 1000).ToString("000000"));
-
-            //telegram = telegram.SetFieldValue(this, TelegramFields.Profile, caseData.ProfileStatus);
+            telegram = telegram.SetFieldValue(this, TelegramFields.Profile, caseData.ProfileStatus);
             return telegram;
         }
 

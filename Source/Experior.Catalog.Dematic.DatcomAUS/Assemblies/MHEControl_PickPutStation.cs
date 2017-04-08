@@ -23,6 +23,19 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             //Add event subscriptions here
             theLift.OnArrivedAtRightPosition += TheLiftOnArrivedAtRightPosition;
             theLift.OnArrivedAtLeftPosition += TheLiftOnArrivedAtLeftPosition;
+            casePLC.OnTransportOrderTelegramReceived += CasePLC_OnTransportOrderTelegramReceived;  
+        }
+
+        private void CasePLC_OnTransportOrderTelegramReceived(object sender, TransportOrderEventArgs e)
+        {
+            if (e.Load == null)
+                return;
+
+            if (e.Location == RightPositionName || e.Location == LeftPositionName)
+            {
+                //check if barcode from order match barcode at location?
+                e.Load.Release();
+            }
         }
 
         public override void Dispose()
@@ -30,7 +43,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             //Add event un-subscriptions here
             theLift.OnArrivedAtRightPosition -= TheLiftOnArrivedAtRightPosition;
             theLift.OnArrivedAtLeftPosition -= TheLiftOnArrivedAtLeftPosition;
-
+            casePLC.OnTransportOrderTelegramReceived -= CasePLC_OnTransportOrderTelegramReceived;
             theLift = null;
             transferDatcomInfo = null;
         }   

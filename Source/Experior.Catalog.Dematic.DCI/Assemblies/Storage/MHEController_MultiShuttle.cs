@@ -658,7 +658,7 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
             return protocolConfig as MHEControl;
         }
 
-        public void RemoveSSCCBarcode(string ULID)
+        public void RemoveFromRoutingTable(string barcode)
         {
             throw new NotImplementedException();
         }

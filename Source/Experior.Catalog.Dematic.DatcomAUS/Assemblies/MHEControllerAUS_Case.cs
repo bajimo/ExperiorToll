@@ -22,7 +22,12 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
     {
         CaseDatcomAusInfo caseDatcomInfo;
         public int MaxRoutingTableEntries = int.MaxValue;
-        public Dictionary<string, string> RoutingTable = new Dictionary<string, string>(); //SSCCBarcode, Destination
+        public Dictionary<string, string> RoutingTable = new Dictionary<string, string>(); //barcode1, Destination
+        public event EventHandler<TransportOrderEventArgs> OnTransportOrderTelegramReceived;
+        protected virtual void TransportOrderTelegramReceived(TransportOrderEventArgs e)
+        {
+            OnTransportOrderTelegramReceived?.Invoke(this, e);
+        }
 
         public MHEControllerAUS_Case(CaseDatcomAusInfo info) : base(info)
         {
@@ -43,11 +48,11 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             get { return Common.Icons.Get("PLC"); }
         }
 
-        public void RemoveSSCCBarcode(string ULID)
+        public void RemoveFromRoutingTable(string barcode)
         {
-            if (RoutingTable.ContainsKey(ULID))
+            if (RoutingTable.ContainsKey(barcode))
             {
-                RoutingTable.Remove(ULID);
+                RoutingTable.Remove(barcode);
             }
         }
 
@@ -246,8 +251,8 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         public void CancelMissionRecieved(string telegram)
         {
             //Just remove from routing table?
-            var SSCCBarcode = telegram.GetFieldValue(this, TelegramFields.ULIdentification);
-            RoutingTable.Remove(SSCCBarcode);
+            var barcode1 = telegram.GetFieldValue(this, TelegramFields.Barcode1);
+            RoutingTable.Remove(barcode1);
         }
 
         public void TransportOrderRecieved(string telegram)
@@ -255,9 +260,10 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             //This message creates new entries in the Routing Table for specific ULs or updates existing records in the Routing Table for specific ULs.
             int count = RoutingTable.Count;
 
-            var SSCCBarcode = telegram.GetFieldValue(this, TelegramFields.ULIdentification);
+            var barcode1 = telegram.GetFieldValue(this, TelegramFields.Barcode1);
+            var current = telegram.GetFieldValue(this, TelegramFields.Current);
 
-            var caseload = Case_Load.GetCaseFromIdentification(SSCCBarcode);
+            var caseload = Case_Load.GetCaseFromIdentification(barcode1);
             //Check if the load has a datcom case data, if not create it as it may have come from a different system that has different case data e.g. DCI multishuttle
 
             if (caseload != null && caseload.Case_Data.GetType() != typeof(CaseData))
@@ -272,7 +278,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                 caseload.Case_Data = caseData;
             }
 
-            RoutingTable[SSCCBarcode] = telegram.GetFieldValue(this, TelegramFields.Destination).Trim();
+            RoutingTable[barcode1] = telegram.GetFieldValue(this, TelegramFields.Destination).Trim();
 
             //Remove if destinations is empty? (or does not exist?)
 
@@ -296,6 +302,8 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                 //string status = "01"; //Status 01 means routing Table critically full.
                 //SendTelegram("10", status);
             }
+
+            TransportOrderTelegramReceived(new TransportOrderEventArgs(current, barcode1, telegram, caseload));
         }
 
         public bool DivertSet(string barcode, List<string> validRoutes)
@@ -382,14 +390,18 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
     [TypeConverter(typeof(CaseDatcomAusInfo))]
     public class CaseDatcomAusInfo : BaseDatcomAusControllerInfo { }
 
-    public class CallForwardEventArgs : EventArgs
+    public class TransportOrderEventArgs : EventArgs
     {
         public readonly string Location;
         public readonly string Barcode;
-        public CallForwardEventArgs(string location, string barcode)
+        public readonly string Telegram;
+        public readonly Load Load;
+        public TransportOrderEventArgs(string location, string barcode, string telegram, Load load)
         {
             Location = location;
             Barcode = barcode;
+            Telegram = telegram;
+            Load = load;
         }
     }
 }
