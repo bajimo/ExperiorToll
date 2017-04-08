@@ -24,8 +24,9 @@ namespace Experior.Dematic.Base
     }
     public enum CasePLC_State 
     { 
-        Unknown,
+        Unknown, 
         Ready, 
+        AutoNoMovement, 
         Auto, 
         NotReady 
     };

@@ -150,8 +150,8 @@ namespace VirtualFlowController.DATCOMAUS.Controllers
                 if (e._connectionStatus == ConnectionStatus.Connected)
                 {
                     controllerStatus = ControllerStatus.Running;
-                    string telegram = Template.CreateTelegram(this, TelegramTypes.SetSystemStatus);
-                    telegram = telegram.SetFieldValue(this, TelegramFields.SystemStatus, "02"); //Set ready status
+                    string telegram = Template.CreateTelegram(this, TelegramTypes.SystemStatusReport);
+                    telegram = telegram.SetFieldValue(this, TelegramFields.SystemStatus, "02"); //ready status
                     //telegram = telegram.SetFieldValue(this, TelegramFields.DeviceIdent, "ALL");
                     Send(telegram);
 
@@ -175,21 +175,41 @@ namespace VirtualFlowController.DATCOMAUS.Controllers
 
         public override void processTelegram(string telegram)
         {
-            if (telegram.GetTelegramType(this) == TelegramTypes.RequestAllData)
-            {
-                //Send remap data???
+            TelegramTypes type = telegram.GetTelegramType(this);
 
-
-            }
-            else if (telegram.GetTelegramType(this) == TelegramTypes.EndRemap)
+            if (type == TelegramTypes.SystemStatusReport)
             {
-                if (connection.ConnectionStatus == ConnectionStatus.Connected)
+                var status = telegram.GetFieldValue(this, TelegramFields.SystemStatus);
+                if (status == "02")
                 {
                     controllerStatus = ControllerStatus.Ready;
+                    var setSystemStatus = Template.CreateTelegram(this, TelegramTypes.SetSystemStatus);
+                    setSystemStatus = setSystemStatus.SetFieldValue(this, TelegramFields.SystemStatus, "03");
+                    Send(setSystemStatus);
+                    return;
+                }
+                if (status == "03")
+                {
+                    controllerStatus = ControllerStatus.AutoNoMove;
+                    var requestAlldata = Template.CreateTelegram(this, TelegramTypes.RequestAllData);
+                    Send(requestAlldata);
+                    return;
+                }
+                if (status == "04")
+                {
+                    if (connection.ConnectionStatus == ConnectionStatus.Connected)
+                    {
+                        controllerStatus = ControllerStatus.Running;
+                    }
                 }
             }
-
-            TelegramTypes type = telegram.GetTelegramType(this);
+            else if (type == TelegramTypes.EndRemap)
+            { 
+                var materialFlowStart = Template.CreateTelegram(this, TelegramTypes.MaterialFlowStart);
+                Send(materialFlowStart);
+                return;
+            }
+         
             foreach (var eType in Enum.GetValues(typeof(DATCOMAUSRouting.RoutingTypesDATCOMAUS)))
             {
                 if (eType.ToString() == type.ToString()) //First check if the message type is valid for routings

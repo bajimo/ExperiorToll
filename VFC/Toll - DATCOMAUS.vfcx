@@ -1887,7 +1887,7 @@
           <PaddingChar>0</PaddingChar>
         </NUMERIC>
       </DefaultFormatPadding>
-      <Acknowledge Identifier="A" />
+      <Acknowledge Identifier="" />
       <Header>
         <Field>
           <Name>Start</Name>
@@ -1900,9 +1900,7 @@
           <Name>Cycle</Name>
           <Format>ASCII</Format>
           <Length>1</Length>
-          <Type>AckIdentifier</Type>
-          <Value>
-          </Value>
+          <Type>Normal</Type>
         </Field>
         <Field>
           <Name>Type</Name>
@@ -1930,11 +1928,10 @@
         </Field>
         <Field>
           <Name>Program Ident</Name>
-          <Format>U16</Format>
+          <Format>ASCII</Format>
           <Length>2</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
+          <Value>00</Value>
         </Field>
       </Header>
       <Tail>
@@ -1989,13 +1986,13 @@
         <Field>
           <Name>Barcode 1</Name>
           <Format>ASCII</Format>
-          <Length>40</Length>
+          <Length>20</Length>
           <Type>Normal</Type>
         </Field>
         <Field>
           <Name>Barocde 2</Name>
           <Format>ASCII</Format>
-          <Length>40</Length>
+          <Length>20</Length>
           <Type>Normal</Type>
         </Field>
         <Field>
@@ -2071,13 +2068,13 @@
         <Field>
           <Name>Barcode 1</Name>
           <Format>ASCII</Format>
-          <Length>40</Length>
+          <Length>20</Length>
           <Type>Normal</Type>
         </Field>
         <Field>
           <Name>Barocde 2</Name>
           <Format>ASCII</Format>
-          <Length>40</Length>
+          <Length>20</Length>
           <Type>Normal</Type>
         </Field>
         <Field>
@@ -2153,13 +2150,13 @@
         <Field>
           <Name>Barcode 1</Name>
           <Format>ASCII</Format>
-          <Length>40</Length>
+          <Length>20</Length>
           <Type>Normal</Type>
         </Field>
         <Field>
           <Name>Barocde 2</Name>
           <Format>ASCII</Format>
-          <Length>40</Length>
+          <Length>20</Length>
           <Type>Normal</Type>
         </Field>
         <Field>
@@ -2209,7 +2206,7 @@
         <Name>Set System Status</Name>
         <BodyType>Single</BodyType>
         <Field>
-          <Name>filler1</Name>
+          <Name>Null1</Name>
           <Format>ASCII</Format>
           <Length>30</Length>
           <Type>Normal</Type>
@@ -2223,7 +2220,7 @@
           <Type>Normal</Type>
         </Field>
         <Field>
-          <Name>Filler3</Name>
+          <Name>Null2</Name>
           <Format>ASCII</Format>
           <Length>76</Length>
           <Type>Normal</Type>
@@ -2233,7 +2230,7 @@
         <Name>System Status</Name>
         <BodyType>Single</BodyType>
         <Field>
-          <Name>filler1</Name>
+          <Name>Null1</Name>
           <Format>ASCII</Format>
           <Length>30</Length>
           <Type>Normal</Type>
@@ -2247,9 +2244,59 @@
           <Type>Normal</Type>
         </Field>
         <Field>
-          <Name>Filler3</Name>
+          <Name>Null2</Name>
           <Format>ASCII</Format>
           <Length>76</Length>
+          <Type>Normal</Type>
+        </Field>
+      </Message>
+      <Message Identifier="30">
+        <Name>Request all data</Name>
+        <BodyType>Single</BodyType>
+        <Field>
+          <Name>Null</Name>
+          <Format>ASCII</Format>
+          <Length>108</Length>
+          <Type>Normal</Type>
+        </Field>
+      </Message>
+      <Message Identifier="32">
+        <Name>End of remap</Name>
+        <BodyType>Single</BodyType>
+        <Field>
+          <Name>Null</Name>
+          <Format>ASCII</Format>
+          <Length>108</Length>
+          <Type>Normal</Type>
+        </Field>
+      </Message>
+      <Message Identifier="14">
+        <Name>Start material flow</Name>
+        <BodyType>Single</BodyType>
+        <Field>
+          <Name>Null</Name>
+          <Format>ASCII</Format>
+          <Length>108</Length>
+          <Type>Normal</Type>
+        </Field>
+      </Message>
+      <Message Identifier="15">
+        <Name>Stop material flow</Name>
+        <BodyType>Single</BodyType>
+        <Field>
+          <Name>Null</Name>
+          <Format>ASCII</Format>
+          <Length>108</Length>
+          <Type>Normal</Type>
+        </Field>
+      </Message>
+      <Message Identifier="99">
+        <Name>Heartbeat</Name>
+        <BodyType>Single</BodyType>
+        <Field>
+          <Name>Null</Name>
+          <Format>ASCII</Format>
+          <Length>108</Length>
           <Type>Normal</Type>
         </Field>
       </Message>
@@ -2493,11 +2540,13 @@
       <LiveTelegrams>True</LiveTelegrams>
       <LiveInterval>30</LiveInterval>
       <Enabled>True</Enabled>
-      <LogAll>False</LogAll>
+      <LogAll>True</LogAll>
       <connection>PLC51</connection>
       <VFCIdentifier>01</VFCIdentifier>
       <PLCIdentifier>51</PLCIdentifier>
       <telegramValidation>DATCOMAUS</telegramValidation>
+      <ReceiverIdentifier>51</ReceiverIdentifier>
+      <SenderIdentifier>01</SenderIdentifier>
     </Controller>
   </Controllers>
   <Routings>

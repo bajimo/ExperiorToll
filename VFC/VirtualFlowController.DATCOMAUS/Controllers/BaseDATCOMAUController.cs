@@ -8,7 +8,7 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace VirtualFlowController.DATCOMAUS.Controllers
 {
-    public abstract class BaseDATCOMAUSController: ControllerTabbed, IDATCOMAUSTelegrams
+    public abstract class BaseDATCOMAUSController : ControllerTabbed, IDATCOMAUSTelegrams
     {
         protected System.Timers.Timer liveTimer = new System.Timers.Timer();
         protected bool waitingForAck = false;
@@ -67,14 +67,13 @@ namespace VirtualFlowController.DATCOMAUS.Controllers
         public string ReceiverIdentifier
         {
             get { return PLCIdentifier; }
+            set { PLCIdentifier = value; }
         }
 
         public string SenderIdentifier
         {
-            get
-            {
-                return VFCIdentifier;
-            }
+            get { return VFCIdentifier; }
+            set { VFCIdentifier = value; }
         }
 
         public int GetTelegramLength(TelegramTypes telegramType)
@@ -108,7 +107,7 @@ namespace VirtualFlowController.DATCOMAUS.Controllers
 
         public override void Send(string Telegram, bool noAckResend = false)
         {
-            if (controllerStatus == ControllerStatus.Running || controllerStatus == ControllerStatus.AutoNoMove)
+            if (controllerStatus == ControllerStatus.Running || controllerStatus == ControllerStatus.AutoNoMove || controllerStatus == ControllerStatus.Ready)
             {
                 string message;
                 byte[] bTelegram = telegramValidation.FormatSendMessage(Telegram, out message);

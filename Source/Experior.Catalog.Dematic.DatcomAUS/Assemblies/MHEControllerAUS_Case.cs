@@ -21,15 +21,8 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
     public class MHEControllerAUS_Case : BaseDatcomAusController, IController, ICaseController
     {
         CaseDatcomAusInfo caseDatcomInfo;
-        //public Dictionary<string, CallForwardLocation> callForwardTable = new Dictionary<string, CallForwardLocation>();
         public int MaxRoutingTableEntries = int.MaxValue;
         public Dictionary<string, string> RoutingTable = new Dictionary<string, string>(); //SSCCBarcode, Destination
-
-        //public event EventHandler<CallForwardEventArgs> OnCallForwardTelegramReceived;
-        //protected virtual void CallForwardTelegramReceived(CallForwardEventArgs e)
-        //{
-        //    OnCallForwardTelegramReceived?.Invoke(this, e);
-        //}
 
         public MHEControllerAUS_Case(CaseDatcomAusInfo info) : base(info)
         {
@@ -110,12 +103,12 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         public void SendArrivalMessage(string location, Case_Load load)
         {
             if (string.IsNullOrWhiteSpace(location))
-                return;  
+                return;
 
             if (load == null)
                 return;
 
-            if (PLC_State == CasePLC_State.Ready)
+            if (PLC_State == CasePLC_State.Auto)
             {
                 CaseData caseData = load.Case_Data as CaseData;
                 caseData.CurrentPosition = location;
@@ -138,22 +131,20 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                 case TelegramTypes.CancelMission: //04
                     CancelMissionRecieved(telegram);
                     break;
-                //case "04":
-                //    PurgeRoutingTableRecieved(telegram);
-                //    break;
-                //case "09":
-                //    CraneForkStatusRecieved(telegram);
-                //    break;
                 case TelegramTypes.SetSystemStatus:
                     SetSystemStatusRecieved(telegram);
                     break;
-                //case "26":
-                //    CallForwardRecieved(telegram);
-                //    break;
-                //case "86":
-                //    CallForwardWithBarcode(telegram);
-                //    break;
-                default:
+                case TelegramTypes.SystemStatusReport:
+                    SystemStatusReportRecieved(telegram);
+                    break;
+                case TelegramTypes.RequestAllData:
+                    RequestAllDataRecieved(telegram);
+                    break;
+                case TelegramTypes.MaterialFlowStart:
+                    MaterialFlowStartRecieved(telegram);
+                    break;
+                case TelegramTypes.MaterialFlowStop:
+                    MaterialFlowStopRecieved(telegram);
                     break;
             }
         }
@@ -165,102 +156,66 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
 
         public static event EventHandler<PlcStatusChangeEventArgs> OnCasePLCStatusChanged;
 
-        private CasePLC_State? _PLC_State = CasePLC_State.Unknown;
+        private CasePLC_State? plcState = CasePLC_State.Ready;
         [Browsable(false)]
         public CasePLC_State? PLC_State
         {
-            get { return _PLC_State; }
+            get { return plcState; }
             set
             {
-                _PLC_State = value;
-                if (OnCasePLCStatusChanged != null)
-                {
-                    OnCasePLCStatusChanged(this, new PlcStatusChangeEventArgs(value));
-                }
+                plcState = value;
+                OnCasePLCStatusChanged?.Invoke(this, new PlcStatusChangeEventArgs(value));
             }
         }
 
-        //public void CallForwardWithBarcode(string[] telegramFields)
-        //{
-        //    string location = telegramFields[6];
-        //    ushort quantity = ushort.Parse(telegramFields[7]);
-        //    string barcode = telegramFields[8];
+        private void MaterialFlowStopRecieved(string telegram)
+        {
+            PLC_State = CasePLC_State.AutoNoMovement;
+            string reply = Template.CreateTelegram(this, TelegramTypes.SystemStatusReport);
+            reply = reply.SetFieldValue(this, TelegramFields.SystemStatus, "03");
+            SendTelegram(reply);
+        }
 
-        //    //Call forward at manual picking points on Accumulation conveyor
-        //    if (Core.Assemblies.Assembly.Items.ContainsKey(location) && Core.Assemblies.Assembly.Items[location] is StraightAccumulationConveyor)
-        //    {
-        //        StraightAccumulationConveyor conv = Core.Assemblies.Assembly.Items[location] as StraightAccumulationConveyor;
-        //        if (conv.ControllerProperties != null)
-        //        {
-        //            MHEControl_ManualPicking control = conv.ControllerProperties as MHEControl_ManualPicking;
-        //            control.CallForwardReceived(barcode);
-        //        }
-        //    }
-        //    CallForwardTelegramReceived(new CallForwardEventArgs(location, barcode));
-        //}
+        private void MaterialFlowStartRecieved(string telegram)
+        {
+            PLC_State = CasePLC_State.Auto;
+            string reply = Template.CreateTelegram(this, TelegramTypes.SystemStatusReport);
+            reply = reply.SetFieldValue(this, TelegramFields.SystemStatus, "04");
+            SendTelegram(reply);
+        }
 
-        //public void CallForwardRecieved(string[] telegramFields)
-        //{
-        //    //This message is used by MFH to instruct CCC to release a number of ULs from a location.
-        //    string location = telegramFields[6];
-        //    ushort quantity = ushort.Parse(telegramFields[7]);
+        private void RequestAllDataRecieved(string telegram)
+        {
+            //TODO send type 31 messages "Re-map Unit Load Data"
 
-        //    //Call forward at manual picking points on Accumulation conveyor
-        //    if (Core.Assemblies.Assembly.Items.ContainsKey(location) && Core.Assemblies.Assembly.Items[location] is StraightAccumulationConveyor)
-        //    {
-        //        StraightAccumulationConveyor conv = Core.Assemblies.Assembly.Items[location] as StraightAccumulationConveyor;
-        //        if (conv.ControllerProperties != null)
-        //        {
-        //            MHEControl_ManualPicking control = conv.ControllerProperties as MHEControl_ManualPicking;
-        //            control.CallForwardReceived(null);
-        //        }
-        //    }
-        //}
+            //A “Request All Data” telegram(Type 30) is sent by the WCS.For each of the conveyor locations listed above, the PLC checks to see if there is a carrier present. For each carrier place for which data is present, a “One Location Data Record” telegram(Type 31) is sent.The telegram contains all the details about the carrier.
+            //After the last “One Location Data Record” telegram has been sent by the PLC, an ‘End of Re - map’ telegram(Type 32) is sent to indicate an end of the remap.
+            string reply = Template.CreateTelegram(this, TelegramTypes.EndRemap);
+            SendTelegram(reply);
+        }
 
-        //public void RemoveCallForwardLocation(string location)
-        //{
-        //    callForwardTable[location].Timer.Stop();
-        //    callForwardTable[location].Timer.OnElapsed -= new Timer.ElapsedEvent(CallForwardElapsed);
-        //    callForwardTable[location].Timer.Dispose();
-        //    callForwardTable.Remove(location);
-        //}
+        private void SystemStatusReportRecieved(string telegram)
+        {
+            string telegramStatus = telegram.GetFieldValue(this, TelegramFields.SystemStatus);
+            if (telegramStatus == "02")
+            {
+                PLC_State = CasePLC_State.Ready;
+            }
 
-        //public void CallForwardElapsed(Timer sender)
-        //{
-        //    string location = sender.UserData as string;
+            string reply = Template.CreateTelegram(this, TelegramTypes.SystemStatusReport);
+            var status = "00";
+            if (PLC_State == CasePLC_State.Ready)
+                status = "02";
+            else if (PLC_State == CasePLC_State.AutoNoMovement)
+                status = "03";
+            else if (PLC_State == CasePLC_State.Auto)
+                status = "04";
 
-        //    if (callForwardTable.ContainsKey(location))
-        //    {
-        //        if (callForwardTable[location].Quantity > 0)
-        //        {
-        //            //If the CCC is unable to supply the required quantity of totes, it sends a Call Forward Exception
-        //            //Message (Type 27) to MFH. The quantity field sent in this message is the outstanding number of
-        //            //totes.
-        //            SendCallForwardException(location, callForwardTable[location].Quantity);
-        //        }
+            reply = reply.SetFieldValue(this, TelegramFields.SystemStatus, status);
+            SendTelegram(reply);
+        }
 
-        //        RemoveCallForwardLocation(location);
-        //    }
-        //}
-
-        //public void SendCallForwardException(string location, ushort Outstanding_quantity_of_ULs_not_released)
-        //{
-        //    if (string.IsNullOrWhiteSpace(location))
-        //        return;
-
-        //    if (PLC_State == CasePLC_State.Ready)
-        //        SendTelegram("27", location + "," + Outstanding_quantity_of_ULs_not_released);
-        //}
-
-        //public void SendLaneOccupancyMessage(string location, string status)
-        //{
-        //    if (string.IsNullOrWhiteSpace(location))
-        //        return;
-
-        //    SendTelegram("28", location + "," + status);
-        //}
-
-        public void SetSystemStatusRecieved(string telegram)
+        private void SetSystemStatusRecieved(string telegram)
         {
             string status = telegram.GetFieldValue(this, TelegramFields.SystemStatus);
 
@@ -268,51 +223,25 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             {
                 PLC_State = CasePLC_State.Ready;
             }
+            if (status == "03")
+            {
+                PLC_State = CasePLC_State.AutoNoMovement;
+            }
             if (status == "00")
             {
                 PLC_State = CasePLC_State.Unknown;
+            }
+
+            if (status == "03")
+            {
+                //TODO
+                //send status of all conveyors
             }
 
             string reply = Template.CreateTelegram(this, TelegramTypes.SystemStatusReport);
             reply = reply.SetFieldValue(this, TelegramFields.SystemStatus, status);
             SendTelegram(reply);
         }
-
-        //public void CraneForkStatusRecieved(string[] telegramFields)
-        //{
-
-        //    bool[] pickStationUsed = new bool[4] { true, true, true, true };
-
-        //    for (int i = 7; i < telegramFields.Length - 2; i++)
-        //    {
-        //        if (telegramFields[i] == "01")
-        //            pickStationUsed[i - 7] = false;
-        //    }
-
-        //    MiniloadPickStationStatus(this, telegramFields[6], pickStationUsed);
-
-        //    //TODO
-        //    //SendCraneInputStationArrival(string craneNumber, List<Case_Load> EPCases)();
-        //    //string status = "00";
-        //    //SendAPLevelStatus(status);
-        //}
-
-        //public event PickStationStatus MiniloadPickStationStatusEvent;
-
-        //public void MiniloadPickStationStatus(IController sender, string crane, bool[] pickStationStatus)
-        //{
-        //    //MiniloadPickStationStatusEvent(sender, crane, pickStationStatus);
-        //}
-
-        //public void PurgeRoutingTableRecieved(string[] telegramFields)
-        //{
-        //    //This message deletes the entire Routing Table in a CCC and will be typically used as part of some sort of housekeeping functionality.
-        //    RoutingTable.Clear();
-        //    //Purging the Routing Table by CCC (as instructed by MFH) will trigger another Routing Table Status
-        //    //message indicating that the table is 'no longer critically full'.
-        //    string status = "00"; //Routing table no longer critically full.  Status 01 means routing Table critically full.
-        //    SendTelegram("10", status);
-        //}
 
         public void CancelMissionRecieved(string telegram)
         {
@@ -327,7 +256,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             int count = RoutingTable.Count;
 
             var SSCCBarcode = telegram.GetFieldValue(this, TelegramFields.ULIdentification);
-       
+
             var caseload = Case_Load.GetCaseFromIdentification(SSCCBarcode);
             //Check if the load has a datcom case data, if not create it as it may have come from a different system that has different case data e.g. DCI multishuttle
 
@@ -346,7 +275,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             RoutingTable[SSCCBarcode] = telegram.GetFieldValue(this, TelegramFields.Destination).Trim();
 
             //Remove if destinations is empty? (or does not exist?)
-            
+
             //Update caseload if it exists
             if (caseload != null)
             {
@@ -369,9 +298,6 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             }
         }
 
-        //*****************************************************************
-        #region Route Checking
-
         public bool DivertSet(string barcode, List<string> validRoutes)
         {
             if (!RoutingTable.ContainsKey(barcode) || validRoutes == null || validRoutes.Count == 0)
@@ -387,20 +313,16 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             return DivertSet(barcode, validRoutes);
         }
 
-        #endregion
-
         /// <summary>
         /// Takes the string input from the assembly that is entered by the user
         /// and if valid then converts it into a List of string
         /// </summary>
         /// <param name="code">Routing code for routing: format destination1,destination2,...,destination n</param>
         /// <returns>List of integer array</returns>
-        public List<string> ValidateRoutingCode(string code) 
+        public List<string> ValidateRoutingCode(string code)
         {
             return code.Split(';').ToList();
         }
-
-        //*******************************************************************
 
         #region ICaseController
         public BaseCaseData GetCaseData()
@@ -455,17 +377,6 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             State = state;
         }
     }
-
-    #region Helper classes
-
-    public class CallForwardLocation
-    {
-        public ushort Quantity;
-        public string Location;
-        public Timer Timer;
-    }
-
-    #endregion
 
     [Serializable]
     [TypeConverter(typeof(CaseDatcomAusInfo))]
