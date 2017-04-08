@@ -2548,6 +2548,96 @@
       <ReceiverIdentifier>51</ReceiverIdentifier>
       <SenderIdentifier>01</SenderIdentifier>
     </Controller>
+    <Controller Name="PLC52" Type="ConveyorDATCOMAUS">
+      <Category>
+      </Category>
+      <LoadType>0000</LoadType>
+      <LiveTelegrams>True</LiveTelegrams>
+      <LiveInterval>30</LiveInterval>
+      <Enabled>True</Enabled>
+      <LogAll>True</LogAll>
+      <connection>PLC52</connection>
+      <VFCIdentifier>01</VFCIdentifier>
+      <PLCIdentifier>52</PLCIdentifier>
+      <telegramValidation>DATCOMAUS</telegramValidation>
+      <ReceiverIdentifier>52</ReceiverIdentifier>
+      <SenderIdentifier>01</SenderIdentifier>
+    </Controller>
+    <Controller Name="PLC53" Type="ConveyorDATCOMAUS">
+      <Category>
+      </Category>
+      <LoadType>0000</LoadType>
+      <LiveTelegrams>True</LiveTelegrams>
+      <LiveInterval>30</LiveInterval>
+      <Enabled>True</Enabled>
+      <LogAll>True</LogAll>
+      <connection>PLC53</connection>
+      <VFCIdentifier>01</VFCIdentifier>
+      <PLCIdentifier>53</PLCIdentifier>
+      <telegramValidation>DATCOMAUS</telegramValidation>
+      <ReceiverIdentifier>53</ReceiverIdentifier>
+      <SenderIdentifier>01</SenderIdentifier>
+    </Controller>
+    <Controller Name="PLC54" Type="ConveyorDATCOMAUS">
+      <Category>
+      </Category>
+      <LoadType>0000</LoadType>
+      <LiveTelegrams>True</LiveTelegrams>
+      <LiveInterval>30</LiveInterval>
+      <Enabled>True</Enabled>
+      <LogAll>True</LogAll>
+      <connection>PLC54</connection>
+      <VFCIdentifier>01</VFCIdentifier>
+      <PLCIdentifier>54</PLCIdentifier>
+      <telegramValidation>DATCOMAUS</telegramValidation>
+      <ReceiverIdentifier>54</ReceiverIdentifier>
+      <SenderIdentifier>01</SenderIdentifier>
+    </Controller>
+    <Controller Name="PLC61" Type="ConveyorDATCOMAUS">
+      <Category>
+      </Category>
+      <LoadType>0000</LoadType>
+      <LiveTelegrams>True</LiveTelegrams>
+      <LiveInterval>30</LiveInterval>
+      <Enabled>True</Enabled>
+      <LogAll>True</LogAll>
+      <connection>PLC61</connection>
+      <VFCIdentifier>01</VFCIdentifier>
+      <PLCIdentifier>61</PLCIdentifier>
+      <telegramValidation>DATCOMAUS</telegramValidation>
+      <ReceiverIdentifier>61</ReceiverIdentifier>
+      <SenderIdentifier>01</SenderIdentifier>
+    </Controller>
+    <Controller Name="PLC62" Type="ConveyorDATCOMAUS">
+      <Category>
+      </Category>
+      <LoadType>0000</LoadType>
+      <LiveTelegrams>True</LiveTelegrams>
+      <LiveInterval>30</LiveInterval>
+      <Enabled>True</Enabled>
+      <LogAll>True</LogAll>
+      <connection>PLC62</connection>
+      <VFCIdentifier>01</VFCIdentifier>
+      <PLCIdentifier>62</PLCIdentifier>
+      <telegramValidation>DATCOMAUS</telegramValidation>
+      <ReceiverIdentifier>62</ReceiverIdentifier>
+      <SenderIdentifier>01</SenderIdentifier>
+    </Controller>
+    <Controller Name="PLC63" Type="ConveyorDATCOMAUS">
+      <Category>
+      </Category>
+      <LoadType>0000</LoadType>
+      <LiveTelegrams>True</LiveTelegrams>
+      <LiveInterval>30</LiveInterval>
+      <Enabled>True</Enabled>
+      <LogAll>True</LogAll>
+      <connection>PLC63</connection>
+      <VFCIdentifier>01</VFCIdentifier>
+      <PLCIdentifier>63</PLCIdentifier>
+      <telegramValidation>DATCOMAUS</telegramValidation>
+      <ReceiverIdentifier>63</ReceiverIdentifier>
+      <SenderIdentifier>01</SenderIdentifier>
+    </Controller>
   </Controllers>
   <Routings>
     <Routing Name="GTP01" Type="DATCOMAUSRouting">
