@@ -1,13 +1,21 @@
-﻿using Experior.Core.Loads;
+﻿using Experior.Catalog.Dematic.DatcomAUS.Assemblies;
+using Experior.Core.Loads;
 using Experior.Core.Routes;
+using Experior.Dematic.Base;
 
 namespace Experior.Controller.TollFashion
 {
     public partial class TollFashionRouting : Catalog.ControllerExtended
     {
+        private MHEControllerAUS_Case plc51, plc52, plc53;
+
         public TollFashionRouting() : base("TollFashionRouting")
         {
             StandardConstructor();
+
+            plc51 = Core.Assemblies.Assembly.Get("PLC 51") as MHEControllerAUS_Case;
+            plc52 = Core.Assemblies.Assembly.Get("PLC 52") as MHEControllerAUS_Case;
+            plc53 = Core.Assemblies.Assembly.Get("PLC 53") as MHEControllerAUS_Case;
 
             Core.Environment.Scene.OnResetCompleted += Scene_OnResetCompleted;
         }
@@ -22,6 +30,25 @@ namespace Experior.Controller.TollFashion
             if (node.Name.StartsWith("ROUTETO:"))
             {
                 var dest = node.Name.Replace("ROUTETO:", "");
+                if (dest.StartsWith("PICK"))
+                {
+                    var picknumber = int.Parse(dest.Substring(4, 2));
+                    var plc = plc51;
+                    if (picknumber > 8 && picknumber <= 16)
+                        plc = plc52;
+                    if (picknumber > 17)
+                        plc = plc53;
+
+                    var caseLoad = load as Case_Load;
+                    if (caseLoad == null)
+                    {
+                        Log.Write($"Error: Load exiting MS and going to pick {picknumber} is no caseLoad");
+                        return;
+                    }
+
+                    //Set the destination so the case load will cross the main line
+                    plc.RoutingTable[caseLoad.SSCCBarcode] = dest;
+                }
             }
         }
 

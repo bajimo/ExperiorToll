@@ -133,7 +133,12 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Experior.Catalog.Dematic.DatcomAUS\Experior.Catalog.Dematic.DatcomAUS.csproj">
+      <Project>{9f46ef99-481b-47bc-9849-f991cf5e0df0}</Project>
+      <Name>Experior.Catalog.Dematic.DatcomAUS</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
       <Visible>False</Visible>
