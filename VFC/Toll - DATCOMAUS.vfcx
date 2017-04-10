@@ -2646,12 +2646,623 @@
       <triggerMessType>Disabled</triggerMessType>
       <RoutingTrigger>Arrival</RoutingTrigger>
       <Distribution>Random</Distribution>
-      <DestinationCode>TEST</DestinationCode>
+      <DestinationCode>MSAI01CL02PS10</DestinationCode>
       <DestinationCodeSecondary>
       </DestinationCodeSecondary>
-      <TelegramDelay>4</TelegramDelay>
+      <TelegramDelay>10</TelegramDelay>
       <RoutePercentage>100</RoutePercentage>
       <RouteController>PLC51</RouteController>
+    </Routing>
+    <Routing Name="PICK02A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>MSAI02CL02PS10</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC51</RouteController>
+    </Routing>
+    <Routing Name="PICK03A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>MSAI03CL02PS10</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC51</RouteController>
+    </Routing>
+    <Routing Name="PICK04A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>MSAI04CL02PS10</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC51</RouteController>
+    </Routing>
+    <Routing Name="PICK05A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>MSAI05CL02PS10</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC51</RouteController>
+    </Routing>
+    <Routing Name="PICK06A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>MSAI06CL02PS10</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC51</RouteController>
+    </Routing>
+    <Routing Name="PICK07A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>MSAI07CL02PS10</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC51</RouteController>
+    </Routing>
+    <Routing Name="PICK08A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>MSAI08CL02PS10</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC51</RouteController>
+    </Routing>
+    <Routing Name="PICK09A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>MSAI09CL02PS10</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC52</RouteController>
+    </Routing>
+    <Routing Name="PICK10A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>MSAI10CL02PS10</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC52</RouteController>
+    </Routing>
+    <Routing Name="PICK11A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>MSAI11CL02PS10</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC52</RouteController>
+    </Routing>
+    <Routing Name="PICK12A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>MSAI12CL02PS10</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC52</RouteController>
+    </Routing>
+    <Routing Name="PICK13A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>MSAI13CL02PS10</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC52</RouteController>
+    </Routing>
+    <Routing Name="PICK14A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>MSAI14CL02PS10</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC52</RouteController>
+    </Routing>
+    <Routing Name="PICK15A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>MSAI15CL02PS10</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC52</RouteController>
+    </Routing>
+    <Routing Name="PICK16A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>MSAI16CL02PS10</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC52</RouteController>
+    </Routing>
+    <Routing Name="PICK17A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>MSAI17CL02PS10</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC53</RouteController>
+    </Routing>
+    <Routing Name="PICK18A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>MSAI18CL02PS10</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC53</RouteController>
+    </Routing>
+    <Routing Name="PICK19A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>MSAI19CL02PS10</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC53</RouteController>
+    </Routing>
+    <Routing Name="PICK20A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>MSAI20CL02PS10</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC53</RouteController>
+    </Routing>
+    <Routing Name="PICK21A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>MSAI21CL02PS10</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC53</RouteController>
+    </Routing>
+    <Routing Name="PICK22A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>MSAI22CL02PS10</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC53</RouteController>
+    </Routing>
+    <Routing Name="PICK23A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>MSAI23CL02PS10</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC53</RouteController>
+    </Routing>
+    <Routing Name="PICK24A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>MSAI24CL02PS10</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC53</RouteController>
+    </Routing>
+    <Routing Name="PUT01A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>CC53AI32NP2</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC51</RouteController>
+    </Routing>
+    <Routing Name="PUT02A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>CC53AI32NP2</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC51</RouteController>
+    </Routing>
+    <Routing Name="PUT03A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>CC53AI32NP2</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC51</RouteController>
+    </Routing>
+    <Routing Name="PUT04A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>CC53AI32NP2</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC51</RouteController>
+    </Routing>
+    <Routing Name="PUT05A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>CC53AI32NP2</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC51</RouteController>
+    </Routing>
+    <Routing Name="PUT06A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>CC53AI32NP2</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC51</RouteController>
+    </Routing>
+    <Routing Name="PUT07A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>CC53AI32NP2</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC51</RouteController>
+    </Routing>
+    <Routing Name="PUT08A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>CC53AI32NP2</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC51</RouteController>
+    </Routing>
+    <Routing Name="PUT09A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>CC53AI32NP2</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC52</RouteController>
+    </Routing>
+    <Routing Name="PUT10A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>CC53AI32NP2</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC52</RouteController>
+    </Routing>
+    <Routing Name="PUT11A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>CC53AI32NP2</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC52</RouteController>
+    </Routing>
+    <Routing Name="PUT12A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>CC53AI32NP2</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC52</RouteController>
+    </Routing>
+    <Routing Name="PUT13A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>CC53AI32NP2</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC52</RouteController>
+    </Routing>
+    <Routing Name="PUT14A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>CC53AI32NP2</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC52</RouteController>
+    </Routing>
+    <Routing Name="PUT15A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>CC53AI32NP2</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC52</RouteController>
+    </Routing>
+    <Routing Name="PUT16A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>CC53AI32NP2</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC52</RouteController>
+    </Routing>
+    <Routing Name="PUT17A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>CC53AI32NP2</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC53</RouteController>
+    </Routing>
+    <Routing Name="PUT18A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>CC53AI32NP2</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC53</RouteController>
+    </Routing>
+    <Routing Name="PUT19A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>CC53AI32NP2</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC53</RouteController>
+    </Routing>
+    <Routing Name="PUT20A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>CC53AI32NP2</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC53</RouteController>
+    </Routing>
+    <Routing Name="PUT21A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>CC53AI32NP2</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC53</RouteController>
+    </Routing>
+    <Routing Name="PUT22A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>CC53AI32NP2</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC53</RouteController>
+    </Routing>
+    <Routing Name="PUT23A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>CC53AI32NP2</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC53</RouteController>
+    </Routing>
+    <Routing Name="PUT24A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>CC53AI32NP2</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>10</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC53</RouteController>
     </Routing>
     <Routing Name="CC51OBNP1" Type="DATCOMAUSRouting">
       <Category>
@@ -2659,7 +3270,7 @@
       <triggerMessType>Disabled</triggerMessType>
       <RoutingTrigger>Arrival</RoutingTrigger>
       <Distribution>RoundRobin</Distribution>
-      <DestinationCode>CC51LIP28,PUT01A1</DestinationCode>
+      <DestinationCode>CC51LIP28,PUT01A1,PUT02A1,PUT03A1,PUT04A1,PUT05A1,PUT06A1,PUT07A1,PUT08A1</DestinationCode>
       <DestinationCodeSecondary>
       </DestinationCodeSecondary>
       <TelegramDelay>0</TelegramDelay>
@@ -2672,7 +3283,7 @@
       <triggerMessType>Disabled</triggerMessType>
       <RoutingTrigger>Arrival</RoutingTrigger>
       <Distribution>RoundRobin</Distribution>
-      <DestinationCode>CC52LIP30,PUT09A1</DestinationCode>
+      <DestinationCode>CC52LIP30,,PUT09A1,PUT10A1,PUT11A1,PUT12A1,PUT13A1,PUT14A1,PUT15A1,PUT16A1</DestinationCode>
       <DestinationCodeSecondary>
       </DestinationCodeSecondary>
       <TelegramDelay>0</TelegramDelay>
@@ -2685,12 +3296,25 @@
       <triggerMessType>Disabled</triggerMessType>
       <RoutingTrigger>Arrival</RoutingTrigger>
       <Distribution>RoundRobin</Distribution>
-      <DestinationCode>CC53LIP32,PUT17A1</DestinationCode>
+      <DestinationCode>CC53LIP32,PUT17A1,PUT18A1,PUT19A1,PUT20A1,PUT21A1,PUT22A1,PUT23A1,PUT24A1</DestinationCode>
       <DestinationCodeSecondary>
       </DestinationCodeSecondary>
       <TelegramDelay>0</TelegramDelay>
       <RoutePercentage>100</RoutePercentage>
       <RouteController>PLC53</RouteController>
+    </Routing>
+    <Routing Name="CC54LOOPNP1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>RoundRobin</Distribution>
+      <DestinationCode>CC53AI32NP2,CC54OB2NP1,CC53AI32NP2,CC54GOHB1</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>0</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC54</RouteController>
     </Routing>
   </Routings>
   <Functions>
