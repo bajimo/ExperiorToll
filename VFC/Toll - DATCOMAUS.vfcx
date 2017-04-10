@@ -2659,7 +2659,7 @@
       <triggerMessType>Disabled</triggerMessType>
       <RoutingTrigger>Arrival</RoutingTrigger>
       <Distribution>RoundRobin</Distribution>
-      <DestinationCode>CC51LIP28,PUT01A1</DestinationCode>
+      <DestinationCode>CC51LIP28,PUT01A1,PUT02A1,PUT03A1,PUT04A1,PUT05A1,PUT06A1,PUT07A1,PUT08A1</DestinationCode>
       <DestinationCodeSecondary>
       </DestinationCodeSecondary>
       <TelegramDelay>0</TelegramDelay>
@@ -2672,7 +2672,7 @@
       <triggerMessType>Disabled</triggerMessType>
       <RoutingTrigger>Arrival</RoutingTrigger>
       <Distribution>RoundRobin</Distribution>
-      <DestinationCode>CC52LIP30,PUT09A1</DestinationCode>
+      <DestinationCode>CC52LIP30,,PUT09A1,PUT10A1,PUT11A1,PUT12A1,PUT13A1,PUT14A1,PUT15A1,PUT16A1</DestinationCode>
       <DestinationCodeSecondary>
       </DestinationCodeSecondary>
       <TelegramDelay>0</TelegramDelay>
@@ -2685,7 +2685,7 @@
       <triggerMessType>Disabled</triggerMessType>
       <RoutingTrigger>Arrival</RoutingTrigger>
       <Distribution>RoundRobin</Distribution>
-      <DestinationCode>CC53LIP32,PUT17A1</DestinationCode>
+      <DestinationCode>CC53LIP32,PUT17A1,PUT18A1,PUT19A1,PUT20A1,PUT21A1,PUT22A1,PUT23A1,PUT24A1</DestinationCode>
       <DestinationCodeSecondary>
       </DestinationCodeSecondary>
       <TelegramDelay>0</TelegramDelay>
