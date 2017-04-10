@@ -329,7 +329,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         /// <returns>List of integer array</returns>
         public List<string> ValidateRoutingCode(string code)
         {
-            return code.Split(';').ToList();
+            return code.Split(',').ToList();
         }
 
         #region ICaseController
