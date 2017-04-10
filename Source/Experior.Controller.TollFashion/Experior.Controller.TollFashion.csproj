@@ -80,6 +80,7 @@
     <Reference Include="Experior.Core, Version=5.1.31212.1, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Xcelgo\Xcelgo Experior\Experior.Core.DLL</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Experior.Dematic.Base, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
@@ -134,9 +135,15 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Dematic.DATCOMAUS\Dematic.DATCOMAUS.csproj">
+      <Project>{99ebdd47-7603-4076-bb64-3854b1fd59a1}</Project>
+      <Name>Dematic.DATCOMAUS</Name>
+      <Private>False</Private>
+    </ProjectReference>
     <ProjectReference Include="..\Experior.Catalog.Dematic.DatcomAUS\Experior.Catalog.Dematic.DatcomAUS.csproj">
       <Project>{9f46ef99-481b-47bc-9849-f991cf5e0df0}</Project>
       <Name>Experior.Catalog.Dematic.DatcomAUS</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

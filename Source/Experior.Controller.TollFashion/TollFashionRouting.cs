@@ -17,6 +17,7 @@ namespace Experior.Controller.TollFashion
             plc52 = Core.Assemblies.Assembly.Get("PLC 52") as MHEControllerAUS_Case;
             plc53 = Core.Assemblies.Assembly.Get("PLC 53") as MHEControllerAUS_Case;
 
+            Core.Environment.Time.ContinuouslyRunning = true;
             Core.Environment.Scene.OnResetCompleted += Scene_OnResetCompleted;
         }
 
@@ -47,7 +48,8 @@ namespace Experior.Controller.TollFashion
                     }
 
                     //Set the destination so the case load will cross the main line
-                    plc.RoutingTable[caseLoad.SSCCBarcode] = dest;
+                    if (!plc.RoutingTable.ContainsKey(caseLoad.SSCCBarcode))
+                        plc.RoutingTable[caseLoad.SSCCBarcode] = dest;
                 }
             }
         }
