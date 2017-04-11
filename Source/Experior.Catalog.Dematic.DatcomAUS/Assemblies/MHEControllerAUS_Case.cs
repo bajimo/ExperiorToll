@@ -50,10 +50,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
 
         public void RemoveFromRoutingTable(string barcode)
         {
-            if (RoutingTable.ContainsKey(barcode))
-            {
-                RoutingTable.Remove(barcode);
-            }
+            RoutingTable.Remove(barcode);
         }
 
         public MHEControl CreateMHEControl(IControllable assem, ProtocolInfo info)
