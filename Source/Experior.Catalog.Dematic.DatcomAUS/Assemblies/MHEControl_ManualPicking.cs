@@ -35,9 +35,9 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                 Log.Write(string.Format("Call forward received: Cannot release load as there is no load in the picking station {0}", theConveyor.Name));
                 return;
             }
-            if (barcode != null && caseLoad.SSCCBarcode != barcode)
+            if (barcode != null && caseLoad.Identification != barcode)
             {
-                Log.Write(string.Format("Call forward received: Barcode in CF (type 86) message [{0}] does not match barcode of load in pick station {1} [{2}], load released anyway", barcode, theConveyor.Name, caseLoad.SSCCBarcode));
+                Log.Write(string.Format("Call forward received: Barcode in CF (type 86) message [{0}] does not match barcode of load in pick station {1} [{2}], load released anyway", barcode, theConveyor.Name, caseLoad.Identification));
             }
 
             //This releases the load when the route is clear (do not set release on the load as this will releease the load regardless and cause issues)

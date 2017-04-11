@@ -62,7 +62,7 @@ namespace Experior.Dematic.Base
             return caseData;
         }
 
-        private string sSCCBarcode;
+        //private string sSCCBarcode;
        // public static List<Case_Load> AllCases = new List<Case_Load>();
         public delegate void CaseLoadDisposedEvent(Case_Load caseload);
         public static event CaseLoadDisposedEvent CaseLoadDisposed;
@@ -164,11 +164,10 @@ namespace Experior.Dematic.Base
         [Experior.Core.Properties.AlwaysEditable]
         public virtual string SSCCBarcode
         {
-            get { return sSCCBarcode; }
+            get { return Identification; }
             set
-            {
-                sSCCBarcode = value;
-                //Parent.Identification = value;
+            { 
+                Identification = value;
             }
         }
 

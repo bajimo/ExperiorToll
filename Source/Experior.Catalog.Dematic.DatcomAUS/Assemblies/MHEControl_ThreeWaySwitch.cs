@@ -52,15 +52,15 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         {
             Case_Load caseLoad = e._load as Case_Load;
 
-            if(casePLCcontroller.DivertSet(caseLoad.SSCCBarcode, leftRoutes))
+            if(casePLCcontroller.DivertSet(caseLoad.Identification, leftRoutes))
             {
                 threeWayRoutes[e._fromSide].RouteLoad(threeWayRoutes[e._fromSide], threeWaySwitch.LeftConv, e._load);
             }
-            else if(casePLCcontroller.DivertSet(caseLoad.SSCCBarcode, rightRoutes))
+            else if(casePLCcontroller.DivertSet(caseLoad.Identification, rightRoutes))
             {
                 threeWayRoutes[e._fromSide].RouteLoad(threeWayRoutes[e._fromSide], threeWaySwitch.RightConv, e._load);
             }
-            else if (casePLCcontroller.DivertSet(caseLoad.SSCCBarcode, centerRoutes))
+            else if (casePLCcontroller.DivertSet(caseLoad.Identification, centerRoutes))
             {
                 threeWayRoutes[e._fromSide].RouteLoad(threeWayRoutes[e._fromSide], threeWaySwitch.CenterConv, e._load);
             }

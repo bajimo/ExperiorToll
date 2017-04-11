@@ -37,7 +37,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             mergeDivertConveyor.releasedStraight = releasedStraight;
             mergeDivertConveyor.releasedLeft = releasedLeft;
             mergeDivertConveyor.releasedRight = releasedRight;
-            
+
             casePLC = mergeDivertConveyor.Controller as MHEControllerAUS_Case;
 
             //Anything with setup code in the "set" of a property except setting the value will need to be called 
@@ -52,26 +52,26 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             List<Direction> validRoutes = new List<Direction>();
 
             Case_Load caseload = load as Case_Load;
-            if (mergeDivertConveyor.LeftMode == Modes.Divert && 
-                ((casePLC.DivertSet(caseload.SSCCBarcode, LeftRoutes) && 
-                (LeftAndRoutes == null || casePLC.DivertSet(caseload.SSCCBarcode, LeftAndRoutes))) || 
-                (LeftOrRoutes != null && casePLC.DivertSet(caseload.SSCCBarcode, LeftOrRoutes))))
+            if (mergeDivertConveyor.LeftMode == Modes.Divert &&
+                ((casePLC.DivertSet(caseload.Identification, LeftRoutes) &&
+                (LeftAndRoutes == null || casePLC.DivertSet(caseload.Identification, LeftAndRoutes))) ||
+                (LeftOrRoutes != null && casePLC.DivertSet(caseload.Identification, LeftOrRoutes))))
             {
                 validRoutes.Add(Direction.Left);
             }
 
             if (mergeDivertConveyor.RightMode == Modes.Divert &&
-                ((casePLC.DivertSet(caseload.SSCCBarcode, RightRoutes) &&
-                (RightAndRoutes == null || casePLC.DivertSet(caseload.SSCCBarcode, RightAndRoutes))) ||
-                (RightOrRoutes != null && casePLC.DivertSet(caseload.SSCCBarcode, RightOrRoutes))))
+                ((casePLC.DivertSet(caseload.Identification, RightRoutes) &&
+                (RightAndRoutes == null || casePLC.DivertSet(caseload.Identification, RightAndRoutes))) ||
+                (RightOrRoutes != null && casePLC.DivertSet(caseload.Identification, RightOrRoutes))))
             //if (casePLC.DivertSet(caseload.SSCCBarcode, RightRoutes) && mergeDivertConveyor.RightMode == MergeDivertConveyor.Modes.Divert)
             {
                 validRoutes.Add(Direction.Right);
             }
             if (mergeDivertConveyor.StraightMode == Modes.Divert &&
-                ((casePLC.DivertSet(caseload.SSCCBarcode, StraightRoutes) &&
-                (StraightAndRoutes == null || casePLC.DivertSet(caseload.SSCCBarcode, StraightAndRoutes))) ||
-                (StraightOrRoutes != null && casePLC.DivertSet(caseload.SSCCBarcode, StraightOrRoutes))))
+                ((casePLC.DivertSet(caseload.Identification, StraightRoutes) &&
+                (StraightAndRoutes == null || casePLC.DivertSet(caseload.Identification, StraightAndRoutes))) ||
+                (StraightOrRoutes != null && casePLC.DivertSet(caseload.Identification, StraightOrRoutes))))
             //if (casePLC.DivertSet(caseload.SSCCBarcode, StraightRoutes) && mergeDivertConveyor.StraightMode == MergeDivertConveyor.Modes.Divert)
             {
                 validRoutes.Add(Direction.Straight);
@@ -79,7 +79,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
 
             //Check if the load has the priority bit set
             bool priority = false;
-            if (casePLC.DivertSet(caseload.SSCCBarcode, new List<string>()))
+            if (casePLC.DivertSet(caseload.Identification, new List<string>()))
             {
                 priority = true;
             }
@@ -91,9 +91,8 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         bool loadDeleted(Load load)
         {
             Case_Load caseLoad = load as Case_Load;
-            
-            if (casePLC.RoutingTable.ContainsKey(caseLoad.SSCCBarcode))
-                casePLC.RoutingTable.Remove(caseLoad.SSCCBarcode);
+
+            casePLC.RoutingTable.Remove(caseLoad.Identification);
 
             return true;
         }
@@ -143,8 +142,8 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
 
         void removeFromRoutingTable(Case_Load caseLoad)
         {
-            if (RemoveFromRoutingTable && casePLC.RoutingTable.ContainsKey(caseLoad.SSCCBarcode))
-                casePLC.RoutingTable.Remove(caseLoad.SSCCBarcode);
+            if (RemoveFromRoutingTable)
+                casePLC.RoutingTable.Remove(caseLoad.Identification);
         }
 
         #region User Interface

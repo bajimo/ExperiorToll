@@ -286,7 +286,8 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                 caseData.Height = caseload.Case_Data.Height;
                 caseData.Weight = caseload.Case_Data.Weight;
                 caseData.colour = caseload.Case_Data.colour;
-                caseload.SSCCBarcode = caseload.Identification;
+                //caseData.Barcode1 = caseload.Identification;
+                //caseload.SSCCBarcode = caseload.Identification;
                 caseload.Case_Data = caseData;
             }
 
@@ -295,15 +296,18 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             //Remove if destinations is empty? (or does not exist?)
 
             //Update caseload if it exists
-            if (caseload != null)
-            {
-                if (((CaseData)caseload.Case_Data).CallforwardWait)
-                {
-                    return; //Tote is waiting to be called forward. Do not release
-                }
+            //if (caseload != null)
+            //{
+            //    if (((CaseData)caseload.Case_Data).CallforwardWait)
+            //    {
+            //        return; //Tote is waiting to be called forward. Do not release
+            //    }
 
-                ((CaseData)caseload.Case_Data).RoutingTableUpdateWait = false;
-            }
+            //    ((CaseData)caseload.Case_Data).RoutingTableUpdateWait = false;
+            //}
+
+            if (caseload.LoadWaitingForWCS)
+                caseload.ReleaseLoad_WCSControl();
 
             int newcount = RoutingTable.Count;
 
@@ -377,7 +381,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             }
 
             load.Weight = caseData.Weight;
-            load.Identification = datComData.ULID;
+           // load.Identification = datComData.Barcode1;
             load.Case_Data = datComData;
             return load;
         }

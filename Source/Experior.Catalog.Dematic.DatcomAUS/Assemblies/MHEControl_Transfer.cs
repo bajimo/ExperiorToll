@@ -88,11 +88,11 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             //Calculate the preferred route for the load and save
             if (!theTransfer.PreferredLoadRoutes.ContainsKey(caseLoad))
             {
-                if (casePLC.DivertSet(caseLoad.SSCCBarcode, LeftRoutes))
+                if (casePLC.DivertSet(caseLoad.Identification, LeftRoutes))
                 {
                     theTransfer.PreferredLoadRoutes.Add(caseLoad, Side.Left);
                 }
-                else if (casePLC.DivertSet(caseLoad.SSCCBarcode, RightRoutes))
+                else if (casePLC.DivertSet(caseLoad.Identification, RightRoutes))
                 {
                     theTransfer.PreferredLoadRoutes.Add(caseLoad, Side.Right);
                 }
@@ -101,17 +101,17 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             bool LoadRouted = false;
             if (!theTransfer.ReleaseDelayTimerRunning) //Timer not running can i release a load
             {
-                if (casePLC.DivertSet(caseLoad.SSCCBarcode, LeftRoutes) && theTransfer.RouteAvailable(Side.Left))
+                if (casePLC.DivertSet(caseLoad.Identification, LeftRoutes) && theTransfer.RouteAvailable(Side.Left))
                 {
                     ReleaseLoad(e._fromSide, Side.Left, e._load);
                     LoadRouted = true;
                 }
-                else if (casePLC.DivertSet(caseLoad.SSCCBarcode, RightRoutes) && theTransfer.RouteAvailable(Side.Right))
+                else if (casePLC.DivertSet(caseLoad.Identification, RightRoutes) && theTransfer.RouteAvailable(Side.Right))
                 {
                     ReleaseLoad(e._fromSide, Side.Right, e._load);
                     LoadRouted = true;
                 }
-                else if (!casePLC.DivertSet(caseLoad.SSCCBarcode, LeftRoutes) && !casePLC.DivertSet(caseLoad.SSCCBarcode, RightRoutes) && theTransfer.RouteAvailable(e._defaultDirection))
+                else if (!casePLC.DivertSet(caseLoad.Identification, LeftRoutes) && !casePLC.DivertSet(caseLoad.Identification, RightRoutes) && theTransfer.RouteAvailable(e._defaultDirection))
                 {
                     ReleaseLoad(e._fromSide, e._defaultDirection, caseLoad);
                     LoadRouted = true;
@@ -121,7 +121,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             if (!LoadRouted)
             {
                 float timeout = NormalTimeout;
-                if (casePLC.DivertSet(caseLoad.SSCCBarcode, PriorityRoutes))
+                if (casePLC.DivertSet(caseLoad.Identification, PriorityRoutes))
                 {
                     timeout = PriorityTimeout;
                 }
@@ -154,7 +154,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                         }
                         else
                         {
-                            Log.Write(string.Format("Error setting timeout on transfer left hand side, conveyor {0}, load {1}", ((Transfer)sender).Name, caseLoad.SSCCBarcode));
+                            Log.Write(string.Format("Error setting timeout on transfer left hand side, conveyor {0}, load {1}", ((Transfer)sender).Name, caseLoad.Identification));
                             Experior.Core.Environment.Scene.Pause();
                         }
                     }
@@ -168,7 +168,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                         }
                         else
                         {
-                            Log.Write(string.Format("Error setting timeout on transfer right hand side, conveyor {0}, load {1}", ((Transfer)sender).Name, caseLoad.SSCCBarcode));
+                            Log.Write(string.Format("Error setting timeout on transfer right hand side, conveyor {0}, load {1}", ((Transfer)sender).Name, caseLoad.Identification));
                             Experior.Core.Environment.Scene.Pause();
                         }
                     }
@@ -205,8 +205,8 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                     Case_Load caseLoad = theTransfer.SideLoadWaitingStatus(side).WaitingLoad as Case_Load;
                     if (caseLoad != null)
                     {
-                        bool routeLoadLeft = casePLC.DivertSet(caseLoad.SSCCBarcode, LeftRoutes);
-                        bool routeLoadRight = casePLC.DivertSet(caseLoad.SSCCBarcode, RightRoutes);
+                        bool routeLoadLeft = casePLC.DivertSet(caseLoad.Identification, LeftRoutes);
+                        bool routeLoadRight = casePLC.DivertSet(caseLoad.Identification, RightRoutes);
 
                         if (routeLoadLeft && theTransfer.RouteAvailable(Side.Left))
                         {
@@ -492,12 +492,6 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         public void DynamicPropertyLeftModeDivert(PropertyAttributes attributes)
         {
             attributes.IsBrowsable = theTransfer.SideNextRouteStatus(Side.Left) != null;
-        }
-
-        void removeFromRoutingTable(Case_Load caseLoad)
-        {
-            if (RemoveFromRoutingTable && casePLC.RoutingTable.ContainsKey(caseLoad.SSCCBarcode))
-                casePLC.RoutingTable.Remove(caseLoad.SSCCBarcode);
         }
     }
 

@@ -289,15 +289,18 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             string telegram = Template.CreateTelegram(this, telegramType);
             CaseData caseData = load.Case_Data as CaseData;
 
-            //TODO Populate the correct field values
             telegram = telegram.SetFieldValue(this, TelegramFields.Current, caseData.CurrentPosition);
             telegram = telegram.SetFieldValue(this, TelegramFields.Destination, caseData.DestinationPosition);
+            telegram = telegram.SetFieldValue(this, TelegramFields.ULStatus, caseData.ULStatus);
             telegram = telegram.SetFieldValue(this, TelegramFields.Barcode1, load.Identification);
-            telegram = telegram.SetFieldValue(this, TelegramFields.Width, (caseData.Width * 1000).ToString("0000"));
-            telegram = telegram.SetFieldValue(this, TelegramFields.Length, (caseData.Length * 1000).ToString("0000"));
-            telegram = telegram.SetFieldValue(this, TelegramFields.Height, (caseData.Height * 1000).ToString("0000"));
+            telegram = telegram.SetFieldValue(this, TelegramFields.Barcode2, caseData.Barcode2);
+            telegram = telegram.SetFieldValue(this, TelegramFields.Profile, caseData.Profile);
+            telegram = telegram.SetFieldValue(this, TelegramFields.CarrierSize, caseData.CarrierSize);
+            telegram = telegram.SetFieldValue(this, TelegramFields.SpecialData, caseData.SpecialData);
             telegram = telegram.SetFieldValue(this, TelegramFields.Weight, (caseData.Weight * 1000).ToString("000000"));
-            telegram = telegram.SetFieldValue(this, TelegramFields.Profile, caseData.ProfileStatus);
+            telegram = telegram.SetFieldValue(this, TelegramFields.Height, (caseData.Height * 1000).ToString("0000"));
+            telegram = telegram.SetFieldValue(this, TelegramFields.Length, (caseData.Length * 1000).ToString("0000"));
+            telegram = telegram.SetFieldValue(this, TelegramFields.Width, (caseData.Width * 1000).ToString("0000"));
             return telegram;
         }
 

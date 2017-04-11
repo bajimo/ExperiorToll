@@ -43,7 +43,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         {
             Case_Load caseload = e._load as Case_Load;
 
-            if (casePLC.DivertSet(caseload.SSCCBarcode, DivertRoutes))
+            if (casePLC.DivertSet(caseload.Identification, DivertRoutes))
             {
                 selectedRoute = DivertRoute.Divert;   
                 divertConveyor.RouteLoad(DivertRoute.Divert, e._load);
@@ -76,16 +76,10 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         {
             Case_Load caseLoad = load as Case_Load;
             
-            if (casePLC.RoutingTable.ContainsKey(caseLoad.SSCCBarcode))
-                casePLC.RoutingTable.Remove(caseLoad.SSCCBarcode);
+            if (casePLC.RoutingTable.ContainsKey(caseLoad.Identification))
+                casePLC.RoutingTable.Remove(caseLoad.Identification);
 
             return true;
-        }
-
-        void removeFromRoutingTable(Case_Load caseLoad)
-        {
-            if (RemoveFromRoutingTable && casePLC.RoutingTable.ContainsKey(caseLoad.SSCCBarcode))
-                casePLC.RoutingTable.Remove(caseLoad.SSCCBarcode);
         }
 
         #region User Interface

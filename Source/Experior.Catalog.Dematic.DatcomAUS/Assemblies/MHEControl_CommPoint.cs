@@ -59,7 +59,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                     IController oldplc = Experior.Core.Assemblies.Assembly.Items[((CaseData)caseload.Case_Data).PLCName] as IController;
 
                     if (oldplc != null)
-                        oldplc.RemoveFromRoutingTable(caseload.SSCCBarcode);
+                        oldplc.RemoveFromRoutingTable(caseload.Identification);
                 }
 
                 ((CaseData)caseload.Case_Data).PLCName = CommPoint.ControllerName;
@@ -76,7 +76,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
 
                     if (RemoveFromRoutingTableArrival)
                     {
-                        casePLC.RemoveFromRoutingTable(caseload.SSCCBarcode);
+                        casePLC.RemoveFromRoutingTable(caseload.Identification);
                     }
                     break;
 
@@ -114,7 +114,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         {
             if (AlwaysArrival) //Always send arrival message
                 casePLC.SendArrivalMessage(commPoint.Name, caseload);
-            else if (!casePLC.RoutingTable.ContainsKey(caseload.SSCCBarcode))
+            else if (!casePLC.RoutingTable.ContainsKey(caseload.Identification))
             {
                 //Only send arrival message if ULID not found in routing table
                 casePLC.SendArrivalMessage(commPoint.Name, caseload);
