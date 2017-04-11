@@ -26,7 +26,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             casePLC.OnTransportOrderTelegramReceived += CasePLC_OnTransportOrderTelegramReceived;  
         }
 
-        private void CasePLC_OnTransportOrderTelegramReceived(object sender, TransportOrderEventArgs e)
+        private void CasePLC_OnTransportOrderTelegramReceived(object sender, MessageEventArgs e)
         {
             if (e.Load == null)
                 return;

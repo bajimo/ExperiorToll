@@ -23,10 +23,15 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         CaseDatcomAusInfo caseDatcomInfo;
         public int MaxRoutingTableEntries = int.MaxValue;
         public Dictionary<string, string> RoutingTable = new Dictionary<string, string>(); //barcode1, Destination
-        public event EventHandler<TransportOrderEventArgs> OnTransportOrderTelegramReceived;
-        protected virtual void TransportOrderTelegramReceived(TransportOrderEventArgs e)
+        public event EventHandler<MessageEventArgs> OnTransportOrderTelegramReceived;
+        protected virtual void TransportOrderTelegramReceived(MessageEventArgs e)
         {
             OnTransportOrderTelegramReceived?.Invoke(this, e);
+        }
+        public event EventHandler<MessageEventArgs> OnRequestAllDataTelegramReceived;
+        protected virtual void RequestAllDataTelegramReceived(MessageEventArgs e)
+        {
+            OnRequestAllDataTelegramReceived?.Invoke(this, e);
         }
 
         public MHEControllerAUS_Case(CaseDatcomAusInfo info) : base(info)
@@ -120,6 +125,12 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             }
         }
 
+        public void SendRemapUlData(Case_Load load)
+        {
+            var type31 = CreateTelegramFromLoad(TelegramTypes.RemapULData, load);
+            SendTelegram(type31);
+        }
+
         public override void HandleTelegrams(TelegramTypes type, string telegram)
         {
             switch (type)
@@ -188,9 +199,13 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
 
         private void RequestAllDataRecieved(string telegram)
         {
-            //TODO send type 31 messages "Re-map Unit Load Data"
+            //A “Request All Data” telegram(Type 30) is sent by the WCS.For each of the conveyor locations listed above, 
+            //the PLC checks to see if there is a carrier present. For each carrier place for which data is present, 
+            //a “One Location Data Record” telegram(Type 31) is sent.The telegram contains all the details about the carrier.
 
-            //A “Request All Data” telegram(Type 30) is sent by the WCS.For each of the conveyor locations listed above, the PLC checks to see if there is a carrier present. For each carrier place for which data is present, a “One Location Data Record” telegram(Type 31) is sent.The telegram contains all the details about the carrier.
+            //Controller must send type 31 messages "Re-map Unit Load Data"
+            RequestAllDataTelegramReceived(new MessageEventArgs("", "", telegram, null, TelegramTypes.RequestAllData));
+
             //After the last “One Location Data Record” telegram has been sent by the PLC, an ‘End of Re - map’ telegram(Type 32) is sent to indicate an end of the remap.
             string reply = Template.CreateTelegram(this, TelegramTypes.EndRemap);
             SendTelegram(reply);
@@ -300,7 +315,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                 //SendTelegram("10", status);
             }
 
-            TransportOrderTelegramReceived(new TransportOrderEventArgs(current, barcode1, telegram, caseload));
+            TransportOrderTelegramReceived(new MessageEventArgs(current, barcode1, telegram, caseload, TelegramTypes.TransportOrder));
         }
 
         public bool DivertSet(string barcode, List<string> validRoutes)
@@ -387,14 +402,16 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
     [TypeConverter(typeof(CaseDatcomAusInfo))]
     public class CaseDatcomAusInfo : BaseDatcomAusControllerInfo { }
 
-    public class TransportOrderEventArgs : EventArgs
+    public class MessageEventArgs : EventArgs
     {
+        public readonly TelegramTypes Type;
         public readonly string Location;
         public readonly string Barcode;
         public readonly string Telegram;
         public readonly Load Load;
-        public TransportOrderEventArgs(string location, string barcode, string telegram, Load load)
+        public MessageEventArgs(string location, string barcode, string telegram, Load load, TelegramTypes type)
         {
+            Type = type;
             Location = location;
             Barcode = barcode;
             Telegram = telegram;

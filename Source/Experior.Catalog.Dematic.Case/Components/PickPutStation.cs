@@ -226,6 +226,18 @@ namespace Experior.Catalog.Dematic.Case.Components
             get { return leftStation.ActiveLoad is Case_Load ? ((Case_Load)leftStation.ActiveLoad).SSCCBarcode : null; }
         }
 
+        [Browsable(false)]
+        public Case_Load RightLoad
+        {
+            get { return rightStation.ActiveLoad as Case_Load; }
+        }
+
+        [Browsable(false)]
+        public Case_Load LeftLoad
+        {
+            get { return leftStation.ActiveLoad as Case_Load; }
+        }
+
         private StraightConveyorInfo NewStraightInfo()
         {
             StraightConveyorInfo straightInfo = new StraightConveyorInfo();
