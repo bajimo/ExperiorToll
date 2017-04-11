@@ -3368,6 +3368,45 @@
       <RoutePercentage>100</RoutePercentage>
       <RouteController>PLC54</RouteController>
     </Routing>
+    <Routing Name="CC51CARTONA1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>First</Distribution>
+      <DestinationCode>CC51ECINP1</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>0</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC51</RouteController>
+    </Routing>
+    <Routing Name="CC52CARTONA1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>First</Distribution>
+      <DestinationCode>CC52ECINP1</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>0</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC52</RouteController>
+    </Routing>
+    <Routing Name="CC53CARTONA1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>First</Distribution>
+      <DestinationCode>CC53ECINP1</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>0</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC53</RouteController>
+    </Routing>
   </Routings>
   <Functions>
   </Functions>

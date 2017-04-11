@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using Dematic.DATCOMAUS;
 using Experior.Catalog.Dematic.Case.Components;
@@ -53,7 +54,7 @@ namespace Experior.Controller.TollFashion
                 if (rapidPick.RightLoad != null)
                     plc.SendRemapUlData(rapidPick.RightLoad);
             }
-           
+
         }
 
         void Scene_OnResetCompleted()
@@ -85,6 +86,18 @@ namespace Experior.Controller.TollFashion
                     //Set the destination so the case load will cross the main line
                     if (!plc.RoutingTable.ContainsKey(caseLoad.SSCCBarcode))
                         plc.RoutingTable[caseLoad.SSCCBarcode] = dest;
+                }
+            }
+
+            //if (node.Name.EndsWith("A1", false, CultureInfo.InvariantCulture))
+            if (node.Name.Contains("CARTONA1"))
+            {
+                //Active locations
+                var caseLoad = load as Case_Load;
+                if (caseLoad != null)
+                {
+                    caseLoad.LoadWaitingForWCS = true;
+                    caseLoad.StopLoad();
                 }
             }
         }
