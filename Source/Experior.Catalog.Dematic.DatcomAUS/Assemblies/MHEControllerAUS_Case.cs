@@ -12,6 +12,8 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using Dematic.DATCOMAUS;
+using Environment = Experior.Core.Environment;
+using EuroPallet = Experior.Dematic.Base.EuroPallet;
 
 namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
 {
@@ -20,8 +22,10 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
     /// </summary>
     public class MHEControllerAUS_Case : BaseDatcomAusController, IController, ICaseController
     {
+        public enum FailedDatcomAusMessageType { _02, _06 }
+
         CaseDatcomAusInfo caseDatcomInfo;
-        public int MaxRoutingTableEntries = int.MaxValue;
+        public int MaxRoutingTableEntries = Int32.MaxValue;
         public Dictionary<string, string> RoutingTable = new Dictionary<string, string>(); //barcode1, Destination
         public event EventHandler<MessageEventArgs> OnTransportOrderTelegramReceived;
         protected virtual void TransportOrderTelegramReceived(MessageEventArgs e)
@@ -105,7 +109,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             }
             else
             {
-                Core.Environment.Log.Write("Can't create MHE Control, object is not defined in the 'CreateMHEControl' of the controller");
+                Environment.Log.Write("Can't create MHE Control, object is not defined in the 'CreateMHEControl' of the controller");
                 return null;
             }
             //......other assemblies should be added here....do this with generics...correction better to do this with reflection...That is BaseDatcomAusController should use reflection
@@ -122,7 +126,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         /// <param name="status">‘00’ Normal , ‘08’ Blocked , ‘09’ Waiting for Acknowledgement Blocked, ‘MD’ Manually Deleted, ‘DC’ Delete Confirmed, ‘DF’ Delete Fail</param>
         public void SendArrivalMessage(string location, Case_Load load, string status = "00")
         {
-            if (string.IsNullOrWhiteSpace(location))
+            if (String.IsNullOrWhiteSpace(location))
                 return;
 
             if (load == null)
@@ -151,7 +155,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         /// <param name="status">‘00’ Normal , ‘08’ Blocked , ‘09’ Waiting for Acknowledgement Blocked, ‘MD’ Manually Deleted, ‘DC’ Delete Confirmed, ‘DF’ Delete Fail</param>
         public void SendExceptionMessage(string location, Case_Load load, string status = "00")
         {
-            if (string.IsNullOrWhiteSpace(location))
+            if (String.IsNullOrWhiteSpace(location))
                 return;
 
             if (load == null)
@@ -440,7 +444,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             return load;
         }
 
-        public Experior.Dematic.Base.EuroPallet CreateEuroPallet(BasePalletData baseData)
+        public EuroPallet CreateEuroPallet(BasePalletData baseData)
         {
             return null;
         }

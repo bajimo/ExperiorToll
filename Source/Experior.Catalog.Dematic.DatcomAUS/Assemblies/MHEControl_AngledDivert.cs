@@ -69,11 +69,11 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             {
                 //Send failed to divert message
 
-                if (FailedToDivertMessageType == FailedDatcomAusMessageType._02)
+                if (FailedToDivertMessageType == MHEControllerAUS_Case.FailedDatcomAusMessageType._02)
                 {
                     casePLC.SendArrivalMessage(FailedToDivertLocation, caseLoad, "08");
                 }
-                else if (FailedToDivertMessageType == FailedDatcomAusMessageType._06)
+                else if (FailedToDivertMessageType == MHEControllerAUS_Case.FailedDatcomAusMessageType._06)
                 {
                     casePLC.SendExceptionMessage(FailedToDivertLocation, caseLoad, "08");
                 }
@@ -133,7 +133,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         [DisplayName("Failed To Divert Message Type")]
         [Description("The message type to be used on failed to divert")]
         [PropertyOrder(4)]
-        public FailedDatcomAusMessageType FailedToDivertMessageType 
+        public MHEControllerAUS_Case.FailedDatcomAusMessageType FailedToDivertMessageType 
         {
             get { return divertDatcomInfo.failedToDivertMessageType; }
             set 
@@ -142,8 +142,6 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                 Experior.Core.Environment.Properties.Refresh();
             } 
         }
-
-        public enum FailedDatcomAusMessageType { _02, _06 };
 
         [Category("Configuration")]
         [DisplayName("Failed To Divert Reason Code")]
@@ -161,7 +159,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
 
         public void DynamicPropertyReasonCode(Core.Properties.PropertyAttributes attributes)
         {
-            attributes.IsBrowsable = divertDatcomInfo.failedToDivertMessageType == FailedDatcomAusMessageType._06;
+            attributes.IsBrowsable = divertDatcomInfo.failedToDivertMessageType == MHEControllerAUS_Case.FailedDatcomAusMessageType._06;
         }
 
         [Category("Configuration")]
@@ -287,7 +285,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
 
         public string divertRoutingCode = null;
         public string divertRoutingLocation = null;
-        public MHEControl_AngledDivert.FailedDatcomAusMessageType failedToDivertMessageType =  MHEControl_AngledDivert.FailedDatcomAusMessageType._02;
+        public MHEControllerAUS_Case.FailedDatcomAusMessageType failedToDivertMessageType =  MHEControllerAUS_Case.FailedDatcomAusMessageType._02;
         public string failedToDivertMessageReasonCode = "@@";
     }
 }
