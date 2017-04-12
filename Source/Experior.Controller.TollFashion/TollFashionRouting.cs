@@ -1,19 +1,20 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Dematic.DATCOMAUS;
 using Experior.Catalog.Dematic.Case.Components;
 using Experior.Catalog.Dematic.DatcomAUS.Assemblies;
 using Experior.Core.Loads;
 using Experior.Core.Routes;
 using Experior.Dematic.Base;
-using Experior.Dematic.Base.Devices;
 
 namespace Experior.Controller.TollFashion
 {
     public partial class TollFashionRouting : Catalog.ControllerExtended
     {
-        private MHEControllerAUS_Case plc51, plc52, plc53;
-        private List<PickPutStation> rapidPickstations;
+        private readonly MHEControllerAUS_Case plc51, plc52, plc53, plc54, plc61, plc62, plc63;
+        private readonly List<PickPutStation> rapidPickstations;
         private List<Catalog.Dematic.Case.Devices.CommunicationPoint> activePoints;
+        private readonly List<EquipmentStatus> equipmentStatuses = new List<EquipmentStatus>();
 
         public TollFashionRouting() : base("TollFashionRouting")
         {
@@ -22,24 +23,78 @@ namespace Experior.Controller.TollFashion
             plc51 = Core.Assemblies.Assembly.Get("PLC 51") as MHEControllerAUS_Case;
             plc52 = Core.Assemblies.Assembly.Get("PLC 52") as MHEControllerAUS_Case;
             plc53 = Core.Assemblies.Assembly.Get("PLC 53") as MHEControllerAUS_Case;
+            plc54 = Core.Assemblies.Assembly.Get("PLC 54") as MHEControllerAUS_Case;
+            plc61 = Core.Assemblies.Assembly.Get("PLC 61") as MHEControllerAUS_Case;
+            plc62 = Core.Assemblies.Assembly.Get("PLC 62") as MHEControllerAUS_Case;
+            plc63 = Core.Assemblies.Assembly.Get("PLC 63") as MHEControllerAUS_Case;
             rapidPickstations = Core.Assemblies.Assembly.Items.Values.OfType<PickPutStation>().ToList();
   
             if (plc51 != null)
             {
                 plc51.OnRequestAllDataTelegramReceived += OnRequestAllDataTelegramReceived;
+                plc51.OnSetSystemStatusTelegramReceived += OnSetSystemStatusTelegramReceived;
             }
             if (plc52 != null)
             {
-                plc52.OnRequestAllDataTelegramReceived += OnRequestAllDataTelegramReceived; ;
+                plc52.OnRequestAllDataTelegramReceived += OnRequestAllDataTelegramReceived;
+                plc52.OnSetSystemStatusTelegramReceived += OnSetSystemStatusTelegramReceived;
             }
             if (plc53 != null)
             {
-                plc53.OnRequestAllDataTelegramReceived += OnRequestAllDataTelegramReceived; ;
+                plc53.OnRequestAllDataTelegramReceived += OnRequestAllDataTelegramReceived;
+                plc53.OnSetSystemStatusTelegramReceived += OnSetSystemStatusTelegramReceived;
+            }
+            if (plc54 != null)
+            {
+                plc54.OnRequestAllDataTelegramReceived += OnRequestAllDataTelegramReceived;
+                plc54.OnSetSystemStatusTelegramReceived += OnSetSystemStatusTelegramReceived;
+            }
+            if (plc61 != null)
+            {
+                plc61.OnRequestAllDataTelegramReceived += OnRequestAllDataTelegramReceived;
+                plc61.OnSetSystemStatusTelegramReceived += OnSetSystemStatusTelegramReceived;
+            }
+            if (plc62 != null)
+            {
+                plc62.OnRequestAllDataTelegramReceived += OnRequestAllDataTelegramReceived;
+                plc62.OnSetSystemStatusTelegramReceived += OnSetSystemStatusTelegramReceived;
+            }
+            if (plc63 != null)
+            {
+                plc63.OnRequestAllDataTelegramReceived += OnRequestAllDataTelegramReceived;
+                plc63.OnSetSystemStatusTelegramReceived += OnSetSystemStatusTelegramReceived;
             }
 
             Core.Environment.Time.ContinuouslyRunning = true;
             Core.Environment.Scene.OnResetCompleted += Scene_OnResetCompleted;
             Core.Environment.Scene.OnLoaded += Scene_OnLoaded;
+            CreateEquipmentStatuses();
+        }
+
+        private void CreateEquipmentStatuses()
+        {
+            equipmentStatuses.Add(new EquipmentStatus(plc54, "CC54LOOP", "11"));
+            equipmentStatuses.Add(new EquipmentStatus(plc51, "CC51CARTON", "11")); //TODO check name and status
+            equipmentStatuses.Add(new EquipmentStatus(plc52, "CC52CARTON", "11"));//TODO check name and status
+            equipmentStatuses.Add(new EquipmentStatus(plc53, "CC53CARTON", "11"));//TODO check name and status
+            equipmentStatuses.Add(new EquipmentStatus(plc51, "CC51CBUFFI", "11"));//TODO check name and status
+            equipmentStatuses.Add(new EquipmentStatus(plc52, "CC52CBUFFI", "11"));//TODO check name and status
+            equipmentStatuses.Add(new EquipmentStatus(plc53, "CC53CBUFFI", "11"));//TODO check name and status
+        }
+
+        private void OnSetSystemStatusTelegramReceived(object sender, MessageEventArgs e)
+        {
+            var plc = sender as MHEControllerAUS_Case;
+            string status = e.Telegram.GetFieldValue(sender as IDATCOMAUSTelegrams, TelegramFields.SystemStatus);
+            if (status == "03")
+            {
+                //Send equipment status from sender plc
+                var equipmentList = equipmentStatuses.FindAll(p => p.Plc == plc);
+                foreach (var equipment in equipmentList)
+                {
+                    equipment.Plc.SendEquipmentStatus(equipment.FunctionGroup, equipment.GroupStatus);
+                }
+            }
         }
 
         private void Scene_OnLoaded()
@@ -150,16 +205,53 @@ namespace Experior.Controller.TollFashion
             if (plc51 != null)
             {
                 plc51.OnRequestAllDataTelegramReceived -= OnRequestAllDataTelegramReceived;
+                plc51.OnSetSystemStatusTelegramReceived -= OnSetSystemStatusTelegramReceived;
             }
             if (plc52 != null)
             {
-                plc52.OnRequestAllDataTelegramReceived -= OnRequestAllDataTelegramReceived; ;
+                plc52.OnRequestAllDataTelegramReceived -= OnRequestAllDataTelegramReceived;
+                plc52.OnSetSystemStatusTelegramReceived -= OnSetSystemStatusTelegramReceived;
             }
             if (plc53 != null)
             {
-                plc53.OnRequestAllDataTelegramReceived -= OnRequestAllDataTelegramReceived; ;
+                plc53.OnRequestAllDataTelegramReceived -= OnRequestAllDataTelegramReceived;
+                plc53.OnSetSystemStatusTelegramReceived -= OnSetSystemStatusTelegramReceived;
+            }
+            if (plc54 != null)
+            {
+                plc54.OnRequestAllDataTelegramReceived -= OnRequestAllDataTelegramReceived;
+                plc54.OnSetSystemStatusTelegramReceived -= OnSetSystemStatusTelegramReceived;
+            }
+            if (plc61 != null)
+            {
+                plc61.OnRequestAllDataTelegramReceived -= OnRequestAllDataTelegramReceived;
+                plc61.OnSetSystemStatusTelegramReceived -= OnSetSystemStatusTelegramReceived;
+            }
+            if (plc62 != null)
+            {
+                plc62.OnRequestAllDataTelegramReceived -= OnRequestAllDataTelegramReceived;
+                plc62.OnSetSystemStatusTelegramReceived -= OnSetSystemStatusTelegramReceived;
+            }
+            if (plc63 != null)
+            {
+                plc63.OnRequestAllDataTelegramReceived -= OnRequestAllDataTelegramReceived;
+                plc63.OnSetSystemStatusTelegramReceived -= OnSetSystemStatusTelegramReceived;
             }
             base.Dispose();
         }
     }
+
+    public class EquipmentStatus
+    {
+        public MHEControllerAUS_Case Plc { get; private set; }
+        public string FunctionGroup { get; private set; }
+        public string GroupStatus { get; set; }
+
+        public EquipmentStatus(MHEControllerAUS_Case plc, string functionGroup, string groupStatus)
+        {
+            Plc = plc;
+            FunctionGroup = functionGroup;
+            GroupStatus = groupStatus;
+        }
+    } 
 }

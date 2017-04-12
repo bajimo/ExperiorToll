@@ -28,10 +28,17 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         {
             OnTransportOrderTelegramReceived?.Invoke(this, e);
         }
+
         public event EventHandler<MessageEventArgs> OnRequestAllDataTelegramReceived;
         protected virtual void RequestAllDataTelegramReceived(MessageEventArgs e)
         {
             OnRequestAllDataTelegramReceived?.Invoke(this, e);
+        }
+
+        public event EventHandler<MessageEventArgs> OnSetSystemStatusTelegramReceived;
+        protected virtual void SetSystemStatusTelegramReceived(MessageEventArgs e)
+        {
+            OnSetSystemStatusTelegramReceived?.Invoke(this, e);
         }
 
         public MHEControllerAUS_Case(CaseDatcomAusInfo info) : base(info)
@@ -131,6 +138,14 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             SendTelegram(type31);
         }
 
+        public void SendEquipmentStatus(string functionGroup, string groupStatus)
+        {
+            var type10 = Template.CreateTelegram(this, TelegramTypes.EquipmentStatus);
+            type10 = type10.SetFieldValue(this, TelegramFields.FunctionGroup, functionGroup);
+            type10 = type10.SetFieldValue(this, TelegramFields.GroupStatus, groupStatus);
+            SendTelegram(type10);
+        }
+
         public override void HandleTelegrams(TelegramTypes type, string telegram)
         {
             switch (type)
@@ -204,6 +219,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             //a “One Location Data Record” telegram(Type 31) is sent.The telegram contains all the details about the carrier.
 
             //Controller must send type 31 messages "Re-map Unit Load Data"
+            //Notify subscribers
             RequestAllDataTelegramReceived(new MessageEventArgs("", "", telegram, null, TelegramTypes.RequestAllData));
 
             //After the last “One Location Data Record” telegram has been sent by the PLC, an ‘End of Re - map’ telegram(Type 32) is sent to indicate an end of the remap.
@@ -249,11 +265,8 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                 PLC_State = CasePLC_State.Unknown;
             }
 
-            if (status == "03")
-            {
-                //TODO
-                //send status of all conveyors
-            }
+            //Notify subscribers
+            SetSystemStatusTelegramReceived(new MessageEventArgs("", "", telegram, null, TelegramTypes.SetSystemStatus));
 
             string reply = Template.CreateTelegram(this, TelegramTypes.SystemStatusReport);
             reply = reply.SetFieldValue(this, TelegramFields.SystemStatus, status);
@@ -319,6 +332,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                 //SendTelegram("10", status);
             }
 
+            //Notify subscribers
             TransportOrderTelegramReceived(new MessageEventArgs(current, barcode1, telegram, caseload, TelegramTypes.TransportOrder));
         }
 
