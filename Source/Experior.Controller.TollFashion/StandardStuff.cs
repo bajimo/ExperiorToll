@@ -7,7 +7,7 @@ namespace Experior.Controller.TollFashion
 {
     public partial class TollFashionRouting
     {
-        Experior.Core.Environment.UI.Toolbar.Button Speed1, Speed2, Speed5, Speed10, Speed20, HideShow, Reset, fps1, localProp, connectButt, disconnectButt;
+        Core.Environment.UI.Toolbar.Button Speed1, Speed2, Speed5, Speed10, Speed20, HideShow, Reset, fps1, localProp, connectButt, disconnectButt;
         Core.Environment.UI.Toolbar.Button btnWMSt;
         ModelTools toolsForm;
         LocalProperties localProperties = new LocalProperties();
@@ -37,9 +37,7 @@ namespace Experior.Controller.TollFashion
             Core.Environment.UI.Toolbar.Add(connectButt, "Communication");
             Core.Environment.UI.Toolbar.Add(disconnectButt, "Communication");
 
-            toolsForm = new ModelTools();
-            toolsForm.Show();
-            toolsForm.Hide();
+            toolsForm = new ModelTools(this);
 
             //Add a button to load the form
             btnWMSt = new Core.Environment.UI.Toolbar.Button("Tools", btnWMSt_Click);
@@ -66,13 +64,13 @@ namespace Experior.Controller.TollFashion
 
             switch (messageSeverity)
             {
-                case MessageSeverity.Critical: colour = System.Drawing.Color.Red; break;
-                case MessageSeverity.Warning: colour = System.Drawing.Color.Orange; break;
-                case MessageSeverity.Information: colour = System.Drawing.Color.Black; break;
-                case MessageSeverity.Test: colour = System.Drawing.Color.Blue; break;
-                default: colour = System.Drawing.Color.Black; break;
+                case MessageSeverity.Critical: colour = Color.Red; break;
+                case MessageSeverity.Warning: colour = Color.Orange; break;
+                case MessageSeverity.Information: colour = Color.Black; break;
+                case MessageSeverity.Test: colour = Color.Blue; break;
+                default: colour = Color.Black; break;
             }
-            Experior.Core.Environment.Log.Write(DateTime.Now + " Routing: " + message, colour);
+            Core.Environment.Log.Write(DateTime.Now + " Routing: " + message, colour);
         }
 
         void btnWMSt_Click(object sender, EventArgs e)
@@ -83,27 +81,27 @@ namespace Experior.Controller.TollFashion
 
         void Speed20_Click(object sender, EventArgs e)
         {
-            Experior.Core.Environment.Time.Scale = 20;
+            Core.Environment.Time.Scale = 20;
         }
 
         void Speed10_Click(object sender, EventArgs e)
         {
-            Experior.Core.Environment.Time.Scale = 10;
+            Core.Environment.Time.Scale = 10;
         }
 
         void Speed5_Click(object sender, EventArgs e)
         {
-            Experior.Core.Environment.Time.Scale = 5;
+            Core.Environment.Time.Scale = 5;
         }
 
         void Speed2_Click(object sender, EventArgs e)
         {
-            Experior.Core.Environment.Time.Scale = 2;
+            Core.Environment.Time.Scale = 2;
         }
 
         void Speed1_Click(object sender, EventArgs e)
         {
-            Experior.Core.Environment.Time.Scale = 1;
+            Core.Environment.Time.Scale = 1;
         }
 
         void Reset_Click(object sender, EventArgs e)
@@ -113,17 +111,17 @@ namespace Experior.Controller.TollFashion
 
         void FPS1_Click(object sender, EventArgs e)
         {
-            Experior.Core.Environment.Scene.FPS = 1;
+            Core.Environment.Scene.FPS = 1;
         }
 
         void localProp_Click(object sender, EventArgs e)
         {
-            Core.Environment.Properties.Set(localProperties);
+            //Core.Environment.Properties.Set(localProperties);
         }
 
         void connectButt_Click(object sender, EventArgs e)
         {
-            foreach (Core.Communication.TCPIP.Connection connection in Core.Communication.Connection.Items.Values)
+            foreach (var connection in Core.Communication.Connection.Items.Values)
             {
                 if (connection is Core.Communication.TCPIP.TCP)
                 {
@@ -136,7 +134,7 @@ namespace Experior.Controller.TollFashion
 
         void disconnectButt_Click(object sender, EventArgs e)
         {
-            foreach (Core.Communication.TCPIP.Connection connection in Core.Communication.Connection.Items.Values)
+            foreach (var connection in Core.Communication.Connection.Items.Values)
             {
                 connection.Disconnect();
                 connection.AutoConnect = false;

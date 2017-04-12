@@ -15,6 +15,8 @@ namespace Experior.Controller.TollFashion
         private readonly List<PickPutStation> rapidPickstations;
         private List<Catalog.Dematic.Case.Devices.CommunicationPoint> activePoints;
         private readonly List<EquipmentStatus> equipmentStatuses = new List<EquipmentStatus>();
+        public IReadOnlyList<EquipmentStatus> EquipmentStatuses { get; private set; }
+        public IReadOnlyList<string> PossibleStatuses { get; private set; } = new List<string>() {"00", "01", "10", "11"};
 
         public TollFashionRouting() : base("TollFashionRouting")
         {
@@ -80,6 +82,8 @@ namespace Experior.Controller.TollFashion
             equipmentStatuses.Add(new EquipmentStatus(plc51, "CC51CBUFFI", "11"));//TODO check name and status
             equipmentStatuses.Add(new EquipmentStatus(plc52, "CC52CBUFFI", "11"));//TODO check name and status
             equipmentStatuses.Add(new EquipmentStatus(plc53, "CC53CBUFFI", "11"));//TODO check name and status
+
+            EquipmentStatuses = new List<EquipmentStatus>(equipmentStatuses);
         }
 
         private void OnSetSystemStatusTelegramReceived(object sender, MessageEventArgs e)
