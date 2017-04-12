@@ -114,7 +114,13 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             return protocolConfig;
         }
 
-        public void SendArrivalMessage(string location, Case_Load load)
+        /// <summary>
+        /// Send 02 arrival message
+        /// </summary>
+        /// <param name="location"></param>
+        /// <param name="load"></param>
+        /// <param name="status">‘00’ Normal , ‘08’ Blocked , ‘09’ Waiting for Acknowledgement Blocked, ‘MD’ Manually Deleted, ‘DC’ Delete Confirmed, ‘DF’ Delete Fail</param>
+        public void SendArrivalMessage(string location, Case_Load load, string status = "00")
         {
             if (string.IsNullOrWhiteSpace(location))
                 return;
@@ -124,10 +130,44 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
 
             if (PLC_State == CasePLC_State.Auto)
             {
-                CaseData caseData = load.Case_Data as CaseData;
+                var caseData = load.Case_Data as CaseData;
+                if (caseData == null)
+                {
+                    Log.Write($"{Name} failed to send arrival message: CaseData is null!");
+                    return;
+                }
                 caseData.CurrentPosition = location;
+                caseData.ULStatus = status;
                 var telegram = CreateTelegramFromLoad(TelegramTypes.Arrival, load);
-                //telegram = telegram.SetFieldValue(this, TelegramFields.Current, location);
+                SendTelegram(telegram);
+            }
+        }
+
+        /// <summary>
+        /// Send 06 exception message
+        /// </summary>
+        /// <param name="location"></param>
+        /// <param name="load"></param>
+        /// <param name="status">‘00’ Normal , ‘08’ Blocked , ‘09’ Waiting for Acknowledgement Blocked, ‘MD’ Manually Deleted, ‘DC’ Delete Confirmed, ‘DF’ Delete Fail</param>
+        public void SendExceptionMessage(string location, Case_Load load, string status = "00")
+        {
+            if (string.IsNullOrWhiteSpace(location))
+                return;
+
+            if (load == null)
+                return;
+
+            if (PLC_State == CasePLC_State.Auto)
+            {
+                var caseData = load.Case_Data as CaseData;
+                if (caseData == null)
+                {
+                    Log.Write($"{Name} failed to send arrival message: CaseData is null!");
+                    return;
+                }
+                caseData.CurrentPosition = location;
+                caseData.ULStatus = status;
+                var telegram = CreateTelegramFromLoad(TelegramTypes.Exception, load);
                 SendTelegram(telegram);
             }
         }
@@ -395,7 +435,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             }
 
             load.Weight = caseData.Weight;
-           // load.Identification = datComData.Barcode1;
+            // load.Identification = datComData.Barcode1;
             load.Case_Data = datComData;
             return load;
         }

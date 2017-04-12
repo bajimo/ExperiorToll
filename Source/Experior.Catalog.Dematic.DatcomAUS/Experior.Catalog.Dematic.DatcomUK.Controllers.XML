@@ -14,6 +14,22 @@
             This is a PLC that handels Datcom AUS messages
             </summary>
         </member>
+        <member name="M:Experior.Catalog.Dematic.DatcomAUS.Assemblies.MHEControllerAUS_Case.SendArrivalMessage(System.String,Experior.Dematic.Base.Case_Load,System.String)">
+            <summary>
+            Send 02 arrival message
+            </summary>
+            <param name="location"></param>
+            <param name="load"></param>
+            <param name="status">‘00’ Normal , ‘08’ Blocked , ‘09’ Waiting for Acknowledgement Blocked, ‘MD’ Manually Deleted, ‘DC’ Delete Confirmed, ‘DF’ Delete Fail</param>
+        </member>
+        <member name="M:Experior.Catalog.Dematic.DatcomAUS.Assemblies.MHEControllerAUS_Case.SendExceptionMessage(System.String,Experior.Dematic.Base.Case_Load,System.String)">
+            <summary>
+            Send 06 exception message
+            </summary>
+            <param name="location"></param>
+            <param name="load"></param>
+            <param name="status">‘00’ Normal , ‘08’ Blocked , ‘09’ Waiting for Acknowledgement Blocked, ‘MD’ Manually Deleted, ‘DC’ Delete Confirmed, ‘DF’ Delete Fail</param>
+        </member>
         <member name="M:Experior.Catalog.Dematic.DatcomAUS.Assemblies.MHEControllerAUS_Case.ValidateRoutingCode(System.String)">
             <summary>
             Takes the string input from the assembly that is entered by the user

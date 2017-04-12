@@ -101,7 +101,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         {
             if (mergeDivertConveyor.failedToDivertLoad == caseLoad && FailedToDivertLocation != null) //Load has been routed to Default route so send failed to divert location
             {
-                casePLC.SendArrivalMessage(FailedToDivertLocation, caseLoad);
+                casePLC.SendExceptionMessage(FailedToDivertLocation, caseLoad, "08");
                 return true;
             }
             else

@@ -61,7 +61,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             if (e._direction != selectedRoute && !string.IsNullOrEmpty(FailedToDivertLocation))
             {
                 //Send failed to divert message
-                casePLC.SendArrivalMessage(FailedToDivertLocation, caseLoad);
+                casePLC.SendExceptionMessage(FailedToDivertLocation, caseLoad, "08");
 
             }
             else if (e._direction == DivertRoute.Divert && !string.IsNullOrEmpty(DivertRoutingLocation))

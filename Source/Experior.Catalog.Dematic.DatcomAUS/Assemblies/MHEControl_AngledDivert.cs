@@ -71,13 +71,11 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
 
                 if (FailedToDivertMessageType == FailedDatcomAusMessageType._02)
                 {
-                    casePLC.SendArrivalMessage(FailedToDivertLocation, caseLoad);
+                    casePLC.SendArrivalMessage(FailedToDivertLocation, caseLoad, "08");
                 }
                 else if (FailedToDivertMessageType == FailedDatcomAusMessageType._06)
                 {
-                    //TODO
-                    //string body = string.Format("{0},{1},{2}", caseLoad.SSCCBarcode, FailedToDivertLocation, FailedToDivertMessageReasonCode);
-                    //casePLC.SendTelegram("06", body, true);
+                    casePLC.SendExceptionMessage(FailedToDivertLocation, caseLoad, "08");
                 }
             }
             else if (e._direction == DivertRoute.Divert && !string.IsNullOrEmpty(DivertRoutingLocation))
