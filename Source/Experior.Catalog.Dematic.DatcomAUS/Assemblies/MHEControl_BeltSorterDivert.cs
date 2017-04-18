@@ -45,7 +45,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
 
             if (casePLC.DivertSet(caseload.Identification, DivertRoutes))
             {
-                selectedRoute = DivertRoute.Divert;   
+                selectedRoute = DivertRoute.Divert;
                 divertConveyor.RouteLoad(DivertRoute.Divert, e._load);
             }
             else
@@ -75,7 +75,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         bool loadDeleted(Load load) //Not used no event at the moment (Don't think we care!!!)
         {
             Case_Load caseLoad = load as Case_Load;
-            
+
             if (casePLC.RoutingTable.ContainsKey(caseLoad.Identification))
                 casePLC.RoutingTable.Remove(caseLoad.Identification);
 
@@ -120,13 +120,12 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             set
             {
                 if (value == "")
+                {
                     divertDatcomInfo.failedToDivertLocation = null;
+                }
                 else
                 {
-                    if (value.Length == 4)
-                        divertDatcomInfo.failedToDivertLocation = value;
-                    else
-                        FailedToDivertLocation = divertDatcomInfo.failedToDivertLocation;
+                    divertDatcomInfo.failedToDivertLocation = value;
                 }
             }
         }
@@ -211,13 +210,12 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             set
             {
                 if (value == "")
+                {
                     divertDatcomInfo.divertRoutingLocation = null;
+                }
                 else
                 {
-                    if (value.Length == 4)
-                        divertDatcomInfo.divertRoutingLocation = value;
-                    else
-                        DivertRoutingLocation = divertDatcomInfo.divertRoutingLocation;
+                    divertDatcomInfo.divertRoutingLocation = value;
                 }
             }
         }
