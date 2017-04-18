@@ -7,4 +7,6 @@ Debug/
 Release/
 *.BACKUP
 *.bak
+*.dwl
+*.dwl2
 packages/
