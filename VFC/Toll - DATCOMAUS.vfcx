@@ -3432,6 +3432,45 @@
       <RoutePercentage>100</RoutePercentage>
       <RouteController>PLC63</RouteController>
     </Routing>
+    <Routing Name="CC62SORTERIP" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>RoundRobin</Distribution>
+      <DestinationCode>CC62LANE1,CC62LANE2,CC62LANE3,CC62LANE4,CC62LANE5,CC62LANE6,CC62LANE7,CC62LANE8,CC62LANE9,CC62RECIRC</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>0</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC62</RouteController>
+    </Routing>
+    <Routing Name="CC62DBNP1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>RoundRobin</Distribution>
+      <DestinationCode>MSAI25CL01PS10,MSAI26CL01PS10</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>0</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC62</RouteController>
+    </Routing>
+    <Routing Name="CC62SORTNP1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>RoundRobin</Distribution>
+      <DestinationCode>CC62DBNP1,CC62SORTERIP</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>0</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC62</RouteController>
+    </Routing>
   </Routings>
   <Functions>
   </Functions>
