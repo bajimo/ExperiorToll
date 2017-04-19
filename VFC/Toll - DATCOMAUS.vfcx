@@ -1,5 +1,4 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<!--DEMATIC Virtual Flow Controller Configuration File-->
 <Configuration VFCVERSION="1.0">
   <SystemConfiguration>
     <BK10BarcodeLength>10</BK10BarcodeLength>
@@ -2307,6 +2306,13 @@
   <ProjectExtensions>
   </ProjectExtensions>
   <Connections>
+    <Connection Name="01E1" Type="DCI_TCPIP">
+      <Category>DMS</Category>
+      <Port>8001</Port>
+      <Server>False</Server>
+      <AutoListen>False</AutoListen>
+      <IPAddress>127.0.0.1</IPAddress>
+    </Connection>
     <Connection Name="PLC51" Type="SingleRFC1006">
       <Category>
       </Category>
@@ -2362,13 +2368,6 @@
       <IPAddress>127.0.0.1</IPAddress>
       <LocalTSAP>WCS63</LocalTSAP>
       <RemoteTSAP>PLC63</RemoteTSAP>
-    </Connection>
-    <Connection Name="01E1" Type="DCI_TCPIP">
-      <Category>DMS</Category>
-      <Port>8001</Port>
-      <Server>False</Server>
-      <AutoListen>False</AutoListen>
-      <IPAddress>127.0.0.1</IPAddress>
     </Connection>
   </Connections>
   <Controllers>
@@ -3406,6 +3405,19 @@
       <TelegramDelay>0</TelegramDelay>
       <RoutePercentage>100</RoutePercentage>
       <RouteController>PLC53</RouteController>
+    </Routing>
+    <Routing Name="CC63QA1NP1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>First</Distribution>
+      <DestinationCode>CC63QA1A1,MSAI01CL01PS,MSAI02CL01PS,MSAI03CL01PS,MSAI04CL01PS,MSAI05CL01PS,MSAI06CL01PS,MSAI07CL01PS,MSAI08CL01PS,MSAI09CL01PS,MSAI10CL01PS,MSAI11CL01PS,MSAI12CL01PS,MSAI13CL01PS,MSAI14CL01PS,MSAI15CL01PS,MSAI16CL01PS,MSAI17CL01PS,MSAI18CL01PS,MSAI19CL01PS,MSAI20CL01PS,MSAI21CL01PS,MSAI22CL01PS,MSAI23CL01PS,MSAI24CL01PS</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>0</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC63</RouteController>
     </Routing>
   </Routings>
   <Functions>
