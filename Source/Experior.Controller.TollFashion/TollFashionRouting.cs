@@ -170,7 +170,7 @@ namespace Experior.Controller.TollFashion
             }
 
             //if (node.Name.EndsWith("A1", false, CultureInfo.InvariantCulture))
-            if (node.Name.Contains("CARTONA1"))
+            if (node.Name.Contains("CARTONA1") || node.Name == "CC63QA1A1" || node.Name == "CC63QA2A1")
             {
                 //Active locations
                 var caseLoad = load as Case_Load;
