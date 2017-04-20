@@ -17,10 +17,13 @@ namespace Experior.Controller.TollFashion
         private readonly List<EquipmentStatus> equipmentStatuses = new List<EquipmentStatus>();
         public IReadOnlyList<EquipmentStatus> EquipmentStatuses { get; private set; }
         public IReadOnlyList<string> PossibleStatuses { get; private set; } = new List<string>() {"00", "01", "10", "11"};
+        private EmulationController emulationController;
 
         public TollFashionRouting() : base("TollFashionRouting")
         {
             StandardConstructor();
+
+            emulationController = new EmulationController();
 
             plc51 = Core.Assemblies.Assembly.Get("PLC 51") as MHEControllerAUS_Case;
             plc52 = Core.Assemblies.Assembly.Get("PLC 52") as MHEControllerAUS_Case;

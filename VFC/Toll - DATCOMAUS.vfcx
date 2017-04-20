@@ -3,7 +3,7 @@
   <SystemConfiguration>
     <BK10BarcodeLength>10</BK10BarcodeLength>
     <BK10BarcodePrefix>00</BK10BarcodePrefix>
-    <NextCartonBarcode>1</NextCartonBarcode>
+    <NextCartonBarcode>2</NextCartonBarcode>
     <TelegramValidation Name="DATCOMBK10">
       <DefaultFormatPadding>
         <ASCII>
@@ -2372,7 +2372,7 @@
     <Connection Name="EMU" Type="STXETX">
       <Category>
       </Category>
-      <Port>9001</Port>
+      <Port>8101</Port>
       <IPAddress>127.0.0.1</IPAddress>
     </Connection>
   </Connections>
