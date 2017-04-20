@@ -3471,6 +3471,19 @@
       <RoutePercentage>100</RoutePercentage>
       <RouteController>PLC62</RouteController>
     </Routing>
+    <Routing Name="CC61ONLINENP" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>RoundRobin</Distribution>
+      <DestinationCode>CC61LANE1,CC61LANE3,CC61LANE5,CC61LANE7,CC61LANE9,CC61LANE11,CC61LANE13,CC61LANE15,CC61LANE17,CC61LANE19,CC61LANE21,CC61LANE23,CC61LANE25,CC61LANE27,CC61LANE29,CC61LANE31,CC61LANE33,CC61LANE35</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>0</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC61</RouteController>
+    </Routing>
   </Routings>
   <Functions>
   </Functions>
