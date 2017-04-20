@@ -363,7 +363,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             //    ((CaseData)caseload.Case_Data).RoutingTableUpdateWait = false;
             //}
 
-            if (caseload.LoadWaitingForWCS)
+            if (caseload != null && caseload.LoadWaitingForWCS)
                 caseload.ReleaseLoad_WCSControl();
 
             int newcount = RoutingTable.Count;
