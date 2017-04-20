@@ -5774,7 +5774,7 @@
           <Identification />
           <Identifier>false</Identifier>
           <IgnoreLength>false</IgnoreLength>
-          <Length>10</Length>
+          <Length>14</Length>
           <NextLength>false</NextLength>
           <No>6</No>
           <Pad>LEFT</Pad>
@@ -5784,7 +5784,7 @@
           <Repetition>false</Repetition>
           <Selected>false</Selected>
           <Terminate>false</Terminate>
-          <Width>199</Width>
+          <Width>279</Width>
           <X>220</X>
           <Y>18</Y>
         </Field>
@@ -5806,7 +5806,7 @@
           <Selected>false</Selected>
           <Terminate>false</Terminate>
           <Width>39</Width>
-          <X>420</X>
+          <X>500</X>
           <Y>18</Y>
         </Field>
         <Field>
@@ -5816,7 +5816,7 @@
           <Identification />
           <Identifier>false</Identifier>
           <IgnoreLength>false</IgnoreLength>
-          <Length>96</Length>
+          <Length>92</Length>
           <NextLength>false</NextLength>
           <No>8</No>
           <Pad>LEFT</Pad>
@@ -5826,8 +5826,8 @@
           <Repetition>false</Repetition>
           <Selected>false</Selected>
           <Terminate>false</Terminate>
-          <Width>1919</Width>
-          <X>460</X>
+          <Width>1839</Width>
+          <X>540</X>
           <Y>18</Y>
         </Field>
         <Field>
@@ -7238,7 +7238,7 @@
           <PrintFormat>DEC</PrintFormat>
           <ProtocolDataType>ASCII</ProtocolDataType>
           <Repetition>false</Repetition>
-          <Selected>true</Selected>
+          <Selected>false</Selected>
           <Terminate>false</Terminate>
           <Width>39</Width>
           <X>60</X>

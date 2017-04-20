@@ -75,13 +75,78 @@ namespace Experior.Controller.TollFashion
 
         private void CreateEquipmentStatuses()
         {
-            equipmentStatuses.Add(new EquipmentStatus(plc54, "CC54LOOP", "11"));
-            equipmentStatuses.Add(new EquipmentStatus(plc51, "CC51CARTON", "11")); //TODO check name and status
-            equipmentStatuses.Add(new EquipmentStatus(plc52, "CC52CARTON", "11"));//TODO check name and status
-            equipmentStatuses.Add(new EquipmentStatus(plc53, "CC53CARTON", "11"));//TODO check name and status
-            equipmentStatuses.Add(new EquipmentStatus(plc51, "CC51CBUFFI", "11"));//TODO check name and status
-            equipmentStatuses.Add(new EquipmentStatus(plc52, "CC52CBUFFI", "11"));//TODO check name and status
-            equipmentStatuses.Add(new EquipmentStatus(plc53, "CC53CBUFFI", "11"));//TODO check name and status
+            //00 is ok, 01 is fault. Some function groups use different statuses.
+
+            //Table 50 Functional Groups – Order Fulfilment     
+            equipmentStatuses.Add(new EquipmentStatus(plc51, "CC51CBUFFIN", "11")); //11 induction running
+            equipmentStatuses.Add(new EquipmentStatus(plc52, "CC52CBUFFIN", "11")); //11 induction running
+            equipmentStatuses.Add(new EquipmentStatus(plc53, "CC53CBUFFIN", "11")); //11 induction running
+            equipmentStatuses.Add(new EquipmentStatus(plc51, "CC51OBUFFIN"));
+            equipmentStatuses.Add(new EquipmentStatus(plc52, "CC52OBUFFIN"));
+            equipmentStatuses.Add(new EquipmentStatus(plc53, "CC53OBUFFIN"));
+            equipmentStatuses.Add(new EquipmentStatus(plc51, "CC51BUFF"));
+            equipmentStatuses.Add(new EquipmentStatus(plc52, "CC52BUFF"));
+            equipmentStatuses.Add(new EquipmentStatus(plc53, "CC53BUFF"));
+            equipmentStatuses.Add(new EquipmentStatus(plc51, "CC51OBUFFOUT"));
+            equipmentStatuses.Add(new EquipmentStatus(plc52, "CC52OBUFFOUT"));
+            equipmentStatuses.Add(new EquipmentStatus(plc53, "CC53OBUFFOUT"));
+ 
+            var plc = plc51;
+            for (int i = 1; i <= 24; i++)
+            {
+                if (i == 9)
+                    plc = plc52;
+                if (i == 17)
+                    plc = plc53;
+
+                equipmentStatuses.Add(new EquipmentStatus(plc, $"CC{plc.SenderIdentifier}RP{i:00}IN"));
+                equipmentStatuses.Add(new EquipmentStatus(plc, $"RP{i:00}"));        
+            }
+
+            equipmentStatuses.Add(new EquipmentStatus(plc53, "CC53QA"));
+
+            //Table 59 Functional Groups – Finishing
+            equipmentStatuses.Add(new EquipmentStatus(plc54, "CC54LOOP", "11")); //11 loop is running
+            equipmentStatuses.Add(new EquipmentStatus(plc54, "CC54FINISHLINE"));
+            equipmentStatuses.Add(new EquipmentStatus(plc54, "CC54RECYCLE"));
+            equipmentStatuses.Add(new EquipmentStatus(plc54, "CC54GOH"));
+
+            //Table 62 Functional Groups – Documentation & Lidding
+            equipmentStatuses.Add(new EquipmentStatus(plc61, "CC61COMMON"));
+            equipmentStatuses.Add(new EquipmentStatus(plc61, "CC61DOCLID"));
+            equipmentStatuses.Add(new EquipmentStatus(plc61, "CC61DOC1"));
+            //equipmentStatuses.Add(new EquipmentStatus(plc61, "CC61DOC2")); //future
+            equipmentStatuses.Add(new EquipmentStatus(plc61, "CC61QA"));
+            equipmentStatuses.Add(new EquipmentStatus(plc61, "CC61LID1"));
+            equipmentStatuses.Add(new EquipmentStatus(plc61, "CC61LID2"));
+            equipmentStatuses.Add(new EquipmentStatus(plc61, "CC61LID3"));
+            //equipmentStatuses.Add(new EquipmentStatus(plc61, "CC61LID4")); //future
+            equipmentStatuses.Add(new EquipmentStatus(plc61, "CC61ONLINE"));
+            equipmentStatuses.Add(new EquipmentStatus(plc61, "CC61RECYCLE"));
+            equipmentStatuses.Add(new EquipmentStatus(plc61, "CC61LPA1"));
+            equipmentStatuses.Add(new EquipmentStatus(plc61, "CC61LPA2"));
+
+            //Table 65 Functional Groups – Sorter
+            equipmentStatuses.Add(new EquipmentStatus(plc62, "CC62TOSORT"));
+            equipmentStatuses.Add(new EquipmentStatus(plc62, "CC62DBIN"));
+            equipmentStatuses.Add(new EquipmentStatus(plc62, "CC62LOOP", "11")); //11 loop is running
+            for (int i = 1; i <= 9; i++)
+            {
+                equipmentStatuses.Add(new EquipmentStatus(plc62, $"CC62LANE{i}"));
+            }
+            equipmentStatuses.Add(new EquipmentStatus(plc62, "CC62REJECT"));
+
+            //Table 71 Functional Groups – Decant
+            equipmentStatuses.Add(new EquipmentStatus(plc63, "CC63ETL", "10"));  //10 is empty
+            equipmentStatuses.Add(new EquipmentStatus(plc63, "CC63LOOP", "11")); //11 loop is running
+            equipmentStatuses.Add(new EquipmentStatus(plc63, "CC63QA1"));
+            equipmentStatuses.Add(new EquipmentStatus(plc63, "CC63QA2"));
+
+            //todo Where are these mentioned?:
+
+            equipmentStatuses.Add(new EquipmentStatus(plc51, "CC51CARTONA1", "11")); //CC11? 11 Both small and large cartons are available.
+            equipmentStatuses.Add(new EquipmentStatus(plc52, "CC52CARTONA1", "11")); //CC11? 11 Both small and large cartons are available.
+            equipmentStatuses.Add(new EquipmentStatus(plc53, "CC53CARTONA1", "11")); //CC11? 11 Both small and large cartons are available.
 
             EquipmentStatuses = new List<EquipmentStatus>(equipmentStatuses);
         }
@@ -239,7 +304,7 @@ namespace Experior.Controller.TollFashion
         public string FunctionGroup { get; private set; }
         public string GroupStatus { get; set; }
 
-        public EquipmentStatus(MHEControllerAUS_Case plc, string functionGroup, string groupStatus)
+        public EquipmentStatus(MHEControllerAUS_Case plc, string functionGroup, string groupStatus = "00")
         {
             Plc = plc;
             FunctionGroup = functionGroup;

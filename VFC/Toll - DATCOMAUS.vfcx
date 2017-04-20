@@ -2369,6 +2369,12 @@
       <LocalTSAP>WCS63</LocalTSAP>
       <RemoteTSAP>PLC63</RemoteTSAP>
     </Connection>
+    <Connection Name="EMU" Type="STXETX">
+      <Category>
+      </Category>
+      <Port>9001</Port>
+      <IPAddress>127.0.0.1</IPAddress>
+    </Connection>
   </Connections>
   <Controllers>
     <Controller Name="01E1" Type="DMSDCI">
@@ -2636,6 +2642,13 @@
       <telegramValidation>DATCOMAUS</telegramValidation>
       <ReceiverIdentifier>63</ReceiverIdentifier>
       <SenderIdentifier>01</SenderIdentifier>
+    </Controller>
+    <Controller Name="EMU" Type="EMUDAIUK">
+      <Category>
+      </Category>
+      <LogAll>False</LogAll>
+      <Enabled>True</Enabled>
+      <connection>EMU</connection>
     </Controller>
   </Controllers>
   <Routings>
