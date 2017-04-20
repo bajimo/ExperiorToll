@@ -3484,6 +3484,227 @@
       <RoutePercentage>100</RoutePercentage>
       <RouteController>PLC61</RouteController>
     </Routing>
+    <Routing Name="CC61DOCLIDNP1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>RoundRobin</Distribution>
+      <DestinationCode>CC61DOC1A1,CC61QAA1,CC61LID1A1,CC61LID2A1,CC61LID3A1</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>0</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC61</RouteController>
+    </Routing>
+    <Routing Name="CC61DOCNP1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>RoundRobin</Distribution>
+      <DestinationCode>CC61DOC1A1,CC61DOC1A1</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>0</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC61</RouteController>
+    </Routing>
+    <Routing Name="CC61DOC1A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>First</Distribution>
+      <DestinationCode>CC61QANP1</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>2</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC61</RouteController>
+    </Routing>
+    <Routing Name="CC61DOC2A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>First</Distribution>
+      <DestinationCode>CC61QANP1</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>2</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC61</RouteController>
+    </Routing>
+    <Routing Name="CC61QANP1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>RoundRobin</Distribution>
+      <DestinationCode>CC61QAA1,CC61LID1A1,CC61LID2A1,CC61LID3A1</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>0</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC61</RouteController>
+    </Routing>
+    <Routing Name="CC61QAA1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>RoundRobin</Distribution>
+      <DestinationCode>CC61LID1A1,CC61LID2A1,CC61LID3A1</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>5</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC61</RouteController>
+    </Routing>
+    <Routing Name="CC61LIDNP1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>RoundRobin</Distribution>
+      <DestinationCode>CC61LID3A1,CC61LID1A1,CC61LID2A1</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>0</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC61</RouteController>
+    </Routing>
+    <Routing Name="CC61LIDNP2" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>RoundRobin</Distribution>
+      <DestinationCode>CC61LID1A1,CC61LID2A1,CC61LPA1A1,CC61LPA2A1,CC62SORTNP1</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>0</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC61</RouteController>
+    </Routing>
+    <Routing Name="CC61LID1A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>RoundRobin</Distribution>
+      <DestinationCode>CC61LPA1A1,CC61LPA2A1</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>5</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC61</RouteController>
+    </Routing>
+    <Routing Name="CC61LID2A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>RoundRobin</Distribution>
+      <DestinationCode>CC61LPA1A1,CC61LPA2A1</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>5</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC61</RouteController>
+    </Routing>
+    <Routing Name="CC61LID3A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>RoundRobin</Distribution>
+      <DestinationCode>CC61LPA1A1,CC61LPA2A1</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>5</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC61</RouteController>
+    </Routing>
+    <Routing Name="CC61LPANP1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>RoundRobin</Distribution>
+      <DestinationCode>CC61LPA1A1,CC61LPA2A1</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>0</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC61</RouteController>
+    </Routing>
+    <Routing Name="CC61LPA1A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>RoundRobin</Distribution>
+      <DestinationCode>CC61LPA1A2,CC62SORTNP1</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>3</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC61</RouteController>
+    </Routing>
+    <Routing Name="CC61LPA2A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>RoundRobin</Distribution>
+      <DestinationCode>CC61LPA2A2,CC62SORTNP1</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>2</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC61</RouteController>
+    </Routing>
+    <Routing Name="CC61LPA1A2" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>First</Distribution>
+      <DestinationCode>CC62SORTNP1</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>2</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC61</RouteController>
+    </Routing>
+    <Routing Name="CC61LPA2A2" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>First</Distribution>
+      <DestinationCode>CC62SORTNP1</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>2</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC61</RouteController>
+    </Routing>
+    <Routing Name="CC61WEB2DLNP1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>RoundRobin</Distribution>
+      <DestinationCode>CC54LIPECR,CC61DOCNP1,CC54OB3NP1</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>0</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC61</RouteController>
+    </Routing>
   </Routings>
   <Functions>
   </Functions>
