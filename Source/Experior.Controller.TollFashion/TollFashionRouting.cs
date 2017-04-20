@@ -168,18 +168,6 @@ namespace Experior.Controller.TollFashion
                         plc.RoutingTable[caseLoad.SSCCBarcode] = dest;
                 }
             }
-
-            //if (node.Name.EndsWith("A1", false, CultureInfo.InvariantCulture))
-            if (node.Name.Contains("CARTONA1") || node.Name == "CC63QA1A1" || node.Name == "CC63QA2A1")
-            {
-                //Active locations
-                var caseLoad = load as Case_Load;
-                if (caseLoad != null)
-                {
-                    caseLoad.LoadWaitingForWCS = true;
-                    caseLoad.StopLoad();
-                }
-            }
         }
 
         private void ResetStandard()
