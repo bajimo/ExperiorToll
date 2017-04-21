@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
+using Experior.Catalog.Dematic.Case;
 using Experior.Catalog.Dematic.Case.Components;
 using Experior.Catalog.Dematic.DatcomAUS.Assemblies;
 using Experior.Dematic.Base;
@@ -11,10 +12,8 @@ namespace Experior.Controller.TollFashion
     public class EmulationController
     {
         private int cycleNumber;
-        private readonly Dictionary<string, string> zonePickRelease = new Dictionary<string, string>();
-        private readonly Dictionary<string, string> putwallRelease = new Dictionary<string, string>();
-        private readonly Dictionary<string, string> despatchLabels = new Dictionary<string, string>();
-        private readonly List<string> validBarcodes = new List<string>();
+        //public readonly Dictionary<string, string> DespatchLabels = new Dictionary<string, string>();
+        public readonly List<string> ValidCartonErectionBarcodes = new List<string>();
         private readonly Core.Communication.TCPIP.Connection emuconnection;
         public EmulationController()
         {
@@ -46,7 +45,7 @@ namespace Experior.Controller.TollFashion
             var header = telegramFields[0];
             var type = header.Substring(0, 4);
             var subtype = header.Substring(4, 4);
-            var cycleno = header.Substring(8, 6);
+            //var cycleno = header.Substring(8, 6);
 
             switch (type)
             {
@@ -86,7 +85,7 @@ namespace Experior.Controller.TollFashion
                     for (int i = 2; i < telegramFields.Length; i++)
                     {
                         if (telegramFields[i] != "")
-                            validBarcodes.Add(telegramFields[i]);
+                            ValidCartonErectionBarcodes.Add(telegramFields[i]);
                     }
                 }
             }
@@ -94,15 +93,15 @@ namespace Experior.Controller.TollFashion
             {
                 //WMS sends data after data request.
                 //Find caseload and update the data (SSCC barcode)
-                var ssccBarcode = telegramFields[1];
-                var labellerBarcode = telegramFields[2];
-                var tmType = telegramFields[3];
-                Case_Load caseload = Case_Load.GetCaseFromSSCCBarcode(ssccBarcode);
+                //var ssccBarcode = telegramFields[1];
+                //var labellerBarcode = telegramFields[2];
+                //var tmType = telegramFields[3];
+                //Case_Load caseload = Case_Load.GetCaseFromSSCCBarcode(ssccBarcode);
 
-                if (caseload != null)
-                {
-                    despatchLabels.Add(ssccBarcode, labellerBarcode);
-                }
+                //if (caseload != null)
+                //{
+                //    DespatchLabels.Add(ssccBarcode, labellerBarcode);
+                //}
             }
         }
 
@@ -111,7 +110,7 @@ namespace Experior.Controller.TollFashion
             if (subtype == "W001" || subtype == "W002" || subtype == "W004")
             {
                 //Delete tote message from wcs
-                var location = telegramFields[2];
+                //var location = telegramFields[2];
                 var totebarcode = telegramFields[1];
 
                 Case_Load caseload = Case_Load.GetCaseFromSSCCBarcode(totebarcode);
@@ -166,7 +165,11 @@ namespace Experior.Controller.TollFashion
                         caseLoad.SSCCBarcode = barcode;
                         caseLoad.Identification = barcode;
 
-                        if (conv.Width > 0.5)
+                        //if (conv.Width > 0.5)
+                        //{
+                        //    caseLoad.Yaw = (float)(Math.PI / 2f);
+                        //}
+                        if (conv.CaseOrientation == CaseOrientation.WidthLeading && l > w)
                         {
                             caseLoad.Yaw = (float)(Math.PI / 2f);
                         }
@@ -189,9 +192,10 @@ namespace Experior.Controller.TollFashion
             if (subtype == "S001")
             {
                 //Delete tote message from wcs
-                var location = telegramFields[2];
+                //var location = telegramFields[2];
                 var totebarcode = telegramFields[1];
                 var caseload = Case_Load.GetCaseFromSSCCBarcode(totebarcode);
+                caseload.ReleaseLoad();
 
                 //if (caseload != null && (location == "ZP01" || location == "ZP02" || location == "ZP03" || location == "ZP04" || location == "ZP05" || location == "ZP06"))
                 //{

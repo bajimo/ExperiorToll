@@ -16,14 +16,17 @@ namespace Experior.Controller.TollFashion
         private List<Catalog.Dematic.Case.Devices.CommunicationPoint> activePoints;
         private readonly List<EquipmentStatus> equipmentStatuses = new List<EquipmentStatus>();
         public IReadOnlyList<EquipmentStatus> EquipmentStatuses { get; private set; }
-        public IReadOnlyList<string> PossibleStatuses { get; private set; } = new List<string>() {"00", "01", "10", "11"};
+        public IReadOnlyList<string> PossibleStatuses { get; private set; } = new List<string>() { "00", "01", "10", "11" };
         private EmulationController emulationController;
+        private readonly StraightAccumulationConveyor emptyToteLine;
 
         public TollFashionRouting() : base("TollFashionRouting")
         {
             StandardConstructor();
 
             emulationController = new EmulationController();
+
+            emptyToteLine = Core.Assemblies.Assembly.Get("P1963") as StraightAccumulationConveyor;
 
             plc51 = Core.Assemblies.Assembly.Get("PLC 51") as MHEControllerAUS_Case;
             plc52 = Core.Assemblies.Assembly.Get("PLC 52") as MHEControllerAUS_Case;
@@ -33,7 +36,7 @@ namespace Experior.Controller.TollFashion
             plc62 = Core.Assemblies.Assembly.Get("PLC 62") as MHEControllerAUS_Case;
             plc63 = Core.Assemblies.Assembly.Get("PLC 63") as MHEControllerAUS_Case;
             rapidPickstations = Core.Assemblies.Assembly.Items.Values.OfType<PickPutStation>().ToList();
-  
+
             if (plc51 != null)
             {
                 plc51.OnRequestAllDataTelegramReceived += OnRequestAllDataTelegramReceived;
@@ -93,7 +96,7 @@ namespace Experior.Controller.TollFashion
             equipmentStatuses.Add(new EquipmentStatus(plc51, "CC51OBUFFOUT"));
             equipmentStatuses.Add(new EquipmentStatus(plc52, "CC52OBUFFOUT"));
             equipmentStatuses.Add(new EquipmentStatus(plc53, "CC53OBUFFOUT"));
- 
+
             var plc = plc51;
             for (int i = 1; i <= 24; i++)
             {
@@ -103,7 +106,7 @@ namespace Experior.Controller.TollFashion
                     plc = plc53;
 
                 equipmentStatuses.Add(new EquipmentStatus(plc, $"CC{plc.SenderIdentifier}RP{i:00}IN"));
-                equipmentStatuses.Add(new EquipmentStatus(plc, $"RP{i:00}"));        
+                equipmentStatuses.Add(new EquipmentStatus(plc, $"RP{i:00}"));
             }
 
             equipmentStatuses.Add(new EquipmentStatus(plc53, "CC53QA"));
@@ -196,7 +199,7 @@ namespace Experior.Controller.TollFashion
             {
                 var caseload = point.apCommPoint.ActiveLoad as Case_Load;
                 if (caseload != null)
-                { 
+                {
                     if (plc == point.Controller)
                     {
                         plc.SendRemapUlData(caseload);
@@ -234,7 +237,62 @@ namespace Experior.Controller.TollFashion
                     //Set the destination so the case load will cross the main line
                     if (!plc.RoutingTable.ContainsKey(caseLoad.SSCCBarcode))
                         plc.RoutingTable[caseLoad.SSCCBarcode] = dest;
+
                 }
+                return;
+            }
+            if (node.Name == "ETLENTRY")
+            {               
+                load.OnDisposed += EmptyToteDisposed;
+                SendEmptyToteLineFillLevel();
+            }
+        }
+
+        private void EmptyToteDisposed(Load load)
+        {
+            load.OnDisposed -= EmptyToteDisposed;
+            SendEmptyToteLineFillLevel();
+        }
+
+        private void SendEmptyToteLineFillLevel()
+        {
+            //’10’ Empty Tote Line – Empty
+            //’11’ Empty Tote Line – 1 / 6 Full
+            //’12’ Empty Tote Line – 1 / 3 Full
+            //’13’ Empty Tote Line – 1 / 2 Full
+            //’14’ Empty Tote Line – 2 / 3 Full
+            //’15’ Empty Tote Line – 5 / 6 Full
+            //’16’ Empty Tote Line – Full
+            var eqStatus = equipmentStatuses.First(e => e.FunctionGroup == "CC63ETL");
+            var sBefore = eqStatus.GroupStatus;
+            var fillLevel = emptyToteLine.LoadCount / (float)emptyToteLine.Positions;
+            if (fillLevel == 0)
+            {
+                eqStatus.GroupStatus = "10";
+            }
+            else if (fillLevel < 1 / 6f)
+            {
+                eqStatus.GroupStatus = "11";
+            }
+            else if (fillLevel < 1 / 3f)
+            {
+                eqStatus.GroupStatus = "12";
+            }
+            else if (fillLevel < 2 / 3f)
+            {
+                eqStatus.GroupStatus = "13";
+            }
+            else if (fillLevel < 5 / 6f)
+            {
+                eqStatus.GroupStatus = "14";
+            }
+            else
+            {
+                eqStatus.GroupStatus = "15";
+            }
+            if (eqStatus.GroupStatus != sBefore)
+            {
+                plc63.SendEquipmentStatus(eqStatus.FunctionGroup, eqStatus.GroupStatus);
             }
         }
 
@@ -313,5 +371,5 @@ namespace Experior.Controller.TollFashion
             FunctionGroup = functionGroup;
             GroupStatus = groupStatus;
         }
-    } 
+    }
 }
