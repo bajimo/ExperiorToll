@@ -3731,6 +3731,42 @@
       <RoutePercentage>100</RoutePercentage>
       <RouteController>PLC63</RouteController>
     </Routing>
+    <Routing Name="CC51ECINP1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>CC51OBNP1</DestinationCode>
+      <DestinationCodeSecondary>MSAI27CR01PS10,MSAI28CR01PS10,CC51ECFA0</DestinationCodeSecondary>
+      <TelegramDelay>0</TelegramDelay>
+      <RoutePercentage>90</RoutePercentage>
+      <RouteController>PLC51</RouteController>
+    </Routing>
+    <Routing Name="CC52ECINP1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>CC52OBNP1</DestinationCode>
+      <DestinationCodeSecondary>MSAI29CL01PS10,MSAI30CL01PS10,CC52ECFA0</DestinationCodeSecondary>
+      <TelegramDelay>0</TelegramDelay>
+      <RoutePercentage>90</RoutePercentage>
+      <RouteController>PLC52</RouteController>
+    </Routing>
+    <Routing Name="CC53ECINP1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>CC53OBNP1</DestinationCode>
+      <DestinationCodeSecondary>MSAI31CR01PS10,MSAI32CR01PS10,CC53ECFA0</DestinationCodeSecondary>
+      <TelegramDelay>0</TelegramDelay>
+      <RoutePercentage>10</RoutePercentage>
+      <RouteController>PLC53</RouteController>
+    </Routing>
   </Routings>
   <Functions>
   </Functions>

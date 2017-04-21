@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using Dematic.DATCOMAUS;
 using Experior.Catalog.Dematic.Case.Components;
@@ -242,9 +244,48 @@ namespace Experior.Controller.TollFashion
                 return;
             }
             if (node.Name == "ETLENTRY")
-            {               
+            {
                 load.OnDisposed += EmptyToteDisposed;
                 SendEmptyToteLineFillLevel();
+                return;
+            }
+            if (node.Name == "CC51ECFA0")
+            {
+                HandleFailedCartons(plc51, node.Name, load);
+                return;
+            }
+            if (node.Name == "CC52ECFA0")
+            {
+                HandleFailedCartons(plc52, node.Name, load);
+                return;
+            }
+            if (node.Name == "CC53ECFA0")
+            {
+                HandleFailedCartons(plc53, node.Name, load);
+                return;
+            }
+        }
+
+        private void HandleFailedCartons(MHEControllerAUS_Case plc, string location, Load load)
+        {
+            //Check if carton is failed 
+            if (!plc.RoutingTable.ContainsKey(load.Identification))
+            {
+                //Load unknown... this should not happen
+                return;
+            }
+
+            var destination = plc.RoutingTable[load.Identification];
+            if (destination == location)
+            {
+                //Load failed. 
+                load.Stop();
+                load.Color = Color.Red;
+                Core.Timer.Action(() => 
+                {
+                    load.Dispose();
+                    Log.Write($"Failed carton ({load.Identification}) manually removed from {location}");
+                }, 5);     
             }
         }
 
