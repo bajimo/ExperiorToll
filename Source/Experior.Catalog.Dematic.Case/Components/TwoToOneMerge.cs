@@ -38,6 +38,9 @@ namespace Experior.Catalog.Dematic.Case.Components
             lhsConveyor.EndFixPoint.Enabled = false; //Disable one of the fixpoints so that there is only one that can be fixed to
             lhsConveyor.EndFixPoint.Visible = false;
 
+            lhsConveyor.Speed = info.speed;
+            rhsConveyor.Speed = info.speed;
+
             #region Make it look nice
 
             BasicInfo boxInfo = new BasicInfo
