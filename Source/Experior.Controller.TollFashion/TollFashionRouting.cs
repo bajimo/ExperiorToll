@@ -21,6 +21,7 @@ namespace Experior.Controller.TollFashion
         public IReadOnlyList<string> PossibleStatuses { get; private set; } = new List<string>() { "00", "01", "10", "11" };
         private EmulationController emulationController;
         private readonly StraightAccumulationConveyor emptyToteLine;
+        private int noBarcodesCount;
 
         public TollFashionRouting() : base("TollFashionRouting")
         {
@@ -264,6 +265,39 @@ namespace Experior.Controller.TollFashion
                 HandleFailedCartons(plc53, node.Name, load);
                 return;
             }
+            if (node.Name == "CC51ECINP1" || node.Name == "CC52ECINP1" || node.Name == "CC53ECINP1")
+            {
+                //Apply barcode
+                AddBarcodeAndData(load);
+            }
+        }
+
+        private void AddBarcodeAndData(Load load)
+        {
+            string nextBarcode;
+
+            if (emulationController.ValidCartonErectionBarcodes.Any())
+            {
+                nextBarcode = emulationController.ValidCartonErectionBarcodes.Dequeue();
+            }
+            else
+            {
+                nextBarcode = $"noBarcodes {++noBarcodesCount}";
+            }
+
+            load.Identification = nextBarcode;
+
+            var caseLoad = load as Case_Load;
+            if (caseLoad == null)
+                return;
+
+            var caseData = caseLoad.Case_Data as CaseData;
+            if (caseData == null)
+                return;
+
+            caseData.Barcode2 = nextBarcode;
+            //TODO add more here?           
+
         }
 
         private void HandleFailedCartons(MHEControllerAUS_Case plc, string location, Load load)

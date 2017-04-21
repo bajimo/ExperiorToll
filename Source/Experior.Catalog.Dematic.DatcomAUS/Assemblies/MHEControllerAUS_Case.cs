@@ -332,9 +332,19 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             var barcode1 = telegram.GetFieldValue(this, TelegramFields.Barcode1);
             var current = telegram.GetFieldValue(this, TelegramFields.Current);
 
-            var caseload = Case_Load.GetCaseFromIdentification(barcode1);
-            //Check if the load has a datcom case data, if not create it as it may have come from a different system that has different case data e.g. DCI multishuttle
+            Case_Load caseload = null;
+            if (string.IsNullOrWhiteSpace(barcode1))
+            {
+                //Search by current location
+                caseload = Case_Load.AllCases.FirstOrDefault(c => c.CurrentActionPoint != null && c.CurrentActionPoint.Name == current);
+            }
+            else
+            {
+                //Search by barcode
+                caseload = Case_Load.GetCaseFromIdentification(barcode1);
+            }
 
+            //Check if the load has a datcom case data, if not create it as it may have come from a different system that has different case data e.g. DCI multishuttle
             if (caseload != null && caseload.Case_Data.GetType() != typeof(CaseData))
             {
                 CaseData caseData = new CaseData();
@@ -343,25 +353,10 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                 caseData.Height = caseload.Case_Data.Height;
                 caseData.Weight = caseload.Case_Data.Weight;
                 caseData.colour = caseload.Case_Data.colour;
-                //caseData.Barcode1 = caseload.Identification;
-                //caseload.SSCCBarcode = caseload.Identification;
                 caseload.Case_Data = caseData;
             }
 
             RoutingTable[barcode1] = telegram.GetFieldValue(this, TelegramFields.Destination).Trim();
-
-            //Remove if destinations is empty? (or does not exist?)
-
-            //Update caseload if it exists
-            //if (caseload != null)
-            //{
-            //    if (((CaseData)caseload.Case_Data).CallforwardWait)
-            //    {
-            //        return; //Tote is waiting to be called forward. Do not release
-            //    }
-
-            //    ((CaseData)caseload.Case_Data).RoutingTableUpdateWait = false;
-            //}
 
             if (caseload != null && caseload.LoadWaitingForWCS)
                 caseload.ReleaseLoad_WCSControl();
@@ -372,8 +367,6 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             {
                 //TODO do AUS datcom do this?
                 //New entry added to the routing table and routing table exceeds limit.
-                //string status = "01"; //Status 01 means routing Table critically full.
-                //SendTelegram("10", status);
             }
 
             //Notify subscribers

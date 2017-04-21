@@ -13,7 +13,7 @@ namespace Experior.Controller.TollFashion
     {
         private int cycleNumber;
         //public readonly Dictionary<string, string> DespatchLabels = new Dictionary<string, string>();
-        public readonly List<string> ValidCartonErectionBarcodes = new List<string>();
+        public readonly Queue<string> ValidCartonErectionBarcodes = new Queue<string>();
         private readonly Core.Communication.TCPIP.Connection emuconnection;
         public EmulationController()
         {
@@ -85,7 +85,7 @@ namespace Experior.Controller.TollFashion
                     for (int i = 2; i < telegramFields.Length; i++)
                     {
                         if (telegramFields[i] != "")
-                            ValidCartonErectionBarcodes.Add(telegramFields[i]);
+                            ValidCartonErectionBarcodes.Enqueue(telegramFields[i]);
                     }
                 }
             }
