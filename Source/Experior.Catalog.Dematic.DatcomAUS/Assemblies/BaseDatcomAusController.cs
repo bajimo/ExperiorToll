@@ -297,10 +297,13 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             telegram = telegram.SetFieldValue(this, TelegramFields.Profile, caseData.Profile);
             telegram = telegram.SetFieldValue(this, TelegramFields.CarrierSize, caseData.CarrierSize);
             telegram = telegram.SetFieldValue(this, TelegramFields.SpecialData, caseData.SpecialData);
-            telegram = telegram.SetFieldValue(this, TelegramFields.Weight, (caseData.Weight * 1000).ToString("000000"));
-            telegram = telegram.SetFieldValue(this, TelegramFields.Height, (caseData.Height * 1000).ToString("0000"));
-            telegram = telegram.SetFieldValue(this, TelegramFields.Length, (caseData.Length * 1000).ToString("0000"));
-            telegram = telegram.SetFieldValue(this, TelegramFields.Width, (caseData.Width * 1000).ToString("0000"));
+            if (caseData.Weight > 0)
+            {
+                telegram = telegram.SetFieldValue(this, TelegramFields.Weight, (caseData.Weight * 1000).ToString("000000"));
+            }
+            telegram = telegram.SetFieldValue(this, TelegramFields.Height, (load.Height * 1000).ToString("0000"));
+            telegram = telegram.SetFieldValue(this, TelegramFields.Length, (load.Length * 1000).ToString("0000"));
+            telegram = telegram.SetFieldValue(this, TelegramFields.Width, (load.Width * 1000).ToString("0000"));
             return telegram;
         }
 

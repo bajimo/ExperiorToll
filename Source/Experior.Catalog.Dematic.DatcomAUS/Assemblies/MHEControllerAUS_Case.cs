@@ -344,6 +344,8 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                 caseload = Case_Load.GetCaseFromIdentification(barcode1);
             }
 
+            var destination = telegram.GetFieldValue(this, TelegramFields.Destination).Trim();
+
             //Check if the load has a datcom case data, if not create it as it may have come from a different system that has different case data e.g. DCI multishuttle
             if (caseload != null && caseload.Case_Data.GetType() != typeof(CaseData))
             {
@@ -356,7 +358,14 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                 caseload.Case_Data = caseData;
             }
 
-            RoutingTable[barcode1] = telegram.GetFieldValue(this, TelegramFields.Destination).Trim();
+            var cData = caseload?.Case_Data as CaseData;
+            if (cData != null)
+            {
+                //Update destination
+                cData.DestinationPosition = destination;
+            }
+       
+            RoutingTable[barcode1] = destination;
 
             if (caseload != null && caseload.LoadWaitingForWCS)
                 caseload.ReleaseLoad_WCSControl();
