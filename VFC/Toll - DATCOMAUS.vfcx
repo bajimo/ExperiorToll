@@ -3,7 +3,7 @@
   <SystemConfiguration>
     <BK10BarcodeLength>10</BK10BarcodeLength>
     <BK10BarcodePrefix>00</BK10BarcodePrefix>
-    <NextCartonBarcode>3</NextCartonBarcode>
+    <NextCartonBarcode>5</NextCartonBarcode>
     <TelegramValidation Name="DATCOMBK10">
       <DefaultFormatPadding>
         <ASCII>

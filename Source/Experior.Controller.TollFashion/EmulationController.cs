@@ -169,7 +169,7 @@ namespace Experior.Controller.TollFashion
                         //{
                         //    caseLoad.Yaw = (float)(Math.PI / 2f);
                         //}
-                        if (conv.CaseOrientation == CaseOrientation.WidthLeading && l > w)
+                        if (conv.CaseOrientation == CaseOrientation.LengthLeading && l > w)
                         {
                             caseLoad.Yaw = (float)(Math.PI / 2f);
                         }
