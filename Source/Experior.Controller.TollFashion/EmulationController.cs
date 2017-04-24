@@ -161,7 +161,7 @@ namespace Experior.Controller.TollFashion
                         }
 
                         var caseData = new CaseData { Length = l, Width = w, Height = h, colour = colour, Weight = we };
-                        var caseLoad = FeedLoad.FeedCaseLoad(conv.TransportSection, l / 2, l, w, h, we, Color.Blue, 10, caseData);
+                        var caseLoad = FeedLoad.FeedCaseLoad(conv.TransportSection, l / 2, l, w, h, we, colour, 10, caseData);
                         caseLoad.SSCCBarcode = barcode;
                         caseLoad.Identification = barcode;
 

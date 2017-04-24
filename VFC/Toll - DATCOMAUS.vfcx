@@ -2418,6 +2418,10 @@
         </Field>
       </Message>
     </TelegramValidation>
+    <DefaultCartonLength>580</DefaultCartonLength>
+    <DefaultCartonHeight>365</DefaultCartonHeight>
+    <DefaultCartonWeight>1200</DefaultCartonWeight>
+    <DefaultCartonWidth>380</DefaultCartonWidth>
   </SystemConfiguration>
   <Projects>
   </Projects>
