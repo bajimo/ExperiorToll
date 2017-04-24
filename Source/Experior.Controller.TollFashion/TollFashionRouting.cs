@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using Dematic.DATCOMAUS;
@@ -77,7 +76,6 @@ namespace Experior.Controller.TollFashion
             }
 
             Core.Environment.Time.ContinuouslyRunning = true;
-            Core.Environment.Scene.OnResetCompleted += Scene_OnResetCompleted;
             Core.Environment.Scene.OnLoaded += Scene_OnLoaded;
             CreateEquipmentStatuses();
         }
@@ -211,11 +209,6 @@ namespace Experior.Controller.TollFashion
             }
         }
 
-        void Scene_OnResetCompleted()
-        {
-
-        }
-
         protected override void Arriving(INode node, Load load)
         {
             if (node.Name.StartsWith("ROUTETO:"))
@@ -341,7 +334,7 @@ namespace Experior.Controller.TollFashion
             var eqStatus = equipmentStatuses.First(e => e.FunctionGroup == "CC63ETL");
             var sBefore = eqStatus.GroupStatus;
             var fillLevel = emptyToteLine.LoadCount / (float)emptyToteLine.Positions;
-            if (fillLevel == 0)
+            if (fillLevel <= 0)
             {
                 eqStatus.GroupStatus = "10";
             }
@@ -394,7 +387,6 @@ namespace Experior.Controller.TollFashion
             Core.Environment.UI.Toolbar.Remove(localProp);
             Core.Environment.UI.Toolbar.Remove(connectButt);
             Core.Environment.UI.Toolbar.Remove(disconnectButt);
-            Core.Environment.Scene.OnResetCompleted -= Scene_OnResetCompleted;
             if (plc51 != null)
             {
                 plc51.OnRequestAllDataTelegramReceived -= OnRequestAllDataTelegramReceived;
