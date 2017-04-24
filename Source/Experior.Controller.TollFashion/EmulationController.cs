@@ -278,5 +278,23 @@ namespace Experior.Controller.TollFashion
             Core.Environment.Log.Write(DateTime.Now.ToString(CultureInfo.InvariantCulture) + " MFH<EMU: " + emuconnection.Id + " " + telegram);
             emuconnection.Send(telegram);
         }
+
+        public string GetProfile(string identification)
+        {
+            //todo
+            return "@@@@";
+        }
+
+        public string GetBarcode2(string identification)
+        {
+            //todo
+            return identification;
+        }
+
+        public float GetWeight(string barcode1)
+        {
+            //Todo
+            return 1;
+        }
     }
 }

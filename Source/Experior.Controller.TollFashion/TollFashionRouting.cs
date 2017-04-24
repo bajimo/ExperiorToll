@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using Dematic.DATCOMAUS;
@@ -262,7 +263,87 @@ namespace Experior.Controller.TollFashion
             {
                 //Apply barcode
                 AddBarcodeAndData(load);
+                return;
             }
+            if (node.Name == "SORTERWEIGHT")
+            {
+                AddWeight(load);
+                AddBarcode2(load);
+                return;
+            }
+            if (node.Name == "DECANTWEIGHT")
+            {
+                AddWeight(load);
+                AddProfile(load);
+                AddBarcode2(load);
+                return;
+            }
+            if (node.Name == "CC54PROFILE")
+            {
+                AddProfile(load);
+                AddBarcode2(load);
+                return;
+            }
+            if (node.Name.StartsWith("CLEARSWAP"))
+            {
+                ClearSwap(load);
+                return;
+            }
+        }
+
+        private void AddBarcode2(Load load)
+        {
+            var caseLoad = load as Case_Load;
+            if (caseLoad == null)
+                return;
+
+            var caseData = caseLoad.Case_Data as CaseData;
+            if (caseData == null)
+                return;
+
+            caseData.Barcode2 = emulationController.GetBarcode2(load.Identification);
+        }
+
+        private void ClearSwap(Load load)
+        {
+            var caseLoad = load as Case_Load;
+            if (caseLoad == null)
+                return;
+
+            var caseData = caseLoad.Case_Data as CaseData;
+            if (caseData == null)
+                return;
+
+            //Reset to default values
+            caseData.Profile = "@@@@";
+            caseData.Weight = 0;
+            caseData.Barcode2 = "";
+        }
+
+        private void AddProfile(Load load)
+        {
+            var caseLoad = load as Case_Load;
+            if (caseLoad == null)
+                return;
+
+            var caseData = caseLoad.Case_Data as CaseData;
+            if (caseData == null)
+                return;
+
+            caseData.Profile = emulationController.GetProfile(load.Identification);
+        }
+
+        private void AddWeight(Load load)
+        {
+            var caseLoad = load as Case_Load;
+            if (caseLoad == null)
+                return;
+
+            var caseData = caseLoad.Case_Data as CaseData;
+            if (caseData == null)
+                return;
+
+            caseData.Weight = emulationController.GetWeight(load.Identification);
         }
 
         private void AddBarcodeAndData(Load load)
@@ -288,7 +369,7 @@ namespace Experior.Controller.TollFashion
             if (caseData == null)
                 return;
 
-            caseData.Barcode2 = nextBarcode;
+            //caseData.Barcode2 = nextBarcode;
             //TODO add more here?           
 
         }
