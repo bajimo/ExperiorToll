@@ -269,6 +269,7 @@ namespace Experior.Controller.TollFashion
             {
                 AddWeight(load);
                 AddBarcode2(load);
+                AddProfile(load);
                 return;
             }
             if (node.Name == "DECANTWEIGHT")
@@ -284,6 +285,13 @@ namespace Experior.Controller.TollFashion
                 AddBarcode2(load);
                 return;
             }
+            if (node.Name == "CC61SWAP")
+            {
+                AddWeight(load);
+                AddProfile(load);
+                AddBarcode2(load);
+                return;
+            }      
             if (node.Name.StartsWith("CLEARSWAP"))
             {
                 ClearSwap(load);
