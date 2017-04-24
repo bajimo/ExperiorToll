@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
+using System.Linq;
 using Experior.Catalog.Dematic.Case;
 using Experior.Catalog.Dematic.Case.Components;
 using Experior.Catalog.Dematic.DatcomAUS.Assemblies;
@@ -12,9 +13,11 @@ namespace Experior.Controller.TollFashion
     public class EmulationController
     {
         private int cycleNumber;
-        //public readonly Dictionary<string, string> DespatchLabels = new Dictionary<string, string>();
-        public readonly Queue<string> ValidCartonErectionBarcodes = new Queue<string>();
+        private readonly Queue<string> validCartonErectionBarcodes = new Queue<string>();
+        private readonly Dictionary<string, float> loadWeight = new Dictionary<string, float>();
         private readonly Core.Communication.TCPIP.Connection emuconnection;
+        private int noBarcodesCount;
+
         public EmulationController()
         {
             emuconnection = Core.Communication.Connection.Get(99) as Core.Communication.TCPIP.Connection;
@@ -35,10 +38,10 @@ namespace Experior.Controller.TollFashion
                 return;
             }
 
+            Log.Write(DateTime.Now.ToString(CultureInfo.InvariantCulture) + " MFH>EMU: " + emuconnection.Id + " " + telegram);
             var telegramFields = telegram.Split(',');
             HandleTelegram(telegramFields);
         }
-
 
         private void HandleTelegram(string[] telegramFields)
         {
@@ -85,7 +88,7 @@ namespace Experior.Controller.TollFashion
                     for (int i = 2; i < telegramFields.Length; i++)
                     {
                         if (telegramFields[i] != "")
-                            ValidCartonErectionBarcodes.Enqueue(telegramFields[i]);
+                            validCartonErectionBarcodes.Enqueue(telegramFields[i]);
                     }
                 }
             }
@@ -173,6 +176,9 @@ namespace Experior.Controller.TollFashion
                         {
                             caseLoad.Yaw = (float)(Math.PI / 2f);
                         }
+
+                        loadWeight[barcode] = we;
+                        caseLoad.OnDisposed += CaseLoad_OnDisposed;
                     }
                     else
                     {
@@ -185,6 +191,12 @@ namespace Experior.Controller.TollFashion
                     Core.Environment.Log.Write("Location not found for feed telegram: " + location);
                 }
             }
+        }
+
+        private void CaseLoad_OnDisposed(Core.Loads.Load load)
+        {
+            load.OnDisposed -= CaseLoad_OnDisposed;
+            loadWeight.Remove(load.Identification);
         }
 
         private void ReleaseTelegramReceived(string[] telegramFields, string subtype)
@@ -258,7 +270,7 @@ namespace Experior.Controller.TollFashion
             }
             //Add further request types here
             if (telegram != null)
-                Log.Write("EMU>MFH: " + emuconnection.Id + " " + telegram);
+                Log.Write(DateTime.Now.ToString(CultureInfo.InvariantCulture) + " EMU>MFH: " + emuconnection.Id + " " + telegram);
         }
 
         private string EmuCycleNumber()
@@ -268,7 +280,6 @@ namespace Experior.Controller.TollFashion
                 cycleNumber = 1;
 
             return cycleNumber.ToString("000000");
-
         }
 
         public void SendTrayBarcodesRequest(string location, int quantity)
@@ -287,14 +298,22 @@ namespace Experior.Controller.TollFashion
 
         public string GetBarcode2(string identification)
         {
-            //todo
+            //todo how to do barcode2?
             return identification;
+        }
+
+        public string GetNextValidBarcode()
+        {
+            var nextBarcode = validCartonErectionBarcodes.Any() ? validCartonErectionBarcodes.Dequeue() : $"noBarcodes {++noBarcodesCount}";
+            return nextBarcode;
         }
 
         public float GetWeight(string barcode1)
         {
-            //Todo
-            return 1;
+            if (loadWeight.ContainsKey(barcode1))
+                return loadWeight[barcode1];
+
+            return 0;
         }
     }
 }

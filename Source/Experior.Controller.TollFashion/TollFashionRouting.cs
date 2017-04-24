@@ -22,8 +22,7 @@ namespace Experior.Controller.TollFashion
         public IReadOnlyList<string> PossibleStatuses { get; private set; } = new List<string>() { "00", "01", "10", "11" };
         private EmulationController emulationController;
         private readonly StraightAccumulationConveyor emptyToteLine;
-        private int noBarcodesCount;
-
+     
         public TollFashionRouting() : base("TollFashionRouting")
         {
             StandardConstructor();
@@ -318,10 +317,8 @@ namespace Experior.Controller.TollFashion
         private void AddBarcode2(Load load)
         {
             var caseLoad = load as Case_Load;
-            if (caseLoad == null)
-                return;
 
-            var caseData = caseLoad.Case_Data as CaseData;
+            var caseData = caseLoad?.Case_Data as CaseData;
             if (caseData == null)
                 return;
 
@@ -331,10 +328,8 @@ namespace Experior.Controller.TollFashion
         private static void ClearSwap(Load load)
         {
             var caseLoad = load as Case_Load;
-            if (caseLoad == null)
-                return;
 
-            var caseData = caseLoad.Case_Data as CaseData;
+            var caseData = caseLoad?.Case_Data as CaseData;
             if (caseData == null)
                 return;
 
@@ -347,10 +342,8 @@ namespace Experior.Controller.TollFashion
         private void AddProfile(Load load)
         {
             var caseLoad = load as Case_Load;
-            if (caseLoad == null)
-                return;
 
-            var caseData = caseLoad.Case_Data as CaseData;
+            var caseData = caseLoad?.Case_Data as CaseData;
             if (caseData == null)
                 return;
 
@@ -360,10 +353,8 @@ namespace Experior.Controller.TollFashion
         private void AddWeight(Load load)
         {
             var caseLoad = load as Case_Load;
-            if (caseLoad == null)
-                return;
 
-            var caseData = caseLoad.Case_Data as CaseData;
+            var caseData = caseLoad?.Case_Data as CaseData;
             if (caseData == null)
                 return;
 
@@ -372,30 +363,17 @@ namespace Experior.Controller.TollFashion
 
         private void AddBarcodeAndData(Load load)
         {
-            string nextBarcode;
-
-            if (emulationController.ValidCartonErectionBarcodes.Any())
-            {
-                nextBarcode = emulationController.ValidCartonErectionBarcodes.Dequeue();
-            }
-            else
-            {
-                nextBarcode = $"noBarcodes {++noBarcodesCount}";
-            }
-
-            load.Identification = nextBarcode;
+            load.Identification = emulationController.GetNextValidBarcode();
 
             var caseLoad = load as Case_Load;
-            if (caseLoad == null)
-                return;
 
-            var caseData = caseLoad.Case_Data as CaseData;
+            var caseData = caseLoad?.Case_Data as CaseData;
             if (caseData == null)
                 return;
 
+            //TODO how to handle barcode2?
             //caseData.Barcode2 = nextBarcode;
             //TODO add more here?           
-
         }
 
         private void HandleFailedCartons(MHEControllerAUS_Case plc, string location, Load load)
