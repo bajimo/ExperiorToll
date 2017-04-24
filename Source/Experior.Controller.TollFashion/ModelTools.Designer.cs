@@ -30,35 +30,36 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModelTools));
-            this.comboBoxCC51CARTON = new System.Windows.Forms.ComboBox();
-            this.labelCC51CARTON = new System.Windows.Forms.Label();
+            this.dataGridViewEquipmentStatuses = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEquipmentStatuses)).BeginInit();
             this.SuspendLayout();
             // 
-            // comboBoxCC51CARTON
+            // dataGridViewEquipmentStatuses
             // 
-            this.comboBoxCC51CARTON.FormattingEnabled = true;
-            this.comboBoxCC51CARTON.Location = new System.Drawing.Point(111, 29);
-            this.comboBoxCC51CARTON.Name = "comboBoxCC51CARTON";
-            this.comboBoxCC51CARTON.Size = new System.Drawing.Size(90, 21);
-            this.comboBoxCC51CARTON.TabIndex = 0;
-            this.comboBoxCC51CARTON.TextChanged += new System.EventHandler(this.comboBoxCC51CARTON_TextChanged);
+            this.dataGridViewEquipmentStatuses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewEquipmentStatuses.Location = new System.Drawing.Point(12, 29);
+            this.dataGridViewEquipmentStatuses.Name = "dataGridViewEquipmentStatuses";
+            this.dataGridViewEquipmentStatuses.Size = new System.Drawing.Size(263, 202);
+            this.dataGridViewEquipmentStatuses.TabIndex = 2;
             // 
-            // labelCC51CARTON
+            // label1
             // 
-            this.labelCC51CARTON.AutoSize = true;
-            this.labelCC51CARTON.Location = new System.Drawing.Point(27, 32);
-            this.labelCC51CARTON.Name = "labelCC51CARTON";
-            this.labelCC51CARTON.Size = new System.Drawing.Size(78, 13);
-            this.labelCC51CARTON.TabIndex = 1;
-            this.labelCC51CARTON.Text = "CC51CARTON";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(123, 17);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Equipment Status:";
             // 
             // ModelTools
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(516, 337);
-            this.Controls.Add(this.labelCC51CARTON);
-            this.Controls.Add(this.comboBoxCC51CARTON);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.dataGridViewEquipmentStatuses);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -67,6 +68,7 @@
             this.Name = "ModelTools";
             this.Text = "DEMATIC Tools";
             this.TopMost = true;
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEquipmentStatuses)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -76,8 +78,7 @@
 
 
         #endregion
-
-        private System.Windows.Forms.ComboBox comboBoxCC51CARTON;
-        private System.Windows.Forms.Label labelCC51CARTON;
+        private System.Windows.Forms.DataGridView dataGridViewEquipmentStatuses;
+        private System.Windows.Forms.Label label1;
     }
 }

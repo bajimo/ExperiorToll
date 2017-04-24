@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using Dematic.DATCOMAUS;
@@ -436,7 +437,6 @@ namespace Experior.Controller.TollFashion
             //’15’ Empty Tote Line – 5 / 6 Full
             //’16’ Empty Tote Line – Full
             var eqStatus = equipmentStatuses.First(e => e.FunctionGroup == "CC63ETL");
-            var sBefore = eqStatus.GroupStatus;
             var fillLevel = emptyToteLine.LoadCount / (float)emptyToteLine.Positions;
             if (fillLevel <= 0)
             {
@@ -461,10 +461,6 @@ namespace Experior.Controller.TollFashion
             else
             {
                 eqStatus.GroupStatus = "15";
-            }
-            if (eqStatus.GroupStatus != sBefore)
-            {
-                plc63.SendEquipmentStatus(eqStatus.FunctionGroup, eqStatus.GroupStatus);
             }
         }
 
@@ -532,15 +528,35 @@ namespace Experior.Controller.TollFashion
 
     public class EquipmentStatus
     {
-        public MHEControllerAUS_Case Plc { get; private set; }
-        public string FunctionGroup { get; private set; }
-        public string GroupStatus { get; set; }
+        private string groupStatus;
+        [Browsable(false)]
+        public MHEControllerAUS_Case Plc { get; }
+        [DisplayName("Function Group")]
+        public string FunctionGroup { get; }
+        [DisplayName("Group Status")]
+        public string GroupStatus
+        {
+            get { return groupStatus; }
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                    return;
+                if (value.Length != 2)
+                    return;
+
+                if (value != groupStatus)
+                {
+                    groupStatus = value;
+                    Plc.SendEquipmentStatus(FunctionGroup, groupStatus);
+                }
+            }
+        }
 
         public EquipmentStatus(MHEControllerAUS_Case plc, string functionGroup, string groupStatus = "00")
         {
             Plc = plc;
             FunctionGroup = functionGroup;
-            GroupStatus = groupStatus;
+            this.groupStatus = groupStatus;
         }
     }
 }

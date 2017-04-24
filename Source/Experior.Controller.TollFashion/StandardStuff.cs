@@ -7,10 +7,9 @@ namespace Experior.Controller.TollFashion
 {
     public partial class TollFashionRouting
     {
-        Core.Environment.UI.Toolbar.Button Speed1, Speed2, Speed5, Speed10, Speed20, HideShow, Reset, fps1, localProp, connectButt, disconnectButt;
-        Core.Environment.UI.Toolbar.Button btnWMSt;
-        ModelTools toolsForm;
-        LocalProperties localProperties = new LocalProperties();
+        private Core.Environment.UI.Toolbar.Button Speed1, Speed2, Speed5, Speed10, Speed20, HideShow, Reset, fps1, localProp, connectButt, disconnectButt;
+        private Core.Environment.UI.Toolbar.Button btnWMSt;
+        private ModelTools toolsForm;
 
         private void StandardConstructor()
         {
@@ -37,11 +36,11 @@ namespace Experior.Controller.TollFashion
             Core.Environment.UI.Toolbar.Add(connectButt, "Communication");
             Core.Environment.UI.Toolbar.Add(disconnectButt, "Communication");
 
-            toolsForm = new ModelTools(this);
-
             //Add a button to load the form
             btnWMSt = new Core.Environment.UI.Toolbar.Button("Tools", btnWMSt_Click);
             Core.Environment.UI.Toolbar.Add(btnWMSt, "Tools");
+
+            toolsForm = new ModelTools(this);
         }
 
         private enum MessageSeverity
