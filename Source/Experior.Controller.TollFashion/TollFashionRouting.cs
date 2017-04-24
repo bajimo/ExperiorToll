@@ -291,12 +291,27 @@ namespace Experior.Controller.TollFashion
                 AddProfile(load);
                 AddBarcode2(load);
                 return;
-            }      
+            }
             if (node.Name.StartsWith("CLEARSWAP"))
             {
                 ClearSwap(load);
                 return;
             }
+            if (node.Name.StartsWith("CC61LID"))
+            {
+                //Add lid
+                AddLid(load);
+            }
+        }
+
+        private static void AddLid(Load load)
+        {
+            var part = load.Part;
+            var box = new BoxPart(part.Length, part.Height, part.Width, part.Density, part.Color, Core.Loads.Load.Rigids.Cube);
+            box.Position = part.Position;
+            box.Orientation = part.Orientation;
+            load.Part = box;
+            part.Dispose();
         }
 
         private void AddBarcode2(Load load)
@@ -312,7 +327,7 @@ namespace Experior.Controller.TollFashion
             caseData.Barcode2 = emulationController.GetBarcode2(load.Identification);
         }
 
-        private void ClearSwap(Load load)
+        private static void ClearSwap(Load load)
         {
             var caseLoad = load as Case_Load;
             if (caseLoad == null)
@@ -397,11 +412,11 @@ namespace Experior.Controller.TollFashion
                 //Load failed. 
                 load.Stop();
                 load.Color = Color.Red;
-                Core.Timer.Action(() => 
+                Core.Timer.Action(() =>
                 {
                     load.Dispose();
                     Log.Write($"Failed carton ({load.Identification}) manually removed from {location}");
-                }, 5);     
+                }, 5);
             }
         }
 
