@@ -203,19 +203,19 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                 case TelegramTypes.CancelMission: //04
                     CancelMissionRecieved(telegram);
                     break;
-                case TelegramTypes.SetSystemStatus:
+                case TelegramTypes.SetSystemStatus: //12
                     SetSystemStatusRecieved(telegram);
                     break;
-                case TelegramTypes.SystemStatusReport:
+                case TelegramTypes.SystemStatusReport: //13
                     SystemStatusReportRecieved(telegram);
                     break;
-                case TelegramTypes.RequestAllData:
+                case TelegramTypes.RequestAllData: //30
                     RequestAllDataRecieved(telegram);
                     break;
-                case TelegramTypes.MaterialFlowStart:
+                case TelegramTypes.MaterialFlowStart: //14
                     MaterialFlowStartRecieved(telegram);
                     break;
-                case TelegramTypes.MaterialFlowStop:
+                case TelegramTypes.MaterialFlowStop: //15
                     MaterialFlowStopRecieved(telegram);
                     break;
             }

@@ -2422,6 +2422,8 @@
     <DefaultCartonHeight>365</DefaultCartonHeight>
     <DefaultCartonWeight>1200</DefaultCartonWeight>
     <DefaultCartonWidth>380</DefaultCartonWidth>
+    <SaveNextCartonBarcode>False</SaveNextCartonBarcode>
+    <EnableHistoricalLogs>False</EnableHistoricalLogs>
   </SystemConfiguration>
   <Projects>
   </Projects>

@@ -160,23 +160,37 @@ namespace Experior.Controller.TollFashion
                         var colour = Color.Blue;
                         if (subtype == "F002")
                         {
+                            //Carton
                             colour = Color.Peru;
                         }
 
-                        var caseData = new CaseData { Length = l, Width = w, Height = h, colour = colour, Weight = we };
+                        var caseData = new CaseData { Length = l, Width = w, Height = h, colour = colour, Weight = 0 };
                         var caseLoad = FeedLoad.FeedCaseLoad(conv.TransportSection, l / 2, l, w, h, we, colour, 10, caseData);
+                        caseData.Weight = 0;
+                        if (subtype == "F002")
+                        {
+                            //Carton
+                            if (l >= 0.58f)
+                            {
+                                //Large
+                                caseData.CarrierSize = "01";
+                            }
+                            else
+                            {
+                                //Small (medium?)
+                                caseData.CarrierSize = "00";
+                            }
+                        }
+
                         caseLoad.SSCCBarcode = barcode;
                         caseLoad.Identification = barcode;
 
-                        //if (conv.Width > 0.5)
-                        //{
-                        //    caseLoad.Yaw = (float)(Math.PI / 2f);
-                        //}
                         if (conv.CaseOrientation == CaseOrientation.LengthLeading && l > w)
                         {
                             caseLoad.Yaw = (float)(Math.PI / 2f);
                         }
 
+                        //Only send weight at weigh station
                         loadWeight[barcode] = we;
                         caseLoad.OnDisposed += CaseLoad_OnDisposed;
                     }
