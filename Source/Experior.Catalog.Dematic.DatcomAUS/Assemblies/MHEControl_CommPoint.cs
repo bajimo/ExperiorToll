@@ -65,21 +65,18 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             }
         }
 
-        private void ToteArrived(CommunicationPoint commPoint, Case_Load caseload)
+        private void ToteArrived(IControllable commPoint, Case_Load caseload)
         {
             if (OnlyActiveIfDestination)
             {
-                if (!casePLC.RoutingTable.ContainsKey(caseload.Identification))
+                if (casePLC.RoutingTable.ContainsKey(caseload.Identification))
                 {
-                   //Load unknown. Dont send arrival.
-                   return;
-                }
-
-                var destination = casePLC.RoutingTable[caseload.Identification];
-                if (destination != commPoint.Name)
-                {
-                    //This is not the destination. Dont send arrival.
-                    return;
+                    var destination = casePLC.RoutingTable[caseload.Identification];
+                    if (destination != commPoint.Name)
+                    {
+                        //This is not the destination. Dont send arrival.
+                        return;
+                    }
                 }
             }
 
