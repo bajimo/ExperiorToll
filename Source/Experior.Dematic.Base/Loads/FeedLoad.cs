@@ -43,9 +43,9 @@ namespace Experior.Dematic.Base
                 boxInfo.filename = Case_Load.GraphicsMesh;
 
                 SSCCBarcode = GetSSCCBarcode();
-                boxInfo.length = 0.6f;
-                boxInfo.width = 0.4f;
-                boxInfo.height = 0.28f;
+                boxInfo.length = 0.58f;
+                boxInfo.width = 0.38f;
+                boxInfo.height = 0.365f;
 
                 Case_Load boxLoad = new Case_Load(boxInfo);
                 boxLoad.Case_Data = caseData;

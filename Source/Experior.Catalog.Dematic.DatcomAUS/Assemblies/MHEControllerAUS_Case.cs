@@ -124,9 +124,10 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         /// <param name="location"></param>
         /// <param name="load"></param>
         /// <param name="status">‘00’ Normal , ‘08’ Blocked , ‘09’ Waiting for Acknowledgement Blocked, ‘MD’ Manually Deleted, ‘DC’ Delete Confirmed, ‘DF’ Delete Fail</param>
-        public void SendArrivalMessage(string location, Case_Load load, string status = "00")
+        /// <param name="alwaysArrival">If false then the arrival is only sent if routing for the load is unknown</param>
+        public void SendArrivalMessage(string location, Case_Load load, string status = "00", bool alwaysArrival = true)
         {
-            if (String.IsNullOrWhiteSpace(location))
+            if (string.IsNullOrWhiteSpace(location))
                 return;
 
             if (load == null)
@@ -134,6 +135,12 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
 
             if (PLC_State == CasePLC_State.Auto)
             {
+                if (!alwaysArrival && RoutingTable.ContainsKey(load.Identification))
+                {
+                    //Dont send. We know the route.
+                    return;
+                }
+
                 var caseData = load.Case_Data as CaseData;
                 if (caseData == null)
                 {
