@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Timers;
 using Dematic.DATCOMAUS;
 using Experior.Catalog.Dematic.Case.Components;
 using Experior.Catalog.Dematic.DatcomAUS.Assemblies;
@@ -19,10 +20,13 @@ namespace Experior.Controller.TollFashion
         private List<Catalog.Dematic.Case.Devices.CommunicationPoint> activePoints;
         private readonly List<EquipmentStatus> equipmentStatuses = new List<EquipmentStatus>();
         public IReadOnlyList<EquipmentStatus> EquipmentStatuses { get; private set; }
-        public IReadOnlyList<string> PossibleStatuses { get; private set; } = new List<string>() { "00", "01", "10", "11" };
-        private EmulationController emulationController;
+        //public IReadOnlyList<string> PossibleStatuses { get; } = new List<string>() { "00", "01", "10", "11" };
+        private readonly EmulationController emulationController;
         private readonly StraightAccumulationConveyor emptyToteLine;
-     
+        private ActionPoint lidnp2;
+        private Load lidnp2Load;
+        private readonly Timer lidnp2Resend = new Timer(2500);
+
         public TollFashionRouting() : base("TollFashionRouting")
         {
             StandardConstructor();
@@ -79,6 +83,22 @@ namespace Experior.Controller.TollFashion
             Core.Environment.Time.ContinuouslyRunning = true;
             Core.Environment.Scene.OnLoaded += Scene_OnLoaded;
             CreateEquipmentStatuses();
+            lidnp2Resend.Elapsed += Lidnp2Resend_Elapsed;
+        }
+
+        private void Lidnp2Resend_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            if (lidnp2 == null)
+                return;
+
+            if (lidnp2Load == null)
+                return;
+
+            if (lidnp2.Active && lidnp2Load == lidnp2.ActiveLoad && lidnp2Load.Stopped)
+            {
+                plc61.SendArrivalMessage(lidnp2.Name, lidnp2.ActiveLoad as Case_Load);
+                lidnp2Resend.Start();
+            }
         }
 
         private void CreateEquipmentStatuses()
@@ -210,6 +230,12 @@ namespace Experior.Controller.TollFashion
             }
         }
 
+        protected override void Reset()
+        {
+            lidnp2Load = null;
+            base.Reset();
+        }
+
         protected override void Arriving(INode node, Load load)
         {
             if (node.Name.StartsWith("ROUTETO:"))
@@ -301,6 +327,17 @@ namespace Experior.Controller.TollFashion
             {
                 //Add lid
                 AddLid(load);
+                return;
+            }
+            if (node.Name == "CC61LIDNP2")
+            {
+                //Resend arrival after 2,5 sec if no transport order received
+                if (lidnp2 == null)
+                {
+                    lidnp2 = node as ActionPoint;
+                }
+                lidnp2Load = load;
+                lidnp2Resend.Start();
             }
         }
 
@@ -454,13 +491,13 @@ namespace Experior.Controller.TollFashion
 
         public override void Dispose()
         {
-            Core.Environment.UI.Toolbar.Remove(Speed1);
-            Core.Environment.UI.Toolbar.Remove(Speed2);
-            Core.Environment.UI.Toolbar.Remove(Speed5);
-            Core.Environment.UI.Toolbar.Remove(Speed10);
-            Core.Environment.UI.Toolbar.Remove(Speed20);
+            Core.Environment.UI.Toolbar.Remove(speed1);
+            Core.Environment.UI.Toolbar.Remove(speed2);
+            Core.Environment.UI.Toolbar.Remove(speed5);
+            Core.Environment.UI.Toolbar.Remove(speed10);
+            Core.Environment.UI.Toolbar.Remove(speed20);
 
-            Core.Environment.UI.Toolbar.Remove(Reset);
+            Core.Environment.UI.Toolbar.Remove(reset);
             Core.Environment.UI.Toolbar.Remove(fps1);
             Core.Environment.UI.Toolbar.Remove(localProp);
             Core.Environment.UI.Toolbar.Remove(connectButt);

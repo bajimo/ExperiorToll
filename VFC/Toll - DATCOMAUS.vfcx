@@ -3847,7 +3847,7 @@
       </Category>
       <triggerMessType>Disabled</triggerMessType>
       <RoutingTrigger>Arrival</RoutingTrigger>
-      <Distribution>First</Distribution>
+      <Distribution>Random</Distribution>
       <DestinationCode>CC51OBNP1</DestinationCode>
       <DestinationCodeSecondary>MSAI27CR01PS10,MSAI28CR01PS10,CC51ECFA0</DestinationCodeSecondary>
       <TelegramDelay>0</TelegramDelay>
