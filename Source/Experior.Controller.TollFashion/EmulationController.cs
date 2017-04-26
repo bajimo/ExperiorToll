@@ -146,6 +146,19 @@ namespace Experior.Controller.TollFashion
                 var height = telegramFields[5];
                 var weight = telegramFields[6];
 
+                if (location == "P1051" || location == "P1052" || location == "P1053")
+                {
+                    //Carton erector feeding
+                    if (!string.IsNullOrWhiteSpace(barcode))
+                    {
+                        //Store the barcode for the label applicator
+                        validCartonErectionBarcodes.Enqueue(barcode);
+                        barcode = "";
+                    }
+                    subtype = "F002"; //only cartons at these locations. 
+                    //Todo: should I do this? And should I use the size from equipment status (and not the size from the feeding message)?
+                }
+
                 if (Core.Assemblies.Assembly.Items.ContainsKey(location))
                 {
                     var conv = Core.Assemblies.Assembly.Items[location] as StraightConveyor;
