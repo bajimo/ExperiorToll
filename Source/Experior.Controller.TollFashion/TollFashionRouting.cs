@@ -297,7 +297,7 @@ namespace Experior.Controller.TollFashion
                 ClearSwap(load);
                 return;
             }
-            if (node.Name.StartsWith("CC61LID"))
+            if (node.Name.StartsWith("CC61LID") && node.Name.EndsWith("A1"))
             {
                 //Add lid
                 AddLid(load);

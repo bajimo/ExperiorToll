@@ -3875,7 +3875,7 @@
       <DestinationCode>CC53OBNP1</DestinationCode>
       <DestinationCodeSecondary>MSAI31CR01PS10,MSAI32CR01PS10,CC53ECFA0</DestinationCodeSecondary>
       <TelegramDelay>0</TelegramDelay>
-      <RoutePercentage>10</RoutePercentage>
+      <RoutePercentage>90</RoutePercentage>
       <RouteController>PLC53</RouteController>
     </Routing>
     <Routing Name="CC54GOHNP1" Type="DATCOMAUSRouting">
