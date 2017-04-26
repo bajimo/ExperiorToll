@@ -371,8 +371,12 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                 //Update destination
                 cData.DestinationPosition = destination;
             }
-       
-            RoutingTable[barcode1] = destination;
+
+            if (!string.IsNullOrWhiteSpace(barcode1))
+            {
+                //Update routing table
+                RoutingTable[barcode1] = destination;
+            }
 
             if (caseload != null && caseload.LoadWaitingForWCS)
                 caseload.ReleaseLoad_WCSControl();
