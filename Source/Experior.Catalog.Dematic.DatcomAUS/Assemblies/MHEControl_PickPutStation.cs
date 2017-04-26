@@ -46,15 +46,41 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             casePLC.OnTransportOrderTelegramReceived -= CasePLC_OnTransportOrderTelegramReceived;
             theLift = null;
             transferDatcomInfo = null;
-        }   
+        }
+
+        private void Load_OnDisposed(Core.Loads.Load load)
+        {
+            load.OnDisposing -= Load_OnDisposed;
+            load.OnReleased -= Load_OnReleased;
+            if (load == theLift.LeftLoad)
+            {
+                casePLC.SendExceptionMessage(LeftPositionName, ((Case_Load)load), "MD");
+                return;
+            }
+            if (load == theLift.RightLoad)
+            {
+                casePLC.SendExceptionMessage(RightPositionName, ((Case_Load)load), "MD");
+            }
+
+        }
+
+        private void Load_OnReleased(Core.Loads.Load load)
+        {
+            load.OnDisposing -= Load_OnDisposed;
+            load.OnReleased -= Load_OnReleased;
+        }
 
         private void TheLiftOnArrivedAtRightPosition(object sender, PickPutStationArrivalArgs e)
         {
+            e.Load.OnDisposing += Load_OnDisposed;
+            e.Load.OnReleased += Load_OnReleased;
             casePLC.SendArrivalMessage(RightPositionName, ((Case_Load)e.Load));
         }
 
         private void TheLiftOnArrivedAtLeftPosition(object sender, PickPutStationArrivalArgs e)
         {
+            e.Load.OnDisposing += Load_OnDisposed;
+            e.Load.OnReleased += Load_OnReleased;
             casePLC.SendArrivalMessage(LeftPositionName, ((Case_Load)e.Load));
         }
 
