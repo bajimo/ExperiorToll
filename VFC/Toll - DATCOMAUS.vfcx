@@ -3,7 +3,7 @@
   <SystemConfiguration>
     <BK10BarcodeLength>10</BK10BarcodeLength>
     <BK10BarcodePrefix>00</BK10BarcodePrefix>
-    <NextCartonBarcode>1</NextCartonBarcode>
+    <NextCartonBarcode>5</NextCartonBarcode>
     <TelegramValidation Name="DATCOMBK10">
       <DefaultFormatPadding>
         <ASCII>
@@ -1900,30 +1900,26 @@
           <Format>ASCII</Format>
           <Length>1</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>Type</Name>
           <Format>ASCII</Format>
           <Length>2</Length>
           <Type>Identifier</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>Sender</Name>
           <Format>ASCII</Format>
           <Length>2</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>Receiver</Name>
           <Format>ASCII</Format>
           <Length>2</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>Program Ident</Name>
@@ -1939,6 +1935,8 @@
           <Format>ASCII</Format>
           <Length>2</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>End1</Name>
@@ -1963,78 +1961,104 @@
           <Format>ASCII</Format>
           <Length>14</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>Destination</Name>
           <Format>ASCII</Format>
           <Length>14</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>UL Status</Name>
           <Format>ASCII</Format>
           <Length>2</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>UL Identification</Name>
           <Format>ASCII</Format>
           <Length>8</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>Barcode 1</Name>
           <Format>ASCII</Format>
           <Length>20</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>Barocde 2</Name>
           <Format>ASCII</Format>
           <Length>20</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>Profile</Name>
           <Format>ASCII</Format>
           <Length>4</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>Carrier Size</Name>
           <Format>ASCII</Format>
           <Length>4</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>Special Data</Name>
           <Format>ASCII</Format>
           <Length>4</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>Weight</Name>
           <Format>ASCII</Format>
           <Length>6</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>Height</Name>
           <Format>ASCII</Format>
           <Length>4</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>Length</Name>
           <Format>ASCII</Format>
           <Length>4</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>Width</Name>
           <Format>ASCII</Format>
           <Length>4</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
       </Message>
       <Message Identifier="01">
@@ -2045,78 +2069,104 @@
           <Format>ASCII</Format>
           <Length>14</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>Destination</Name>
           <Format>ASCII</Format>
           <Length>14</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>UL Status</Name>
           <Format>ASCII</Format>
           <Length>2</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>UL Identification</Name>
           <Format>ASCII</Format>
           <Length>8</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>Barcode 1</Name>
           <Format>ASCII</Format>
           <Length>20</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>Barocde 2</Name>
           <Format>ASCII</Format>
           <Length>20</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>Profile</Name>
           <Format>ASCII</Format>
           <Length>4</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>Carrier Size</Name>
           <Format>ASCII</Format>
           <Length>4</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>Special Data</Name>
           <Format>ASCII</Format>
           <Length>4</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>Weight</Name>
           <Format>ASCII</Format>
           <Length>6</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>Height</Name>
           <Format>ASCII</Format>
           <Length>4</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>Length</Name>
           <Format>ASCII</Format>
           <Length>4</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>Width</Name>
           <Format>ASCII</Format>
           <Length>4</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
       </Message>
       <Message Identifier="03">
@@ -2127,78 +2177,104 @@
           <Format>ASCII</Format>
           <Length>14</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>Destination</Name>
           <Format>ASCII</Format>
           <Length>14</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>UL Status</Name>
           <Format>ASCII</Format>
           <Length>2</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>UL Identification</Name>
           <Format>ASCII</Format>
           <Length>8</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>Barcode 1</Name>
           <Format>ASCII</Format>
           <Length>20</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>Barocde 2</Name>
           <Format>ASCII</Format>
           <Length>20</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>Profile</Name>
           <Format>ASCII</Format>
           <Length>4</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>Carrier Size</Name>
           <Format>ASCII</Format>
           <Length>4</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>Special Data</Name>
           <Format>ASCII</Format>
           <Length>4</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>Weight</Name>
           <Format>ASCII</Format>
           <Length>6</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>Height</Name>
           <Format>ASCII</Format>
           <Length>4</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>Length</Name>
           <Format>ASCII</Format>
           <Length>4</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>Width</Name>
           <Format>ASCII</Format>
           <Length>4</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
       </Message>
       <Message Identifier="12">
@@ -2209,20 +2285,22 @@
           <Format>ASCII</Format>
           <Length>30</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>System status</Name>
           <Format>ASCII</Format>
           <Length>2</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>Null2</Name>
           <Format>ASCII</Format>
           <Length>76</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
       </Message>
       <Message Identifier="13">
@@ -2233,20 +2311,22 @@
           <Format>ASCII</Format>
           <Length>30</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>System status</Name>
           <Format>ASCII</Format>
           <Length>2</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>Null2</Name>
           <Format>ASCII</Format>
           <Length>76</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
       </Message>
       <Message Identifier="30">
@@ -2257,6 +2337,8 @@
           <Format>ASCII</Format>
           <Length>108</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
       </Message>
       <Message Identifier="32">
@@ -2267,6 +2349,8 @@
           <Format>ASCII</Format>
           <Length>108</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
       </Message>
       <Message Identifier="14">
@@ -2277,6 +2361,8 @@
           <Format>ASCII</Format>
           <Length>108</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
       </Message>
       <Message Identifier="15">
@@ -2287,6 +2373,8 @@
           <Format>ASCII</Format>
           <Length>108</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
       </Message>
       <Message Identifier="99">
@@ -2297,9 +2385,45 @@
           <Format>ASCII</Format>
           <Length>108</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+      </Message>
+      <Message Identifier="10">
+        <Name>Equipment Status</Name>
+        <BodyType>Single</BodyType>
+        <Field>
+          <Name>Function Group</Name>
+          <Format>ASCII</Format>
+          <Length>14</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+        <Field>
+          <Name>Group Status</Name>
+          <Format>ASCII</Format>
+          <Length>2</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
+        </Field>
+        <Field>
+          <Name>Null</Name>
+          <Format>ASCII</Format>
+          <Length>96</Length>
+          <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
       </Message>
     </TelegramValidation>
+    <DefaultCartonLength>580</DefaultCartonLength>
+    <DefaultCartonHeight>365</DefaultCartonHeight>
+    <DefaultCartonWeight>1200</DefaultCartonWeight>
+    <DefaultCartonWidth>380</DefaultCartonWidth>
+    <SaveNextCartonBarcode>False</SaveNextCartonBarcode>
+    <EnableHistoricalLogs>False</EnableHistoricalLogs>
   </SystemConfiguration>
   <Projects>
   </Projects>
@@ -2368,6 +2492,12 @@
       <IPAddress>127.0.0.1</IPAddress>
       <LocalTSAP>WCS63</LocalTSAP>
       <RemoteTSAP>PLC63</RemoteTSAP>
+    </Connection>
+    <Connection Name="EMU" Type="STXETX">
+      <Category>
+      </Category>
+      <Port>8101</Port>
+      <IPAddress>127.0.0.1</IPAddress>
     </Connection>
   </Connections>
   <Controllers>
@@ -2636,6 +2766,13 @@
       <telegramValidation>DATCOMAUS</telegramValidation>
       <ReceiverIdentifier>63</ReceiverIdentifier>
       <SenderIdentifier>01</SenderIdentifier>
+    </Controller>
+    <Controller Name="EMU" Type="EMUDAIUK">
+      <Category>
+      </Category>
+      <LogAll>False</LogAll>
+      <Enabled>True</Enabled>
+      <connection>EMU</connection>
     </Controller>
   </Controllers>
   <Routings>
@@ -3354,19 +3491,6 @@
       <RoutePercentage>100</RoutePercentage>
       <RouteController>PLC51</RouteController>
     </Routing>
-    <Routing Name="CC54GOHB1" Type="DATCOMAUSRouting">
-      <Category>
-      </Category>
-      <triggerMessType>Disabled</triggerMessType>
-      <RoutingTrigger>Arrival</RoutingTrigger>
-      <Distribution>RoundRobin</Distribution>
-      <DestinationCode>CC54DOC1A1,CC61DOCLIDNP1</DestinationCode>
-      <DestinationCodeSecondary>
-      </DestinationCodeSecondary>
-      <TelegramDelay>0</TelegramDelay>
-      <RoutePercentage>100</RoutePercentage>
-      <RouteController>PLC54</RouteController>
-    </Routing>
     <Routing Name="CC51CARTONA1" Type="DATCOMAUSRouting">
       <Category>
       </Category>
@@ -3470,6 +3594,327 @@
       <TelegramDelay>0</TelegramDelay>
       <RoutePercentage>100</RoutePercentage>
       <RouteController>PLC62</RouteController>
+    </Routing>
+    <Routing Name="CC61ONLINENP" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>RoundRobin</Distribution>
+      <DestinationCode>CC61LANE1,CC61LANE3,CC61LANE5,CC61LANE7,CC61LANE9,CC61LANE11,CC61LANE13,CC61LANE15,CC61LANE17,CC61LANE19,CC61LANE21,CC61LANE23,CC61LANE25,CC61LANE27,CC61LANE29,CC61LANE31,CC61LANE33,CC61LANE35</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>0</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC61</RouteController>
+    </Routing>
+    <Routing Name="CC61DOCLIDNP1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>RoundRobin</Distribution>
+      <DestinationCode>CC61DOC1A1,CC61QAA1,CC61LID1A1,CC61LID2A1,CC61LID3A1</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>0</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC61</RouteController>
+    </Routing>
+    <Routing Name="CC61DOCNP1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>RoundRobin</Distribution>
+      <DestinationCode>CC61DOC1A1,CC61DOC1A1</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>0</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC61</RouteController>
+    </Routing>
+    <Routing Name="CC61DOC1A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>First</Distribution>
+      <DestinationCode>CC61QANP1</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>2</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC61</RouteController>
+    </Routing>
+    <Routing Name="CC61DOC2A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>First</Distribution>
+      <DestinationCode>CC61QANP1</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>2</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC61</RouteController>
+    </Routing>
+    <Routing Name="CC61QANP1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>RoundRobin</Distribution>
+      <DestinationCode>CC61QAA1,CC61LID1A1,CC61LID2A1,CC61LID3A1</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>0</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC61</RouteController>
+    </Routing>
+    <Routing Name="CC61QAA1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>RoundRobin</Distribution>
+      <DestinationCode>CC61LID1A1,CC61LID2A1,CC61LID3A1</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>5</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC61</RouteController>
+    </Routing>
+    <Routing Name="CC61LIDNP1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>RoundRobin</Distribution>
+      <DestinationCode>CC61LID3A1,CC61LID1A1,CC61LID2A1</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>0</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC61</RouteController>
+    </Routing>
+    <Routing Name="CC61LIDNP2" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>RoundRobin</Distribution>
+      <DestinationCode>CC61LID1A1,CC61LID2A1,CC61LPA1A1,CC61LPA2A1,CC62SORTNP1</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>0</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC61</RouteController>
+    </Routing>
+    <Routing Name="CC61LID1A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>RoundRobin</Distribution>
+      <DestinationCode>CC61LPA1A1,CC61LPA2A1</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>5</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC61</RouteController>
+    </Routing>
+    <Routing Name="CC61LID2A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>RoundRobin</Distribution>
+      <DestinationCode>CC61LPA1A1,CC61LPA2A1</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>5</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC61</RouteController>
+    </Routing>
+    <Routing Name="CC61LID3A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>RoundRobin</Distribution>
+      <DestinationCode>CC61LPA1A1,CC61LPA2A1</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>5</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC61</RouteController>
+    </Routing>
+    <Routing Name="CC61LPANP1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>RoundRobin</Distribution>
+      <DestinationCode>CC61LPA1A1,CC61LPA2A1</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>0</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC61</RouteController>
+    </Routing>
+    <Routing Name="CC61LPA1A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>RoundRobin</Distribution>
+      <DestinationCode>CC61LPA1A2,CC62SORTNP1</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>3</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC61</RouteController>
+    </Routing>
+    <Routing Name="CC61LPA2A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>RoundRobin</Distribution>
+      <DestinationCode>CC61LPA2A2,CC62SORTNP1</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>2</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC61</RouteController>
+    </Routing>
+    <Routing Name="CC61LPA1A2" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>First</Distribution>
+      <DestinationCode>CC62SORTNP1</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>2</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC61</RouteController>
+    </Routing>
+    <Routing Name="CC61LPA2A2" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>First</Distribution>
+      <DestinationCode>CC62SORTNP1</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>2</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC61</RouteController>
+    </Routing>
+    <Routing Name="CC61WEB2DLNP1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>RoundRobin</Distribution>
+      <DestinationCode>CC54LIPECR,CC61DOCNP1,CC54OB3NP1</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>0</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC61</RouteController>
+    </Routing>
+    <Routing Name="CC63ETLNP1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>RoundRobin</Distribution>
+      <DestinationCode>CC63ETL,CC63QA1A1,CC63QA2A1,CC63QA1NP1</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>0</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC63</RouteController>
+    </Routing>
+    <Routing Name="CC51ECINP1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>CC51OBNP1</DestinationCode>
+      <DestinationCodeSecondary>MSAI27CR01PS10,MSAI28CR01PS10,CC51ECFA0</DestinationCodeSecondary>
+      <TelegramDelay>0</TelegramDelay>
+      <RoutePercentage>90</RoutePercentage>
+      <RouteController>PLC51</RouteController>
+    </Routing>
+    <Routing Name="CC52ECINP1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>CC52OBNP1</DestinationCode>
+      <DestinationCodeSecondary>MSAI29CL01PS10,MSAI30CL01PS10,CC52ECFA0</DestinationCodeSecondary>
+      <TelegramDelay>0</TelegramDelay>
+      <RoutePercentage>90</RoutePercentage>
+      <RouteController>PLC52</RouteController>
+    </Routing>
+    <Routing Name="CC53ECINP1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>Random</Distribution>
+      <DestinationCode>CC53OBNP1</DestinationCode>
+      <DestinationCodeSecondary>MSAI31CR01PS10,MSAI32CR01PS10,CC53ECFA0</DestinationCodeSecondary>
+      <TelegramDelay>0</TelegramDelay>
+      <RoutePercentage>90</RoutePercentage>
+      <RouteController>PLC53</RouteController>
+    </Routing>
+    <Routing Name="CC54GOHNP1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>First</Distribution>
+      <DestinationCode>CC54DOC1A1,CC61DOCLIDNP1</DestinationCode>
+      <DestinationCodeSecondary>CC54GOHB1</DestinationCodeSecondary>
+      <TelegramDelay>0</TelegramDelay>
+      <RoutePercentage>95</RoutePercentage>
+      <RouteController>PLC54</RouteController>
+    </Routing>
+    <Routing Name="CC54DOC1A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>First</Distribution>
+      <DestinationCode>CC61DOCLIDNP1</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>2</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC54</RouteController>
+    </Routing>
+    <Routing Name="CC54GOHNP2" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>RoundRobin</Distribution>
+      <DestinationCode>CC54GOHB1,CC54DOC1A1,CC61DOCLIDNP1</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>0</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC54</RouteController>
     </Routing>
   </Routings>
   <Functions>

@@ -108,6 +108,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EmulationController.cs" />
     <Compile Include="LocalProperties.cs" />
     <Compile Include="ModelTools.cs">
       <SubType>Form</SubType>

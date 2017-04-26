@@ -7,41 +7,40 @@ namespace Experior.Controller.TollFashion
 {
     public partial class TollFashionRouting
     {
-        Core.Environment.UI.Toolbar.Button Speed1, Speed2, Speed5, Speed10, Speed20, HideShow, Reset, fps1, localProp, connectButt, disconnectButt;
-        Core.Environment.UI.Toolbar.Button btnWMSt;
-        ModelTools toolsForm;
-        LocalProperties localProperties = new LocalProperties();
+        private Core.Environment.UI.Toolbar.Button speed1, speed2, speed5, speed10, speed20, reset, fps1, localProp, connectButt, disconnectButt;
+        private Core.Environment.UI.Toolbar.Button btnWmSt;
+        private ModelTools toolsForm;
 
         private void StandardConstructor()
         {
             //Add some speed buttons
-            Speed1 = new Core.Environment.UI.Toolbar.Button("  1  ", Speed1_Click);
-            Speed5 = new Core.Environment.UI.Toolbar.Button("  5  ", Speed5_Click);
-            Speed2 = new Core.Environment.UI.Toolbar.Button("  2  ", Speed2_Click);
-            Speed10 = new Core.Environment.UI.Toolbar.Button("  10  ", Speed10_Click);
-            Speed20 = new Core.Environment.UI.Toolbar.Button("  20  ", Speed20_Click);
-            Reset = new Core.Environment.UI.Toolbar.Button("Reset", Reset_Click);
+            speed1 = new Core.Environment.UI.Toolbar.Button("  1  ", Speed1_Click);
+            speed5 = new Core.Environment.UI.Toolbar.Button("  5  ", Speed5_Click);
+            speed2 = new Core.Environment.UI.Toolbar.Button("  2  ", Speed2_Click);
+            speed10 = new Core.Environment.UI.Toolbar.Button("  10  ", Speed10_Click);
+            speed20 = new Core.Environment.UI.Toolbar.Button("  20  ", Speed20_Click);
+            reset = new Core.Environment.UI.Toolbar.Button("Reset", Reset_Click);
             fps1 = new Core.Environment.UI.Toolbar.Button("1 FPS", FPS1_Click);
             localProp = new Core.Environment.UI.Toolbar.Button("Local", localProp_Click);
             connectButt = new Core.Environment.UI.Toolbar.Button("Connect", connectButt_Click);
             disconnectButt = new Core.Environment.UI.Toolbar.Button("Disconnect", disconnectButt_Click);
 
-            Core.Environment.UI.Toolbar.Add(Speed1, "Speed");
-            Core.Environment.UI.Toolbar.Add(Speed2, "Speed");
-            Core.Environment.UI.Toolbar.Add(Speed5, "Speed");
-            Core.Environment.UI.Toolbar.Add(Speed10, "Speed");
-            Core.Environment.UI.Toolbar.Add(Speed20, "Speed");
-            Core.Environment.UI.Toolbar.Add(Reset, "Scene");
+            Core.Environment.UI.Toolbar.Add(speed1, "Speed");
+            Core.Environment.UI.Toolbar.Add(speed2, "Speed");
+            Core.Environment.UI.Toolbar.Add(speed5, "Speed");
+            Core.Environment.UI.Toolbar.Add(speed10, "Speed");
+            Core.Environment.UI.Toolbar.Add(speed20, "Speed");
+            Core.Environment.UI.Toolbar.Add(reset, "Scene");
             Core.Environment.UI.Toolbar.Add(fps1, "Scene");
             Core.Environment.UI.Toolbar.Add(localProp, "Tools");
             Core.Environment.UI.Toolbar.Add(connectButt, "Communication");
             Core.Environment.UI.Toolbar.Add(disconnectButt, "Communication");
 
-            toolsForm = new ModelTools(this);
-
             //Add a button to load the form
-            btnWMSt = new Core.Environment.UI.Toolbar.Button("Tools", btnWMSt_Click);
-            Core.Environment.UI.Toolbar.Add(btnWMSt, "Tools");
+            btnWmSt = new Core.Environment.UI.Toolbar.Button("Tools", btnWMSt_Click);
+            Core.Environment.UI.Toolbar.Add(btnWmSt, "Tools");
+
+            toolsForm = new ModelTools(this);
         }
 
         private enum MessageSeverity

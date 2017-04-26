@@ -124,9 +124,10 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         /// <param name="location"></param>
         /// <param name="load"></param>
         /// <param name="status">‘00’ Normal , ‘08’ Blocked , ‘09’ Waiting for Acknowledgement Blocked, ‘MD’ Manually Deleted, ‘DC’ Delete Confirmed, ‘DF’ Delete Fail</param>
-        public void SendArrivalMessage(string location, Case_Load load, string status = "00")
+        /// <param name="alwaysArrival">If false then the arrival is only sent if routing for the load is unknown</param>
+        public void SendArrivalMessage(string location, Case_Load load, string status = "00", bool alwaysArrival = true)
         {
-            if (String.IsNullOrWhiteSpace(location))
+            if (string.IsNullOrWhiteSpace(location))
                 return;
 
             if (load == null)
@@ -134,6 +135,12 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
 
             if (PLC_State == CasePLC_State.Auto)
             {
+                if (!alwaysArrival && RoutingTable.ContainsKey(load.Identification))
+                {
+                    //Dont send. We know the route.
+                    return;
+                }
+
                 var caseData = load.Case_Data as CaseData;
                 if (caseData == null)
                 {
@@ -203,19 +210,19 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                 case TelegramTypes.CancelMission: //04
                     CancelMissionRecieved(telegram);
                     break;
-                case TelegramTypes.SetSystemStatus:
+                case TelegramTypes.SetSystemStatus: //12
                     SetSystemStatusRecieved(telegram);
                     break;
-                case TelegramTypes.SystemStatusReport:
+                case TelegramTypes.SystemStatusReport: //13
                     SystemStatusReportRecieved(telegram);
                     break;
-                case TelegramTypes.RequestAllData:
+                case TelegramTypes.RequestAllData: //30
                     RequestAllDataRecieved(telegram);
                     break;
-                case TelegramTypes.MaterialFlowStart:
+                case TelegramTypes.MaterialFlowStart: //14
                     MaterialFlowStartRecieved(telegram);
                     break;
-                case TelegramTypes.MaterialFlowStop:
+                case TelegramTypes.MaterialFlowStop: //15
                     MaterialFlowStopRecieved(telegram);
                     break;
             }
@@ -332,9 +339,21 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             var barcode1 = telegram.GetFieldValue(this, TelegramFields.Barcode1);
             var current = telegram.GetFieldValue(this, TelegramFields.Current);
 
-            var caseload = Case_Load.GetCaseFromIdentification(barcode1);
-            //Check if the load has a datcom case data, if not create it as it may have come from a different system that has different case data e.g. DCI multishuttle
+            Case_Load caseload = null;
+            if (string.IsNullOrWhiteSpace(barcode1))
+            {
+                //Search by current location
+                caseload = Case_Load.AllCases.FirstOrDefault(c => c.CurrentActionPoint != null && c.CurrentActionPoint.Name == current);
+            }
+            else
+            {
+                //Search by barcode
+                caseload = Case_Load.GetCaseFromIdentification(barcode1);
+            }
 
+            var destination = telegram.GetFieldValue(this, TelegramFields.Destination).Trim();
+
+            //Check if the load has a datcom case data, if not create it as it may have come from a different system that has different case data e.g. DCI multishuttle
             if (caseload != null && caseload.Case_Data.GetType() != typeof(CaseData))
             {
                 CaseData caseData = new CaseData();
@@ -343,27 +362,23 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                 caseData.Height = caseload.Case_Data.Height;
                 caseData.Weight = caseload.Case_Data.Weight;
                 caseData.colour = caseload.Case_Data.colour;
-                //caseData.Barcode1 = caseload.Identification;
-                //caseload.SSCCBarcode = caseload.Identification;
                 caseload.Case_Data = caseData;
             }
 
-            RoutingTable[barcode1] = telegram.GetFieldValue(this, TelegramFields.Destination).Trim();
+            var cData = caseload?.Case_Data as CaseData;
+            if (cData != null)
+            {
+                //Update destination
+                cData.DestinationPosition = destination;
+            }
 
-            //Remove if destinations is empty? (or does not exist?)
+            if (!string.IsNullOrWhiteSpace(barcode1))
+            {
+                //Update routing table
+                RoutingTable[barcode1] = destination;
+            }
 
-            //Update caseload if it exists
-            //if (caseload != null)
-            //{
-            //    if (((CaseData)caseload.Case_Data).CallforwardWait)
-            //    {
-            //        return; //Tote is waiting to be called forward. Do not release
-            //    }
-
-            //    ((CaseData)caseload.Case_Data).RoutingTableUpdateWait = false;
-            //}
-
-            if (caseload.LoadWaitingForWCS)
+            if (caseload != null && caseload.LoadWaitingForWCS)
                 caseload.ReleaseLoad_WCSControl();
 
             int newcount = RoutingTable.Count;
@@ -372,8 +387,6 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             {
                 //TODO do AUS datcom do this?
                 //New entry added to the routing table and routing table exceeds limit.
-                //string status = "01"; //Status 01 means routing Table critically full.
-                //SendTelegram("10", status);
             }
 
             //Notify subscribers
