@@ -3491,19 +3491,6 @@
       <RoutePercentage>100</RoutePercentage>
       <RouteController>PLC51</RouteController>
     </Routing>
-    <Routing Name="CC54GOHB1" Type="DATCOMAUSRouting">
-      <Category>
-      </Category>
-      <triggerMessType>Disabled</triggerMessType>
-      <RoutingTrigger>Arrival</RoutingTrigger>
-      <Distribution>RoundRobin</Distribution>
-      <DestinationCode>CC54DOC1A1,CC61DOCLIDNP1</DestinationCode>
-      <DestinationCodeSecondary>
-      </DestinationCodeSecondary>
-      <TelegramDelay>0</TelegramDelay>
-      <RoutePercentage>100</RoutePercentage>
-      <RouteController>PLC54</RouteController>
-    </Routing>
     <Routing Name="CC51CARTONA1" Type="DATCOMAUSRouting">
       <Category>
       </Category>
@@ -3860,7 +3847,7 @@
       </Category>
       <triggerMessType>Disabled</triggerMessType>
       <RoutingTrigger>Arrival</RoutingTrigger>
-      <Distribution>Random</Distribution>
+      <Distribution>First</Distribution>
       <DestinationCode>CC51OBNP1</DestinationCode>
       <DestinationCodeSecondary>MSAI27CR01PS10,MSAI28CR01PS10,CC51ECFA0</DestinationCodeSecondary>
       <TelegramDelay>0</TelegramDelay>
@@ -3890,6 +3877,44 @@
       <TelegramDelay>0</TelegramDelay>
       <RoutePercentage>10</RoutePercentage>
       <RouteController>PLC53</RouteController>
+    </Routing>
+    <Routing Name="CC54GOHNP1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>First</Distribution>
+      <DestinationCode>CC54DOC1A1,CC61DOCLIDNP1</DestinationCode>
+      <DestinationCodeSecondary>CC54GOHB1</DestinationCodeSecondary>
+      <TelegramDelay>0</TelegramDelay>
+      <RoutePercentage>95</RoutePercentage>
+      <RouteController>PLC54</RouteController>
+    </Routing>
+    <Routing Name="CC54DOC1A1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>First</Distribution>
+      <DestinationCode>CC61DOCLIDNP1</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>2</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC54</RouteController>
+    </Routing>
+    <Routing Name="CC54GOHNP2" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>RoundRobin</Distribution>
+      <DestinationCode>CC54GOHB1,CC54DOC1A1,CC61DOCLIDNP1</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>0</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC54</RouteController>
     </Routing>
   </Routings>
   <Functions>
