@@ -9,6 +9,7 @@ using Experior.Core.Loads;
 using Experior.Core.Routes;
 using Experior.Dematic.Base;
 using Experior.Core;
+using System;
 
 namespace Experior.Controller.TollFashion
 {
@@ -88,9 +89,9 @@ namespace Experior.Controller.TollFashion
                 plc63.OnSetSystemStatusTelegramReceived += OnSetSystemStatusTelegramReceived;
             }
 
-            Environment.Time.ContinuouslyRunning = true;
-            Environment.Scene.OnLoaded += Scene_OnLoaded;
-            Environment.Scene.OnStarting += Scene_OnStarting;
+            Core.Environment.Time.ContinuouslyRunning = true;
+            Core.Environment.Scene.OnLoaded += Scene_OnLoaded;
+            Core.Environment.Scene.OnStarting += Scene_OnStarting;
             CreateEquipmentStatuses();
             lidnp2Resend = new Timer(2.5f);    
             lidnp2Resend.OnElapsed += Lidnp2Resend_Elapsed;
@@ -291,7 +292,7 @@ namespace Experior.Controller.TollFashion
 
         private void Scene_OnLoaded()
         {
-            Environment.Scene.OnLoaded -= Scene_OnLoaded;
+            Core.Environment.Scene.OnLoaded -= Scene_OnLoaded;
             activePoints = Core.Assemblies.Assembly.Items.Values.Where(a => a.Assemblies != null).SelectMany(a => a.Assemblies)
                     .OfType<Catalog.Dematic.Case.Devices.CommunicationPoint>()
                     .Where(c => c.Name.EndsWith("A1"))
@@ -433,6 +434,18 @@ namespace Experior.Controller.TollFashion
                 }
                 lidnp2Load = load;
                 lidnp2Resend.Start();
+            }
+            if (node.Name.EndsWith("CARTONA1"))
+            {
+                RequestValidBarcodes();
+            }
+        }
+
+        private void RequestValidBarcodes()
+        {
+            if (emulationController.CartonBarcodesNeeded)
+            {
+                emulationController.SendCartonBarcodesRequest("CARTONERECTION", 50);
             }
         }
 
@@ -576,7 +589,7 @@ namespace Experior.Controller.TollFashion
 
         private void ResetStandard()
         {
-            Environment.Scene.Reset();
+            Core.Environment.Scene.Reset();
 
             foreach (Core.Communication.Connection connection in Core.Communication.Connection.Items.Values)
             {
@@ -586,17 +599,17 @@ namespace Experior.Controller.TollFashion
 
         public override void Dispose()
         {
-            Environment.UI.Toolbar.Remove(speed1);
-            Environment.UI.Toolbar.Remove(speed2);
-            Environment.UI.Toolbar.Remove(speed5);
-            Environment.UI.Toolbar.Remove(speed10);
-            Environment.UI.Toolbar.Remove(speed20);
+            Core.Environment.UI.Toolbar.Remove(speed1);
+            Core.Environment.UI.Toolbar.Remove(speed2);
+            Core.Environment.UI.Toolbar.Remove(speed5);
+            Core.Environment.UI.Toolbar.Remove(speed10);
+            Core.Environment.UI.Toolbar.Remove(speed20);
 
-            Environment.UI.Toolbar.Remove(reset);
-            Environment.UI.Toolbar.Remove(fps1);
-            Environment.UI.Toolbar.Remove(localProp);
-            Environment.UI.Toolbar.Remove(connectButt);
-            Environment.UI.Toolbar.Remove(disconnectButt);
+            Core.Environment.UI.Toolbar.Remove(reset);
+            Core.Environment.UI.Toolbar.Remove(fps1);
+            Core.Environment.UI.Toolbar.Remove(localProp);
+            Core.Environment.UI.Toolbar.Remove(connectButt);
+            Core.Environment.UI.Toolbar.Remove(disconnectButt);
             if (plc51 != null)
             {
                 plc51.OnRequestAllDataTelegramReceived -= OnRequestAllDataTelegramReceived;

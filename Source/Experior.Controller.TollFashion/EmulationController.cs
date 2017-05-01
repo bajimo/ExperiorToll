@@ -18,6 +18,8 @@ namespace Experior.Controller.TollFashion
         private readonly Core.Communication.TCPIP.Connection emuconnection;
         private int noBarcodesCount;
 
+        public bool CartonBarcodesNeeded => validCartonErectionBarcodes.Count < 20;
+
         public EmulationController()
         {
             emuconnection = Core.Communication.Connection.Get(99) as Core.Communication.TCPIP.Connection;
@@ -309,7 +311,7 @@ namespace Experior.Controller.TollFashion
             return cycleNumber.ToString("000000");
         }
 
-        public void SendTrayBarcodesRequest(string location, int quantity)
+        public void SendCartonBarcodesRequest(string location, int quantity)
         {
             var header = "RQSTR001" + EmuCycleNumber();
             var telegram = header + "," + location + ",CARTON," + quantity;
