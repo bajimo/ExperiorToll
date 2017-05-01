@@ -3500,7 +3500,7 @@
       <DestinationCode>CC51ECINP1</DestinationCode>
       <DestinationCodeSecondary>
       </DestinationCodeSecondary>
-      <TelegramDelay>0</TelegramDelay>
+      <TelegramDelay>1</TelegramDelay>
       <RoutePercentage>100</RoutePercentage>
       <RouteController>PLC51</RouteController>
     </Routing>
@@ -3513,7 +3513,7 @@
       <DestinationCode>CC52ECINP1</DestinationCode>
       <DestinationCodeSecondary>
       </DestinationCodeSecondary>
-      <TelegramDelay>0</TelegramDelay>
+      <TelegramDelay>1</TelegramDelay>
       <RoutePercentage>100</RoutePercentage>
       <RouteController>PLC52</RouteController>
     </Routing>
@@ -3526,7 +3526,7 @@
       <DestinationCode>CC53ECINP1</DestinationCode>
       <DestinationCodeSecondary>
       </DestinationCodeSecondary>
-      <TelegramDelay>0</TelegramDelay>
+      <TelegramDelay>1</TelegramDelay>
       <RoutePercentage>100</RoutePercentage>
       <RouteController>PLC53</RouteController>
     </Routing>
