@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
-using System.Timers;
 using Dematic.DATCOMAUS;
 using Experior.Catalog.Dematic.Case.Components;
 using Experior.Catalog.Dematic.DatcomAUS.Assemblies;
 using Experior.Core.Loads;
 using Experior.Core.Routes;
 using Experior.Dematic.Base;
+using Experior.Core;
 
 namespace Experior.Controller.TollFashion
 {
@@ -20,12 +19,15 @@ namespace Experior.Controller.TollFashion
         private List<Catalog.Dematic.Case.Devices.CommunicationPoint> activePoints;
         private readonly List<EquipmentStatus> equipmentStatuses = new List<EquipmentStatus>();
         public IReadOnlyList<EquipmentStatus> EquipmentStatuses { get; private set; }
-        //public IReadOnlyList<string> PossibleStatuses { get; } = new List<string>() { "00", "01", "10", "11" };
         private readonly EmulationController emulationController;
         private readonly StraightAccumulationConveyor emptyToteLine;
+        private readonly StraightConveyor cartonErector1, cartonErector2, cartonErector3;
+        private readonly Dictionary<string, string> cartonErectorSize = new Dictionary<string, string>();
+
         private ActionPoint lidnp2;
         private Load lidnp2Load;
-        private readonly Timer lidnp2Resend = new Timer(2500);
+        private readonly Timer lidnp2Resend;
+        private readonly Timer cartonErectorTimer;
 
         public TollFashionRouting() : base("TollFashionRouting")
         {
@@ -34,6 +36,9 @@ namespace Experior.Controller.TollFashion
             emulationController = new EmulationController();
 
             emptyToteLine = Core.Assemblies.Assembly.Get("P1963") as StraightAccumulationConveyor;
+            cartonErector1 = Core.Assemblies.Assembly.Get("P1051") as StraightConveyor;
+            cartonErector2 = Core.Assemblies.Assembly.Get("P1052") as StraightConveyor;
+            cartonErector3 = Core.Assemblies.Assembly.Get("P1053") as StraightConveyor;
 
             plc51 = Core.Assemblies.Assembly.Get("PLC 51") as MHEControllerAUS_Case;
             plc52 = Core.Assemblies.Assembly.Get("PLC 52") as MHEControllerAUS_Case;
@@ -48,16 +53,19 @@ namespace Experior.Controller.TollFashion
             {
                 plc51.OnRequestAllDataTelegramReceived += OnRequestAllDataTelegramReceived;
                 plc51.OnSetSystemStatusTelegramReceived += OnSetSystemStatusTelegramReceived;
+                plc51.OnTransportOrderTelegramReceived += OnTransportOrderTelegramReceived;
             }
             if (plc52 != null)
             {
                 plc52.OnRequestAllDataTelegramReceived += OnRequestAllDataTelegramReceived;
                 plc52.OnSetSystemStatusTelegramReceived += OnSetSystemStatusTelegramReceived;
+                plc52.OnTransportOrderTelegramReceived += OnTransportOrderTelegramReceived;
             }
             if (plc53 != null)
             {
                 plc53.OnRequestAllDataTelegramReceived += OnRequestAllDataTelegramReceived;
                 plc53.OnSetSystemStatusTelegramReceived += OnSetSystemStatusTelegramReceived;
+                plc53.OnTransportOrderTelegramReceived += OnTransportOrderTelegramReceived;
             }
             if (plc54 != null)
             {
@@ -80,13 +88,97 @@ namespace Experior.Controller.TollFashion
                 plc63.OnSetSystemStatusTelegramReceived += OnSetSystemStatusTelegramReceived;
             }
 
-            Core.Environment.Time.ContinuouslyRunning = true;
-            Core.Environment.Scene.OnLoaded += Scene_OnLoaded;
+            Environment.Time.ContinuouslyRunning = true;
+            Environment.Scene.OnLoaded += Scene_OnLoaded;
+            Environment.Scene.OnStarting += Scene_OnStarting;
             CreateEquipmentStatuses();
-            lidnp2Resend.Elapsed += Lidnp2Resend_Elapsed;
+            lidnp2Resend = new Timer(2.5f);    
+            lidnp2Resend.OnElapsed += Lidnp2Resend_Elapsed;
+
+            cartonErectorTimer = new Timer(1);
+            cartonErectorTimer.AutoReset = true;
+            cartonErectorTimer.OnElapsed += CartonErectorTimer_OnElapsed;
         }
 
-        private void Lidnp2Resend_Elapsed(object sender, ElapsedEventArgs e)
+        private void OnTransportOrderTelegramReceived(object sender, MessageEventArgs e)
+        {
+            if (e.Location == "CC51CARTONA1" || e.Location == "CC52CARTONA1" || e.Location == "CC53CARTONA1")
+            {
+                var size = e.Telegram.GetFieldValue(sender as IDATCOMAUSTelegrams, TelegramFields.CarrierSize);
+                if (size == "10" || size == "01")
+                {
+                    //Update carton size to produce at carton erector
+                    cartonErectorSize[e.Location] = size;
+                }
+                else
+                {
+                    Log.Write($"Unknown carton size in transport order at location {e.Location}. Carton size requested: {size}. Request is ignored!");
+                }
+            }
+        }
+
+        private void Scene_OnStarting()
+        {
+            cartonErectorTimer.Start();
+        }
+
+        private void CartonErectorTimer_OnElapsed(Timer sender)
+        {           
+            var carton1Status = equipmentStatuses.First(e => e.FunctionGroup == "CC51CARTONA1");
+            var carton2Status = equipmentStatuses.First(e => e.FunctionGroup == "CC52CARTONA1");
+            var carton3Status = equipmentStatuses.First(e => e.FunctionGroup == "CC53CARTONA1");
+            var size1 = cartonErectorSize[carton1Status.FunctionGroup]; //10 large, 01 small.
+            var size2 = cartonErectorSize[carton1Status.FunctionGroup]; //10 large, 01 small.
+            var size3 = cartonErectorSize[carton1Status.FunctionGroup]; //10 large, 01 small.
+            //Group status CA00: no cartons available
+            //Group status CA01: Only small cartons are available. Large carton magazine may be empty or in fault, etc.
+            //Group status CA10: Only large cartons are available. Small carton magazine may be empty or in fault, etc.
+            //Group status CA11: Both small and large carton available
+
+            if (cartonErector1.LoadCount <= 1 && carton1Status.GroupStatus != "00")
+            {
+                if (carton1Status.GroupStatus == "11" || carton1Status.GroupStatus == size1)
+                    FeedCarton(cartonErector1, size1);
+            }
+            if (cartonErector2.LoadCount <= 1 && carton2Status.GroupStatus != "00")
+            {
+                if (carton2Status.GroupStatus == "11" || carton2Status.GroupStatus == size2)
+                    FeedCarton(cartonErector2, size2);
+            }
+            if (cartonErector3.LoadCount <= 1 && carton3Status.GroupStatus != "00")
+            {
+                if (carton3Status.GroupStatus == "11" || carton3Status.GroupStatus == size3)
+                    FeedCarton(cartonErector3, size3);
+            }
+        }
+
+        private void FeedCarton(StraightConveyor cartonErector, string size)
+        {
+            var caseData = new CaseData { Length = 0.580f, Width = 0.480f, Height = 0.365f, colour = Color.Peru, Weight = 0 };
+
+            if (size == "10")
+            {
+                //large
+                caseData.CarrierSize = "01";
+            }
+            else if (size == "01")
+            {
+                //small
+                caseData.CarrierSize = "00";
+                caseData.Length = 0.490f;
+                caseData.Width = 0.360f;
+            }
+            else
+            {
+                //what todo?
+            }
+
+            var carton = FeedLoad.FeedCaseLoad(cartonErector.TransportSection, caseData.Length / 2, caseData.Length, caseData.Width, caseData.Height, 0, Color.Peru, 8, caseData);
+            caseData.Weight = 0;
+            carton.Identification = "";       
+        }
+
+        private void Lidnp2Resend_Elapsed(Timer sender)
         {
             if (lidnp2 == null)
                 return;
@@ -173,8 +265,11 @@ namespace Experior.Controller.TollFashion
             //todo Where are these mentioned?:
 
             equipmentStatuses.Add(new EquipmentStatus(plc51, "CC51CARTONA1", "11")); //CC11? 11 Both small and large cartons are available.
+            cartonErectorSize["CC51CARTONA1"] = "10"; //Large
             equipmentStatuses.Add(new EquipmentStatus(plc52, "CC52CARTONA1", "11")); //CC11? 11 Both small and large cartons are available.
+            cartonErectorSize["CC52CARTONA1"] = "10"; //Large
             equipmentStatuses.Add(new EquipmentStatus(plc53, "CC53CARTONA1", "11")); //CC11? 11 Both small and large cartons are available.
+            cartonErectorSize["CC53CARTONA1"] = "10"; //Large
 
             EquipmentStatuses = new List<EquipmentStatus>(equipmentStatuses);
         }
@@ -196,7 +291,7 @@ namespace Experior.Controller.TollFashion
 
         private void Scene_OnLoaded()
         {
-            Core.Environment.Scene.OnLoaded -= Scene_OnLoaded;
+            Environment.Scene.OnLoaded -= Scene_OnLoaded;
             activePoints = Core.Assemblies.Assembly.Items.Values.Where(a => a.Assemblies != null).SelectMany(a => a.Assemblies)
                     .OfType<Catalog.Dematic.Case.Devices.CommunicationPoint>()
                     .Where(c => c.Name.EndsWith("A1"))
@@ -428,7 +523,7 @@ namespace Experior.Controller.TollFashion
                 //Load failed. 
                 load.Stop();
                 load.Color = Color.Red;
-                Core.Timer.Action(() =>
+                Timer.Action(() =>
                 {
                     load.Dispose();
                     Log.Write($"Failed carton ({load.Identification}) manually removed from {location}");
@@ -481,7 +576,7 @@ namespace Experior.Controller.TollFashion
 
         private void ResetStandard()
         {
-            Core.Environment.Scene.Reset();
+            Environment.Scene.Reset();
 
             foreach (Core.Communication.Connection connection in Core.Communication.Connection.Items.Values)
             {
@@ -491,31 +586,34 @@ namespace Experior.Controller.TollFashion
 
         public override void Dispose()
         {
-            Core.Environment.UI.Toolbar.Remove(speed1);
-            Core.Environment.UI.Toolbar.Remove(speed2);
-            Core.Environment.UI.Toolbar.Remove(speed5);
-            Core.Environment.UI.Toolbar.Remove(speed10);
-            Core.Environment.UI.Toolbar.Remove(speed20);
+            Environment.UI.Toolbar.Remove(speed1);
+            Environment.UI.Toolbar.Remove(speed2);
+            Environment.UI.Toolbar.Remove(speed5);
+            Environment.UI.Toolbar.Remove(speed10);
+            Environment.UI.Toolbar.Remove(speed20);
 
-            Core.Environment.UI.Toolbar.Remove(reset);
-            Core.Environment.UI.Toolbar.Remove(fps1);
-            Core.Environment.UI.Toolbar.Remove(localProp);
-            Core.Environment.UI.Toolbar.Remove(connectButt);
-            Core.Environment.UI.Toolbar.Remove(disconnectButt);
+            Environment.UI.Toolbar.Remove(reset);
+            Environment.UI.Toolbar.Remove(fps1);
+            Environment.UI.Toolbar.Remove(localProp);
+            Environment.UI.Toolbar.Remove(connectButt);
+            Environment.UI.Toolbar.Remove(disconnectButt);
             if (plc51 != null)
             {
                 plc51.OnRequestAllDataTelegramReceived -= OnRequestAllDataTelegramReceived;
                 plc51.OnSetSystemStatusTelegramReceived -= OnSetSystemStatusTelegramReceived;
+                plc51.OnTransportOrderTelegramReceived -= OnTransportOrderTelegramReceived;
             }
             if (plc52 != null)
             {
                 plc52.OnRequestAllDataTelegramReceived -= OnRequestAllDataTelegramReceived;
                 plc52.OnSetSystemStatusTelegramReceived -= OnSetSystemStatusTelegramReceived;
+                plc52.OnTransportOrderTelegramReceived -= OnTransportOrderTelegramReceived;
             }
             if (plc53 != null)
             {
                 plc53.OnRequestAllDataTelegramReceived -= OnRequestAllDataTelegramReceived;
                 plc53.OnSetSystemStatusTelegramReceived -= OnSetSystemStatusTelegramReceived;
+                plc53.OnTransportOrderTelegramReceived -= OnTransportOrderTelegramReceived;
             }
             if (plc54 != null)
             {
@@ -537,6 +635,11 @@ namespace Experior.Controller.TollFashion
                 plc63.OnRequestAllDataTelegramReceived -= OnRequestAllDataTelegramReceived;
                 plc63.OnSetSystemStatusTelegramReceived -= OnSetSystemStatusTelegramReceived;
             }
+
+            cartonErectorTimer.OnElapsed -= CartonErectorTimer_OnElapsed;
+            cartonErectorTimer.Dispose();
+            lidnp2Resend.OnElapsed -= Lidnp2Resend_Elapsed;
+            lidnp2Resend.Dispose();
             base.Dispose();
         }
     }
