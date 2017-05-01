@@ -29,6 +29,7 @@ namespace Experior.Controller.TollFashion
         private Load lidnp2Load;
         private readonly Timer lidnp2Resend;
         private readonly Timer cartonErectorTimer;
+        private EquipmentStatus cc51cartona1, cc52cartona1, cc53cartona1;
 
         public TollFashionRouting() : base("TollFashionRouting")
         {
@@ -125,30 +126,27 @@ namespace Experior.Controller.TollFashion
 
         private void CartonErectorTimer_OnElapsed(Timer sender)
         {           
-            var carton1Status = equipmentStatuses.First(e => e.FunctionGroup == "CC51CARTONA1");
-            var carton2Status = equipmentStatuses.First(e => e.FunctionGroup == "CC52CARTONA1");
-            var carton3Status = equipmentStatuses.First(e => e.FunctionGroup == "CC53CARTONA1");
-            var size1 = cartonErectorSize[carton1Status.FunctionGroup]; //10 large, 01 small.
-            var size2 = cartonErectorSize[carton1Status.FunctionGroup]; //10 large, 01 small.
-            var size3 = cartonErectorSize[carton1Status.FunctionGroup]; //10 large, 01 small.
+            var size1 = cartonErectorSize[cc51cartona1.FunctionGroup]; //10 large, 01 small.
+            var size2 = cartonErectorSize[cc52cartona1.FunctionGroup]; //10 large, 01 small.
+            var size3 = cartonErectorSize[cc53cartona1.FunctionGroup]; //10 large, 01 small.
             //Group status CA00: no cartons available
             //Group status CA01: Only small cartons are available. Large carton magazine may be empty or in fault, etc.
             //Group status CA10: Only large cartons are available. Small carton magazine may be empty or in fault, etc.
             //Group status CA11: Both small and large carton available
 
-            if (cartonErector1.LoadCount <= 1 && carton1Status.GroupStatus != "00")
+            if (cartonErector1.LoadCount <= 1 && cc51cartona1.GroupStatus != "00")
             {
-                if (carton1Status.GroupStatus == "11" || carton1Status.GroupStatus == size1)
+                if (cc51cartona1.GroupStatus == "11" || cc51cartona1.GroupStatus == size1)
                     FeedCarton(cartonErector1, size1);
             }
-            if (cartonErector2.LoadCount <= 1 && carton2Status.GroupStatus != "00")
+            if (cartonErector2.LoadCount <= 1 && cc52cartona1.GroupStatus != "00")
             {
-                if (carton2Status.GroupStatus == "11" || carton2Status.GroupStatus == size2)
+                if (cc52cartona1.GroupStatus == "11" || cc52cartona1.GroupStatus == size2)
                     FeedCarton(cartonErector2, size2);
             }
-            if (cartonErector3.LoadCount <= 1 && carton3Status.GroupStatus != "00")
+            if (cartonErector3.LoadCount <= 1 && cc53cartona1.GroupStatus != "00")
             {
-                if (carton3Status.GroupStatus == "11" || carton3Status.GroupStatus == size3)
+                if (cc53cartona1.GroupStatus == "11" || cc53cartona1.GroupStatus == size3)
                     FeedCarton(cartonErector3, size3);
             }
         }
@@ -265,11 +263,11 @@ namespace Experior.Controller.TollFashion
 
             //todo Where are these mentioned?:
 
-            equipmentStatuses.Add(new EquipmentStatus(plc51, "CC51CARTONA1", "11")); //CC11? 11 Both small and large cartons are available.
-            cartonErectorSize["CC51CARTONA1"] = "10"; //Large
-            equipmentStatuses.Add(new EquipmentStatus(plc52, "CC52CARTONA1", "11")); //CC11? 11 Both small and large cartons are available.
+            equipmentStatuses.Add(cc51cartona1 = new EquipmentStatus(plc51, "CC51CARTONA1", "11")); //CC11? 11 Both small and large cartons are available.
+            cartonErectorSize["CC51CARTONA1"] = "10"; //Large          
+            equipmentStatuses.Add(cc52cartona1 = new EquipmentStatus(plc52, "CC52CARTONA1", "11")); //CC11? 11 Both small and large cartons are available.
             cartonErectorSize["CC52CARTONA1"] = "10"; //Large
-            equipmentStatuses.Add(new EquipmentStatus(plc53, "CC53CARTONA1", "11")); //CC11? 11 Both small and large cartons are available.
+            equipmentStatuses.Add(cc53cartona1 = new EquipmentStatus(plc53, "CC53CARTONA1", "11")); //CC11? 11 Both small and large cartons are available.
             cartonErectorSize["CC53CARTONA1"] = "10"; //Large
 
             EquipmentStatuses = new List<EquipmentStatus>(equipmentStatuses);
