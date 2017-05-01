@@ -133,6 +133,15 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             if (load == null)
                 return;
 
+            var caseData = load.Case_Data as CaseData;
+            if (caseData == null)
+            {
+                Log.Write($"{Name} failed to send arrival message: CaseData is null!");
+                return;
+            }
+            caseData.CurrentPosition = location;
+            caseData.ULStatus = status;
+
             if (PLC_State == CasePLC_State.Auto)
             {
                 if (!alwaysArrival && RoutingTable.ContainsKey(load.Identification))
@@ -140,15 +149,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                     //Dont send. We know the route.
                     return;
                 }
-
-                var caseData = load.Case_Data as CaseData;
-                if (caseData == null)
-                {
-                    Log.Write($"{Name} failed to send arrival message: CaseData is null!");
-                    return;
-                }
-                caseData.CurrentPosition = location;
-                caseData.ULStatus = status;
+   
                 var telegram = CreateTelegramFromLoad(TelegramTypes.Arrival, load);
                 SendTelegram(telegram);
             }
