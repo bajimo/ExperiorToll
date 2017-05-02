@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Configuration VFCVERSION="1.0">
   <SystemConfiguration>
     <BK10BarcodeLength>10</BK10BarcodeLength>
@@ -2426,6 +2426,7 @@
     <EnableHistoricalLogs>False</EnableHistoricalLogs>
   </SystemConfiguration>
   <Projects>
+    <Project Name="VirtualFlowController.Core.TollFashion.dll" />
   </Projects>
   <ProjectExtensions>
   </ProjectExtensions>
