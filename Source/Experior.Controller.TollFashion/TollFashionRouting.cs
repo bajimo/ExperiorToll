@@ -147,10 +147,15 @@ namespace Experior.Controller.TollFashion
             if (e.Location == "CC51CARTONA1" || e.Location == "CC52CARTONA1" || e.Location == "CC53CARTONA1")
             {
                 var size = e.Telegram.GetFieldValue(sender as IDATCOMAUSTelegrams, TelegramFields.CarrierSize);
-                if (size == "10" || size == "01")
+                size = size.Replace("CA", "");
+                if (size == "02" || size == "10" || size == "01")
                 {
                     //Update carton size to produce at carton erector
-                    cartonErectorSize[e.Location] = size;
+
+                    if (size == "02" || size == "10")
+                        cartonErectorSize[e.Location] = "10";
+                    if (size == "01")
+                        cartonErectorSize[e.Location] = "01";
                 }
                 else
                 {
@@ -199,12 +204,12 @@ namespace Experior.Controller.TollFashion
             if (size == "10")
             {
                 //large
-                caseData.CarrierSize = "01";
+                caseData.CarrierSize = "CA02";
             }
             else if (size == "01")
             {
                 //small
-                caseData.CarrierSize = "00";
+                caseData.CarrierSize = "CA01";
                 caseData.Length = 0.490f;
                 caseData.Width = 0.360f;
             }
