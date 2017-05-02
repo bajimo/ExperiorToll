@@ -692,6 +692,11 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
             throw new NotImplementedException();
         }
 
+        public void RemoveFromRoutingTable(string barcode)
+        {
+            throw new NotImplementedException();
+        }
+
         public BaseCaseData GetCaseData()
         {
             return new DCICaseData();

@@ -116,7 +116,8 @@ namespace Experior.Dematic.Base
     public enum TaskType
     {
         Infeed,
-        Outfeed
+        Outfeed,
+        HouseKeep
     }
 
     public enum MultiShuttleDirections
