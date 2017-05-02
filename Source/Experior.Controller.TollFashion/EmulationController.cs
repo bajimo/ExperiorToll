@@ -196,6 +196,11 @@ namespace Experior.Controller.TollFashion
                                 caseData.CarrierSize = "CA01";
                             }
                         }
+                        if (subtype == "F001")
+                        {
+                            //Product tote
+                            caseData.CarrierSize = "BX01";
+                        }
 
                         caseLoad.SSCCBarcode = barcode;
                         caseLoad.Identification = barcode;
