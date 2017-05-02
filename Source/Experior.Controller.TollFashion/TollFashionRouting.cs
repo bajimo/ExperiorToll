@@ -83,6 +83,7 @@ namespace Experior.Controller.TollFashion
             {
                 plc61.OnRequestAllDataTelegramReceived += OnRequestAllDataTelegramReceived;
                 plc61.OnSetSystemStatusTelegramReceived += OnSetSystemStatusTelegramReceived;
+                plc61.OnTransportOrderTelegramReceived += OnTransportOrderTelegramReceived61;
             }
             if (plc62 != null)
             {
@@ -142,6 +143,23 @@ namespace Experior.Controller.TollFashion
             }
         }
 
+        private void OnTransportOrderTelegramReceived61(object sender, MessageEventArgs e)
+        {
+            if (e.Destination.StartsWith("CC61LID") && e.Destination.EndsWith("A1"))
+            {
+                //sent to lidder
+                //Update carrier size
+                if (e.Load != null)
+                {
+                    var caseData = (e.Load as Case_Load)?.Case_Data as CaseData;
+                    if (caseData != null)
+                    {
+                        caseData.CarrierSize = e.Telegram.GetFieldValue(sender as IDATCOMAUSTelegrams, TelegramFields.CarrierSize).Trim();
+                    }
+                }
+            }
+        }
+
         private void OnTransportOrderTelegramReceived(object sender, MessageEventArgs e)
         {
             if (e.Location == "CC51CARTONA1" || e.Location == "CC52CARTONA1" || e.Location == "CC53CARTONA1")
@@ -161,7 +179,14 @@ namespace Experior.Controller.TollFashion
                 {
                     Log.Write($"Unknown carton size in transport order at location {e.Location}. Carton size requested: {size}. Request is ignored!");
                 }
-            }
+
+                //Clear carrier size (field is updated at carton induction, after scanner)
+                var caseData = (e.Load as Case_Load)?.Case_Data as CaseData;
+                if (caseData != null)
+                {
+                    caseData.CarrierSize = "";
+                }
+            }   
         }
 
         private void Scene_OnStarting()
@@ -204,7 +229,7 @@ namespace Experior.Controller.TollFashion
             if (size == "10")
             {
                 //large
-                caseData.CarrierSize = "CA02";
+                caseData.CarrierSize = "CA00";
             }
             else if (size == "01")
             {
@@ -465,6 +490,12 @@ namespace Experior.Controller.TollFashion
                 AddBarcode2(load);
                 return;
             }
+            if (node.Name == "CC51CARTONSWAP" || node.Name == "CC52CARTONSWAP" || node.Name == "CC53CARTONSWAP")
+            {
+                SetCarrierSizeAfterCartonErector(load);
+                AddProfile(load);
+                AddBarcode2(load);                
+            }
             if (node.Name.StartsWith("CLEARSWAP"))
             {
                 ClearSwap(load);
@@ -542,6 +573,27 @@ namespace Experior.Controller.TollFashion
             caseData.Barcode2 = "";
         }
 
+        private void SetCarrierSizeAfterCartonErector(Load load)
+        {
+            var caseLoad = load as Case_Load;
+
+            var caseData = caseLoad?.Case_Data as CaseData;
+            if (caseData == null)
+                return;
+
+            //Carton
+            if (load.Length >= 0.58f)
+            {
+                //Large
+                caseData.CarrierSize = "CA02";
+            }
+            else
+            {
+                //Small (medium?)
+                caseData.CarrierSize = "CA01";
+            }
+        }
+
         private void AddProfile(Load load)
         {
             var caseLoad = load as Case_Load;
@@ -574,9 +626,8 @@ namespace Experior.Controller.TollFashion
             if (caseData == null)
                 return;
 
-            //TODO how to handle barcode2?
-            //caseData.Barcode2 = nextBarcode;
-            //TODO add more here?           
+            if (caseData.CarrierSize == "CA00") //CA00 is reported at CARTONA1 for large carton
+                caseData.CarrierSize = "CA02"; //this is the carton size for large cartons
         }
 
         private void HandleFailedCartons(MHEControllerAUS_Case plc, string location, Load load)
@@ -689,12 +740,13 @@ namespace Experior.Controller.TollFashion
             if (plc54 != null)
             {
                 plc54.OnRequestAllDataTelegramReceived -= OnRequestAllDataTelegramReceived;
-                plc54.OnSetSystemStatusTelegramReceived -= OnSetSystemStatusTelegramReceived;
+                plc54.OnSetSystemStatusTelegramReceived -= OnSetSystemStatusTelegramReceived;           
             }
             if (plc61 != null)
             {
                 plc61.OnRequestAllDataTelegramReceived -= OnRequestAllDataTelegramReceived;
                 plc61.OnSetSystemStatusTelegramReceived -= OnSetSystemStatusTelegramReceived;
+                plc61.OnTransportOrderTelegramReceived -= OnTransportOrderTelegramReceived61;
             }
             if (plc62 != null)
             {

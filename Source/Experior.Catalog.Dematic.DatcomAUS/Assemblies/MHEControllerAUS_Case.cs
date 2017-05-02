@@ -272,7 +272,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
 
             //Controller must send type 31 messages "Re-map Unit Load Data"
             //Notify subscribers
-            RequestAllDataTelegramReceived(new MessageEventArgs("", "", telegram, null, TelegramTypes.RequestAllData));
+            RequestAllDataTelegramReceived(new MessageEventArgs("", "", "", telegram, null, TelegramTypes.RequestAllData));
 
             //After the last “One Location Data Record” telegram has been sent by the PLC, an ‘End of Re - map’ telegram(Type 32) is sent to indicate an end of the remap.
             string reply = Template.CreateTelegram(this, TelegramTypes.EndRemap);
@@ -318,7 +318,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             }
 
             //Notify subscribers
-            SetSystemStatusTelegramReceived(new MessageEventArgs("", "", telegram, null, TelegramTypes.SetSystemStatus));
+            SetSystemStatusTelegramReceived(new MessageEventArgs("", "", "", telegram, null, TelegramTypes.SetSystemStatus));
 
             string reply = Template.CreateTelegram(this, TelegramTypes.SystemStatusReport);
             reply = reply.SetFieldValue(this, TelegramFields.SystemStatus, status);
@@ -372,8 +372,6 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             {
                 //Update destination
                 cData.DestinationPosition = destination;
-                //Update carrier size
-                cData.CarrierSize = carrierSize;
             }
 
             if (!string.IsNullOrWhiteSpace(barcode1))
@@ -394,7 +392,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             }
 
             //Notify subscribers
-            TransportOrderTelegramReceived(new MessageEventArgs(current, barcode1, telegram, caseload, TelegramTypes.TransportOrder));
+            TransportOrderTelegramReceived(new MessageEventArgs(current, destination, barcode1, telegram, caseload, TelegramTypes.TransportOrder));
         }
 
         public bool DivertSet(string barcode, List<string> validRoutes)
@@ -485,13 +483,15 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
     {
         public readonly TelegramTypes Type;
         public readonly string Location;
+        public readonly string Destination;
         public readonly string Barcode;
         public readonly string Telegram;
         public readonly Load Load;
-        public MessageEventArgs(string location, string barcode, string telegram, Load load, TelegramTypes type)
+        public MessageEventArgs(string location, string destination, string barcode, string telegram, Load load, TelegramTypes type)
         {
             Type = type;
             Location = location;
+            Destination = destination;
             Barcode = barcode;
             Telegram = telegram;
             Load = load;

@@ -188,7 +188,7 @@ namespace Experior.Controller.TollFashion
                             if (l >= 0.58f)
                             {
                                 //Large
-                                caseData.CarrierSize = "CA02";
+                                caseData.CarrierSize = "CA00";
                             }
                             else
                             {
