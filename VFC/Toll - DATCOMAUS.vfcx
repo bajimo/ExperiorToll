@@ -1900,26 +1900,30 @@
           <Format>ASCII</Format>
           <Length>1</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>Type</Name>
           <Format>ASCII</Format>
           <Length>2</Length>
           <Type>Identifier</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>Sender</Name>
           <Format>ASCII</Format>
           <Length>2</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>Receiver</Name>
           <Format>ASCII</Format>
           <Length>2</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>Program Ident</Name>
@@ -1935,8 +1939,6 @@
           <Format>ASCII</Format>
           <Length>2</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>End1</Name>
@@ -1961,104 +1963,78 @@
           <Format>ASCII</Format>
           <Length>14</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>Destination</Name>
           <Format>ASCII</Format>
           <Length>14</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>UL Status</Name>
           <Format>ASCII</Format>
           <Length>2</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>UL Identification</Name>
           <Format>ASCII</Format>
           <Length>8</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>Barcode 1</Name>
           <Format>ASCII</Format>
-          <Length>20</Length>
+          <Length>40</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>Barocde 2</Name>
           <Format>ASCII</Format>
-          <Length>20</Length>
+          <Length>40</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>Profile</Name>
           <Format>ASCII</Format>
           <Length>4</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>Carrier Size</Name>
           <Format>ASCII</Format>
           <Length>4</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>Special Data</Name>
           <Format>ASCII</Format>
           <Length>4</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>Weight</Name>
           <Format>ASCII</Format>
           <Length>6</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>Height</Name>
           <Format>ASCII</Format>
           <Length>4</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>Length</Name>
           <Format>ASCII</Format>
           <Length>4</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>Width</Name>
           <Format>ASCII</Format>
           <Length>4</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
       </Message>
       <Message Identifier="01">
@@ -2069,104 +2045,78 @@
           <Format>ASCII</Format>
           <Length>14</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>Destination</Name>
           <Format>ASCII</Format>
           <Length>14</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>UL Status</Name>
           <Format>ASCII</Format>
           <Length>2</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>UL Identification</Name>
           <Format>ASCII</Format>
           <Length>8</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>Barcode 1</Name>
           <Format>ASCII</Format>
-          <Length>20</Length>
+          <Length>40</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>Barocde 2</Name>
           <Format>ASCII</Format>
-          <Length>20</Length>
+          <Length>40</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>Profile</Name>
           <Format>ASCII</Format>
           <Length>4</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>Carrier Size</Name>
           <Format>ASCII</Format>
           <Length>4</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>Special Data</Name>
           <Format>ASCII</Format>
           <Length>4</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>Weight</Name>
           <Format>ASCII</Format>
           <Length>6</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>Height</Name>
           <Format>ASCII</Format>
           <Length>4</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>Length</Name>
           <Format>ASCII</Format>
           <Length>4</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>Width</Name>
           <Format>ASCII</Format>
           <Length>4</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
       </Message>
       <Message Identifier="03">
@@ -2177,104 +2127,78 @@
           <Format>ASCII</Format>
           <Length>14</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>Destination</Name>
           <Format>ASCII</Format>
           <Length>14</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>UL Status</Name>
           <Format>ASCII</Format>
           <Length>2</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>UL Identification</Name>
           <Format>ASCII</Format>
           <Length>8</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>Barcode 1</Name>
           <Format>ASCII</Format>
-          <Length>20</Length>
+          <Length>40</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>Barocde 2</Name>
           <Format>ASCII</Format>
-          <Length>20</Length>
+          <Length>40</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>Profile</Name>
           <Format>ASCII</Format>
           <Length>4</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>Carrier Size</Name>
           <Format>ASCII</Format>
           <Length>4</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>Special Data</Name>
           <Format>ASCII</Format>
           <Length>4</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>Weight</Name>
           <Format>ASCII</Format>
           <Length>6</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>Height</Name>
           <Format>ASCII</Format>
           <Length>4</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>Length</Name>
           <Format>ASCII</Format>
           <Length>4</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>Width</Name>
           <Format>ASCII</Format>
           <Length>4</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
       </Message>
       <Message Identifier="12">
@@ -2285,22 +2209,20 @@
           <Format>ASCII</Format>
           <Length>30</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>System status</Name>
           <Format>ASCII</Format>
           <Length>2</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>Null2</Name>
           <Format>ASCII</Format>
-          <Length>76</Length>
+          <Length>116</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
       </Message>
       <Message Identifier="13">
@@ -2311,22 +2233,20 @@
           <Format>ASCII</Format>
           <Length>30</Length>
           <Type>Normal</Type>
+          <Value>
+          </Value>
         </Field>
         <Field>
           <Name>System status</Name>
           <Format>ASCII</Format>
           <Length>2</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>Null2</Name>
           <Format>ASCII</Format>
-          <Length>76</Length>
+          <Length>116</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
       </Message>
       <Message Identifier="30">
@@ -2335,10 +2255,8 @@
         <Field>
           <Name>Null</Name>
           <Format>ASCII</Format>
-          <Length>108</Length>
+          <Length>148</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
       </Message>
       <Message Identifier="32">
@@ -2347,10 +2265,8 @@
         <Field>
           <Name>Null</Name>
           <Format>ASCII</Format>
-          <Length>108</Length>
+          <Length>148</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
       </Message>
       <Message Identifier="14">
@@ -2359,10 +2275,8 @@
         <Field>
           <Name>Null</Name>
           <Format>ASCII</Format>
-          <Length>108</Length>
+          <Length>148</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
       </Message>
       <Message Identifier="15">
@@ -2371,10 +2285,8 @@
         <Field>
           <Name>Null</Name>
           <Format>ASCII</Format>
-          <Length>108</Length>
+          <Length>148</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
       </Message>
       <Message Identifier="99">
@@ -2383,10 +2295,8 @@
         <Field>
           <Name>Null</Name>
           <Format>ASCII</Format>
-          <Length>108</Length>
+          <Length>148</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
       </Message>
       <Message Identifier="10">
@@ -2397,24 +2307,18 @@
           <Format>ASCII</Format>
           <Length>14</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>Group Status</Name>
           <Format>ASCII</Format>
           <Length>2</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
         <Field>
           <Name>Null</Name>
           <Format>ASCII</Format>
-          <Length>96</Length>
+          <Length>132</Length>
           <Type>Normal</Type>
-          <Value>
-          </Value>
         </Field>
       </Message>
     </TelegramValidation>
