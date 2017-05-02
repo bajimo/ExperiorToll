@@ -143,20 +143,6 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             } 
         }
 
-        [Category("Configuration")]
-        [DisplayName("Failed To Divert Reason Code")]
-        [Description("The Reason Code used in the 06 message, 2 characters. See 'Communication Standard MFH - Case Conveyor' Doc number 41796253")]
-        [PropertyAttributesProvider("DynamicPropertyReasonCode")]
-        [PropertyOrder(5)]
-        public string FailedToDivertMessageReasonCode
-        {
-            get { return divertDatcomInfo.failedToDivertMessageReasonCode; }
-            set
-            {
-                divertDatcomInfo.failedToDivertMessageReasonCode = value;
-            }
-        }
-
         public void DynamicPropertyReasonCode(Core.Properties.PropertyAttributes attributes)
         {
             attributes.IsBrowsable = divertDatcomInfo.failedToDivertMessageType == MHEControllerAUS_Case.FailedDatcomAusMessageType._06;
@@ -286,6 +272,5 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         public string divertRoutingCode = null;
         public string divertRoutingLocation = null;
         public MHEControllerAUS_Case.FailedDatcomAusMessageType failedToDivertMessageType =  MHEControllerAUS_Case.FailedDatcomAusMessageType._02;
-        public string failedToDivertMessageReasonCode = "@@";
     }
 }
