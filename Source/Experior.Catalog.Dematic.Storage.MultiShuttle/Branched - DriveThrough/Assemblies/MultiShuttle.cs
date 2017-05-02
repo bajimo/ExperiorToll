@@ -862,7 +862,7 @@ namespace Experior.Catalog.Dematic.Storage.MultiShuttle.Assemblies
         [Category("Rack Configuration")]
         [DescriptionAttribute("Height of the rack, shuttles and rack conveyors only. This is independant of height of the entire assembly and allows you to move the rack independently of the DS, PS and elevators.")]
         [DisplayName("Rack Height")]
-        [PropertyAttributesProvider("DynamicPropertyDriveThrough")]
+        //[PropertyAttributesProvider("DynamicPropertyDriveThrough")]
         public float RackHeight
         {
             get

@@ -59,7 +59,7 @@ namespace Experior.Catalog.Dematic.Storage.MultiShuttle.Assemblies
 
         void LocationB_OnEnter(ActionPoint sender, Load load)
         {        
-            if (Elevator.CurrentTask.Flow == TaskType.Infeed)
+            if (Elevator.CurrentTask.Flow == TaskType.Infeed || Elevator.CurrentTask.Flow == TaskType.HouseKeep)
             {
                 if (Elevator.CurrentTask.NumberOfLoadsInTask == 1)
                 {
@@ -140,7 +140,7 @@ namespace Experior.Catalog.Dematic.Storage.MultiShuttle.Assemblies
                     InfeedDoubleArrived();
                 }
             }
-            else if (Elevator.CurrentTask.Flow == TaskType.Outfeed)
+            else if (Elevator.CurrentTask.Flow == TaskType.Outfeed || Elevator.CurrentTask.Flow == TaskType.HouseKeep)
             {
                 if (TransportSection.Route.Loads.Count == 1)
                 {

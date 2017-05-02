@@ -34,6 +34,7 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies
         int ackTimerInterval = 1000;
         private List<string> sendList = new List<string>();
         int ackResendCount = 0;
+        int lastAckCycle = 0;
 
         //public static event EventHandler<PLCStatusChangeEventArgs> OnPLCStatusChanged;//Static Routing Script Events
 
@@ -162,7 +163,10 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies
                     telegram.FieldList.Add(TelegramFields.LiftDynamics);
                     telegram.FieldList.Add(TelegramFields.SourceShuttleExtension);
                     telegram.FieldList.Add(TelegramFields.DestinationShuttleExtension);
-                    telegram.FieldList.Add(TelegramFields.CaseConveyorDynamics);
+                    if (DCIVersion == DCIVersions._1_60)
+                    {
+                        telegram.FieldList.Add(TelegramFields.CaseConveyorDynamics);
+                    }
                 }
             }
         }
@@ -176,6 +180,8 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies
                     Send(telegram);
                     if (telegram.GetFieldValue(this, TelegramFields.Flow) == "R")
                     {
+                        //Remember the last cycle number that was sent so that the ack can be checked against it
+                        int.TryParse(telegram.GetFieldValue(this, TelegramFields.CycleNo), out lastAckCycle);
                         waitingForAck = true;
                         //When message sent start ack timer
                         waitingAckTelegram = telegram;
@@ -204,7 +210,7 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies
                     {
                         string telegram = string.Copy(sendList[0]);
                         sendList.Remove(sendList[0]);
-                        Send(telegram);
+                        SendTelegram(telegram);
                     }
                 }
             }
@@ -223,7 +229,6 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies
                 ackResendCount++;
             }
         }
-
 
         private void Send(string telegram)
         {
@@ -345,15 +350,19 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies
             {
                 if (telegram.GetFieldValue(this, TelegramFields.Flow) == "A")
                 {
-                    if (LogAll)
+                    int result = 0;
+                    if (int.TryParse(telegram.GetFieldValue(this, TelegramFields.CycleNo), out result) && result == lastAckCycle) //This will ignore ack if its in the wrong sequence
                     {
-                        LogTelegrams(string.Format("{0} {1}>{2}: {3}", DateTime.Now.ToString(), ReceiverID, SenderID, telegram), Color.Black);
-                    }
+                        if (LogAll)
+                        {
+                            LogTelegrams(string.Format("{0} {1}>{2}: {3}", DateTime.Now.ToString(), ReceiverID, SenderID, telegram), Color.Black);
+                        }
 
-                    waitingForAck = false;
-                    ackResendCount = 0;
-                    ackTimer.Stop();
-                    SendBuffer();
+                        waitingForAck = false;
+                        ackResendCount = 0;
+                        ackTimer.Stop();
+                        SendBuffer();
+                    }
                     return;
                 }
 
@@ -442,7 +451,11 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies
             telegram = telegram.SetFieldValue(this, TelegramFields.LiftDynamics, caseData.LiftDynamics);
             telegram = telegram.SetFieldValue(this, TelegramFields.SourceShuttleExtension, caseData.SourceShuttleExtension);
             telegram = telegram.SetFieldValue(this, TelegramFields.DestinationShuttleExtension, caseData.DestinationShuttleExtension);
-            telegram = telegram.SetFieldValue(this, TelegramFields.CaseConveyorDynamics, caseData.CaseConveyorDynamics);
+
+            if (DCIVersion == DCIVersions._1_60)
+            {
+                telegram = telegram.SetFieldValue(this, TelegramFields.CaseConveyorDynamics, caseData.CaseConveyorDynamics);
+            }
 
             return telegram;
         }
@@ -594,6 +607,23 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies
             set { baseControllerInfo.LogAll = value; }
         }
 
+        [Category("DCI")]
+        [DisplayName("DCI Version")]
+        [PropertyOrder(4)]
+        [Description("Which version of DCI is being used 1.54 or 1.6 - This changes the number of fields in the material flow telegrams")]
+        public DCIVersions DCIVersion
+        {
+            get
+            {
+                return baseControllerInfo.DCIVersion;
+            }
+            set
+            {
+                baseControllerInfo.DCIVersion = value;
+            }
+        }
+
+
         public int GetTelegramLength(TelegramTypes telegramType) //[BG] I hate this!!
         {
             //Make some code that hard codes the lengths of telegrams 
@@ -612,7 +642,7 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies
                 case TelegramTypes.SetDateTime:
                 case TelegramTypes.LocationRequest:
                 case TelegramTypes.StartMaterialFlow:
-                case TelegramTypes.StopMaterialFlow:
+                //case TelegramTypes.StopMaterialFlow:
                 case TelegramTypes.FaultTextReq:
                     return 44;
                 case TelegramTypes.Status:
@@ -623,7 +653,7 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies
                 case TelegramTypes.Live:
                     return 30;
                 case TelegramTypes.MoveMission:
-                //case TelegramTypes.MoveReport:
+                    //case TelegramTypes.MoveReport:
                     return 60;
                 case TelegramTypes.ExStatus:
                     return 110;
@@ -724,68 +754,73 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies
     }
 
     [Serializable]
-        [TypeConverter(typeof(BaseDCIControllerInfo))]
-        public class BaseDCIControllerInfo : BaseControllerInfo
+    [TypeConverter(typeof(BaseDCIControllerInfo))]
+    public class BaseDCIControllerInfo : BaseControllerInfo
+    {
+        public int connectionID;
+        public string AdditionalFields;
+        public LoadTypes loadType = LoadTypes.Case;
+        //public bool LogHeartBeat;
+        //public string meansOfTransport;
+        public string SenderID;
+        public string ReceiverID;
+        public bool LogAll;
+        public DCIVersions DCIVersion = DCIVersions._1_60;
+    }
+
+    public class DCIPLCStateChangeEventArgs : EventArgs
+    {
+        public readonly DCIPLCStates _ATCPLCState;
+        public DCIPLCStateChangeEventArgs(DCIPLCStates ATCPLCState)
         {
-            public int connectionID;
-            public string AdditionalFields;
-            public LoadTypes loadType = LoadTypes.Case;
-            //public bool LogHeartBeat;
-            //public string meansOfTransport;
-            public string SenderID;
-            public string ReceiverID;
-            public bool LogAll;
-        }
-
-        public class DCIPLCStateChangeEventArgs : EventArgs
-        {
-            public readonly DCIPLCStates _ATCPLCState;
-            public DCIPLCStateChangeEventArgs(DCIPLCStates ATCPLCState)
-            {
-                _ATCPLCState = ATCPLCState;
-            }
-        }
-
-        public enum DCIPLCStates
-        {
-            Disconnected,
-            Connected,
-            Manual,
-        };
-
-        public enum PSDSRackLocFields
-        {
-            Aisle,
-            Side,
-            Level,
-            ConvType,
-            LiftNum,
-            ConvPos
-        }
-
-        public enum BinLocFields
-        {
-            Aisle,
-            Side,
-            XLoc,
-            YLoc,
-            Depth,
-            RasterType,
-            RasterPos
-        }
-
-
-
-        internal class Common
-        {
-            public static Experior.Core.Resources.Meshes Meshes;
-            public static Experior.Core.Resources.Icons Icons;
-
-            static Common()
-            {
-                Meshes = new Experior.Core.Resources.Meshes(System.Reflection.Assembly.GetExecutingAssembly());
-                Icons = new Experior.Core.Resources.Icons(System.Reflection.Assembly.GetExecutingAssembly());
-            }
+            _ATCPLCState = ATCPLCState;
         }
     }
+
+    public enum DCIPLCStates
+    {
+        Disconnected,
+        Connected,
+        Manual,
+    }
+
+    public enum PSDSRackLocFields
+    {
+        Aisle,
+        Side,
+        Level,
+        ConvType,
+        LiftNum,
+        ConvPos
+    }
+
+    public enum BinLocFields
+    {
+        Aisle,
+        Side,
+        XLoc,
+        YLoc,
+        Depth,
+        RasterType,
+        RasterPos
+    }
+
+    public enum DCIVersions
+    {
+        _1_54,
+        _1_60
+    }
+
+    internal class Common
+    {
+        public static Experior.Core.Resources.Meshes Meshes;
+        public static Experior.Core.Resources.Icons Icons;
+
+        static Common()
+        {
+            Meshes = new Experior.Core.Resources.Meshes(System.Reflection.Assembly.GetExecutingAssembly());
+            Icons = new Experior.Core.Resources.Icons(System.Reflection.Assembly.GetExecutingAssembly());
+        }
+    }
+}
 
