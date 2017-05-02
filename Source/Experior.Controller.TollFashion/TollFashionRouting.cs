@@ -29,7 +29,11 @@ namespace Experior.Controller.TollFashion
         private Load lidnp2Load;
         private readonly Timer lidnp2Resend;
         private readonly Timer cartonErectorTimer;
-        private EquipmentStatus cc51cartona1, cc52cartona1, cc53cartona1;
+        private readonly Timer onlinePackingStationTimer;
+        private EquipmentStatus cc51Cartona1, cc52Cartona1, cc53Cartona1;
+        private readonly Dictionary<ActionPoint, double> onlinePackingStations = new Dictionary<ActionPoint, double>();
+        private double onlinePackingTime = 20; //20 seconds from arrival to done
+        private StraightConveyor emptyCartonOnlineTakeAway;
 
         public TollFashionRouting() : base("TollFashionRouting")
         {
@@ -41,6 +45,7 @@ namespace Experior.Controller.TollFashion
             cartonErector1 = Core.Assemblies.Assembly.Get("P1051") as StraightConveyor;
             cartonErector2 = Core.Assemblies.Assembly.Get("P1052") as StraightConveyor;
             cartonErector3 = Core.Assemblies.Assembly.Get("P1053") as StraightConveyor;
+            emptyCartonOnlineTakeAway = Core.Assemblies.Assembly.Get("P7071") as StraightConveyor;
 
             plc51 = Core.Assemblies.Assembly.Get("PLC 51") as MHEControllerAUS_Case;
             plc52 = Core.Assemblies.Assembly.Get("PLC 52") as MHEControllerAUS_Case;
@@ -94,12 +99,47 @@ namespace Experior.Controller.TollFashion
             Core.Environment.Scene.OnLoaded += Scene_OnLoaded;
             Core.Environment.Scene.OnStarting += Scene_OnStarting;
             CreateEquipmentStatuses();
-            lidnp2Resend = new Timer(2.5f);    
+            lidnp2Resend = new Timer(2.5f);
             lidnp2Resend.OnElapsed += Lidnp2Resend_Elapsed;
 
             cartonErectorTimer = new Timer(1);
             cartonErectorTimer.AutoReset = true;
             cartonErectorTimer.OnElapsed += CartonErectorTimer_OnElapsed;
+
+            //Init online packing stations (Actionpoint, arrival timestamp)
+            for (int i = 1; i <= 18; i++)
+            {
+                onlinePackingStations.Add(ActionPoint.Get("ONLINE" + i), -1f);
+            }
+
+            onlinePackingStationTimer = new Timer(1);
+            onlinePackingStationTimer.AutoReset = true;
+            onlinePackingStationTimer.OnElapsed += OnlinePackingStationTimer_OnElapsed;
+        }
+
+        private void OnlinePackingStationTimer_OnElapsed(Timer sender)
+        {
+            //Check we have space on empty line
+            if (emptyCartonOnlineTakeAway.ThisRouteStatus.Available == RouteStatuses.Blocked)
+                return;
+
+            if (emptyCartonOnlineTakeAway.LoadCount > 50)
+                return;
+
+            //Check all online packing stations
+            foreach (var p in onlinePackingStations)
+            {
+                if (p.Value > 0 && Core.Environment.Time.Simulated > p.Value + onlinePackingTime)
+                {
+                    if (p.Key.Active)
+                    {
+                        //Switch to empty line
+                        var carton = p.Key.ActiveLoad;
+                        carton.Switch(emptyCartonOnlineTakeAway.TransportSection.Route);
+                        carton.Release();
+                    }
+                }
+            }
         }
 
         private void OnTransportOrderTelegramReceived(object sender, MessageEventArgs e)
@@ -122,31 +162,32 @@ namespace Experior.Controller.TollFashion
         private void Scene_OnStarting()
         {
             cartonErectorTimer.Start();
+            onlinePackingStationTimer.Start();
         }
 
         private void CartonErectorTimer_OnElapsed(Timer sender)
-        {           
-            var size1 = cartonErectorSize[cc51cartona1.FunctionGroup]; //10 large, 01 small.
-            var size2 = cartonErectorSize[cc52cartona1.FunctionGroup]; //10 large, 01 small.
-            var size3 = cartonErectorSize[cc53cartona1.FunctionGroup]; //10 large, 01 small.
+        {
+            var size1 = cartonErectorSize[cc51Cartona1.FunctionGroup]; //10 large, 01 small.
+            var size2 = cartonErectorSize[cc52Cartona1.FunctionGroup]; //10 large, 01 small.
+            var size3 = cartonErectorSize[cc53Cartona1.FunctionGroup]; //10 large, 01 small.
             //Group status CA00: no cartons available
             //Group status CA01: Only small cartons are available. Large carton magazine may be empty or in fault, etc.
             //Group status CA10: Only large cartons are available. Small carton magazine may be empty or in fault, etc.
             //Group status CA11: Both small and large carton available
 
-            if (cartonErector1.LoadCount <= 1 && cc51cartona1.GroupStatus != "00")
+            if (cartonErector1.LoadCount <= 1 && cc51Cartona1.GroupStatus != "00")
             {
-                if (cc51cartona1.GroupStatus == "11" || cc51cartona1.GroupStatus == size1)
+                if (cc51Cartona1.GroupStatus == "11" || cc51Cartona1.GroupStatus == size1)
                     FeedCarton(cartonErector1, size1);
             }
-            if (cartonErector2.LoadCount <= 1 && cc52cartona1.GroupStatus != "00")
+            if (cartonErector2.LoadCount <= 1 && cc52Cartona1.GroupStatus != "00")
             {
-                if (cc52cartona1.GroupStatus == "11" || cc52cartona1.GroupStatus == size2)
+                if (cc52Cartona1.GroupStatus == "11" || cc52Cartona1.GroupStatus == size2)
                     FeedCarton(cartonErector2, size2);
             }
-            if (cartonErector3.LoadCount <= 1 && cc53cartona1.GroupStatus != "00")
+            if (cartonErector3.LoadCount <= 1 && cc53Cartona1.GroupStatus != "00")
             {
-                if (cc53cartona1.GroupStatus == "11" || cc53cartona1.GroupStatus == size3)
+                if (cc53Cartona1.GroupStatus == "11" || cc53Cartona1.GroupStatus == size3)
                     FeedCarton(cartonErector3, size3);
             }
         }
@@ -174,7 +215,7 @@ namespace Experior.Controller.TollFashion
 
             var carton = FeedLoad.FeedCaseLoad(cartonErector.TransportSection, caseData.Length / 2, caseData.Length, caseData.Width, caseData.Height, 0, Color.Peru, 8, caseData);
             caseData.Weight = 0;
-            carton.Identification = "";       
+            carton.Identification = "";
         }
 
         private void Lidnp2Resend_Elapsed(Timer sender)
@@ -263,11 +304,11 @@ namespace Experior.Controller.TollFashion
 
             //todo Where are these mentioned?:
 
-            equipmentStatuses.Add(cc51cartona1 = new EquipmentStatus(plc51, "CC51CARTONA1", "11")); //CC11? 11 Both small and large cartons are available.
+            equipmentStatuses.Add(cc51Cartona1 = new EquipmentStatus(plc51, "CC51CARTONA1", "11")); //CC11? 11 Both small and large cartons are available.
             cartonErectorSize["CC51CARTONA1"] = "10"; //Large          
-            equipmentStatuses.Add(cc52cartona1 = new EquipmentStatus(plc52, "CC52CARTONA1", "11")); //CC11? 11 Both small and large cartons are available.
+            equipmentStatuses.Add(cc52Cartona1 = new EquipmentStatus(plc52, "CC52CARTONA1", "11")); //CC11? 11 Both small and large cartons are available.
             cartonErectorSize["CC52CARTONA1"] = "10"; //Large
-            equipmentStatuses.Add(cc53cartona1 = new EquipmentStatus(plc53, "CC53CARTONA1", "11")); //CC11? 11 Both small and large cartons are available.
+            equipmentStatuses.Add(cc53Cartona1 = new EquipmentStatus(plc53, "CC53CARTONA1", "11")); //CC11? 11 Both small and large cartons are available.
             cartonErectorSize["CC53CARTONA1"] = "10"; //Large
 
             EquipmentStatuses = new List<EquipmentStatus>(equipmentStatuses);
@@ -327,6 +368,13 @@ namespace Experior.Controller.TollFashion
         protected override void Reset()
         {
             lidnp2Load = null;
+
+            //Reset packing arrival
+            foreach (var onlinePackingStation in onlinePackingStations.Keys.ToList())
+            {
+                onlinePackingStations[onlinePackingStation] = -1;
+            }
+
             base.Reset();
         }
 
@@ -436,6 +484,13 @@ namespace Experior.Controller.TollFashion
             if (node.Name.EndsWith("CARTONA1"))
             {
                 RequestValidBarcodes();
+                return;
+            }
+            var ap = node as ActionPoint;
+            if (onlinePackingStations.ContainsKey(ap))
+            {
+                //Arrived at online pack station. Set arrival timestamp 
+                onlinePackingStations[ap] = Core.Environment.Time.Simulated;
             }
         }
 
@@ -651,6 +706,8 @@ namespace Experior.Controller.TollFashion
             cartonErectorTimer.Dispose();
             lidnp2Resend.OnElapsed -= Lidnp2Resend_Elapsed;
             lidnp2Resend.Dispose();
+            onlinePackingStationTimer.OnElapsed -= OnlinePackingStationTimer_OnElapsed;
+            onlinePackingStationTimer.Dispose();
             base.Dispose();
         }
     }
