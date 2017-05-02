@@ -339,6 +339,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
 
             var barcode1 = telegram.GetFieldValue(this, TelegramFields.Barcode1);
             var current = telegram.GetFieldValue(this, TelegramFields.Current);
+            var carrierSize = telegram.GetFieldValue(this, TelegramFields.CarrierSize);
 
             Case_Load caseload = null;
             if (string.IsNullOrWhiteSpace(barcode1))
@@ -371,6 +372,8 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             {
                 //Update destination
                 cData.DestinationPosition = destination;
+                //Update carrier size
+                cData.CarrierSize = carrierSize;
             }
 
             if (!string.IsNullOrWhiteSpace(barcode1))
