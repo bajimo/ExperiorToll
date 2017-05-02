@@ -248,7 +248,7 @@ namespace Experior.Catalog.Dematic.Storage.MultiShuttle.Assemblies
                     else //When the drop station is not available then try to find one on the infeed station
                     {
                         //look for inbound tasks
-                        var iTasks = ElevatorTasks.Where(task => task.Flow == TaskType.Infeed);
+                        var iTasks = ElevatorTasks.Where(task => task.Flow == TaskType.Infeed || task.Flow == TaskType.HouseKeep); //TODO: For house keeping moves this needs to be updated to check that the rack in conveyor is available ideally
                         if (iTasks.Any())
                         {
                             CurrentTask = iTasks.First();
@@ -413,7 +413,7 @@ namespace Experior.Catalog.Dematic.Storage.MultiShuttle.Assemblies
                 OnElevatorArrived(this, new EventArgs());
             }
 
-            if (CurrentTask.Flow == TaskType.Infeed)
+            if (CurrentTask.Flow == TaskType.Infeed || CurrentTask.Flow == TaskType.HouseKeep)
             {
                 if (ElevatorConveyor.Route.Loads.Count == 0) //Arrived at the pickstation so release whatever is waiting for the elevator to arrive
                 {
@@ -571,7 +571,7 @@ namespace Experior.Catalog.Dematic.Storage.MultiShuttle.Assemblies
                     ElevatorConveyor.LocalYaw = ElevatorConveyor.LocalYaw + (float)Math.PI;
                     ElevatorType = MultiShuttleDirections.Infeed;
                 }
-                else if (taskType == TaskType.Outfeed && ElevatorType == MultiShuttleDirections.Infeed)
+                else if ((taskType == TaskType.Outfeed || taskType == TaskType.HouseKeep) && ElevatorType == MultiShuttleDirections.Infeed)
                 {
                     ElevatorConveyor.LocalYaw = ElevatorConveyor.LocalYaw - (float)Math.PI;
                     ElevatorType = MultiShuttleDirections.Outfeed;
@@ -602,11 +602,6 @@ namespace Experior.Catalog.Dematic.Storage.MultiShuttle.Assemblies
                 }
             }
         }
-
-
-
-
-
 
         /// <summary>
         /// <para>Do not create a task directly only add a task to ElevatorTasks</para>para>

@@ -158,8 +158,8 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
                         et.UnloadCycle = Cycle.Double;
                     }
 
-                    UpDateLoadParameters(telegram, (Case_Load)locA.ActiveLoad, 0);
-                    UpDateLoadParameters(telegram, (Case_Load)locB.ActiveLoad, 1);
+                    UpDateLoadParameters(telegram, (Case_Load)locA.ActiveLoad, 1);
+                    UpDateLoadParameters(telegram, (Case_Load)locB.ActiveLoad, 0);
 
                     ms.elevators.First(x => x.ElevatorName == side + aisle).ElevatorTasks.Add(et);
                     //ms.elevators[side+aisle].ElevatorTasks.Add(et);
@@ -379,47 +379,76 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
             return destLevel;
         }
 
-
-
         private void LoadAtRackConv(string telegram, Case_Load caseLoad)
         {
-            DCICaseData caseData = caseLoad.Case_Data as DCICaseData;
-
-            string currentLevel = GetRackLocFields(caseData.Current, PSDSRackLocFields.Level);
-            string destLevel   = GetPSDSLocFields(caseData.Destination, PSDSRackLocFields.Level);
-            string aisle       = GetRackLocFields(caseData.Current, PSDSRackLocFields.Aisle);
-            string side        = GetRackLocFields(caseData.Current, PSDSRackLocFields.Side);
-
-            //Set somedata on the load
-            caseData.Current = telegram.GetFieldValue(this, TelegramFields.Current);
-            caseData.Destination = telegram.GetFieldValue(this, TelegramFields.Destination);
-
-            int dropIndex = 0;
-            if (int.TryParse(telegram.GetFieldValue(this, TelegramFields.DropIndex), out dropIndex))
+            if (telegram.GetFieldValue(this, TelegramFields.Destination).LocationType() == LocationTypes.DropStation)
             {
-                caseData.DropIndex = dropIndex;
+                DCICaseData caseData = caseLoad.Case_Data as DCICaseData;
+
+                string currentLevel = GetRackLocFields(caseData.Current, PSDSRackLocFields.Level);
+                string destLevel = GetPSDSLocFields(caseData.Destination, PSDSRackLocFields.Level);
+                string aisle = GetRackLocFields(caseData.Current, PSDSRackLocFields.Aisle);
+                string side = GetRackLocFields(caseData.Current, PSDSRackLocFields.Side);
+
+                //Set somedata on the load
+                caseData.Current = telegram.GetFieldValue(this, TelegramFields.Current);
+                caseData.Destination = telegram.GetFieldValue(this, TelegramFields.Destination);
+
+                int dropIndex = 0;
+                if (int.TryParse(telegram.GetFieldValue(this, TelegramFields.DropIndex), out dropIndex))
+                {
+                    caseData.DropIndex = dropIndex;
+                }
+
+                ElevatorTask et = new ElevatorTask(null, caseLoad.Identification)
+                {
+                    SourceLoadB = string.Format("{0}{1}{2}{3}B", aisle, side, currentLevel, (char)ConveyorTypes.OutfeedRack),
+                    DestinationLoadB = string.Format("{0}{1}{2}{3}A", aisle, side, destLevel, (char)ConveyorTypes.Drop), // aasyyxz: a=aisle, s = side, yy = level, x = input or output, Z = loc A or B e.g. 01R05OA 
+                    DropIndexLoadB = dropIndex,
+                    LoadCycle = Cycle.Single,
+                    UnloadCycle = Cycle.Single,
+                    Flow = TaskType.Outfeed
+                };
+
+                string elevatorName = string.Format("{0}{1}", side, aisle);
+                MultiShuttle ms = GetMultishuttleFromAisleNum(aisle);
+                Elevator elevator = ms.elevators.First(x => x.ElevatorName == elevatorName);
+                elevator.ElevatorTasks.Add(et);
             }
-            else
+            else if (telegram.GetFieldValue(this, TelegramFields.Destination).LocationType() == LocationTypes.RackConvIn) //This will only work for drive through!
             {
-                //Log.Write(string.Format("Did not manage to set the dropIndex {0}_{1}", telegramFields.GetFieldValue(TelegramFields.dropIndex), telegramFields.GetFieldValue(TelegramFields.tuIdent)));
+                DCICaseData caseData = caseLoad.Case_Data as DCICaseData;
+
+                string currentLevel = GetRackLocFields(caseData.Current, PSDSRackLocFields.Level);
+                string destLevel = GetRackLocFields(caseData.Destination, PSDSRackLocFields.Level);
+                string aisle = GetRackLocFields(caseData.Current, PSDSRackLocFields.Aisle);
+                string side = GetRackLocFields(caseData.Current, PSDSRackLocFields.Side);
+
+                //Set somedata on the load
+                caseData.Current = telegram.GetFieldValue(this, TelegramFields.Current);
+                caseData.Destination = telegram.GetFieldValue(this, TelegramFields.Destination);
+
+                int dropIndex = 0;
+                if (int.TryParse(telegram.GetFieldValue(this, TelegramFields.DropIndex), out dropIndex))
+                {
+                    caseData.DropIndex = dropIndex;
+                }
+
+                ElevatorTask et = new ElevatorTask(null, caseLoad.Identification)
+                {
+                    SourceLoadB = string.Format("{0}{1}{2}{3}B", aisle, side, currentLevel, (char)ConveyorTypes.OutfeedRack),
+                    DestinationLoadB = string.Format("{0}{1}{2}{3}A", aisle, side, destLevel, (char)ConveyorTypes.InfeedRack), // aasyyxz: a=aisle, s = side, yy = level, x = input or output, Z = loc A or B e.g. 01R05OA 
+                    DropIndexLoadB = dropIndex,
+                    LoadCycle = Cycle.Single,
+                    UnloadCycle = Cycle.Single,
+                    Flow = TaskType.HouseKeep
+                };
+
+                string elevatorName = string.Format("{0}{1}", side, aisle);
+                MultiShuttle ms = GetMultishuttleFromAisleNum(aisle);
+                Elevator elevator = ms.elevators.First(x => x.ElevatorName == elevatorName);
+                elevator.ElevatorTasks.Add(et);
             }
-
-            //char side = (char)e._locationName.Side();
-            // create an elevator task            
-            ElevatorTask et = new ElevatorTask(null, caseLoad.Identification)
-            {
-                SourceLoadB = string.Format("{0}{1}{2}{3}B", aisle, side, currentLevel, (char)ConveyorTypes.OutfeedRack),
-                DestinationLoadB = string.Format("{0}{1}{2}{3}A", aisle, side, destLevel, (char)ConveyorTypes.Drop), // aasyyxz: a=aisle, s = side, yy = level, x = input or output, Z = loc A or B e.g. 01R05OA 
-                DropIndexLoadB = dropIndex, 
-                LoadCycle = Cycle.Single,
-                UnloadCycle = Cycle.Single,
-                Flow = TaskType.Outfeed
-            };
-
-            string elevatorName = string.Format("{0}{1}", side, aisle);
-            MultiShuttle ms = GetMultishuttleFromAisleNum(aisle);
-            Elevator elevator = ms.elevators.First(x => x.ElevatorName == elevatorName);
-            elevator.ElevatorTasks.Add(et);
         }
 
         /// <summary>
@@ -658,7 +687,7 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
             return protocolConfig as MHEControl;
         }
 
-        public void RemoveFromRoutingTable(string barcode)
+        public void RemoveSSCCBarcode(string ULID)
         {
             throw new NotImplementedException();
         }
