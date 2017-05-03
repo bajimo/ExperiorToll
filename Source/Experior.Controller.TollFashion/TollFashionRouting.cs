@@ -461,6 +461,7 @@ namespace Experior.Controller.TollFashion
             {
                 //Apply barcode
                 AddBarcodeAndData(load);
+                AddBarcode2(load);
                 return;
             }
             if (node.Name == "SORTERWEIGHT")
@@ -493,8 +494,7 @@ namespace Experior.Controller.TollFashion
             if (node.Name == "CC51CARTONSWAP" || node.Name == "CC52CARTONSWAP" || node.Name == "CC53CARTONSWAP")
             {
                 SetCarrierSizeAfterCartonErector(load);
-                AddProfile(load);
-                AddBarcode2(load);                
+                AddProfile(load);               
             }
             if (node.Name.StartsWith("CLEARSWAP"))
             {
