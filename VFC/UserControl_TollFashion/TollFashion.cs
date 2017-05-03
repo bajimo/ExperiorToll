@@ -16,6 +16,7 @@ namespace VirtualFlowController.Core
         EMUDAIUK EMU = vfc.AllControllers["EMU"] as EMUDAIUK;
 
         Timer DecantTimer = new Timer();
+        private int productToteBarcodeCount;
 
         private bool _Decant1Enabled = true;
         [Category("Decant")]
@@ -277,16 +278,18 @@ namespace VirtualFlowController.Core
             }
         }
 
+        private string NewProductToteBarcode()
+        {
+            //Prefix 9 + 6 digit number 000000 to 999999
+            productToteBarcodeCount++;
+            if (productToteBarcodeCount > 999999)
+                productToteBarcodeCount = 0;
+            return $"9{productToteBarcodeCount:D6}";
+        }
+
         private void FeedTelegram(string location, string length, string width, string height, string weight)
         {
-            string telegram = string.Format("FEEDF001000001,{0},{1},{2},{3},{4},{5}",
-                                location,
-                                vfc.NewCartonBarcode(),
-                                length,
-                                width,
-                                height,
-                                weight
-                                );
+            var telegram = $"FEEDF001000001,{location},{NewProductToteBarcode()},{length},{width},{height},{weight}";
 
             EMU.Send(telegram);
         }
