@@ -9,8 +9,10 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Experior.Core.Communication;
 using Environment = Experior.Core.Environment;
 
 namespace Experior.Catalog.Dematic.DCI.Assemblies
@@ -220,8 +222,9 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies
         private void AckTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
             if (ackResendCount > 2)
-            {
-                ControllerConnection.Disconnect();
+            {    
+                if (ControllerConnection.State == State.Connected)
+                    ControllerConnection.Disconnect();
             }
             else
             {
@@ -321,9 +324,13 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies
         protected virtual void Connection_OnDisconnected(Core.Communication.Connection connection)
         {
             DisplayText.Color = Color.Red;  // PLC object text
-            Experior.Core.Environment.Log.Write(DateTime.Now.ToString() + " " + this.Name + " connection dropped for ID " + ControllerConnection.Id + " on IP " + ControllerConnection.Ip.ToString() + " and port " + ControllerConnection.Port.ToString(), Color.Red);
+            Experior.Core.Environment.Log.Write(DateTime.Now.ToString(CultureInfo.InvariantCulture) + " " + this.Name + " connection dropped for ID " + ControllerConnection.Id + " on IP " + ControllerConnection.Ip.ToString() + " and port " + ControllerConnection.Port.ToString(), Color.Red);
             // ControllerConnection.AutoConnect = true;
             plcConnected = false;
+            ackTimer.Stop();
+            waitingForAck = false;
+            ackResendCount = 0;
+            waitingAckTelegram = "";
             PLC_State = DCIPLCStates.Disconnected;
         }
 
