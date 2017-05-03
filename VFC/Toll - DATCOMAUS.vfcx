@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Configuration VFCVERSION="1.0">
   <SystemConfiguration>
-    <BK10BarcodeLength>10</BK10BarcodeLength>
-    <BK10BarcodePrefix>00</BK10BarcodePrefix>
+    <BK10BarcodeLength>8</BK10BarcodeLength>
+    <BK10BarcodePrefix>8</BK10BarcodePrefix>
     <NextCartonBarcode>5</NextCartonBarcode>
     <TelegramValidation Name="DATCOMBK10">
       <DefaultFormatPadding>
@@ -2475,7 +2475,7 @@
       <connection>01E1</connection>
       <SubController Name="01E1 Level 01" Type="DMSDCIShuttle">
         <LevelHeight>0</LevelHeight>
-        <ExMode>Internal</ExMode>
+        <ExMode>Outbound</ExMode>
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
