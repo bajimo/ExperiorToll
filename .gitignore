@@ -9,4 +9,5 @@ Release/
 *.bak
 *.dwl
 *.dwl2
+*.db
 packages/
