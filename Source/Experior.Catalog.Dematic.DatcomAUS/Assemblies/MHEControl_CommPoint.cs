@@ -39,8 +39,9 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             var caseData = caseload.Case_Data as CaseData;
             if (caseData == null)
             {
-                //Convert?
-                caseload.Case_Data = new CaseData();
+                //Case data is null or another type.
+                caseData = new CaseData();
+                caseload.Case_Data = caseData;
             }
 
             if (CommPoint.ControllerName != string.Empty)

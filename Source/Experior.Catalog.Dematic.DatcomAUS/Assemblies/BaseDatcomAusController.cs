@@ -284,7 +284,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             }
         }
 
-        public string CreateTelegramFromLoad(TelegramTypes telegramType, Case_Load load)
+        protected string CreateTelegramFromLoad(TelegramTypes telegramType, Case_Load load)
         {
             string telegram = Template.CreateTelegram(this, telegramType);
             CaseData caseData = load.Case_Data as CaseData;

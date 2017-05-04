@@ -239,7 +239,7 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies
             {
                 ControllerConnection.Send(telegram);
 
-                if (!telegram.Contains("LIVE") || LogAll)
+                if (!telegram.Contains(",LIVE,") || LogAll)
                 {
                     LogTelegrams(string.Format("{0} {1}>{2}: {3}", DateTime.Now.ToString(), SenderID, ReceiverID, telegram), Color.Black);
                 }
@@ -273,7 +273,8 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies
 
         public void LogTelegrams(string message, Color colour)
         {
-            Environment.Log.Write(message, colour);
+            if (!message.Contains(",LIVE,") || LogAll)
+                Environment.Log.Write(message, colour);
         }
 
         [Category("Project")]

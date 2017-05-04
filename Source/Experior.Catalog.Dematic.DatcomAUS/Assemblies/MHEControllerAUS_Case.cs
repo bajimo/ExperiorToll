@@ -136,8 +136,9 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             var caseData = load.Case_Data as CaseData;
             if (caseData == null)
             {
-                Log.Write($"{Name} failed to send arrival message: CaseData is null!");
-                return;
+                //Case data is null or another type.
+                caseData = new CaseData();
+                load.Case_Data = caseData;
             }
             caseData.CurrentPosition = location;
             caseData.ULStatus = status;
@@ -174,8 +175,9 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                 var caseData = load.Case_Data as CaseData;
                 if (caseData == null)
                 {
-                    Log.Write($"{Name} failed to send arrival message: CaseData is null!");
-                    return;
+                    //Case data is null or another type.
+                    caseData = new CaseData();
+                    load.Case_Data = caseData;
                 }
                 caseData.CurrentPosition = location;
                 caseData.ULStatus = status;
@@ -186,6 +188,14 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
 
         public void SendRemapUlData(Case_Load load)
         {
+            var caseData = load.Case_Data as CaseData;
+            if (caseData == null)
+            {
+                //Case data is null or another type.
+                caseData = new CaseData();
+                load.Case_Data = caseData;
+            }
+
             var type31 = CreateTelegramFromLoad(TelegramTypes.RemapULData, load);
             SendTelegram(type31);
         }
