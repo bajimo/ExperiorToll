@@ -2823,61 +2823,61 @@
       <PLCIdentifier>01E1</PLCIdentifier>
       <SubController Name="01E1 Level 01" Type="DMSDCIShuttle">
         <LevelHeight>0</LevelHeight>
-        <ExMode>Outbound</ExMode>
+        <ExMode>Internal</ExMode>
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>6</MachineMoves>
+        <MachineMoves>68</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="01E1 Level 02" Type="DMSDCIShuttle">
         <LevelHeight>0</LevelHeight>
-        <ExMode>Outbound</ExMode>
+        <ExMode>Internal</ExMode>
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="01E1 Level 03" Type="DMSDCIShuttle">
         <LevelHeight>0</LevelHeight>
-        <ExMode>Outbound</ExMode>
+        <ExMode>Internal</ExMode>
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>1</MachineMoves>
+        <MachineMoves>40</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="01E1 Level 04" Type="DMSDCIShuttle">
         <LevelHeight>0</LevelHeight>
-        <ExMode>Outbound</ExMode>
+        <ExMode>Internal</ExMode>
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="01E1 Level 05" Type="DMSDCIShuttle">
         <LevelHeight>0</LevelHeight>
-        <ExMode>Outbound</ExMode>
+        <ExMode>Internal</ExMode>
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>49</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="01E1 Level 06" Type="DMSDCIShuttle">
         <LevelHeight>0</LevelHeight>
-        <ExMode>Outbound</ExMode>
+        <ExMode>Internal</ExMode>
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>1</MachineMoves>
+        <MachineMoves>19</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="01E1 Level 07" Type="DMSDCIShuttle">
         <LevelHeight>0</LevelHeight>
-        <ExMode>Outbound</ExMode>
+        <ExMode>Internal</ExMode>
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
@@ -2886,47 +2886,47 @@
       </SubController>
       <SubController Name="01E1 Level 08" Type="DMSDCIShuttle">
         <LevelHeight>0</LevelHeight>
-        <ExMode>Outbound</ExMode>
-        <ExTimeDelay>0</ExTimeDelay>
-        <ExOutDest>Random</ExOutDest>
-        <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
-        <Enabled>True</Enabled>
-      </SubController>
-      <SubController Name="01E1 Level 09" Type="DMSDCIShuttle">
-        <LevelHeight>0</LevelHeight>
-        <ExMode>Outbound</ExMode>
-        <ExTimeDelay>0</ExTimeDelay>
-        <ExOutDest>Random</ExOutDest>
-        <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
-        <Enabled>True</Enabled>
-      </SubController>
-      <SubController Name="01E1 Level 10" Type="DMSDCIShuttle">
-        <LevelHeight>0</LevelHeight>
-        <ExMode>Outbound</ExMode>
+        <ExMode>Internal</ExMode>
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
         <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
-      <SubController Name="01E1 Level 11" Type="DMSDCIShuttle">
+      <SubController Name="01E1 Level 09" Type="DMSDCIShuttle">
         <LevelHeight>0</LevelHeight>
-        <ExMode>Outbound</ExMode>
+        <ExMode>Internal</ExMode>
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>1</MachineMoves>
+        <MachineMoves>46</MachineMoves>
+        <Enabled>True</Enabled>
+      </SubController>
+      <SubController Name="01E1 Level 10" Type="DMSDCIShuttle">
+        <LevelHeight>0</LevelHeight>
+        <ExMode>Internal</ExMode>
+        <ExTimeDelay>0</ExTimeDelay>
+        <ExOutDest>Random</ExOutDest>
+        <DatabaseChanged>False</DatabaseChanged>
+        <MachineMoves>4</MachineMoves>
+        <Enabled>True</Enabled>
+      </SubController>
+      <SubController Name="01E1 Level 11" Type="DMSDCIShuttle">
+        <LevelHeight>0</LevelHeight>
+        <ExMode>Internal</ExMode>
+        <ExTimeDelay>0</ExTimeDelay>
+        <ExOutDest>Random</ExOutDest>
+        <DatabaseChanged>False</DatabaseChanged>
+        <MachineMoves>3</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="01E1 Level 12" Type="DMSDCIShuttle">
         <LevelHeight>0</LevelHeight>
-        <ExMode>Outbound</ExMode>
+        <ExMode>Internal</ExMode>
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <telegramValidation>DMS DCI 1.52</telegramValidation>
@@ -3052,7 +3052,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>1</MachineMoves>
+        <MachineMoves>35</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="02E1 Level 02" Type="DMSDCIShuttle">
@@ -3070,7 +3070,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="02E1 Level 04" Type="DMSDCIShuttle">
@@ -3079,7 +3079,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>6</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="02E1 Level 05" Type="DMSDCIShuttle">
@@ -3097,7 +3097,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="02E1 Level 07" Type="DMSDCIShuttle">
@@ -3106,7 +3106,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>1</MachineMoves>
+        <MachineMoves>3</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="02E1 Level 08" Type="DMSDCIShuttle">
@@ -3115,7 +3115,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>4</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="02E1 Level 09" Type="DMSDCIShuttle">
@@ -3124,7 +3124,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="02E1 Level 10" Type="DMSDCIShuttle">
@@ -3133,7 +3133,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="02E1 Level 11" Type="DMSDCIShuttle">
@@ -3142,7 +3142,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>6</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="02E1 Level 12" Type="DMSDCIShuttle">
@@ -3277,7 +3277,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>2</MachineMoves>
+        <MachineMoves>17</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="03E1 Level 02" Type="DMSDCIShuttle">
@@ -3286,7 +3286,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="03E1 Level 03" Type="DMSDCIShuttle">
@@ -3295,7 +3295,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>3</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="03E1 Level 04" Type="DMSDCIShuttle">
@@ -3304,7 +3304,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>3</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="03E1 Level 05" Type="DMSDCIShuttle">
@@ -3322,7 +3322,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="03E1 Level 07" Type="DMSDCIShuttle">
@@ -3331,7 +3331,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="03E1 Level 08" Type="DMSDCIShuttle">
@@ -3340,7 +3340,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="03E1 Level 09" Type="DMSDCIShuttle">
@@ -3358,7 +3358,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="03E1 Level 11" Type="DMSDCIShuttle">
@@ -3367,7 +3367,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="03E1 Level 12" Type="DMSDCIShuttle">
@@ -3376,7 +3376,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>2</MachineMoves>
+        <MachineMoves>3</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <telegramValidation>DMS DCI 1.52</telegramValidation>
@@ -3502,7 +3502,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>1</MachineMoves>
+        <MachineMoves>19</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="04E1 Level 02" Type="DMSDCIShuttle">
@@ -3511,7 +3511,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="04E1 Level 03" Type="DMSDCIShuttle">
@@ -3529,7 +3529,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>1</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="04E1 Level 05" Type="DMSDCIShuttle">
@@ -3538,7 +3538,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="04E1 Level 06" Type="DMSDCIShuttle">
@@ -3547,7 +3547,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>3</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="04E1 Level 07" Type="DMSDCIShuttle">
@@ -3565,7 +3565,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="04E1 Level 09" Type="DMSDCIShuttle">
@@ -3574,7 +3574,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="04E1 Level 10" Type="DMSDCIShuttle">
@@ -3583,7 +3583,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="04E1 Level 11" Type="DMSDCIShuttle">
@@ -3592,7 +3592,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="04E1 Level 12" Type="DMSDCIShuttle">
@@ -3727,7 +3727,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>2</MachineMoves>
+        <MachineMoves>17</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="05E1 Level 02" Type="DMSDCIShuttle">
@@ -3736,7 +3736,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>3</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="05E1 Level 03" Type="DMSDCIShuttle">
@@ -3763,7 +3763,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="05E1 Level 06" Type="DMSDCIShuttle">
@@ -3781,7 +3781,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="05E1 Level 08" Type="DMSDCIShuttle">
@@ -3790,7 +3790,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>1</MachineMoves>
+        <MachineMoves>3</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="05E1 Level 09" Type="DMSDCIShuttle">
@@ -3799,7 +3799,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="05E1 Level 10" Type="DMSDCIShuttle">
@@ -3817,7 +3817,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>4</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="05E1 Level 12" Type="DMSDCIShuttle">
@@ -3826,7 +3826,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <telegramValidation>DMS DCI 1.52</telegramValidation>
@@ -3952,7 +3952,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>2</MachineMoves>
+        <MachineMoves>17</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="06E1 Level 02" Type="DMSDCIShuttle">
@@ -3961,7 +3961,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="06E1 Level 03" Type="DMSDCIShuttle">
@@ -3970,7 +3970,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="06E1 Level 04" Type="DMSDCIShuttle">
@@ -3979,7 +3979,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>3</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="06E1 Level 05" Type="DMSDCIShuttle">
@@ -3988,7 +3988,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="06E1 Level 06" Type="DMSDCIShuttle">
@@ -3997,7 +3997,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="06E1 Level 07" Type="DMSDCIShuttle">
@@ -4015,7 +4015,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>3</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="06E1 Level 09" Type="DMSDCIShuttle">
@@ -4042,7 +4042,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="06E1 Level 12" Type="DMSDCIShuttle">
@@ -4051,7 +4051,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <telegramValidation>DMS DCI 1.52</telegramValidation>
@@ -4177,7 +4177,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>1</MachineMoves>
+        <MachineMoves>16</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="07E1 Level 02" Type="DMSDCIShuttle">
@@ -4186,7 +4186,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="07E1 Level 03" Type="DMSDCIShuttle">
@@ -4204,7 +4204,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="07E1 Level 05" Type="DMSDCIShuttle">
@@ -4213,7 +4213,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="07E1 Level 06" Type="DMSDCIShuttle">
@@ -4222,7 +4222,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="07E1 Level 07" Type="DMSDCIShuttle">
@@ -4231,7 +4231,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>1</MachineMoves>
+        <MachineMoves>3</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="07E1 Level 08" Type="DMSDCIShuttle">
@@ -4240,7 +4240,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="07E1 Level 09" Type="DMSDCIShuttle">
@@ -4249,7 +4249,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="07E1 Level 10" Type="DMSDCIShuttle">
@@ -4258,7 +4258,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>4</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="07E1 Level 11" Type="DMSDCIShuttle">
@@ -4276,7 +4276,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <telegramValidation>DMS DCI 1.52</telegramValidation>
@@ -4402,7 +4402,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>2</MachineMoves>
+        <MachineMoves>18</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="08E1 Level 02" Type="DMSDCIShuttle">
@@ -4411,7 +4411,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="08E1 Level 03" Type="DMSDCIShuttle">
@@ -4420,7 +4420,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>3</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="08E1 Level 04" Type="DMSDCIShuttle">
@@ -4429,7 +4429,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="08E1 Level 05" Type="DMSDCIShuttle">
@@ -4438,7 +4438,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="08E1 Level 06" Type="DMSDCIShuttle">
@@ -4447,7 +4447,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>3</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="08E1 Level 07" Type="DMSDCIShuttle">
@@ -4456,7 +4456,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="08E1 Level 08" Type="DMSDCIShuttle">
@@ -4474,7 +4474,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="08E1 Level 10" Type="DMSDCIShuttle">
@@ -4501,7 +4501,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <telegramValidation>DMS DCI 1.52</telegramValidation>
@@ -4627,7 +4627,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>2</MachineMoves>
+        <MachineMoves>19</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="09E1 Level 02" Type="DMSDCIShuttle">
@@ -4636,7 +4636,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="09E1 Level 03" Type="DMSDCIShuttle">
@@ -4645,7 +4645,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="09E1 Level 04" Type="DMSDCIShuttle">
@@ -4654,7 +4654,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>3</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="09E1 Level 05" Type="DMSDCIShuttle">
@@ -4663,7 +4663,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="09E1 Level 06" Type="DMSDCIShuttle">
@@ -4672,7 +4672,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="09E1 Level 07" Type="DMSDCIShuttle">
@@ -4681,7 +4681,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="09E1 Level 08" Type="DMSDCIShuttle">
@@ -4699,7 +4699,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="09E1 Level 10" Type="DMSDCIShuttle">
@@ -4717,7 +4717,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>1</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="09E1 Level 12" Type="DMSDCIShuttle">
@@ -4726,7 +4726,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <telegramValidation>DMS DCI 1.52</telegramValidation>
@@ -4852,7 +4852,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>2</MachineMoves>
+        <MachineMoves>18</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="10E1 Level 02" Type="DMSDCIShuttle">
@@ -4861,7 +4861,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="10E1 Level 03" Type="DMSDCIShuttle">
@@ -4870,7 +4870,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="10E1 Level 04" Type="DMSDCIShuttle">
@@ -4879,7 +4879,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="10E1 Level 05" Type="DMSDCIShuttle">
@@ -4888,7 +4888,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="10E1 Level 06" Type="DMSDCIShuttle">
@@ -4906,7 +4906,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="10E1 Level 08" Type="DMSDCIShuttle">
@@ -4924,7 +4924,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>1</MachineMoves>
+        <MachineMoves>3</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="10E1 Level 10" Type="DMSDCIShuttle">
@@ -4933,7 +4933,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>3</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="10E1 Level 11" Type="DMSDCIShuttle">
@@ -4942,7 +4942,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="10E1 Level 12" Type="DMSDCIShuttle">
@@ -4951,7 +4951,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <telegramValidation>DMS DCI 1.52</telegramValidation>
@@ -5077,7 +5077,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>1</MachineMoves>
+        <MachineMoves>16</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="11E1 Level 02" Type="DMSDCIShuttle">
@@ -5104,7 +5104,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>1</MachineMoves>
+        <MachineMoves>3</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="11E1 Level 05" Type="DMSDCIShuttle">
@@ -5113,7 +5113,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="11E1 Level 06" Type="DMSDCIShuttle">
@@ -5122,7 +5122,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="11E1 Level 07" Type="DMSDCIShuttle">
@@ -5140,7 +5140,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="11E1 Level 09" Type="DMSDCIShuttle">
@@ -5149,7 +5149,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>3</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="11E1 Level 10" Type="DMSDCIShuttle">
@@ -5158,7 +5158,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="11E1 Level 11" Type="DMSDCIShuttle">
@@ -5167,7 +5167,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="11E1 Level 12" Type="DMSDCIShuttle">
@@ -5176,7 +5176,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>4</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <telegramValidation>DMS DCI 1.52</telegramValidation>
@@ -5302,7 +5302,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>1</MachineMoves>
+        <MachineMoves>8</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="12E1 Level 02" Type="DMSDCIShuttle">
@@ -5329,7 +5329,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="12E1 Level 05" Type="DMSDCIShuttle">
@@ -5338,7 +5338,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="12E1 Level 06" Type="DMSDCIShuttle">
@@ -5347,7 +5347,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>1</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="12E1 Level 07" Type="DMSDCIShuttle">
@@ -5383,7 +5383,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="12E1 Level 11" Type="DMSDCIShuttle">
@@ -5527,7 +5527,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>1</MachineMoves>
+        <MachineMoves>16</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="13E1 Level 02" Type="DMSDCIShuttle">
@@ -5536,7 +5536,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="13E1 Level 03" Type="DMSDCIShuttle">
@@ -5545,7 +5545,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>1</MachineMoves>
+        <MachineMoves>4</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="13E1 Level 04" Type="DMSDCIShuttle">
@@ -5554,7 +5554,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="13E1 Level 05" Type="DMSDCIShuttle">
@@ -5590,7 +5590,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>3</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="13E1 Level 09" Type="DMSDCIShuttle">
@@ -5599,7 +5599,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="13E1 Level 10" Type="DMSDCIShuttle">
@@ -5608,7 +5608,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="13E1 Level 11" Type="DMSDCIShuttle">
@@ -5617,7 +5617,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>3</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="13E1 Level 12" Type="DMSDCIShuttle">
@@ -5752,7 +5752,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>1</MachineMoves>
+        <MachineMoves>16</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="14E1 Level 02" Type="DMSDCIShuttle">
@@ -5761,7 +5761,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="14E1 Level 03" Type="DMSDCIShuttle">
@@ -5779,7 +5779,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>3</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="14E1 Level 05" Type="DMSDCIShuttle">
@@ -5797,7 +5797,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="14E1 Level 07" Type="DMSDCIShuttle">
@@ -5806,7 +5806,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>3</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="14E1 Level 08" Type="DMSDCIShuttle">
@@ -5815,7 +5815,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="14E1 Level 09" Type="DMSDCIShuttle">
@@ -5824,7 +5824,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="14E1 Level 10" Type="DMSDCIShuttle">
@@ -5833,7 +5833,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="14E1 Level 11" Type="DMSDCIShuttle">
@@ -5842,7 +5842,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="14E1 Level 12" Type="DMSDCIShuttle">
@@ -5851,7 +5851,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <telegramValidation>DMS DCI 1.52</telegramValidation>
@@ -5977,7 +5977,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>2</MachineMoves>
+        <MachineMoves>18</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="15E1 Level 02" Type="DMSDCIShuttle">
@@ -5986,7 +5986,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="15E1 Level 03" Type="DMSDCIShuttle">
@@ -5995,7 +5995,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="15E1 Level 04" Type="DMSDCIShuttle">
@@ -6004,7 +6004,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="15E1 Level 05" Type="DMSDCIShuttle">
@@ -6022,7 +6022,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="15E1 Level 07" Type="DMSDCIShuttle">
@@ -6040,7 +6040,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>1</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="15E1 Level 09" Type="DMSDCIShuttle">
@@ -6049,7 +6049,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>5</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="15E1 Level 10" Type="DMSDCIShuttle">
@@ -6058,7 +6058,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="15E1 Level 11" Type="DMSDCIShuttle">
@@ -6076,7 +6076,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <telegramValidation>DMS DCI 1.52</telegramValidation>
@@ -6202,7 +6202,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>1</MachineMoves>
+        <MachineMoves>17</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="16E1 Level 02" Type="DMSDCIShuttle">
@@ -6211,7 +6211,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>1</MachineMoves>
+        <MachineMoves>3</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="16E1 Level 03" Type="DMSDCIShuttle">
@@ -6229,7 +6229,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="16E1 Level 05" Type="DMSDCIShuttle">
@@ -6238,7 +6238,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="16E1 Level 06" Type="DMSDCIShuttle">
@@ -6247,7 +6247,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="16E1 Level 07" Type="DMSDCIShuttle">
@@ -6256,7 +6256,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="16E1 Level 08" Type="DMSDCIShuttle">
@@ -6265,7 +6265,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="16E1 Level 09" Type="DMSDCIShuttle">
@@ -6274,7 +6274,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="16E1 Level 10" Type="DMSDCIShuttle">
@@ -6283,7 +6283,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="16E1 Level 11" Type="DMSDCIShuttle">
@@ -6292,7 +6292,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="16E1 Level 12" Type="DMSDCIShuttle">
@@ -6301,7 +6301,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <telegramValidation>DMS DCI 1.52</telegramValidation>
@@ -6427,30 +6427,30 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>1</MachineMoves>
+        <MachineMoves>30</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="17E1 Level 02" Type="DMSDCIShuttle">
         <LevelHeight>0</LevelHeight>
-        <ExMode>Internal</ExMode>
+        <ExMode>Outbound</ExMode>
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="17E1 Level 03" Type="DMSDCIShuttle">
         <LevelHeight>0</LevelHeight>
-        <ExMode>Internal</ExMode>
+        <ExMode>Outbound</ExMode>
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>6</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="17E1 Level 04" Type="DMSDCIShuttle">
         <LevelHeight>0</LevelHeight>
-        <ExMode>Internal</ExMode>
+        <ExMode>Outbound</ExMode>
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
@@ -6459,7 +6459,7 @@
       </SubController>
       <SubController Name="17E1 Level 05" Type="DMSDCIShuttle">
         <LevelHeight>0</LevelHeight>
-        <ExMode>Internal</ExMode>
+        <ExMode>Outbound</ExMode>
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
@@ -6468,65 +6468,65 @@
       </SubController>
       <SubController Name="17E1 Level 06" Type="DMSDCIShuttle">
         <LevelHeight>0</LevelHeight>
-        <ExMode>Internal</ExMode>
+        <ExMode>Outbound</ExMode>
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>4</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="17E1 Level 07" Type="DMSDCIShuttle">
         <LevelHeight>0</LevelHeight>
-        <ExMode>Internal</ExMode>
+        <ExMode>Outbound</ExMode>
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>4</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="17E1 Level 08" Type="DMSDCIShuttle">
         <LevelHeight>0</LevelHeight>
-        <ExMode>Internal</ExMode>
+        <ExMode>Outbound</ExMode>
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>4</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="17E1 Level 09" Type="DMSDCIShuttle">
         <LevelHeight>0</LevelHeight>
-        <ExMode>Internal</ExMode>
+        <ExMode>Outbound</ExMode>
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="17E1 Level 10" Type="DMSDCIShuttle">
         <LevelHeight>0</LevelHeight>
-        <ExMode>Internal</ExMode>
+        <ExMode>Outbound</ExMode>
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>4</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="17E1 Level 11" Type="DMSDCIShuttle">
         <LevelHeight>0</LevelHeight>
-        <ExMode>Internal</ExMode>
+        <ExMode>Outbound</ExMode>
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="17E1 Level 12" Type="DMSDCIShuttle">
         <LevelHeight>0</LevelHeight>
-        <ExMode>Internal</ExMode>
+        <ExMode>Outbound</ExMode>
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>1</MachineMoves>
+        <MachineMoves>3</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <telegramValidation>DMS DCI 1.52</telegramValidation>
@@ -6652,7 +6652,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>1</MachineMoves>
+        <MachineMoves>21</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="18E1 Level 02" Type="DMSDCIShuttle">
@@ -6661,7 +6661,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="18E1 Level 03" Type="DMSDCIShuttle">
@@ -6670,7 +6670,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="18E1 Level 04" Type="DMSDCIShuttle">
@@ -6679,7 +6679,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="18E1 Level 05" Type="DMSDCIShuttle">
@@ -6706,7 +6706,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>3</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="18E1 Level 08" Type="DMSDCIShuttle">
@@ -6724,7 +6724,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>1</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="18E1 Level 10" Type="DMSDCIShuttle">
@@ -6742,7 +6742,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="18E1 Level 12" Type="DMSDCIShuttle">
@@ -6877,7 +6877,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>1</MachineMoves>
+        <MachineMoves>18</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="19E1 Level 02" Type="DMSDCIShuttle">
@@ -6886,7 +6886,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="19E1 Level 03" Type="DMSDCIShuttle">
@@ -6904,7 +6904,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="19E1 Level 05" Type="DMSDCIShuttle">
@@ -6913,7 +6913,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>3</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="19E1 Level 06" Type="DMSDCIShuttle">
@@ -6922,7 +6922,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="19E1 Level 07" Type="DMSDCIShuttle">
@@ -6931,7 +6931,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>3</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="19E1 Level 08" Type="DMSDCIShuttle">
@@ -6958,7 +6958,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="19E1 Level 11" Type="DMSDCIShuttle">
@@ -6976,7 +6976,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <telegramValidation>DMS DCI 1.52</telegramValidation>
@@ -7102,7 +7102,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>1</MachineMoves>
+        <MachineMoves>18</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="20E1 Level 02" Type="DMSDCIShuttle">
@@ -7120,7 +7120,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="20E1 Level 04" Type="DMSDCIShuttle">
@@ -7129,7 +7129,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="20E1 Level 05" Type="DMSDCIShuttle">
@@ -7156,7 +7156,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="20E1 Level 08" Type="DMSDCIShuttle">
@@ -7165,7 +7165,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="20E1 Level 09" Type="DMSDCIShuttle">
@@ -7174,7 +7174,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="20E1 Level 10" Type="DMSDCIShuttle">
@@ -7183,7 +7183,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="20E1 Level 11" Type="DMSDCIShuttle">
@@ -7192,7 +7192,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>4</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="20E1 Level 12" Type="DMSDCIShuttle">
@@ -7201,7 +7201,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>1</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <telegramValidation>DMS DCI 1.52</telegramValidation>
@@ -7327,7 +7327,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>1</MachineMoves>
+        <MachineMoves>16</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="21E1 Level 02" Type="DMSDCIShuttle">
@@ -7345,7 +7345,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>3</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="21E1 Level 04" Type="DMSDCIShuttle">
@@ -7354,7 +7354,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="21E1 Level 05" Type="DMSDCIShuttle">
@@ -7363,7 +7363,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>1</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="21E1 Level 06" Type="DMSDCIShuttle">
@@ -7372,7 +7372,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="21E1 Level 07" Type="DMSDCIShuttle">
@@ -7381,7 +7381,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="21E1 Level 08" Type="DMSDCIShuttle">
@@ -7390,7 +7390,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="21E1 Level 09" Type="DMSDCIShuttle">
@@ -7399,7 +7399,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>4</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="21E1 Level 10" Type="DMSDCIShuttle">
@@ -7408,7 +7408,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="21E1 Level 11" Type="DMSDCIShuttle">
@@ -7426,7 +7426,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <telegramValidation>DMS DCI 1.52</telegramValidation>
@@ -7552,7 +7552,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>1</MachineMoves>
+        <MachineMoves>7</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="22E1 Level 02" Type="DMSDCIShuttle">
@@ -7570,7 +7570,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="22E1 Level 04" Type="DMSDCIShuttle">
@@ -7588,7 +7588,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="22E1 Level 06" Type="DMSDCIShuttle">
@@ -7633,7 +7633,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="22E1 Level 11" Type="DMSDCIShuttle">
@@ -7651,7 +7651,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <telegramValidation>DMS DCI 1.52</telegramValidation>
@@ -7777,7 +7777,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>1</MachineMoves>
+        <MachineMoves>19</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="23E1 Level 02" Type="DMSDCIShuttle">
@@ -7786,7 +7786,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="23E1 Level 03" Type="DMSDCIShuttle">
@@ -7804,7 +7804,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>3</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="23E1 Level 05" Type="DMSDCIShuttle">
@@ -7813,7 +7813,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>1</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="23E1 Level 06" Type="DMSDCIShuttle">
@@ -7822,7 +7822,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="23E1 Level 07" Type="DMSDCIShuttle">
@@ -7831,7 +7831,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="23E1 Level 08" Type="DMSDCIShuttle">
@@ -7858,7 +7858,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="23E1 Level 11" Type="DMSDCIShuttle">
@@ -7867,7 +7867,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>3</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="23E1 Level 12" Type="DMSDCIShuttle">
@@ -7876,7 +7876,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <telegramValidation>DMS DCI 1.52</telegramValidation>
@@ -8002,7 +8002,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>1</MachineMoves>
+        <MachineMoves>16</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="24E1 Level 02" Type="DMSDCIShuttle">
@@ -8011,7 +8011,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="24E1 Level 03" Type="DMSDCIShuttle">
@@ -8020,7 +8020,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="24E1 Level 04" Type="DMSDCIShuttle">
@@ -8029,7 +8029,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>3</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="24E1 Level 05" Type="DMSDCIShuttle">
@@ -8047,7 +8047,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="24E1 Level 07" Type="DMSDCIShuttle">
@@ -8056,7 +8056,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="24E1 Level 08" Type="DMSDCIShuttle">
@@ -8083,7 +8083,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>3</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="24E1 Level 11" Type="DMSDCIShuttle">
@@ -8092,7 +8092,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="24E1 Level 12" Type="DMSDCIShuttle">
@@ -8101,7 +8101,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>1</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <telegramValidation>DMS DCI 1.52</telegramValidation>
@@ -8227,7 +8227,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>19</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="25E1 Level 02" Type="DMSDCIShuttle">
@@ -8236,7 +8236,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="25E1 Level 03" Type="DMSDCIShuttle">
@@ -8245,7 +8245,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="25E1 Level 04" Type="DMSDCIShuttle">
@@ -8263,7 +8263,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="25E1 Level 06" Type="DMSDCIShuttle">
@@ -8272,7 +8272,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="25E1 Level 07" Type="DMSDCIShuttle">
@@ -8281,7 +8281,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="25E1 Level 08" Type="DMSDCIShuttle">
@@ -8290,7 +8290,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="25E1 Level 09" Type="DMSDCIShuttle">
@@ -8299,7 +8299,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="25E1 Level 10" Type="DMSDCIShuttle">
@@ -8317,7 +8317,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>3</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="25E1 Level 12" Type="DMSDCIShuttle">
@@ -8326,7 +8326,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <telegramValidation>DMS DCI 1.52</telegramValidation>
@@ -8461,7 +8461,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>22</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="26E1 Level 02" Type="DMSDCIShuttle">
@@ -8470,7 +8470,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="26E1 Level 03" Type="DMSDCIShuttle">
@@ -8488,7 +8488,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="26E1 Level 05" Type="DMSDCIShuttle">
@@ -8497,7 +8497,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="26E1 Level 06" Type="DMSDCIShuttle">
@@ -8506,7 +8506,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="26E1 Level 07" Type="DMSDCIShuttle">
@@ -8524,7 +8524,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="26E1 Level 09" Type="DMSDCIShuttle">
@@ -8533,7 +8533,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="26E1 Level 10" Type="DMSDCIShuttle">
@@ -8551,7 +8551,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="26E1 Level 12" Type="DMSDCIShuttle">
@@ -8560,7 +8560,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <telegramValidation>DMS DCI 1.52</telegramValidation>
@@ -8616,7 +8616,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
     </Controller>
@@ -8692,7 +8692,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>23</MachineMoves>
+        <MachineMoves>123</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="27E1 Level 02" Type="DMSDCIShuttle">
@@ -8701,7 +8701,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>1</MachineMoves>
+        <MachineMoves>9</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="27E1 Level 03" Type="DMSDCIShuttle">
@@ -8710,7 +8710,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>3</MachineMoves>
+        <MachineMoves>15</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="27E1 Level 04" Type="DMSDCIShuttle">
@@ -8719,7 +8719,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>3</MachineMoves>
+        <MachineMoves>13</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="27E1 Level 05" Type="DMSDCIShuttle">
@@ -8728,7 +8728,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>3</MachineMoves>
+        <MachineMoves>12</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="27E1 Level 06" Type="DMSDCIShuttle">
@@ -8737,7 +8737,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>1</MachineMoves>
+        <MachineMoves>13</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="27E1 Level 07" Type="DMSDCIShuttle">
@@ -8746,7 +8746,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>2</MachineMoves>
+        <MachineMoves>14</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="27E1 Level 08" Type="DMSDCIShuttle">
@@ -8755,7 +8755,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>2</MachineMoves>
+        <MachineMoves>9</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <connection>27E1</connection>
@@ -8881,7 +8881,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>20</MachineMoves>
+        <MachineMoves>112</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="28E1 Level 02" Type="DMSDCIShuttle">
@@ -8890,7 +8890,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>1</MachineMoves>
+        <MachineMoves>15</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="28E1 Level 03" Type="DMSDCIShuttle">
@@ -8899,7 +8899,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>2</MachineMoves>
+        <MachineMoves>16</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="28E1 Level 04" Type="DMSDCIShuttle">
@@ -8908,7 +8908,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>3</MachineMoves>
+        <MachineMoves>7</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="28E1 Level 05" Type="DMSDCIShuttle">
@@ -8917,7 +8917,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>3</MachineMoves>
+        <MachineMoves>15</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="28E1 Level 06" Type="DMSDCIShuttle">
@@ -8926,7 +8926,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>4</MachineMoves>
+        <MachineMoves>11</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="28E1 Level 07" Type="DMSDCIShuttle">
@@ -8935,7 +8935,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>3</MachineMoves>
+        <MachineMoves>16</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="28E1 Level 08" Type="DMSDCIShuttle">
@@ -8944,7 +8944,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>2</MachineMoves>
+        <MachineMoves>14</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <connection>28E1</connection>
@@ -9070,7 +9070,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>28</MachineMoves>
+        <MachineMoves>104</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="29E1 Level 02" Type="DMSDCIShuttle">
@@ -9079,7 +9079,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>2</MachineMoves>
+        <MachineMoves>7</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="29E1 Level 03" Type="DMSDCIShuttle">
@@ -9088,7 +9088,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>5</MachineMoves>
+        <MachineMoves>12</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="29E1 Level 04" Type="DMSDCIShuttle">
@@ -9097,7 +9097,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>3</MachineMoves>
+        <MachineMoves>7</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="29E1 Level 05" Type="DMSDCIShuttle">
@@ -9106,7 +9106,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>4</MachineMoves>
+        <MachineMoves>17</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="29E1 Level 06" Type="DMSDCIShuttle">
@@ -9115,7 +9115,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>6</MachineMoves>
+        <MachineMoves>14</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="29E1 Level 07" Type="DMSDCIShuttle">
@@ -9124,7 +9124,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>4</MachineMoves>
+        <MachineMoves>14</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="29E1 Level 08" Type="DMSDCIShuttle">
@@ -9133,7 +9133,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>3</MachineMoves>
+        <MachineMoves>14</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <connection>29E1</connection>
@@ -9259,7 +9259,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>12</MachineMoves>
+        <MachineMoves>89</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="30E1 Level 02" Type="DMSDCIShuttle">
@@ -9268,7 +9268,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>9</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="30E1 Level 03" Type="DMSDCIShuttle">
@@ -9277,7 +9277,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>2</MachineMoves>
+        <MachineMoves>11</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="30E1 Level 04" Type="DMSDCIShuttle">
@@ -9286,7 +9286,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>8</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="30E1 Level 05" Type="DMSDCIShuttle">
@@ -9295,7 +9295,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>1</MachineMoves>
+        <MachineMoves>9</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="30E1 Level 06" Type="DMSDCIShuttle">
@@ -9304,7 +9304,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>1</MachineMoves>
+        <MachineMoves>10</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="30E1 Level 07" Type="DMSDCIShuttle">
@@ -9313,7 +9313,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>2</MachineMoves>
+        <MachineMoves>9</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="30E1 Level 08" Type="DMSDCIShuttle">
@@ -9322,7 +9322,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>7</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <connection>30E1</connection>
@@ -9448,7 +9448,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>31</MachineMoves>
+        <MachineMoves>119</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="31E1 Level 02" Type="DMSDCIShuttle">
@@ -9457,7 +9457,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>2</MachineMoves>
+        <MachineMoves>14</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="31E1 Level 03" Type="DMSDCIShuttle">
@@ -9466,7 +9466,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>3</MachineMoves>
+        <MachineMoves>10</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="31E1 Level 04" Type="DMSDCIShuttle">
@@ -9475,7 +9475,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>3</MachineMoves>
+        <MachineMoves>16</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="31E1 Level 05" Type="DMSDCIShuttle">
@@ -9484,7 +9484,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>5</MachineMoves>
+        <MachineMoves>17</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="31E1 Level 06" Type="DMSDCIShuttle">
@@ -9493,7 +9493,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>3</MachineMoves>
+        <MachineMoves>12</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="31E1 Level 07" Type="DMSDCIShuttle">
@@ -9502,7 +9502,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>3</MachineMoves>
+        <MachineMoves>13</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="31E1 Level 08" Type="DMSDCIShuttle">
@@ -9511,7 +9511,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>3</MachineMoves>
+        <MachineMoves>16</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <connection>31E1</connection>
@@ -9637,7 +9637,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>36</MachineMoves>
+        <MachineMoves>127</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="32E1 Level 02" Type="DMSDCIShuttle">
@@ -9646,7 +9646,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>6</MachineMoves>
+        <MachineMoves>13</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="32E1 Level 03" Type="DMSDCIShuttle">
@@ -9655,7 +9655,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>5</MachineMoves>
+        <MachineMoves>21</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="32E1 Level 04" Type="DMSDCIShuttle">
@@ -9664,7 +9664,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>3</MachineMoves>
+        <MachineMoves>12</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="32E1 Level 05" Type="DMSDCIShuttle">
@@ -9673,7 +9673,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>1</MachineMoves>
+        <MachineMoves>11</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="32E1 Level 06" Type="DMSDCIShuttle">
@@ -9682,7 +9682,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>4</MachineMoves>
+        <MachineMoves>11</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="32E1 Level 07" Type="DMSDCIShuttle">
@@ -9691,7 +9691,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>4</MachineMoves>
+        <MachineMoves>13</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="32E1 Level 08" Type="DMSDCIShuttle">
@@ -9700,7 +9700,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>3</MachineMoves>
+        <MachineMoves>26</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <connection>32E1</connection>
@@ -10645,12 +10645,11 @@
       </Category>
       <triggerMessType>Disabled</triggerMessType>
       <RoutingTrigger>Arrival</RoutingTrigger>
-      <Distribution>RoundRobin</Distribution>
-      <DestinationCode>CC61QAA1,CC61LID1A1,CC61LID2A1,CC61LID3A1</DestinationCode>
-      <DestinationCodeSecondary>
-      </DestinationCodeSecondary>
+      <Distribution>Random</Distribution>
+      <DestinationCode>CC61LID1A1,CC61LID2A1,CC61LID3A1</DestinationCode>
+      <DestinationCodeSecondary>CC61QAA1</DestinationCodeSecondary>
       <TelegramDelay>0</TelegramDelay>
-      <RoutePercentage>100</RoutePercentage>
+      <RoutePercentage>95</RoutePercentage>
       <RouteController>PLC61</RouteController>
     </Routing>
     <Routing Name="CC61QAA1" Type="DATCOMAUSRouting">
@@ -10864,10 +10863,10 @@
       <triggerMessType>Disabled</triggerMessType>
       <RoutingTrigger>Arrival</RoutingTrigger>
       <Distribution>Random</Distribution>
-      <DestinationCode>CC54DOC1A1,CC61DOCLIDNP1</DestinationCode>
-      <DestinationCodeSecondary>CC54GOHB1</DestinationCodeSecondary>
+      <DestinationCode>CC61DOCLIDNP1</DestinationCode>
+      <DestinationCodeSecondary>CC54GOHB1,CC54DOC1A1</DestinationCodeSecondary>
       <TelegramDelay>0</TelegramDelay>
-      <RoutePercentage>95</RoutePercentage>
+      <RoutePercentage>80</RoutePercentage>
       <RouteController>PLC54</RouteController>
     </Routing>
     <Routing Name="CC54DOC1A1" Type="DATCOMAUSRouting">
