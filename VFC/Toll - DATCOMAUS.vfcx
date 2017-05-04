@@ -2330,7 +2330,25 @@
     <EnableHistoricalLogs>False</EnableHistoricalLogs>
   </SystemConfiguration>
   <Projects>
-    <Project Name="VirtualFlowController.Core.TollFashion.dll" />
+    <Project Name="VirtualFlowController.Core.TollFashion.dll">
+      <Decant1Enabled>True</Decant1Enabled>
+      <Decant2Enabled>True</Decant2Enabled>
+      <Decant3Enabled>True</Decant3Enabled>
+      <Decant4Enabled>True</Decant4Enabled>
+      <Decant5Enabled>True</Decant5Enabled>
+      <Decant6Enabled>True</Decant6Enabled>
+      <Decant7Enabled>True</Decant7Enabled>
+      <Decant8Enabled>True</Decant8Enabled>
+      <Decant9Enabled>True</Decant9Enabled>
+      <Decant10Enabled>True</Decant10Enabled>
+      <Decant11Enabled>True</Decant11Enabled>
+      <Decant12Enabled>True</Decant12Enabled>
+      <Decant13Enabled>True</Decant13Enabled>
+      <Decant14Enabled>True</Decant14Enabled>
+      <Decant15Enabled>True</Decant15Enabled>
+      <Decant16Enabled>True</Decant16Enabled>
+      <DecantInterval>30</DecantInterval>
+    </Project>
   </Projects>
   <ProjectExtensions>
   </ProjectExtensions>
@@ -2810,12 +2828,12 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>6</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="01E1 Level 02" Type="DMSDCIShuttle">
         <LevelHeight>0</LevelHeight>
-        <ExMode>Internal</ExMode>
+        <ExMode>Outbound</ExMode>
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
@@ -2824,16 +2842,16 @@
       </SubController>
       <SubController Name="01E1 Level 03" Type="DMSDCIShuttle">
         <LevelHeight>0</LevelHeight>
-        <ExMode>Internal</ExMode>
+        <ExMode>Outbound</ExMode>
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="01E1 Level 04" Type="DMSDCIShuttle">
         <LevelHeight>0</LevelHeight>
-        <ExMode>Internal</ExMode>
+        <ExMode>Outbound</ExMode>
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
@@ -2842,7 +2860,7 @@
       </SubController>
       <SubController Name="01E1 Level 05" Type="DMSDCIShuttle">
         <LevelHeight>0</LevelHeight>
-        <ExMode>Internal</ExMode>
+        <ExMode>Outbound</ExMode>
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
@@ -2851,16 +2869,16 @@
       </SubController>
       <SubController Name="01E1 Level 06" Type="DMSDCIShuttle">
         <LevelHeight>0</LevelHeight>
-        <ExMode>Internal</ExMode>
+        <ExMode>Outbound</ExMode>
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="01E1 Level 07" Type="DMSDCIShuttle">
         <LevelHeight>0</LevelHeight>
-        <ExMode>Internal</ExMode>
+        <ExMode>Outbound</ExMode>
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
@@ -2869,7 +2887,7 @@
       </SubController>
       <SubController Name="01E1 Level 08" Type="DMSDCIShuttle">
         <LevelHeight>0</LevelHeight>
-        <ExMode>Internal</ExMode>
+        <ExMode>Outbound</ExMode>
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
@@ -2878,7 +2896,7 @@
       </SubController>
       <SubController Name="01E1 Level 09" Type="DMSDCIShuttle">
         <LevelHeight>0</LevelHeight>
-        <ExMode>Internal</ExMode>
+        <ExMode>Outbound</ExMode>
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
@@ -2887,25 +2905,25 @@
       </SubController>
       <SubController Name="01E1 Level 10" Type="DMSDCIShuttle">
         <LevelHeight>0</LevelHeight>
-        <ExMode>Internal</ExMode>
+        <ExMode>Outbound</ExMode>
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="01E1 Level 11" Type="DMSDCIShuttle">
         <LevelHeight>0</LevelHeight>
-        <ExMode>Internal</ExMode>
+        <ExMode>Outbound</ExMode>
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="01E1 Level 12" Type="DMSDCIShuttle">
         <LevelHeight>0</LevelHeight>
-        <ExMode>Internal</ExMode>
+        <ExMode>Outbound</ExMode>
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
@@ -3035,7 +3053,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="02E1 Level 02" Type="DMSDCIShuttle">
@@ -3089,7 +3107,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="02E1 Level 08" Type="DMSDCIShuttle">
@@ -3141,7 +3159,7 @@
       <SubController Name="02E1 Elevator 01" Type="DMSDCIElevator">
         <ElevatorSide>Left</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
-        <RackInLevels>None</RackInLevels>
+        <RackInLevels>All</RackInLevels>
         <RackOutLevels>None</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
@@ -3153,8 +3171,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>2</PSLevels>
+        <DSLevels>0</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -3165,7 +3183,7 @@
         <ElevatorSide>Right</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
         <RackInLevels>None</RackInLevels>
-        <RackOutLevels>None</RackOutLevels>
+        <RackOutLevels>All</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
         <DropIndexNumber2>1</DropIndexNumber2>
@@ -3176,8 +3194,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>0</PSLevels>
+        <DSLevels>2</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -3260,7 +3278,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="03E1 Level 02" Type="DMSDCIShuttle">
@@ -3332,7 +3350,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="03E1 Level 10" Type="DMSDCIShuttle">
@@ -3359,14 +3377,14 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <telegramValidation>DMS DCI 1.52</telegramValidation>
       <SubController Name="03E1 Elevator 01" Type="DMSDCIElevator">
         <ElevatorSide>Left</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
-        <RackInLevels>None</RackInLevels>
+        <RackInLevels>All</RackInLevels>
         <RackOutLevels>None</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
@@ -3378,8 +3396,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>2</PSLevels>
+        <DSLevels>0</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -3390,7 +3408,7 @@
         <ElevatorSide>Right</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
         <RackInLevels>None</RackInLevels>
-        <RackOutLevels>None</RackOutLevels>
+        <RackOutLevels>All</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
         <DropIndexNumber2>1</DropIndexNumber2>
@@ -3401,8 +3419,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>0</PSLevels>
+        <DSLevels>2</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -3485,7 +3503,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="04E1 Level 02" Type="DMSDCIShuttle">
@@ -3512,7 +3530,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="04E1 Level 05" Type="DMSDCIShuttle">
@@ -3591,7 +3609,7 @@
       <SubController Name="04E1 Elevator 01" Type="DMSDCIElevator">
         <ElevatorSide>Left</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
-        <RackInLevels>None</RackInLevels>
+        <RackInLevels>All</RackInLevels>
         <RackOutLevels>None</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
@@ -3603,8 +3621,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>2</PSLevels>
+        <DSLevels>0</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -3615,7 +3633,7 @@
         <ElevatorSide>Right</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
         <RackInLevels>None</RackInLevels>
-        <RackOutLevels>None</RackOutLevels>
+        <RackOutLevels>All</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
         <DropIndexNumber2>1</DropIndexNumber2>
@@ -3626,8 +3644,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>0</PSLevels>
+        <DSLevels>2</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -3710,7 +3728,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="05E1 Level 02" Type="DMSDCIShuttle">
@@ -3773,7 +3791,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="05E1 Level 09" Type="DMSDCIShuttle">
@@ -3816,7 +3834,7 @@
       <SubController Name="05E1 Elevator 01" Type="DMSDCIElevator">
         <ElevatorSide>Left</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
-        <RackInLevels>None</RackInLevels>
+        <RackInLevels>All</RackInLevels>
         <RackOutLevels>None</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
@@ -3828,8 +3846,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>2</PSLevels>
+        <DSLevels>0</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -3840,7 +3858,7 @@
         <ElevatorSide>Right</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
         <RackInLevels>None</RackInLevels>
-        <RackOutLevels>None</RackOutLevels>
+        <RackOutLevels>All</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
         <DropIndexNumber2>1</DropIndexNumber2>
@@ -3851,8 +3869,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>0</PSLevels>
+        <DSLevels>2</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -3935,7 +3953,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="06E1 Level 02" Type="DMSDCIShuttle">
@@ -4016,7 +4034,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="06E1 Level 11" Type="DMSDCIShuttle">
@@ -4041,7 +4059,7 @@
       <SubController Name="06E1 Elevator 01" Type="DMSDCIElevator">
         <ElevatorSide>Left</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
-        <RackInLevels>None</RackInLevels>
+        <RackInLevels>All</RackInLevels>
         <RackOutLevels>None</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
@@ -4053,8 +4071,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>2</PSLevels>
+        <DSLevels>0</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -4065,7 +4083,7 @@
         <ElevatorSide>Right</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
         <RackInLevels>None</RackInLevels>
-        <RackOutLevels>None</RackOutLevels>
+        <RackOutLevels>All</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
         <DropIndexNumber2>1</DropIndexNumber2>
@@ -4076,8 +4094,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>0</PSLevels>
+        <DSLevels>2</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -4160,7 +4178,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="07E1 Level 02" Type="DMSDCIShuttle">
@@ -4214,7 +4232,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="07E1 Level 08" Type="DMSDCIShuttle">
@@ -4266,7 +4284,7 @@
       <SubController Name="07E1 Elevator 01" Type="DMSDCIElevator">
         <ElevatorSide>Left</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
-        <RackInLevels>None</RackInLevels>
+        <RackInLevels>All</RackInLevels>
         <RackOutLevels>None</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
@@ -4278,8 +4296,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>2</PSLevels>
+        <DSLevels>0</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -4290,7 +4308,7 @@
         <ElevatorSide>Right</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
         <RackInLevels>None</RackInLevels>
-        <RackOutLevels>None</RackOutLevels>
+        <RackOutLevels>All</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
         <DropIndexNumber2>1</DropIndexNumber2>
@@ -4301,8 +4319,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>0</PSLevels>
+        <DSLevels>2</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -4385,7 +4403,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="08E1 Level 02" Type="DMSDCIShuttle">
@@ -4448,7 +4466,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="08E1 Level 09" Type="DMSDCIShuttle">
@@ -4491,7 +4509,7 @@
       <SubController Name="08E1 Elevator 01" Type="DMSDCIElevator">
         <ElevatorSide>Left</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
-        <RackInLevels>None</RackInLevels>
+        <RackInLevels>All</RackInLevels>
         <RackOutLevels>None</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
@@ -4503,8 +4521,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>2</PSLevels>
+        <DSLevels>0</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -4515,7 +4533,7 @@
         <ElevatorSide>Right</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
         <RackInLevels>None</RackInLevels>
-        <RackOutLevels>None</RackOutLevels>
+        <RackOutLevels>All</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
         <DropIndexNumber2>1</DropIndexNumber2>
@@ -4526,8 +4544,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>0</PSLevels>
+        <DSLevels>2</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -4610,7 +4628,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="09E1 Level 02" Type="DMSDCIShuttle">
@@ -4700,7 +4718,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="09E1 Level 12" Type="DMSDCIShuttle">
@@ -4716,7 +4734,7 @@
       <SubController Name="09E1 Elevator 01" Type="DMSDCIElevator">
         <ElevatorSide>Left</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
-        <RackInLevels>None</RackInLevels>
+        <RackInLevels>All</RackInLevels>
         <RackOutLevels>None</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
@@ -4728,8 +4746,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>2</PSLevels>
+        <DSLevels>0</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -4740,7 +4758,7 @@
         <ElevatorSide>Right</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
         <RackInLevels>None</RackInLevels>
-        <RackOutLevels>None</RackOutLevels>
+        <RackOutLevels>All</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
         <DropIndexNumber2>1</DropIndexNumber2>
@@ -4751,8 +4769,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>0</PSLevels>
+        <DSLevels>2</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -4835,7 +4853,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="10E1 Level 02" Type="DMSDCIShuttle">
@@ -4907,7 +4925,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="10E1 Level 10" Type="DMSDCIShuttle">
@@ -4941,7 +4959,7 @@
       <SubController Name="10E1 Elevator 01" Type="DMSDCIElevator">
         <ElevatorSide>Left</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
-        <RackInLevels>None</RackInLevels>
+        <RackInLevels>All</RackInLevels>
         <RackOutLevels>None</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
@@ -4953,8 +4971,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>2</PSLevels>
+        <DSLevels>0</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -4965,7 +4983,7 @@
         <ElevatorSide>Right</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
         <RackInLevels>None</RackInLevels>
-        <RackOutLevels>None</RackOutLevels>
+        <RackOutLevels>All</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
         <DropIndexNumber2>1</DropIndexNumber2>
@@ -4976,8 +4994,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>0</PSLevels>
+        <DSLevels>2</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -5060,7 +5078,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="11E1 Level 02" Type="DMSDCIShuttle">
@@ -5087,7 +5105,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="11E1 Level 05" Type="DMSDCIShuttle">
@@ -5166,7 +5184,7 @@
       <SubController Name="11E1 Elevator 01" Type="DMSDCIElevator">
         <ElevatorSide>Left</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
-        <RackInLevels>None</RackInLevels>
+        <RackInLevels>All</RackInLevels>
         <RackOutLevels>None</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
@@ -5178,8 +5196,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>2</PSLevels>
+        <DSLevels>0</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -5190,7 +5208,7 @@
         <ElevatorSide>Right</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
         <RackInLevels>None</RackInLevels>
-        <RackOutLevels>None</RackOutLevels>
+        <RackOutLevels>All</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
         <DropIndexNumber2>1</DropIndexNumber2>
@@ -5201,8 +5219,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>0</PSLevels>
+        <DSLevels>2</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -5285,7 +5303,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="12E1 Level 02" Type="DMSDCIShuttle">
@@ -5330,7 +5348,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="12E1 Level 07" Type="DMSDCIShuttle">
@@ -5391,7 +5409,7 @@
       <SubController Name="12E1 Elevator 01" Type="DMSDCIElevator">
         <ElevatorSide>Left</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
-        <RackInLevels>None</RackInLevels>
+        <RackInLevels>All</RackInLevels>
         <RackOutLevels>None</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
@@ -5403,8 +5421,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>2</PSLevels>
+        <DSLevels>0</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -5415,7 +5433,7 @@
         <ElevatorSide>Right</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
         <RackInLevels>None</RackInLevels>
-        <RackOutLevels>None</RackOutLevels>
+        <RackOutLevels>All</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
         <DropIndexNumber2>1</DropIndexNumber2>
@@ -5426,8 +5444,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>0</PSLevels>
+        <DSLevels>2</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -5510,7 +5528,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="13E1 Level 02" Type="DMSDCIShuttle">
@@ -5528,7 +5546,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="13E1 Level 04" Type="DMSDCIShuttle">
@@ -5616,7 +5634,7 @@
       <SubController Name="13E1 Elevator 01" Type="DMSDCIElevator">
         <ElevatorSide>Left</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
-        <RackInLevels>None</RackInLevels>
+        <RackInLevels>All</RackInLevels>
         <RackOutLevels>None</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
@@ -5628,8 +5646,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>2</PSLevels>
+        <DSLevels>0</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -5640,7 +5658,7 @@
         <ElevatorSide>Right</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
         <RackInLevels>None</RackInLevels>
-        <RackOutLevels>None</RackOutLevels>
+        <RackOutLevels>All</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
         <DropIndexNumber2>1</DropIndexNumber2>
@@ -5651,8 +5669,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>0</PSLevels>
+        <DSLevels>2</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -5735,7 +5753,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="14E1 Level 02" Type="DMSDCIShuttle">
@@ -5753,7 +5771,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="14E1 Level 04" Type="DMSDCIShuttle">
@@ -5841,7 +5859,7 @@
       <SubController Name="14E1 Elevator 01" Type="DMSDCIElevator">
         <ElevatorSide>Left</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
-        <RackInLevels>None</RackInLevels>
+        <RackInLevels>All</RackInLevels>
         <RackOutLevels>None</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
@@ -5853,8 +5871,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>2</PSLevels>
+        <DSLevels>0</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -5865,7 +5883,7 @@
         <ElevatorSide>Right</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
         <RackInLevels>None</RackInLevels>
-        <RackOutLevels>None</RackOutLevels>
+        <RackOutLevels>All</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
         <DropIndexNumber2>1</DropIndexNumber2>
@@ -5876,8 +5894,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>0</PSLevels>
+        <DSLevels>2</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -5960,7 +5978,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="15E1 Level 02" Type="DMSDCIShuttle">
@@ -6023,7 +6041,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="15E1 Level 09" Type="DMSDCIShuttle">
@@ -6066,7 +6084,7 @@
       <SubController Name="15E1 Elevator 01" Type="DMSDCIElevator">
         <ElevatorSide>Left</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
-        <RackInLevels>None</RackInLevels>
+        <RackInLevels>All</RackInLevels>
         <RackOutLevels>None</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
@@ -6078,8 +6096,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>2</PSLevels>
+        <DSLevels>0</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -6090,7 +6108,7 @@
         <ElevatorSide>Right</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
         <RackInLevels>None</RackInLevels>
-        <RackOutLevels>None</RackOutLevels>
+        <RackOutLevels>All</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
         <DropIndexNumber2>1</DropIndexNumber2>
@@ -6101,8 +6119,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>0</PSLevels>
+        <DSLevels>2</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -6185,7 +6203,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="16E1 Level 02" Type="DMSDCIShuttle">
@@ -6194,7 +6212,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="16E1 Level 03" Type="DMSDCIShuttle">
@@ -6291,7 +6309,7 @@
       <SubController Name="16E1 Elevator 01" Type="DMSDCIElevator">
         <ElevatorSide>Left</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
-        <RackInLevels>None</RackInLevels>
+        <RackInLevels>All</RackInLevels>
         <RackOutLevels>None</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
@@ -6303,8 +6321,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>2</PSLevels>
+        <DSLevels>0</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -6315,7 +6333,7 @@
         <ElevatorSide>Right</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
         <RackInLevels>None</RackInLevels>
-        <RackOutLevels>None</RackOutLevels>
+        <RackOutLevels>All</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
         <DropIndexNumber2>1</DropIndexNumber2>
@@ -6326,8 +6344,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>0</PSLevels>
+        <DSLevels>2</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -6410,7 +6428,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="17E1 Level 02" Type="DMSDCIShuttle">
@@ -6509,14 +6527,14 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <telegramValidation>DMS DCI 1.52</telegramValidation>
       <SubController Name="17E1 Elevator 01" Type="DMSDCIElevator">
         <ElevatorSide>Left</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
-        <RackInLevels>None</RackInLevels>
+        <RackInLevels>All</RackInLevels>
         <RackOutLevels>None</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
@@ -6528,8 +6546,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>2</PSLevels>
+        <DSLevels>0</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -6540,7 +6558,7 @@
         <ElevatorSide>Right</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
         <RackInLevels>None</RackInLevels>
-        <RackOutLevels>None</RackOutLevels>
+        <RackOutLevels>All</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
         <DropIndexNumber2>1</DropIndexNumber2>
@@ -6551,8 +6569,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>0</PSLevels>
+        <DSLevels>2</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -6635,7 +6653,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="18E1 Level 02" Type="DMSDCIShuttle">
@@ -6707,7 +6725,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="18E1 Level 10" Type="DMSDCIShuttle">
@@ -6741,7 +6759,7 @@
       <SubController Name="18E1 Elevator 01" Type="DMSDCIElevator">
         <ElevatorSide>Left</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
-        <RackInLevels>None</RackInLevels>
+        <RackInLevels>All</RackInLevels>
         <RackOutLevels>None</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
@@ -6753,8 +6771,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>2</PSLevels>
+        <DSLevels>0</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -6765,7 +6783,7 @@
         <ElevatorSide>Right</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
         <RackInLevels>None</RackInLevels>
-        <RackOutLevels>None</RackOutLevels>
+        <RackOutLevels>All</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
         <DropIndexNumber2>1</DropIndexNumber2>
@@ -6776,8 +6794,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>0</PSLevels>
+        <DSLevels>2</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -6860,7 +6878,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="19E1 Level 02" Type="DMSDCIShuttle">
@@ -6923,7 +6941,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="19E1 Level 09" Type="DMSDCIShuttle">
@@ -6966,7 +6984,7 @@
       <SubController Name="19E1 Elevator 01" Type="DMSDCIElevator">
         <ElevatorSide>Left</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
-        <RackInLevels>None</RackInLevels>
+        <RackInLevels>All</RackInLevels>
         <RackOutLevels>None</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
@@ -6978,8 +6996,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>2</PSLevels>
+        <DSLevels>0</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -6990,7 +7008,7 @@
         <ElevatorSide>Right</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
         <RackInLevels>None</RackInLevels>
-        <RackOutLevels>None</RackOutLevels>
+        <RackOutLevels>All</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
         <DropIndexNumber2>1</DropIndexNumber2>
@@ -7001,8 +7019,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>0</PSLevels>
+        <DSLevels>2</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -7085,7 +7103,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="20E1 Level 02" Type="DMSDCIShuttle">
@@ -7184,14 +7202,14 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <telegramValidation>DMS DCI 1.52</telegramValidation>
       <SubController Name="20E1 Elevator 01" Type="DMSDCIElevator">
         <ElevatorSide>Left</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
-        <RackInLevels>None</RackInLevels>
+        <RackInLevels>All</RackInLevels>
         <RackOutLevels>None</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
@@ -7203,8 +7221,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>2</PSLevels>
+        <DSLevels>0</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -7215,7 +7233,7 @@
         <ElevatorSide>Right</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
         <RackInLevels>None</RackInLevels>
-        <RackOutLevels>None</RackOutLevels>
+        <RackOutLevels>All</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
         <DropIndexNumber2>1</DropIndexNumber2>
@@ -7226,8 +7244,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>0</PSLevels>
+        <DSLevels>2</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -7310,7 +7328,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="21E1 Level 02" Type="DMSDCIShuttle">
@@ -7346,7 +7364,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="21E1 Level 06" Type="DMSDCIShuttle">
@@ -7416,7 +7434,7 @@
       <SubController Name="21E1 Elevator 01" Type="DMSDCIElevator">
         <ElevatorSide>Left</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
-        <RackInLevels>None</RackInLevels>
+        <RackInLevels>All</RackInLevels>
         <RackOutLevels>None</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
@@ -7428,8 +7446,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>2</PSLevels>
+        <DSLevels>0</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -7440,7 +7458,7 @@
         <ElevatorSide>Right</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
         <RackInLevels>None</RackInLevels>
-        <RackOutLevels>None</RackOutLevels>
+        <RackOutLevels>All</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
         <DropIndexNumber2>1</DropIndexNumber2>
@@ -7451,8 +7469,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>0</PSLevels>
+        <DSLevels>2</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -7535,7 +7553,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="22E1 Level 02" Type="DMSDCIShuttle">
@@ -7589,7 +7607,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="22E1 Level 08" Type="DMSDCIShuttle">
@@ -7641,7 +7659,7 @@
       <SubController Name="22E1 Elevator 01" Type="DMSDCIElevator">
         <ElevatorSide>Left</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
-        <RackInLevels>None</RackInLevels>
+        <RackInLevels>All</RackInLevels>
         <RackOutLevels>None</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
@@ -7653,8 +7671,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>2</PSLevels>
+        <DSLevels>0</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -7665,7 +7683,7 @@
         <ElevatorSide>Right</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
         <RackInLevels>None</RackInLevels>
-        <RackOutLevels>None</RackOutLevels>
+        <RackOutLevels>All</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
         <DropIndexNumber2>1</DropIndexNumber2>
@@ -7676,8 +7694,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>0</PSLevels>
+        <DSLevels>2</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -7760,7 +7778,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="23E1 Level 02" Type="DMSDCIShuttle">
@@ -7796,7 +7814,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="23E1 Level 06" Type="DMSDCIShuttle">
@@ -7866,7 +7884,7 @@
       <SubController Name="23E1 Elevator 01" Type="DMSDCIElevator">
         <ElevatorSide>Left</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
-        <RackInLevels>None</RackInLevels>
+        <RackInLevels>All</RackInLevels>
         <RackOutLevels>None</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
@@ -7878,8 +7896,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>2</PSLevels>
+        <DSLevels>0</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -7890,7 +7908,7 @@
         <ElevatorSide>Right</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
         <RackInLevels>None</RackInLevels>
-        <RackOutLevels>None</RackOutLevels>
+        <RackOutLevels>All</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
         <DropIndexNumber2>1</DropIndexNumber2>
@@ -7901,8 +7919,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>0</PSLevels>
+        <DSLevels>2</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -7985,7 +8003,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="24E1 Level 02" Type="DMSDCIShuttle">
@@ -8084,14 +8102,14 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <telegramValidation>DMS DCI 1.52</telegramValidation>
       <SubController Name="24E1 Elevator 01" Type="DMSDCIElevator">
         <ElevatorSide>Left</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
-        <RackInLevels>None</RackInLevels>
+        <RackInLevels>All</RackInLevels>
         <RackOutLevels>None</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
@@ -8103,8 +8121,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>2</PSLevels>
+        <DSLevels>0</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -8115,7 +8133,7 @@
         <ElevatorSide>Right</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
         <RackInLevels>None</RackInLevels>
-        <RackOutLevels>None</RackOutLevels>
+        <RackOutLevels>All</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
         <DropIndexNumber2>1</DropIndexNumber2>
@@ -8126,8 +8144,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>0</PSLevels>
+        <DSLevels>2</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -8316,7 +8334,7 @@
       <SubController Name="25E1 Elevator 01" Type="DMSDCIElevator">
         <ElevatorSide>Left</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
-        <RackInLevels>None</RackInLevels>
+        <RackInLevels>All</RackInLevels>
         <RackOutLevels>None</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
@@ -8329,7 +8347,7 @@
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
         <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <DSLevels>0</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -8340,7 +8358,7 @@
         <ElevatorSide>Right</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
         <RackInLevels>None</RackInLevels>
-        <RackOutLevels>None</RackOutLevels>
+        <RackOutLevels>All</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
         <DropIndexNumber2>1</DropIndexNumber2>
@@ -8351,7 +8369,7 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
+        <PSLevels>0</PSLevels>
         <DSLevels>1</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
@@ -8550,7 +8568,7 @@
       <SubController Name="26E1 Elevator 01" Type="DMSDCIElevator">
         <ElevatorSide>Left</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
-        <RackInLevels>None</RackInLevels>
+        <RackInLevels>All</RackInLevels>
         <RackOutLevels>None</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
@@ -8563,7 +8581,7 @@
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
         <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <DSLevels>0</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -8574,7 +8592,7 @@
         <ElevatorSide>Right</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
         <RackInLevels>None</RackInLevels>
-        <RackOutLevels>None</RackOutLevels>
+        <RackOutLevels>All</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
         <DropIndexNumber2>1</DropIndexNumber2>
@@ -8585,7 +8603,7 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
+        <PSLevels>0</PSLevels>
         <DSLevels>1</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
@@ -8675,7 +8693,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>18</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="27E1 Level 02" Type="DMSDCIShuttle">
@@ -8684,7 +8702,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="27E1 Level 03" Type="DMSDCIShuttle">
@@ -8693,7 +8711,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="27E1 Level 04" Type="DMSDCIShuttle">
@@ -8702,7 +8720,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="27E1 Level 05" Type="DMSDCIShuttle">
@@ -8711,7 +8729,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>3</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="27E1 Level 06" Type="DMSDCIShuttle">
@@ -8720,7 +8738,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="27E1 Level 07" Type="DMSDCIShuttle">
@@ -8729,7 +8747,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="27E1 Level 08" Type="DMSDCIShuttle">
@@ -8738,7 +8756,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <connection>27E1</connection>
@@ -8757,8 +8775,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>2</PSLevels>
-        <DSLevels>0</DSLevels>
+        <PSLevels>0</PSLevels>
+        <DSLevels>1</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -8768,8 +8786,8 @@
       <SubController Name="27E1 Elevator 02" Type="DMSDCIElevator">
         <ElevatorSide>Right</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
-        <RackInLevels>None</RackInLevels>
-        <RackOutLevels>All</RackOutLevels>
+        <RackInLevels>All</RackInLevels>
+        <RackOutLevels>None</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
         <DropIndexNumber2>1</DropIndexNumber2>
@@ -8780,8 +8798,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>0</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>2</PSLevels>
+        <DSLevels>0</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -8864,7 +8882,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>15</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="28E1 Level 02" Type="DMSDCIShuttle">
@@ -8873,7 +8891,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="28E1 Level 03" Type="DMSDCIShuttle">
@@ -8882,7 +8900,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="28E1 Level 04" Type="DMSDCIShuttle">
@@ -8891,7 +8909,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="28E1 Level 05" Type="DMSDCIShuttle">
@@ -8900,7 +8918,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="28E1 Level 06" Type="DMSDCIShuttle">
@@ -8909,7 +8927,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>3</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="28E1 Level 07" Type="DMSDCIShuttle">
@@ -8918,7 +8936,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="28E1 Level 08" Type="DMSDCIShuttle">
@@ -8927,7 +8945,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <connection>28E1</connection>
@@ -8935,7 +8953,7 @@
         <ElevatorSide>Left</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
         <RackInLevels>None</RackInLevels>
-        <RackOutLevels>None</RackOutLevels>
+        <RackOutLevels>All</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
         <DropIndexNumber2>1</DropIndexNumber2>
@@ -8946,7 +8964,7 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
+        <PSLevels>0</PSLevels>
         <DSLevels>1</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
@@ -8957,7 +8975,7 @@
       <SubController Name="28E1 Elevator 02" Type="DMSDCIElevator">
         <ElevatorSide>Right</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
-        <RackInLevels>None</RackInLevels>
+        <RackInLevels>All</RackInLevels>
         <RackOutLevels>None</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
@@ -8969,8 +8987,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>2</PSLevels>
+        <DSLevels>0</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -9053,7 +9071,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>22</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="29E1 Level 02" Type="DMSDCIShuttle">
@@ -9071,7 +9089,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>5</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="29E1 Level 04" Type="DMSDCIShuttle">
@@ -9080,7 +9098,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>3</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="29E1 Level 05" Type="DMSDCIShuttle">
@@ -9089,7 +9107,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>3</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="29E1 Level 06" Type="DMSDCIShuttle">
@@ -9098,7 +9116,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>6</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="29E1 Level 07" Type="DMSDCIShuttle">
@@ -9107,7 +9125,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>3</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="29E1 Level 08" Type="DMSDCIShuttle">
@@ -9116,14 +9134,14 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <connection>29E1</connection>
       <SubController Name="29E1 Elevator 01" Type="DMSDCIElevator">
         <ElevatorSide>Left</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
-        <RackInLevels>None</RackInLevels>
+        <RackInLevels>All</RackInLevels>
         <RackOutLevels>None</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
@@ -9135,8 +9153,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>2</PSLevels>
+        <DSLevels>0</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -9147,7 +9165,7 @@
         <ElevatorSide>Right</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
         <RackInLevels>None</RackInLevels>
-        <RackOutLevels>None</RackOutLevels>
+        <RackOutLevels>All</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
         <DropIndexNumber2>1</DropIndexNumber2>
@@ -9158,7 +9176,7 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
+        <PSLevels>0</PSLevels>
         <DSLevels>1</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
@@ -9242,7 +9260,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>6</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="30E1 Level 02" Type="DMSDCIShuttle">
@@ -9260,7 +9278,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="30E1 Level 04" Type="DMSDCIShuttle">
@@ -9278,7 +9296,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="30E1 Level 06" Type="DMSDCIShuttle">
@@ -9287,7 +9305,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="30E1 Level 07" Type="DMSDCIShuttle">
@@ -9296,7 +9314,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="30E1 Level 08" Type="DMSDCIShuttle">
@@ -9312,7 +9330,7 @@
       <SubController Name="30E1 Elevator 01" Type="DMSDCIElevator">
         <ElevatorSide>Left</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
-        <RackInLevels>None</RackInLevels>
+        <RackInLevels>All</RackInLevels>
         <RackOutLevels>None</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
@@ -9324,8 +9342,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>2</PSLevels>
+        <DSLevels>0</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -9336,7 +9354,7 @@
         <ElevatorSide>Right</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
         <RackInLevels>None</RackInLevels>
-        <RackOutLevels>None</RackOutLevels>
+        <RackOutLevels>All</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
         <DropIndexNumber2>1</DropIndexNumber2>
@@ -9347,7 +9365,7 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
+        <PSLevels>0</PSLevels>
         <DSLevels>1</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
@@ -9431,7 +9449,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>20</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="31E1 Level 02" Type="DMSDCIShuttle">
@@ -9440,7 +9458,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="31E1 Level 03" Type="DMSDCIShuttle">
@@ -9449,7 +9467,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="31E1 Level 04" Type="DMSDCIShuttle">
@@ -9458,7 +9476,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="31E1 Level 05" Type="DMSDCIShuttle">
@@ -9467,7 +9485,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="31E1 Level 06" Type="DMSDCIShuttle">
@@ -9476,7 +9494,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="31E1 Level 07" Type="DMSDCIShuttle">
@@ -9485,7 +9503,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="31E1 Level 08" Type="DMSDCIShuttle">
@@ -9494,7 +9512,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>3</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <connection>31E1</connection>
@@ -9502,7 +9520,7 @@
         <ElevatorSide>Left</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
         <RackInLevels>None</RackInLevels>
-        <RackOutLevels>None</RackOutLevels>
+        <RackOutLevels>All</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
         <DropIndexNumber2>1</DropIndexNumber2>
@@ -9513,7 +9531,7 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
+        <PSLevels>0</PSLevels>
         <DSLevels>1</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
@@ -9524,7 +9542,7 @@
       <SubController Name="31E1 Elevator 02" Type="DMSDCIElevator">
         <ElevatorSide>Right</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
-        <RackInLevels>None</RackInLevels>
+        <RackInLevels>All</RackInLevels>
         <RackOutLevels>None</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
@@ -9536,8 +9554,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>2</PSLevels>
+        <DSLevels>0</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -9616,61 +9634,61 @@
       <LogAll>False</LogAll>
       <SubController Name="32E1 Level 01" Type="DMSDCIShuttle">
         <LevelHeight>0</LevelHeight>
-        <ExMode>Internal</ExMode>
+        <ExMode>Outbound</ExMode>
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>18</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="32E1 Level 02" Type="DMSDCIShuttle">
         <LevelHeight>0</LevelHeight>
-        <ExMode>Internal</ExMode>
+        <ExMode>Outbound</ExMode>
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>4</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="32E1 Level 03" Type="DMSDCIShuttle">
         <LevelHeight>0</LevelHeight>
-        <ExMode>Internal</ExMode>
+        <ExMode>Outbound</ExMode>
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>4</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="32E1 Level 04" Type="DMSDCIShuttle">
         <LevelHeight>0</LevelHeight>
-        <ExMode>Internal</ExMode>
+        <ExMode>Outbound</ExMode>
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="32E1 Level 05" Type="DMSDCIShuttle">
         <LevelHeight>0</LevelHeight>
-        <ExMode>Internal</ExMode>
+        <ExMode>Outbound</ExMode>
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="32E1 Level 06" Type="DMSDCIShuttle">
         <LevelHeight>0</LevelHeight>
-        <ExMode>Internal</ExMode>
+        <ExMode>Outbound</ExMode>
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>1</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="32E1 Level 07" Type="DMSDCIShuttle">
         <LevelHeight>0</LevelHeight>
-        <ExMode>Internal</ExMode>
+        <ExMode>Outbound</ExMode>
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
@@ -9679,11 +9697,11 @@
       </SubController>
       <SubController Name="32E1 Level 08" Type="DMSDCIShuttle">
         <LevelHeight>0</LevelHeight>
-        <ExMode>Internal</ExMode>
+        <ExMode>Outbound</ExMode>
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>0</MachineMoves>
+        <MachineMoves>2</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <connection>32E1</connection>
@@ -9691,7 +9709,7 @@
         <ElevatorSide>Left</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
         <RackInLevels>None</RackInLevels>
-        <RackOutLevels>None</RackOutLevels>
+        <RackOutLevels>All</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
         <DropIndexNumber2>1</DropIndexNumber2>
@@ -9702,7 +9720,7 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
+        <PSLevels>0</PSLevels>
         <DSLevels>1</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
@@ -9713,7 +9731,7 @@
       <SubController Name="32E1 Elevator 02" Type="DMSDCIElevator">
         <ElevatorSide>Right</ElevatorSide>
         <ElevatorNumber>1</ElevatorNumber>
-        <RackInLevels>None</RackInLevels>
+        <RackInLevels>All</RackInLevels>
         <RackOutLevels>None</RackOutLevels>
         <DropIndexEnabled>False</DropIndexEnabled>
         <DropIndexNumber1>1</DropIndexNumber1>
@@ -9725,8 +9743,8 @@
         <DropIndexNumber7>1</DropIndexNumber7>
         <DropIndexNumber8>1</DropIndexNumber8>
         <DropIndexNumber9>1</DropIndexNumber9>
-        <PSLevels>1</PSLevels>
-        <DSLevels>1</DSLevels>
+        <PSLevels>2</PSLevels>
+        <DSLevels>0</DSLevels>
         <DSAccessLevels>All</DSAccessLevels>
         <NoReadDestination>
         </NoReadDestination>
@@ -10463,7 +10481,7 @@
       <DestinationCode>CC51ECINP1</DestinationCode>
       <DestinationCodeSecondary>
       </DestinationCodeSecondary>
-      <TelegramDelay>1</TelegramDelay>
+      <TelegramDelay>2</TelegramDelay>
       <RoutePercentage>100</RoutePercentage>
       <RouteController>PLC51</RouteController>
     </Routing>
@@ -10476,7 +10494,7 @@
       <DestinationCode>CC52ECINP1</DestinationCode>
       <DestinationCodeSecondary>
       </DestinationCodeSecondary>
-      <TelegramDelay>1</TelegramDelay>
+      <TelegramDelay>2</TelegramDelay>
       <RoutePercentage>100</RoutePercentage>
       <RouteController>PLC52</RouteController>
     </Routing>
@@ -10489,7 +10507,7 @@
       <DestinationCode>CC53ECINP1</DestinationCode>
       <DestinationCodeSecondary>
       </DestinationCodeSecondary>
-      <TelegramDelay>1</TelegramDelay>
+      <TelegramDelay>2</TelegramDelay>
       <RoutePercentage>100</RoutePercentage>
       <RouteController>PLC53</RouteController>
     </Routing>
