@@ -396,7 +396,8 @@ namespace Experior.Catalog.Dematic.Case.Components
             if (!ReleaseDelayTimer.Running)
             {
                 LoadInDivert = false;
-                //RouteWaitingLoad();
+                if (PreviousLoadWaitingStatus.WaitingLoad != load)
+                    RouteWaitingLoad();
             }
 
             if (OnDivertPointDivertedControl != null)
@@ -417,7 +418,8 @@ namespace Experior.Catalog.Dematic.Case.Components
             if (!ReleaseDelayTimer.Running)
             {
                 LoadInDivert = false;
-                //RouteWaitingLoad();
+                if (PreviousLoadWaitingStatus.WaitingLoad != load)
+                    RouteWaitingLoad();
             }
 
             if (OnDivertPointDivertedControl != null)
