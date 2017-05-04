@@ -136,6 +136,7 @@ namespace Experior.Controller.TollFashion
                     {
                         //Switch to empty line
                         var carton = p.Key.ActiveLoad;
+                        carton.Yaw = 0;
                         carton.Switch(emptyCartonOnlineTakeAway.TransportSection.Route);
                         carton.Release();
                     }
