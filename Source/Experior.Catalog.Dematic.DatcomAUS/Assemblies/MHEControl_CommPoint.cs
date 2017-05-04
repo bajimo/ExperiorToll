@@ -36,6 +36,13 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                 return;
             }
 
+            var caseData = caseload.Case_Data as CaseData;
+            if (caseData == null)
+            {
+                //Convert?
+                caseload.Case_Data = new CaseData();
+            }
+
             if (CommPoint.ControllerName != string.Empty)
             {
                 if (((CaseData)caseload.Case_Data).PLCName != CommPoint.ControllerName && ((CaseData)caseload.Case_Data).PLCName != string.Empty)

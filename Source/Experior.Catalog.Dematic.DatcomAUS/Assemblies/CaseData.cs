@@ -13,6 +13,9 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             ULStatus = "00"; 
             Profile = "@@@@";
             PLCName = string.Empty;
+            Width = 0;
+            Height = 0;
+            Length = 0;
         }
         public string OriginalPosition { get; set; }
         public string CurrentPosition { get; set; }
