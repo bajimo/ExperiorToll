@@ -159,7 +159,7 @@ namespace Experior.Dematic.Base
             {
                 if (int.TryParse(value.Substring(0, 1), out result))  // takes the form aasyyxz: a=aisle, s = side, y = level, x = input or output, Z = loc A or B e.g. 01R05OA
                 {
-                    return result; // The form aasyyxz has no depth information
+                    return 0; // The form aasyyxz has no depth information
                 }
                 else // takes the form  sxxxyydd: Side, xxx location, yy = level, dd = depth
                 {
