@@ -375,9 +375,9 @@ namespace Experior.Catalog.Dematic.Storage.MultiShuttle.Assemblies
             float ConveyorHeight = moveToConvLevel.Height;
             float MovePosition = ConveyorHeight - ElevatorHeight;
 
-            float check = Math.Abs(Vehicle.DestAP.Distance - MovePosition);
+            float check = Math.Abs(Vehicle.Distance - MovePosition);
 
-            if (Math.Abs(Vehicle.DestAP.Distance - MovePosition) < 0.001)
+            if (Math.Abs(Vehicle.Distance - MovePosition) < 0.001)
             {
                 ElevatorOnArrived(null, null);
                 return;
