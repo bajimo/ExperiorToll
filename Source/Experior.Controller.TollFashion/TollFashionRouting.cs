@@ -34,6 +34,7 @@ namespace Experior.Controller.TollFashion
         private readonly Dictionary<ActionPoint, double> onlinePackingStations = new Dictionary<ActionPoint, double>();
         private double onlinePackingTime = 20; //20 seconds from arrival to done
         private StraightConveyor emptyCartonOnlineTakeAway;
+        private HashSet<StraightBeltConveyor> dispatchLanes = new HashSet<StraightBeltConveyor>();
 
         public TollFashionRouting() : base("TollFashionRouting")
         {
@@ -116,6 +117,31 @@ namespace Experior.Controller.TollFashion
             onlinePackingStationTimer = new Timer(1);
             onlinePackingStationTimer.AutoReset = true;
             onlinePackingStationTimer.OnElapsed += OnlinePackingStationTimer_OnElapsed;
+
+            dispatchLanes.Add(Core.Assemblies.Assembly.Items["P5162-4"] as StraightBeltConveyor);
+            dispatchLanes.Add(Core.Assemblies.Assembly.Items["P6162-4"] as StraightBeltConveyor);
+            dispatchLanes.Add(Core.Assemblies.Assembly.Items["P7162-4"] as StraightBeltConveyor);
+            dispatchLanes.Add(Core.Assemblies.Assembly.Items["P8162-4"] as StraightBeltConveyor);
+
+            dispatchLanes.Add(Core.Assemblies.Assembly.Items["P11071"] as StraightBeltConveyor);
+            dispatchLanes.Add(Core.Assemblies.Assembly.Items["P11121"] as StraightBeltConveyor);
+            dispatchLanes.Add(Core.Assemblies.Assembly.Items["P11141"] as StraightBeltConveyor);
+            dispatchLanes.Add(Core.Assemblies.Assembly.Items["P11161"] as StraightBeltConveyor);
+            dispatchLanes.Add(Core.Assemblies.Assembly.Items["P11181"] as StraightBeltConveyor);
+            dispatchLanes.Add(Core.Assemblies.Assembly.Items["P11201"] as StraightBeltConveyor);      
+        }
+
+        private void Dispatch_LineReleasePhotocell_OnPhotocellStatusChanged(object sender, Dematic.Base.Devices.PhotocellStatusChangedEventArgs e)
+        {
+            if (e._PhotocellStatus == PhotocellState.Blocked)
+            {
+                //Remove (dispose) the load at dispatch
+                Timer.Action(() =>
+                {
+                    e._Load.Dispose();
+                    Log.Write($"Carton {e._Load.Identification} removed from dispatch lane");
+                }, 10);
+            }
         }
 
         private void OnlinePackingStationTimer_OnElapsed(Timer sender)
@@ -367,6 +393,15 @@ namespace Experior.Controller.TollFashion
                     .OfType<Catalog.Dematic.Case.Devices.CommunicationPoint>()
                     .Where(c => c.Name.EndsWith("A1"))
                     .ToList();
+
+            //Subscribe to photocell status change on all dispatch lanes and use the event to dispose the load
+            foreach (var d in dispatchLanes)
+            {
+                if (d == null)
+                    continue;
+
+                d.beltControl.LineReleasePhotocell.OnPhotocellStatusChanged += Dispatch_LineReleasePhotocell_OnPhotocellStatusChanged;
+            }
         }
 
         private void OnRequestAllDataTelegramReceived(object sender, MessageEventArgs e)
