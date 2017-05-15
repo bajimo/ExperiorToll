@@ -45,6 +45,7 @@ namespace Experior.Controller.TollFashion
             carton53Labeler = new ZplLabeler("CAR53");
 
             emulationController = new EmulationController();
+            emulationController.FeedReceived += EmulationController_FeedReceived;
 
             emptyToteLine = Core.Assemblies.Assembly.Get("P1963") as StraightAccumulationConveyor;
             cartonErector1 = Core.Assemblies.Assembly.Get("P1051") as StraightConveyor;
@@ -133,6 +134,19 @@ namespace Experior.Controller.TollFashion
             dispatchLanes.Add(Core.Assemblies.Assembly.Items["P11161"] as StraightBeltConveyor);
             dispatchLanes.Add(Core.Assemblies.Assembly.Items["P11181"] as StraightBeltConveyor);
             dispatchLanes.Add(Core.Assemblies.Assembly.Items["P11201"] as StraightBeltConveyor);
+        }
+
+        private void EmulationController_FeedReceived(object sender, string[] telegramFields)
+        {
+            var location = telegramFields[1];
+            if (location.StartsWith("DC"))
+            {
+                //Decant feeding. Delete a tote on the empty tote line (if any)
+                if (emptyToteLine.LoadCount > 0)
+                {
+                    emptyToteLine.TransportSection.Route.Loads.Last.Value.Dispose();
+                }
+            }
         }
 
         private void Dispatch_LineReleasePhotocell_OnPhotocellStatusChanged(object sender, Dematic.Base.Devices.PhotocellStatusChangedEventArgs e)

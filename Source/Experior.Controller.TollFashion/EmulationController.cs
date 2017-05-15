@@ -15,6 +15,8 @@ namespace Experior.Controller.TollFashion
         //private readonly Queue<string> validCartonErectionBarcodes = new Queue<string>();
         private readonly Dictionary<string, float> loadWeight = new Dictionary<string, float>();
         private readonly Core.Communication.TCPIP.Connection emuconnection;
+
+        public event EventHandler<string[]> FeedReceived; 
         //private int noBarcodesCount;
 
         //public bool CartonBarcodesNeeded => validCartonErectionBarcodes.Count < 20;
@@ -224,6 +226,8 @@ namespace Experior.Controller.TollFashion
                     Core.Environment.Log.Write("Location not found for feed telegram: " + location);
                 }
             }
+
+            OnFeedReceived(telegramFields);
         }
 
         private void CaseLoad_OnDisposed(Core.Loads.Load load)
@@ -300,6 +304,11 @@ namespace Experior.Controller.TollFashion
                 return loadWeight[barcode1];
 
             return 1;
+        }
+
+        protected virtual void OnFeedReceived(string[] telegramFields)
+        {
+            FeedReceived?.Invoke(this, telegramFields);
         }
     }
 }
