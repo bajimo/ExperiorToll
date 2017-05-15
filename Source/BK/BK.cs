@@ -16,6 +16,7 @@ namespace Experior.Plugin
             Experior.Core.Environment.Communication.Protocol.Add("BK25", Experior.Plugin.Properties.Resources.BK25, new EventHandler(CreateBK25), typeof(BK25));
             Experior.Core.Environment.Communication.Protocol.Add("ATC", Experior.Plugin.Properties.Resources.TCP, new EventHandler(CreateATC), typeof(ATCSocket));
             Experior.Core.Environment.Communication.Protocol.Add("DCI", Experior.Plugin.Properties.Resources.TCP, new EventHandler(CreateDCI), typeof(DCISocket));
+            Experior.Core.Environment.Communication.Protocol.Add("ZPL Script", Experior.Plugin.Properties.Resources.TCP, new EventHandler(CreateZPL), typeof(ZplSocket));
         }
 
         private void CreateBK25(object sender, EventArgs e)
@@ -74,6 +75,24 @@ namespace Experior.Plugin
                 Log.Write(se, 120009);
             }
         }
+
+        private void CreateZPL(object sender, EventArgs e)
+        {
+            try
+            {
+                Experior.Core.Communication.TCPIP.ConnectionInfo info = new Core.Communication.TCPIP.ConnectionInfo();
+                info.autoconnect = true;
+                info.server = true;
+
+                ZplSocket com = new ZplSocket(info);
+                Experior.Core.Communication.Connection.Items.Add(com);
+            }
+            catch (Exception se)
+            {
+                Log.Write(se, 120209);
+            }
+        }
+
         public override System.Drawing.Image Logo
         {
             get
