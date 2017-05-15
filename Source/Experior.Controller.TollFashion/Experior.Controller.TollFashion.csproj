@@ -124,6 +124,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ZplLabeler.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ModelTools.resx">
@@ -136,6 +137,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BK\BK.csproj">
+      <Project>{9f46ae77-20ac-41d9-88df-83bbbdcc1aff}</Project>
+      <Name>BK</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Dematic.DATCOMAUS\Dematic.DATCOMAUS.csproj">
       <Project>{99ebdd47-7603-4076-bb64-3854b1fd59a1}</Project>
       <Name>Dematic.DATCOMAUS</Name>

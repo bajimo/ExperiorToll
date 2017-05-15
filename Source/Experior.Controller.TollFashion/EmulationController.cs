@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
-using System.Linq;
 using Experior.Catalog.Dematic.Case;
 using Experior.Catalog.Dematic.Case.Components;
 using Experior.Catalog.Dematic.DatcomAUS.Assemblies;
@@ -13,12 +12,12 @@ namespace Experior.Controller.TollFashion
     public class EmulationController
     {
         private int cycleNumber;
-        private readonly Queue<string> validCartonErectionBarcodes = new Queue<string>();
+        //private readonly Queue<string> validCartonErectionBarcodes = new Queue<string>();
         private readonly Dictionary<string, float> loadWeight = new Dictionary<string, float>();
         private readonly Core.Communication.TCPIP.Connection emuconnection;
-        private int noBarcodesCount;
+        //private int noBarcodesCount;
 
-        public bool CartonBarcodesNeeded => validCartonErectionBarcodes.Count < 20;
+        //public bool CartonBarcodesNeeded => validCartonErectionBarcodes.Count < 20;
 
         public EmulationController()
         {
@@ -85,14 +84,14 @@ namespace Experior.Controller.TollFashion
             if (subtype == "D001")
             {
                 string location = telegramFields[1];
-                if (location == "CARTONERECTION")
-                {
-                    for (int i = 2; i < telegramFields.Length; i++)
-                    {
-                        if (telegramFields[i] != "")
-                            validCartonErectionBarcodes.Enqueue(telegramFields[i]);
-                    }
-                }
+                //if (location == "CARTONERECTION")  //We extract from ZPL script instead
+                //{
+                //    for (int i = 2; i < telegramFields.Length; i++)
+                //    {
+                //        if (telegramFields[i] != "")
+                //            validCartonErectionBarcodes.Enqueue(telegramFields[i]);
+                //    }
+                //}
             }
             else if (subtype == "D002" || subtype == "D003")
             {
@@ -153,8 +152,8 @@ namespace Experior.Controller.TollFashion
                     //Carton erector feeding
                     if (!string.IsNullOrWhiteSpace(barcode))
                     {
-                        //Store the barcode for the label applicator
-                        validCartonErectionBarcodes.Enqueue(barcode);
+                        //Store the barcode for the label applicator. //MRP changed to use ZPL script
+                        //validCartonErectionBarcodes.Enqueue(barcode);
                         barcode = "";
                     }
                     subtype = "F002"; //only cartons at these locations. 
@@ -211,7 +210,7 @@ namespace Experior.Controller.TollFashion
                         }
 
                         //Only send weight at weigh station
-                        loadWeight[barcode] = we;
+                        //loadWeight[barcode] = we;
                         caseLoad.OnDisposed += CaseLoad_OnDisposed;
                     }
                     else
@@ -242,54 +241,6 @@ namespace Experior.Controller.TollFashion
                 var totebarcode = telegramFields[1];
                 var caseload = Case_Load.GetCaseFromSSCCBarcode(totebarcode);
                 caseload.ReleaseLoad();
-
-                //if (caseload != null && (location == "ZP01" || location == "ZP02" || location == "ZP03" || location == "ZP04" || location == "ZP05" || location == "ZP06"))
-                //{
-                //    if (caseload.Route.Parent.Parent is MergeDivertConveyor &&
-                //        ((MergeDivertConveyor)caseload.Route.Parent.Parent).Name.Substring(0, 3) == "ZP0" &&
-                //        ((MergeDivertConveyor)caseload.Route.Parent.Parent).Name.Substring(4, 5) == "_PUSH" &&
-                //        ((MergeDivertConveyor)caseload.Route.Parent.Parent).LoadOnAP(caseload, Direction.Left))
-                //    {
-                //        var mergeDivert = caseload.Route.Parent.Parent as MergeDivertConveyor;
-                //        caseload.Release();
-                //        mergeDivert.RouteLoad(caseload, new List<Direction>() { Direction.Left }, false);
-                //    }
-                //    else
-                //    {
-                //        lock (zonePickRelease)
-                //        {
-                //            if (zonePickRelease.ContainsKey(caseload.SSCCBarcode))
-                //            {
-                //                zonePickRelease.Remove(caseload.SSCCBarcode);
-                //            }
-                //            zonePickRelease.Add(caseload.SSCCBarcode, location);
-                //        }
-                //    }
-                //}
-                //else if (caseload != null && (location == "PTW1" || location == "PTW2" || location == "PTW3" || location == "PTW4" ||
-                //    location == "PTW5" || location == "PTW6" || location == "PTW7"))
-                //{
-                //    if (caseload.Route.Parent.Parent is MergeDivertConveyor &&
-                //        ((MergeDivertConveyor)caseload.Route.Parent.Parent).Name.Substring(0, 3) == "PTW" &&
-                //        ((MergeDivertConveyor)caseload.Route.Parent.Parent).Name.Substring(4, 5) == "_PUSH" &&
-                //        ((MergeDivertConveyor)caseload.Route.Parent.Parent).LoadOnAP(caseload, Direction.Right))
-                //    {
-                //        var mergeDivert = caseload.Route.Parent.Parent as MergeDivertConveyor;
-                //        caseload.Release();
-                //        mergeDivert.RouteLoad(caseload, new List<Direction>() { Direction.Right }, false);
-                //    }
-                //    else
-                //    {
-                //        lock (putwallRelease)
-                //        {
-                //            if (putwallRelease.ContainsKey(caseload.SSCCBarcode))
-                //            {
-                //                putwallRelease.Remove(caseload.SSCCBarcode);
-                //            }
-                //            putwallRelease.Add(caseload.SSCCBarcode, location);
-                //        }
-                //    }
-                //}
             }
         }
 
@@ -330,24 +281,25 @@ namespace Experior.Controller.TollFashion
             return "@@@@";
         }
 
-        public string GetBarcode2(string identification)
-        {
-            //todo how to do barcode2?
-            return identification;
-        }
+        //public string GetBarcode2(string identification)
+        //{
+        //    //todo how to do barcode2?
+        //    return identification;
+        //}
 
-        public string GetNextValidBarcode()
-        {
-            var nextBarcode = validCartonErectionBarcodes.Any() ? validCartonErectionBarcodes.Dequeue() : $"noBarcodes {++noBarcodesCount}";
-            return nextBarcode;
-        }
+        //public string GetNextValidBarcode()
+        //{
+        //    var nextBarcode = validCartonErectionBarcodes.Any() ? validCartonErectionBarcodes.Dequeue() : $"noBarcodes {++noBarcodesCount}";
+        //    return nextBarcode;
+        //}
 
         public float GetWeight(string barcode1)
         {
+            //TODO
             if (loadWeight.ContainsKey(barcode1))
                 return loadWeight[barcode1];
 
-            return 0;
+            return 1;
         }
     }
 }

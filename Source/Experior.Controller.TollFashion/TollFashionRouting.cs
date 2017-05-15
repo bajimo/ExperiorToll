@@ -9,7 +9,6 @@ using Experior.Core.Loads;
 using Experior.Core.Routes;
 using Experior.Dematic.Base;
 using Experior.Core;
-using System;
 
 namespace Experior.Controller.TollFashion
 {
@@ -24,6 +23,7 @@ namespace Experior.Controller.TollFashion
         private readonly StraightAccumulationConveyor emptyToteLine;
         private readonly StraightConveyor cartonErector1, cartonErector2, cartonErector3;
         private readonly Dictionary<string, string> cartonErectorSize = new Dictionary<string, string>();
+        private readonly ZplLabeler carton51Labeler, carton52Labeler, carton53Labeler;
 
         private ActionPoint lidnp2;
         private Load lidnp2Load;
@@ -33,12 +33,16 @@ namespace Experior.Controller.TollFashion
         private EquipmentStatus cc51Cartona1, cc52Cartona1, cc53Cartona1;
         private readonly Dictionary<ActionPoint, double> onlinePackingStations = new Dictionary<ActionPoint, double>();
         private double onlinePackingTime = 20; //20 seconds from arrival to done
-        private StraightConveyor emptyCartonOnlineTakeAway;
-        private HashSet<StraightBeltConveyor> dispatchLanes = new HashSet<StraightBeltConveyor>();
+        private readonly StraightConveyor emptyCartonOnlineTakeAway;
+        private readonly HashSet<StraightBeltConveyor> dispatchLanes = new HashSet<StraightBeltConveyor>();
 
         public TollFashionRouting() : base("TollFashionRouting")
         {
             StandardConstructor();
+            
+            carton51Labeler = new ZplLabeler("CAR51");
+            carton52Labeler = new ZplLabeler("CAR52");
+            carton53Labeler = new ZplLabeler("CAR53");
 
             emulationController = new EmulationController();
 
@@ -97,9 +101,9 @@ namespace Experior.Controller.TollFashion
                 plc63.OnSetSystemStatusTelegramReceived += OnSetSystemStatusTelegramReceived;
             }
 
-            Core.Environment.Time.ContinuouslyRunning = true;
-            Core.Environment.Scene.OnLoaded += Scene_OnLoaded;
-            Core.Environment.Scene.OnStarting += Scene_OnStarting;
+            Environment.Time.ContinuouslyRunning = true;
+            Environment.Scene.OnLoaded += Scene_OnLoaded;
+            Environment.Scene.OnStarting += Scene_OnStarting;
             CreateEquipmentStatuses();
             lidnp2Resend = new Timer(2.5f);
             lidnp2Resend.OnElapsed += Lidnp2Resend_Elapsed;
@@ -128,7 +132,7 @@ namespace Experior.Controller.TollFashion
             dispatchLanes.Add(Core.Assemblies.Assembly.Items["P11141"] as StraightBeltConveyor);
             dispatchLanes.Add(Core.Assemblies.Assembly.Items["P11161"] as StraightBeltConveyor);
             dispatchLanes.Add(Core.Assemblies.Assembly.Items["P11181"] as StraightBeltConveyor);
-            dispatchLanes.Add(Core.Assemblies.Assembly.Items["P11201"] as StraightBeltConveyor);      
+            dispatchLanes.Add(Core.Assemblies.Assembly.Items["P11201"] as StraightBeltConveyor);
         }
 
         private void Dispatch_LineReleasePhotocell_OnPhotocellStatusChanged(object sender, Dematic.Base.Devices.PhotocellStatusChangedEventArgs e)
@@ -140,7 +144,7 @@ namespace Experior.Controller.TollFashion
                 {
                     e._Load.Dispose();
                     Log.Write($"Carton {e._Load.Identification} removed from dispatch lane");
-                }, 10);
+                }, 5);
             }
         }
 
@@ -156,7 +160,7 @@ namespace Experior.Controller.TollFashion
             //Check all online packing stations
             foreach (var p in onlinePackingStations)
             {
-                if (p.Value > 0 && Core.Environment.Time.Simulated > p.Value + onlinePackingTime)
+                if (p.Value > 0 && Environment.Time.Simulated > p.Value + onlinePackingTime)
                 {
                     if (p.Key.Active)
                     {
@@ -213,7 +217,7 @@ namespace Experior.Controller.TollFashion
                 {
                     caseData.CarrierSize = "";
                 }
-            }   
+            }
         }
 
         private void Scene_OnStarting()
@@ -388,7 +392,7 @@ namespace Experior.Controller.TollFashion
 
         private void Scene_OnLoaded()
         {
-            Core.Environment.Scene.OnLoaded -= Scene_OnLoaded;
+            Environment.Scene.OnLoaded -= Scene_OnLoaded;
             activePoints = Core.Assemblies.Assembly.Items.Values.Where(a => a.Assemblies != null).SelectMany(a => a.Assemblies)
                     .OfType<Catalog.Dematic.Case.Devices.CommunicationPoint>()
                     .Where(c => c.Name.EndsWith("A1"))
@@ -440,6 +444,10 @@ namespace Experior.Controller.TollFashion
             {
                 onlinePackingStations[onlinePackingStation] = -1;
             }
+
+            carton51Labeler.Reset();
+            carton52Labeler.Reset();
+            carton53Labeler.Reset();
 
             base.Reset();
         }
@@ -496,7 +504,7 @@ namespace Experior.Controller.TollFashion
             if (node.Name == "CC51ECINP1" || node.Name == "CC52ECINP1" || node.Name == "CC53ECINP1")
             {
                 //Apply barcode
-                AddBarcodeAndData(load);
+                AddBarcodeAndData(node.Name, load);
                 AddBarcode2(load);
                 return;
             }
@@ -530,7 +538,7 @@ namespace Experior.Controller.TollFashion
             if (node.Name == "CC51CARTONSWAP" || node.Name == "CC52CARTONSWAP" || node.Name == "CC53CARTONSWAP")
             {
                 SetCarrierSizeAfterCartonErector(load);
-                AddProfile(load);               
+                AddProfile(load);
             }
             if (node.Name.StartsWith("CLEARSWAP"))
             {
@@ -559,19 +567,21 @@ namespace Experior.Controller.TollFashion
                 return;
             }
             var ap = node as ActionPoint;
-            if (onlinePackingStations.ContainsKey(ap))
+            if (ap != null && onlinePackingStations.ContainsKey(ap))
             {
                 //Arrived at online pack station. Set arrival timestamp 
-                onlinePackingStations[ap] = Core.Environment.Time.Simulated;
+                onlinePackingStations[ap] = Environment.Time.Simulated;
             }
         }
 
         private void RequestValidBarcodes()
         {
-            if (emulationController.CartonBarcodesNeeded)
-            {
-                emulationController.SendCartonBarcodesRequest("CARTONERECTION", 50);
-            }
+            //MRP: Changed to use ZPL script
+
+            //if (emulationController.CartonBarcodesNeeded)
+            //{
+            //    emulationController.SendCartonBarcodesRequest("CARTONERECTION", 50);
+            //}
         }
 
         private static void AddLid(Load load)
@@ -592,7 +602,7 @@ namespace Experior.Controller.TollFashion
             if (caseData == null)
                 return;
 
-            caseData.Barcode2 = emulationController.GetBarcode2(load.Identification);
+            caseData.Barcode2 = load.Identification;
         }
 
         private static void ClearSwap(Load load)
@@ -652,9 +662,14 @@ namespace Experior.Controller.TollFashion
             caseData.Weight = emulationController.GetWeight(load.Identification);
         }
 
-        private void AddBarcodeAndData(Load load)
+        private void AddBarcodeAndData(string location, Load load)
         {
-            load.Identification = emulationController.GetNextValidBarcode();
+            if (location.StartsWith("CC51"))
+                load.Identification = carton51Labeler.GetNextValidBarcode();
+            else if (location.StartsWith("CC52"))
+                load.Identification = carton52Labeler.GetNextValidBarcode();
+            else 
+                load.Identification = carton53Labeler.GetNextValidBarcode();
 
             var caseLoad = load as Case_Load;
 
@@ -734,9 +749,9 @@ namespace Experior.Controller.TollFashion
 
         private void ResetStandard()
         {
-            Core.Environment.Scene.Reset();
+            Environment.Scene.Reset();
 
-            foreach (Core.Communication.Connection connection in Core.Communication.Connection.Items.Values)
+            foreach (var connection in Core.Communication.Connection.Items.Values)
             {
                 connection.Disconnect();
             }
@@ -744,17 +759,17 @@ namespace Experior.Controller.TollFashion
 
         public override void Dispose()
         {
-            Core.Environment.UI.Toolbar.Remove(speed1);
-            Core.Environment.UI.Toolbar.Remove(speed2);
-            Core.Environment.UI.Toolbar.Remove(speed5);
-            Core.Environment.UI.Toolbar.Remove(speed10);
-            Core.Environment.UI.Toolbar.Remove(speed20);
+            Environment.UI.Toolbar.Remove(speed1);
+            Environment.UI.Toolbar.Remove(speed2);
+            Environment.UI.Toolbar.Remove(speed5);
+            Environment.UI.Toolbar.Remove(speed10);
+            Environment.UI.Toolbar.Remove(speed20);
 
-            Core.Environment.UI.Toolbar.Remove(reset);
-            Core.Environment.UI.Toolbar.Remove(fps1);
-            Core.Environment.UI.Toolbar.Remove(localProp);
-            Core.Environment.UI.Toolbar.Remove(connectButt);
-            Core.Environment.UI.Toolbar.Remove(disconnectButt);
+            Environment.UI.Toolbar.Remove(reset);
+            Environment.UI.Toolbar.Remove(fps1);
+            Environment.UI.Toolbar.Remove(localProp);
+            Environment.UI.Toolbar.Remove(connectButt);
+            Environment.UI.Toolbar.Remove(disconnectButt);
             if (plc51 != null)
             {
                 plc51.OnRequestAllDataTelegramReceived -= OnRequestAllDataTelegramReceived;
@@ -776,7 +791,7 @@ namespace Experior.Controller.TollFashion
             if (plc54 != null)
             {
                 plc54.OnRequestAllDataTelegramReceived -= OnRequestAllDataTelegramReceived;
-                plc54.OnSetSystemStatusTelegramReceived -= OnSetSystemStatusTelegramReceived;           
+                plc54.OnSetSystemStatusTelegramReceived -= OnSetSystemStatusTelegramReceived;
             }
             if (plc61 != null)
             {
