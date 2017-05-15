@@ -138,7 +138,7 @@ namespace Experior.Catalog.Dematic.Storage.MultiShuttle.Assemblies
 
                 if (DestinationLoadAConv != DestinationLoadBConv)
                 {
-                    elevator.CurrentTask.UnloadCycle = Cycle.Single;
+                    UnloadCycle = Cycle.Single;
                 }
 
                 elevator.ElevatorTasks.Remove(newTask);
