@@ -139,12 +139,24 @@ namespace Experior.Controller.TollFashion
         private void EmulationController_FeedReceived(object sender, string[] telegramFields)
         {
             var location = telegramFields[1];
+            var barcode = telegramFields[2];
             if (location.StartsWith("DC"))
             {
                 //Decant feeding. Delete a tote on the empty tote line (if any)
                 if (emptyToteLine.LoadCount > 0)
                 {
-                    emptyToteLine.TransportSection.Route.Loads.Last.Value.Dispose();
+                    //Search for the tote on the empty tote line
+                    var exists = emptyToteLine.TransportSection.Route.Loads.FirstOrDefault(l => l.Identification == barcode);
+                    if (exists != null)
+                    {
+                        exists.Dispose();
+                    }
+                    else
+                    {
+                        //If no match then just dispose the front load
+                        emptyToteLine.TransportSection.Route.Loads.Last.Value.Dispose();
+                    }
+                   
                 }
             }
         }
