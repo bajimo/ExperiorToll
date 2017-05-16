@@ -522,13 +522,6 @@ namespace Experior.Controller.TollFashion
                 HandleFailedCartons(plc53, node.Name, load);
                 return;
             }
-            if (node.Name == "CC51ECINP1" || node.Name == "CC52ECINP1" || node.Name == "CC53ECINP1")
-            {
-                //Apply barcode
-                AddBarcodeAndData(node.Name, load);
-                AddBarcode2(load);
-                return;
-            }
             if (node.Name == "SORTERWEIGHT")
             {
                 AddWeight(load);
@@ -558,8 +551,12 @@ namespace Experior.Controller.TollFashion
             }
             if (node.Name == "CC51CARTONSWAP" || node.Name == "CC52CARTONSWAP" || node.Name == "CC53CARTONSWAP")
             {
+                //Apply barcode, set profile and carrier size
+                AddBarcodeAndData(node.Name, load);
+                AddBarcode2(load);        
                 SetCarrierSizeAfterCartonErector(load);
                 AddProfile(load);
+                return;
             }
             if (node.Name.StartsWith("CLEARSWAP"))
             {

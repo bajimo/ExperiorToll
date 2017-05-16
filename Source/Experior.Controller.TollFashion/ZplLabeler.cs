@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Experior.Plugin;
+using System.Globalization;
 
 namespace Experior.Controller.TollFashion
 {
@@ -23,23 +24,24 @@ namespace Experior.Controller.TollFashion
 
         private void CartonLabelerConnectionOnMessageReceived(Core.Communication.Connection sender, byte[] message)
         {
-            var barcode = ExtractBarcode(message);
+            var zpl = Encoding.ASCII.GetString(message);
+            var barcode = ExtractBarcode(zpl);
             if (!string.IsNullOrWhiteSpace(barcode))
             {
                 Core.Environment.Invoke(() =>
                     {
-                        Log.Write($"{sender.Name} barcode extracted from ZPL script: {barcode}");
+                        Log.Write(DateTime.Now.ToString(CultureInfo.InvariantCulture) + " MFH>PRT: " + sender.Id + " " + zpl);
+                        Log.Write($"Barcode extracted from ZPL script: {barcode}");
                         barcodes.Enqueue(barcode);
                     }
                 );
             }
         }
 
-        private string ExtractBarcode(byte[] zplMessage)
+        private string ExtractBarcode(string zpl)
         {
             try
             {
-                var zpl = Encoding.ASCII.GetString(zplMessage);
                 var startIndex = zpl.IndexOf("^FD>;", StringComparison.Ordinal) + 5;
                 var endIndex = zpl.IndexOf("^FS", StringComparison.Ordinal);
                 var barcode = zpl.Substring(startIndex, endIndex - startIndex).Trim();
