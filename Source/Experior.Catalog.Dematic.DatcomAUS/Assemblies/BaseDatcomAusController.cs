@@ -294,14 +294,40 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             telegram = telegram.SetFieldValue(this, TelegramFields.ULStatus, caseData.ULStatus);
             telegram = telegram.SetFieldValue(this, TelegramFields.Barcode1, load.Identification);
             telegram = telegram.SetFieldValue(this, TelegramFields.Barcode2, caseData.Barcode2);
-            telegram = telegram.SetFieldValue(this, TelegramFields.Profile, caseData.Profile);
+            if (!string.IsNullOrWhiteSpace(load.ExceptionProfile))
+            {
+                //User entered an exception profile
+                telegram = telegram.SetFieldValue(this, TelegramFields.Profile, load.ExceptionProfile);
+            }
+            else
+            {
+                telegram = telegram.SetFieldValue(this, TelegramFields.Profile, caseData.Profile);
+            }        
             telegram = telegram.SetFieldValue(this, TelegramFields.CarrierSize, caseData.CarrierSize);
-            telegram = telegram.SetFieldValue(this, TelegramFields.SpecialData, caseData.SpecialData);
+            telegram = telegram.SetFieldValue(this, TelegramFields.SpecialData, caseData.SpecialData);           
             if (caseData.Weight > 0)
             {
-                telegram = telegram.SetFieldValue(this, TelegramFields.Weight, (caseData.Weight * 1000).ToString("000000"));
+                //We need to send weight
+                if (!string.IsNullOrWhiteSpace(load.ExceptionWeight))
+                {
+                    //User entered an exception weight
+                    telegram = telegram.SetFieldValue(this, TelegramFields.Weight, load.ExceptionWeight);
+                }
+                else
+                {
+                    telegram = telegram.SetFieldValue(this, TelegramFields.Weight, (caseData.Weight * 1000).ToString("000000"));
+                }            
             }
-            telegram = telegram.SetFieldValue(this, TelegramFields.Height, (load.Height * 1000).ToString("0000"));
+            if (!string.IsNullOrWhiteSpace(load.ExceptionHeight))
+            {
+                //User entered an exception height
+                telegram = telegram.SetFieldValue(this, TelegramFields.Height, load.ExceptionHeight);
+            }
+            else
+            {
+                telegram = telegram.SetFieldValue(this, TelegramFields.Height, (load.Height * 1000).ToString("0000"));
+            }
+            
             telegram = telegram.SetFieldValue(this, TelegramFields.Length, (load.Length * 1000).ToString("0000"));
             telegram = telegram.SetFieldValue(this, TelegramFields.Width, (load.Width * 1000).ToString("0000"));
             return telegram;

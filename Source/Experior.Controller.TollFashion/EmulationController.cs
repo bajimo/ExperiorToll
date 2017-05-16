@@ -211,8 +211,11 @@ namespace Experior.Controller.TollFashion
                             caseLoad.Yaw = (float)(Math.PI / 2f);
                         }
 
-                        //Only send weight at weigh station
-                        //loadWeight[barcode] = we;
+                        //Store the weight for weigh stations
+                        if (!string.IsNullOrWhiteSpace(barcode))
+                        {
+                            loadWeight[barcode] = we;
+                        }
                         caseLoad.OnDisposed += CaseLoad_OnDisposed;
                     }
                     else
@@ -285,12 +288,6 @@ namespace Experior.Controller.TollFashion
             return "@@@@";
         }
 
-        //public string GetBarcode2(string identification)
-        //{
-        //    //todo how to do barcode2?
-        //    return identification;
-        //}
-
         //public string GetNextValidBarcode()
         //{
         //    var nextBarcode = validCartonErectionBarcodes.Any() ? validCartonErectionBarcodes.Dequeue() : $"noBarcodes {++noBarcodesCount}";
@@ -299,11 +296,10 @@ namespace Experior.Controller.TollFashion
 
         public float GetWeight(string barcode1)
         {
-            //TODO
             if (loadWeight.ContainsKey(barcode1))
                 return loadWeight[barcode1];
 
-            return 1;
+            return 0;
         }
 
         protected virtual void OnFeedReceived(string[] telegramFields)

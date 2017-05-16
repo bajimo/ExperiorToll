@@ -202,6 +202,12 @@ namespace Experior.Dematic.Base
         }
 
         [Category("Exception Data")]
+        [DisplayName("Profile")]
+        [Description("Change to report this value as an exception instead of the load value, project specific")]
+        [Experior.Core.Properties.AlwaysEditable]
+        public string ExceptionProfile { get; set; }
+
+        [Category("Exception Data")]
         [DisplayName("Height")]
         [Description("Change to report this value as an exception instead of the load value, project specific")]
         [Experior.Core.Properties.AlwaysEditable]

@@ -39,7 +39,7 @@ namespace Experior.Controller.TollFashion
         public TollFashionRouting() : base("TollFashionRouting")
         {
             StandardConstructor();
-            
+
             carton51Labeler = new ZplLabeler("CAR51");
             carton52Labeler = new ZplLabeler("CAR52");
             carton53Labeler = new ZplLabeler("CAR53");
@@ -156,7 +156,6 @@ namespace Experior.Controller.TollFashion
                         //If no match then just dispose the front load
                         emptyToteLine.TransportSection.Route.Loads.Last.Value.Dispose();
                     }
-                   
                 }
             }
         }
@@ -206,13 +205,10 @@ namespace Experior.Controller.TollFashion
             {
                 //sent to lidder
                 //Update carrier size
-                if (e.Load != null)
+                var caseData = (e.Load as Case_Load)?.Case_Data as CaseData;
+                if (caseData != null)
                 {
-                    var caseData = (e.Load as Case_Load)?.Case_Data as CaseData;
-                    if (caseData != null)
-                    {
-                        caseData.CarrierSize = e.Telegram.GetFieldValue(sender as IDATCOMAUSTelegrams, TelegramFields.CarrierSize).Trim();
-                    }
+                    caseData.CarrierSize = e.Telegram.GetFieldValue(sender as IDATCOMAUSTelegrams, TelegramFields.CarrierSize).Trim();
                 }
             }
         }
@@ -297,7 +293,8 @@ namespace Experior.Controller.TollFashion
             }
             else
             {
-                //what todo?
+                Log.Write($"Unknown carton size at carton erector ({cartonErector.Name}): {size}");
+                return;
             }
 
             var carton = FeedLoad.FeedCaseLoad(cartonErector.TransportSection, caseData.Length / 2, caseData.Length, caseData.Width, caseData.Height, 0, Color.Peru, 8, caseData);
@@ -388,8 +385,6 @@ namespace Experior.Controller.TollFashion
             equipmentStatuses.Add(new EquipmentStatus(plc63, "CC63LOOP", "11")); //11 loop is running
             equipmentStatuses.Add(new EquipmentStatus(plc63, "CC63QA1"));
             equipmentStatuses.Add(new EquipmentStatus(plc63, "CC63QA2"));
-
-            //todo Where are these mentioned?:
 
             equipmentStatuses.Add(cc51Cartona1 = new EquipmentStatus(plc51, "CC51CARTONA1", "11")); //CC11? 11 Both small and large cartons are available.
             cartonErectorSize["CC51CARTONA1"] = "10"; //Large          
@@ -613,14 +608,16 @@ namespace Experior.Controller.TollFashion
         private static void AddLid(Load load)
         {
             var part = load.Part;
-            var box = new BoxPart(part.Length, part.Height, part.Width, part.Density, part.Color, Core.Loads.Load.Rigids.Cube);
-            box.Position = part.Position;
-            box.Orientation = part.Orientation;
+            var box = new BoxPart(part.Length, part.Height, part.Width, part.Density, part.Color, Core.Loads.Load.Rigids.Cube)
+            {
+                Position = part.Position,
+                Orientation = part.Orientation
+            };
             load.Part = box;
             part.Dispose();
         }
 
-        private void AddBarcode2(Load load)
+        private static void AddBarcode2(Load load)
         {
             var caseLoad = load as Case_Load;
 
@@ -645,7 +642,7 @@ namespace Experior.Controller.TollFashion
             caseData.Barcode2 = "";
         }
 
-        private void SetCarrierSizeAfterCartonErector(Load load)
+        private static void SetCarrierSizeAfterCartonErector(Load load)
         {
             var caseLoad = load as Case_Load;
 
@@ -694,7 +691,7 @@ namespace Experior.Controller.TollFashion
                 load.Identification = carton51Labeler.GetNextValidBarcode();
             else if (location.StartsWith("CC52"))
                 load.Identification = carton52Labeler.GetNextValidBarcode();
-            else 
+            else
                 load.Identification = carton53Labeler.GetNextValidBarcode();
 
             var caseLoad = load as Case_Load;
