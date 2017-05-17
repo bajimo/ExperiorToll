@@ -92,6 +92,8 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             {
                 caseload.LoadWaitingForWCS = true;
                 caseload.StopLoad();
+                caseload.OnDisposing += Load_OnDisposed;
+                caseload.OnReleased += Load_OnReleased;
             }
 
             if (AlwaysArrival) //Always send arrival message
@@ -102,6 +104,21 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                 casePLC.SendArrivalMessage(commPoint.Name, caseload);
                 return;
             }
+        }
+
+        private void Load_OnDisposed(Load load)
+        {
+            //Load deleted while waiting for 01 message.
+            //Send manually deleted exception
+            load.OnDisposing -= Load_OnDisposed;
+            load.OnReleased -= Load_OnReleased;
+            casePLC.SendExceptionMessage(commPoint.Name, ((Case_Load)load), "MD");  
+        }
+
+        private void Load_OnReleased(Core.Loads.Load load)
+        {
+            load.OnDisposing -= Load_OnDisposed;
+            load.OnReleased -= Load_OnReleased;
         }
 
         [Browsable(false)]
