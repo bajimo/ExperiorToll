@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
@@ -9,6 +10,7 @@ using Experior.Core.Loads;
 using Experior.Core.Routes;
 using Experior.Dematic.Base;
 using Experior.Core;
+using Environment = Experior.Core.Environment;
 
 namespace Experior.Controller.TollFashion
 {
@@ -146,7 +148,7 @@ namespace Experior.Controller.TollFashion
                 if (emptyToteLine.LoadCount > 0)
                 {
                     //Search for the tote on the empty tote line
-                    var exists = emptyToteLine.TransportSection.Route.Loads.FirstOrDefault(l => l.Identification == barcode);
+                    var exists = emptyToteLine.TransportSection.Route.Loads.FirstOrDefault(l => l.Identification.Substring(0, Math.Min(7, l.Identification.Length)) == barcode.Substring(0, Math.Min(7, barcode.Length)));
                     if (exists != null)
                     {
                         exists.Dispose();
@@ -477,6 +479,7 @@ namespace Experior.Controller.TollFashion
         {
             if (node.Name.StartsWith("ROUTETO:"))
             {
+                CheckProductBarcodeSuffix(load);
                 var dest = node.Name.Replace("ROUTETO:", "");
                 if (dest.StartsWith("PICK"))
                 {
@@ -487,19 +490,16 @@ namespace Experior.Controller.TollFashion
                     if (picknumber > 17)
                         plc = plc53;
 
-                    var caseLoad = load as Case_Load;
-                    if (caseLoad == null)
-                    {
-                        Log.Write($"Error: Load exiting MS and going to pick {picknumber} is no caseLoad");
-                        return;
-                    }
-
                     //Set the destination so the case load will cross the main line
-                    if (!plc.RoutingTable.ContainsKey(caseLoad.SSCCBarcode))
-                        plc.RoutingTable[caseLoad.SSCCBarcode] = dest;
+                    if (!plc.RoutingTable.ContainsKey(load.Identification))
+                        plc.RoutingTable[load.Identification] = dest;
 
                 }
                 return;
+            }
+            if (node.Name == "CC63ETLNP1")
+            {
+                CheckProductBarcodeSuffix(load);
             }
             if (node.Name == "ETLENTRY")
             {
@@ -553,7 +553,7 @@ namespace Experior.Controller.TollFashion
             {
                 //Apply barcode, set profile and carrier size
                 AddBarcodeAndData(node.Name, load);
-                AddBarcode2(load);        
+                AddBarcode2(load);
                 SetCarrierSizeAfterCartonErector(load);
                 AddProfile(load);
                 return;
@@ -592,6 +592,24 @@ namespace Experior.Controller.TollFashion
             }
         }
 
+        private void CheckProductBarcodeSuffix(Load load)
+        {
+            //Check barcode suffix for totes coming out of MS
+            var barcode = load.Identification;
+            if (barcode.StartsWith("9") && barcode.Length == 7)
+            {
+                //Add suffix 1 or 2
+                if (Environment.Random.Next(0, 2) == 0)
+                {
+                    load.Identification = barcode + "1";
+                }
+                else
+                {
+                    load.Identification = barcode + "2";
+                }
+            }
+        }
+
         private void RequestValidBarcodes()
         {
             //MRP: Changed to use ZPL script
@@ -622,7 +640,25 @@ namespace Experior.Controller.TollFashion
             if (caseData == null)
                 return;
 
-            caseData.Barcode2 = load.Identification;
+            var barcode = load.Identification;
+
+            if (barcode.StartsWith("9") && barcode.Length == 8)
+            {
+                //Product tote. Add suffix 1 or 2
+                if (barcode.EndsWith("1"))
+                {
+                    caseData.Barcode2 = barcode.Substring(0, 7) + "2";
+                }
+                else
+                {
+                    caseData.Barcode2 = barcode.Substring(0, 7) + "1";
+                }
+            }
+            else
+            {
+                //Cartons have the same barcode 1 and 2
+                caseData.Barcode2 = barcode;
+            }
         }
 
         private static void ClearSwap(Load load)

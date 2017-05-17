@@ -292,8 +292,15 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             telegram = telegram.SetFieldValue(this, TelegramFields.Current, caseData.CurrentPosition);
             telegram = telegram.SetFieldValue(this, TelegramFields.Destination, caseData.DestinationPosition);
             telegram = telegram.SetFieldValue(this, TelegramFields.ULStatus, caseData.ULStatus);
-            telegram = telegram.SetFieldValue(this, TelegramFields.Barcode1, load.Identification);
-            telegram = telegram.SetFieldValue(this, TelegramFields.Barcode2, caseData.Barcode2);
+            if (string.IsNullOrWhiteSpace(caseData.Barcode2))
+            {
+                telegram = telegram.SetFieldValue(this, TelegramFields.Barcode1, load.Identification);
+            }
+            else
+            {
+                telegram = telegram.SetFieldValue(this, TelegramFields.Barcode1, load.Identification);
+                telegram = telegram.SetFieldValue(this, TelegramFields.Barcode2, caseData.Barcode2);
+            }        
             if (!string.IsNullOrWhiteSpace(load.ExceptionProfile))
             {
                 //User entered an exception profile

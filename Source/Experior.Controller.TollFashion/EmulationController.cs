@@ -201,6 +201,18 @@ namespace Experior.Controller.TollFashion
                         {
                             //Product tote
                             caseData.CarrierSize = "BX01";
+                            if (barcode.StartsWith("9") && barcode.Length == 7)
+                            {
+                                //Add product tote barcode suffix
+                                if (Core.Environment.Random.Next(0, 2) == 0)
+                                {
+                                    barcode = barcode + "1";
+                                }
+                                else
+                                {
+                                    barcode = barcode + "2";
+                                }
+                            }
                         }
 
                         caseLoad.SSCCBarcode = barcode;
