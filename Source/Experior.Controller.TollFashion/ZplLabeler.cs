@@ -56,7 +56,7 @@ namespace Experior.Controller.TollFashion
 
         public string GetNextValidBarcode()
         {
-            var nextBarcode = barcodes.Any() ? barcodes.Dequeue() : $"?noBarcodes{++noBarcodesCount}?";
+            var nextBarcode = barcodes.Any() ? barcodes.Dequeue() : $"?{(++noBarcodesCount).ToString("D6")}?";
             return nextBarcode;
         }
 
