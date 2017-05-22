@@ -266,7 +266,7 @@ namespace Experior.Controller.TollFashion
         private void Scene_OnStarting()
         {
             cartonErectorTimer.Start();
-            onlinePackingStationTimer.Start();
+            //onlinePackingStationTimer.Start(); //MRP disabled. WCS sends delete and feed messages for EMPTYCARTONRETURN instead
             cartonErectorResendTimer.Start();
         }
 
