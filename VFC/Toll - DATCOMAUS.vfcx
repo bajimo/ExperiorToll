@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Configuration VFCVERSION="1.0">
   <EmulationMode>True</EmulationMode>
   <SystemConfiguration>
@@ -2828,7 +2828,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>68</MachineMoves>
+        <MachineMoves>70</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="01E1 Level 02" Type="DMSDCIShuttle">
@@ -2909,7 +2909,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>4</MachineMoves>
+        <MachineMoves>5</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="01E1 Level 11" Type="DMSDCIShuttle">
@@ -2918,7 +2918,7 @@
         <ExTimeDelay>0</ExTimeDelay>
         <ExOutDest>Random</ExOutDest>
         <DatabaseChanged>False</DatabaseChanged>
-        <MachineMoves>3</MachineMoves>
+        <MachineMoves>4</MachineMoves>
         <Enabled>True</Enabled>
       </SubController>
       <SubController Name="01E1 Level 12" Type="DMSDCIShuttle">
@@ -10517,7 +10517,7 @@
       <triggerMessType>Disabled</triggerMessType>
       <RoutingTrigger>Arrival</RoutingTrigger>
       <Distribution>RoundRobin</Distribution>
-      <DestinationCode>CC63QA1A1,MSAI01CL01PS,MSAI02CL01PS,MSAI03CL01PS,MSAI04CL01PS,MSAI05CL01PS,MSAI06CL01PS,MSAI07CL01PS,MSAI08CL01PS,MSAI09CL01PS,MSAI10CL01PS,MSAI11CL01PS,MSAI12CL01PS,MSAI13CL01PS,MSAI14CL01PS,MSAI15CL01PS,MSAI16CL01PS,MSAI17CL01PS,MSAI18CL01PS,MSAI19CL01PS,MSAI20CL01PS,MSAI21CL01PS,MSAI22CL01PS,MSAI23CL01PS,MSAI24CL01PS</DestinationCode>
+      <DestinationCode>CC63QA1A1,MSAI01CL01PS10,MSAI02CL01PS10,MSAI03CL01PS10,MSAI04CL01PS10,MSAI05CL01PS10,MSAI06CL01PS10,MSAI07CL01PS10,MSAI08CL01PS10,MSAI09CL01PS10,MSAI10CL01PS10,MSAI11CL01PS10,MSAI12CL01PS10,MSAI13CL01PS10,MSAI14CL01PS10,MSAI15CL01PS10,MSAI16CL01PS10,MSAI17CL01PS10,MSAI18CL01PS10,MSAI19CL01PS10,MSAI20CL01PS10,MSAI21CL01PS10,MSAI22CL01PS10,MSAI23CL01PS10,MSAI24CL01PS10</DestinationCode>
       <DestinationCodeSecondary>
       </DestinationCodeSecondary>
       <TelegramDelay>0</TelegramDelay>
