@@ -236,7 +236,16 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                 case TelegramTypes.MaterialFlowStop: //15
                     MaterialFlowStopRecieved(telegram);
                     break;
+                case TelegramTypes.HeartBeat: //99
+                    HeartBeatReceived(telegram);
+                    break;
             }
+        }
+
+        private void HeartBeatReceived(string telegram)
+        {
+            var reply = Template.CreateTelegram(this, TelegramTypes.HeartBeat);
+            SendTelegram(reply);
         }
 
         void CasePLC_Datcom_OnPLCStateChange(object sender, PLCStateChangeEventArgs e)
