@@ -634,41 +634,15 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies
 
         public int GetTelegramLength(TelegramTypes telegramType) //[BG] I hate this!!
         {
-            //Make some code that hard codes the lengths of telegrams 
-            switch (telegramType)
-            {
-                case TelegramTypes.TUCancel:
-                case TelegramTypes.TUDataRequest:
-                case TelegramTypes.TUException:
-                case TelegramTypes.TULocationLeft:
-                case TelegramTypes.TUMission:
-                case TelegramTypes.TUMissionCancel:
-                case TelegramTypes.TUNotification:
-                case TelegramTypes.TUReport:
-                    return 144;
-                case TelegramTypes.StatusRequest:
-                case TelegramTypes.SetDateTime:
-                case TelegramTypes.LocationRequest:
-                case TelegramTypes.StartMaterialFlow:
-                //case TelegramTypes.StopMaterialFlow:
-                case TelegramTypes.FaultTextReq:
-                    return 44;
-                case TelegramTypes.Status:
-                //case TelegramTypes.StatusMaterialFlow:
-                case TelegramTypes.SetDevice:
-                    return 46;
-                case TelegramTypes.StatusEnd:
-                case TelegramTypes.Live:
-                    return 30;
-                case TelegramTypes.MoveMission:
-                    //case TelegramTypes.MoveReport:
-                    return 60;
-                case TelegramTypes.ExStatus:
-                    return 110;
-                case TelegramTypes.FaultTextDef:
-                    return 236;
-            }
-            return 0;
+            var type = Template.GetTelegramName(telegramType);
+
+            var experiorMvt = ControllerConnection.Templates.FirstOrDefault(t => t.Exists(f => f.Identifier && f.Identification == type));
+
+            if (experiorMvt == null)
+                return 0;
+
+            var telegramLength = experiorMvt.Sum(field => field.Length);
+            return telegramLength;
         }
         #endregion
 
