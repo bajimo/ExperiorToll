@@ -10,6 +10,7 @@ using Experior.Core.Loads;
 using Experior.Core.Routes;
 using Experior.Dematic.Base;
 using Experior.Core;
+using Experior.Dematic.Base.Devices;
 using Environment = Experior.Core.Environment;
 
 namespace Experior.Controller.TollFashion
@@ -30,9 +31,10 @@ namespace Experior.Controller.TollFashion
         private ActionPoint lidnp2;
         private Load lidnp2Load;
         private readonly Timer lidnp2Resend;
-        private readonly Timer cartonErectorTimer;
+        private readonly Timer cartonErectorTimer, cartonErectorResendTimer;
         private readonly Timer onlinePackingStationTimer;
         private EquipmentStatus cc51Cartona1, cc52Cartona1, cc53Cartona1;
+        private DematicCommunicationPoint cc51Cartona1Comm, cc52Cartona1Comm, cc53Cartona1Comm;
         private readonly Dictionary<ActionPoint, double> onlinePackingStations = new Dictionary<ActionPoint, double>();
         private double onlinePackingTime = 20; //20 seconds from arrival to done
         private readonly StraightConveyor emptyCartonOnlineTakeAway;
@@ -53,6 +55,7 @@ namespace Experior.Controller.TollFashion
             cartonErector1 = Core.Assemblies.Assembly.Get("P1051") as StraightConveyor;
             cartonErector2 = Core.Assemblies.Assembly.Get("P1052") as StraightConveyor;
             cartonErector3 = Core.Assemblies.Assembly.Get("P1053") as StraightConveyor;
+
             emptyCartonOnlineTakeAway = Core.Assemblies.Assembly.Get("P7071") as StraightConveyor;
 
             plc51 = Core.Assemblies.Assembly.Get("PLC 51") as MHEControllerAUS_Case;
@@ -115,6 +118,10 @@ namespace Experior.Controller.TollFashion
             cartonErectorTimer.AutoReset = true;
             cartonErectorTimer.OnElapsed += CartonErectorTimer_OnElapsed;
 
+            cartonErectorResendTimer = new Timer(10);
+            cartonErectorResendTimer.AutoReset = true;
+            cartonErectorResendTimer.OnElapsed += CartonErectorResendTimer_OnElapsed;
+
             //Init online packing stations (Actionpoint, arrival timestamp)
             for (int i = 1; i <= 18; i++)
             {
@@ -136,6 +143,18 @@ namespace Experior.Controller.TollFashion
             dispatchLanes.Add(Core.Assemblies.Assembly.Items["P11161"] as StraightBeltConveyor);
             dispatchLanes.Add(Core.Assemblies.Assembly.Items["P11181"] as StraightBeltConveyor);
             dispatchLanes.Add(Core.Assemblies.Assembly.Items["P11201"] as StraightBeltConveyor);
+        }
+
+        private void CartonErectorResendTimer_OnElapsed(Timer sender)
+        {
+            if (cc51Cartona1Comm.apCommPoint.Active)
+                plc51.SendArrivalMessage(cc51Cartona1Comm.Name, cc51Cartona1Comm.apCommPoint.ActiveLoad as Case_Load);
+
+            if (cc52Cartona1Comm.apCommPoint.Active)
+                plc52.SendArrivalMessage(cc52Cartona1Comm.Name, cc52Cartona1Comm.apCommPoint.ActiveLoad as Case_Load);
+
+            if (cc53Cartona1Comm.apCommPoint.Active)
+                plc53.SendArrivalMessage(cc53Cartona1Comm.Name, cc53Cartona1Comm.apCommPoint.ActiveLoad as Case_Load);
         }
 
         private void EmulationController_FeedReceived(object sender, string[] telegramFields)
@@ -248,6 +267,7 @@ namespace Experior.Controller.TollFashion
         {
             cartonErectorTimer.Start();
             onlinePackingStationTimer.Start();
+            cartonErectorResendTimer.Start();
         }
 
         private void CartonErectorTimer_OnElapsed(Timer sender)
@@ -429,6 +449,14 @@ namespace Experior.Controller.TollFashion
 
                 d.beltControl.LineReleasePhotocell.OnPhotocellStatusChanged += Dispatch_LineReleasePhotocell_OnPhotocellStatusChanged;
             }
+
+            var carton51 = Core.Assemblies.Assembly.Get("CARTON51");
+            var carton52 = Core.Assemblies.Assembly.Get("CARTON52");
+            var carton53 = Core.Assemblies.Assembly.Get("CARTON53");
+
+            cc51Cartona1Comm = carton51.Assemblies.FirstOrDefault(a => a.Name == "CC51CARTONA1") as DematicCommunicationPoint;
+            cc52Cartona1Comm = carton52.Assemblies.FirstOrDefault(a => a.Name == "CC52CARTONA1") as DematicCommunicationPoint;
+            cc53Cartona1Comm = carton53.Assemblies.FirstOrDefault(a => a.Name == "CC53CARTONA1") as DematicCommunicationPoint;
         }
 
         private void OnRequestAllDataTelegramReceived(object sender, MessageEventArgs e)
@@ -868,6 +896,8 @@ namespace Experior.Controller.TollFashion
 
             cartonErectorTimer.OnElapsed -= CartonErectorTimer_OnElapsed;
             cartonErectorTimer.Dispose();
+            cartonErectorResendTimer.OnElapsed -= CartonErectorResendTimer_OnElapsed;
+            cartonErectorResendTimer.Dispose();
             lidnp2Resend.OnElapsed -= Lidnp2Resend_Elapsed;
             lidnp2Resend.Dispose();
             onlinePackingStationTimer.OnElapsed -= OnlinePackingStationTimer_OnElapsed;
