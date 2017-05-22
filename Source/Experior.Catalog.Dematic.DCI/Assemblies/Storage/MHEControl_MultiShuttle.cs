@@ -74,7 +74,8 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
         void theMultishuttle_OnArrivedAtPickStationConvPosA(object sender, PickDropStationArrivalEventArgs e)
         {
             Case_Load caseLoad = e._caseLoad;
-            if (caseLoad.Identification.StartsWith("9")) caseLoad.Identification.Substring(0, 7);
+            if (caseLoad.Identification.StartsWith("9") && caseLoad.Identification.Length >= 8)
+                caseLoad.Identification = caseLoad.Identification.Substring(0, 7);
             DCICaseData caseData = new DCICaseData();
             caseData.Length = caseLoad.Length;
             caseData.Width = caseLoad.Width;
