@@ -139,7 +139,7 @@
           <Length>14</Length>
           <NextLength>false</NextLength>
           <No>6</No>
-          <Pad>LEFT</Pad>
+          <Pad>RIGHT</Pad>
           <PadChar>, ,</PadChar>
           <PrintFormat>DEC</PrintFormat>
           <ProtocolDataType>ASCII</ProtocolDataType>
@@ -605,7 +605,7 @@
           <Length>14</Length>
           <NextLength>false</NextLength>
           <No>6</No>
-          <Pad>LEFT</Pad>
+          <Pad>RIGHT</Pad>
           <PadChar>, ,</PadChar>
           <PrintFormat>DEC</PrintFormat>
           <ProtocolDataType>ASCII</ProtocolDataType>
@@ -1071,7 +1071,7 @@
           <Length>14</Length>
           <NextLength>false</NextLength>
           <No>6</No>
-          <Pad>LEFT</Pad>
+          <Pad>RIGHT</Pad>
           <PadChar>, ,</PadChar>
           <PrintFormat>DEC</PrintFormat>
           <ProtocolDataType>ASCII</ProtocolDataType>
@@ -1537,7 +1537,7 @@
           <Length>14</Length>
           <NextLength>false</NextLength>
           <No>6</No>
-          <Pad>LEFT</Pad>
+          <Pad>RIGHT</Pad>
           <PadChar>, ,</PadChar>
           <PrintFormat>DEC</PrintFormat>
           <ProtocolDataType>ASCII</ProtocolDataType>
@@ -2003,7 +2003,7 @@
           <Length>14</Length>
           <NextLength>false</NextLength>
           <No>6</No>
-          <Pad>LEFT</Pad>
+          <Pad>RIGHT</Pad>
           <PadChar>, ,</PadChar>
           <PrintFormat>DEC</PrintFormat>
           <ProtocolDataType>ASCII</ProtocolDataType>
@@ -2469,7 +2469,7 @@
           <Length>14</Length>
           <NextLength>false</NextLength>
           <No>6</No>
-          <Pad>LEFT</Pad>
+          <Pad>RIGHT</Pad>
           <PadChar>, ,</PadChar>
           <PrintFormat>DEC</PrintFormat>
           <ProtocolDataType>ASCII</ProtocolDataType>
@@ -2935,7 +2935,7 @@
           <Length>14</Length>
           <NextLength>false</NextLength>
           <No>6</No>
-          <Pad>LEFT</Pad>
+          <Pad>RIGHT</Pad>
           <PadChar>, ,</PadChar>
           <PrintFormat>DEC</PrintFormat>
           <ProtocolDataType>ASCII</ProtocolDataType>
@@ -3401,7 +3401,7 @@
           <Length>14</Length>
           <NextLength>false</NextLength>
           <No>6</No>
-          <Pad>LEFT</Pad>
+          <Pad>RIGHT</Pad>
           <PadChar>, ,</PadChar>
           <PrintFormat>DEC</PrintFormat>
           <ProtocolDataType>ASCII</ProtocolDataType>
@@ -3867,7 +3867,7 @@
           <Length>14</Length>
           <NextLength>false</NextLength>
           <No>6</No>
-          <Pad>LEFT</Pad>
+          <Pad>RIGHT</Pad>
           <PadChar>, ,</PadChar>
           <PrintFormat>DEC</PrintFormat>
           <ProtocolDataType>ASCII</ProtocolDataType>
@@ -4333,7 +4333,7 @@
           <Length>14</Length>
           <NextLength>false</NextLength>
           <No>6</No>
-          <Pad>LEFT</Pad>
+          <Pad>RIGHT</Pad>
           <PadChar>, ,</PadChar>
           <PrintFormat>DEC</PrintFormat>
           <ProtocolDataType>ASCII</ProtocolDataType>
@@ -4799,7 +4799,7 @@
           <Length>14</Length>
           <NextLength>false</NextLength>
           <No>6</No>
-          <Pad>LEFT</Pad>
+          <Pad>RIGHT</Pad>
           <PadChar>, ,</PadChar>
           <PrintFormat>DEC</PrintFormat>
           <ProtocolDataType>ASCII</ProtocolDataType>
@@ -5777,12 +5777,12 @@
           <Length>14</Length>
           <NextLength>false</NextLength>
           <No>6</No>
-          <Pad>LEFT</Pad>
+          <Pad>RIGHT</Pad>
           <PadChar>, ,</PadChar>
           <PrintFormat>DEC</PrintFormat>
           <ProtocolDataType>ASCII</ProtocolDataType>
           <Repetition>false</Repetition>
-          <Selected>false</Selected>
+          <Selected>true</Selected>
           <Terminate>false</Terminate>
           <Width>279</Width>
           <X>220</X>

@@ -357,7 +357,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             int count = RoutingTable.Count;
 
             var barcode1 = telegram.GetFieldValue(this, TelegramFields.Barcode1);
-            var current = telegram.GetFieldValue(this, TelegramFields.Current);
+            var current = telegram.GetFieldValue(this, TelegramFields.Current).Trim();
             var carrierSize = telegram.GetFieldValue(this, TelegramFields.CarrierSize);
 
             Case_Load caseload = null;
