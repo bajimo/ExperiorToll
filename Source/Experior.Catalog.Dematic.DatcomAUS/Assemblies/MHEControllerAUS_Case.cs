@@ -245,7 +245,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         private void HeartBeatReceived(string telegram)
         {
             var reply = Template.CreateTelegram(this, TelegramTypes.HeartBeat);
-            SendTelegram(reply);
+            SendTelegram(reply, LogHeartBeat);
         }
 
         void CasePLC_Datcom_OnPLCStateChange(object sender, PLCStateChangeEventArgs e)
