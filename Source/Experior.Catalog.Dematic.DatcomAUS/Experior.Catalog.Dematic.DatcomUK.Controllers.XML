@@ -14,7 +14,7 @@
             This is a PLC that handels Datcom AUS messages
             </summary>
         </member>
-        <member name="M:Experior.Catalog.Dematic.DatcomAUS.Assemblies.MHEControllerAUS_Case.SendArrivalMessage(System.String,Experior.Dematic.Base.Case_Load,System.String,System.Boolean)">
+        <member name="M:Experior.Catalog.Dematic.DatcomAUS.Assemblies.MHEControllerAUS_Case.SendArrivalMessage(System.String,Experior.Dematic.Base.Case_Load,System.String,System.Boolean,System.Boolean)">
             <summary>
             Send 02 arrival message
             </summary>
@@ -22,6 +22,7 @@
             <param name="load"></param>
             <param name="status">‘00’ Normal , ‘08’ Blocked , ‘09’ Waiting for Acknowledgement Blocked, ‘MD’ Manually Deleted, ‘DC’ Delete Confirmed, ‘DF’ Delete Fail</param>
             <param name="alwaysArrival">If false then the arrival is only sent if routing for the load is unknown</param>
+            <param name="logMessage"></param>
         </member>
         <member name="M:Experior.Catalog.Dematic.DatcomAUS.Assemblies.MHEControllerAUS_Case.SendExceptionMessage(System.String,Experior.Dematic.Base.Case_Load,System.String)">
             <summary>

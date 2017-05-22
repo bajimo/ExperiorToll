@@ -148,13 +148,13 @@ namespace Experior.Controller.TollFashion
         private void CartonErectorResendTimer_OnElapsed(Timer sender)
         {
             if (cc51Cartona1Comm.apCommPoint.Active)
-                plc51.SendArrivalMessage(cc51Cartona1Comm.Name, cc51Cartona1Comm.apCommPoint.ActiveLoad as Case_Load);
+                plc51.SendArrivalMessage(cc51Cartona1Comm.Name, cc51Cartona1Comm.apCommPoint.ActiveLoad as Case_Load, "00", true, false);
 
             if (cc52Cartona1Comm.apCommPoint.Active)
-                plc52.SendArrivalMessage(cc52Cartona1Comm.Name, cc52Cartona1Comm.apCommPoint.ActiveLoad as Case_Load);
+                plc52.SendArrivalMessage(cc52Cartona1Comm.Name, cc52Cartona1Comm.apCommPoint.ActiveLoad as Case_Load, "00", true, false);
 
             if (cc53Cartona1Comm.apCommPoint.Active)
-                plc53.SendArrivalMessage(cc53Cartona1Comm.Name, cc53Cartona1Comm.apCommPoint.ActiveLoad as Case_Load);
+                plc53.SendArrivalMessage(cc53Cartona1Comm.Name, cc53Cartona1Comm.apCommPoint.ActiveLoad as Case_Load, "00", true, false);
         }
 
         private void EmulationController_FeedReceived(object sender, string[] telegramFields)

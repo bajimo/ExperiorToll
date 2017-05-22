@@ -131,7 +131,8 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         /// <param name="load"></param>
         /// <param name="status">‘00’ Normal , ‘08’ Blocked , ‘09’ Waiting for Acknowledgement Blocked, ‘MD’ Manually Deleted, ‘DC’ Delete Confirmed, ‘DF’ Delete Fail</param>
         /// <param name="alwaysArrival">If false then the arrival is only sent if routing for the load is unknown</param>
-        public void SendArrivalMessage(string location, Case_Load load, string status = "00", bool alwaysArrival = true)
+        /// <param name="logMessage"></param>
+        public void SendArrivalMessage(string location, Case_Load load, string status = "00", bool alwaysArrival = true, bool logMessage = true)
         {
             if (string.IsNullOrWhiteSpace(location))
                 return;
@@ -158,7 +159,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                 }
    
                 var telegram = CreateTelegramFromLoad(TelegramTypes.Arrival, load);
-                SendTelegram(telegram);
+                SendTelegram(telegram, logMessage);
             }
         }
 
