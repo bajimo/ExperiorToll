@@ -59,6 +59,12 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             base.Dispose();
         }
 
+        public override void Reset()
+        {
+            RoutingTable.Clear();
+            base.Reset();
+        }
+
         public override Image Image
         {
             get { return Common.Icons.Get("PLC"); }
