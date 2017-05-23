@@ -226,6 +226,11 @@ namespace Experior.Catalog.Dematic.Storage.MultiShuttle.Assemblies
                                 }
                             }
 
+                            if (lowestTask == null) //Check to see if these is a grouped task and execute
+                            {
+                                lowestTask = oTasks.FirstOrDefault(x => x.NumberOfLoadsInTask == 2);                  
+                            }
+
                             if (lowestTask == null) //A paired load has not been found so choose a single (will be paired with another load from another level using optimise task)
                             {
                                 //Only choose loads that are on the front position (B)

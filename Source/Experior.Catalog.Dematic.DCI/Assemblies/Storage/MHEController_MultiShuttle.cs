@@ -224,19 +224,19 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
 
                     if (messageA != null && messageB != null)
                     {
-                        ElevatorTask et = new ElevatorTask(locA.ActiveLoad.Identification, locB.ActiveLoad.Identification)
+                        ElevatorTask et = new ElevatorTask(locB.ActiveLoad.Identification, locA.ActiveLoad.Identification)
                         {
                             LoadCycle = loadCycle,
                             Flow = TaskType.Outfeed,
-                            SourceLoadA = locA.LocName,
-                            SourceLoadB = locB.LocName,
-                            DestinationLoadA = destA,
-                            DestinationLoadB = destB,
+                            SourceLoadA = locB.LocName,
+                            SourceLoadB = locA.LocName,
+                            DestinationLoadA = destB,
+                            DestinationLoadB = destA,
                             UnloadCycle = Cycle.Double
                         };
 
-                        UpDateLoadParameters(telegram, (Case_Load)locA.ActiveLoad, 1);
-                        UpDateLoadParameters(telegram, (Case_Load)locB.ActiveLoad, 0);
+                        UpDateLoadParameters(telegram, (Case_Load)locB.ActiveLoad, 1);
+                        UpDateLoadParameters(telegram, (Case_Load)locA.ActiveLoad, 0);
 
                         ms.elevators.First(x => x.ElevatorName == side + aisle).ElevatorTasks.Add(et);
                     }
