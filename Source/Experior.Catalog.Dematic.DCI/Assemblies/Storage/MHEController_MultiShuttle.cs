@@ -69,12 +69,13 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
             string destLoc1            = telegram.GetFieldValue(this, TelegramFields.Destination, 1);
             string tuIdent0            = telegram.GetFieldValue(this, TelegramFields.TUIdent, 0);
             string tuIdent1            = telegram.GetFieldValue(this, TelegramFields.TUIdent, 1);
-            string aisle               = GetPSDSLocFields(current0, PSDSRackLocFields.Aisle);
-            string side                = GetPSDSLocFields(current0, PSDSRackLocFields.Side);
+
             string destA = null, destB = null;
 
             if (current0.LocationType() == LocationTypes.PickStation)
             {
+                string aisle = GetPSDSLocFields(current0, PSDSRackLocFields.Aisle);
+                string side = GetPSDSLocFields(current0, PSDSRackLocFields.Side);
                 // takes the form aasyyxz: aa=aisle, s = side, yy = level, x = conv type see enum ConveyorTypes , Z = loc A or B e.g. 01R05PA
                 string loc = string.Format("{0}{1}{2}P", aisle, side, GetPSDSLocFields(current0, PSDSRackLocFields.Level));
 
@@ -175,9 +176,8 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
             }
             else if (current0.LocationType() == LocationTypes.RackConvOut)
             {
-                //Create task for two outfeed missions grouped together
-
-                //Loads can be either on the same level or on different levels - work this out first
+                string aisle = GetRackLocFields(current0, PSDSRackLocFields.Aisle);
+                string side = GetRackLocFields(current0, PSDSRackLocFields.Side);
 
                 // takes the form aasyyxz: aa=aisle, s = side, yy = level, x = conv type see enum ConveyorTypes , Z = loc A or B e.g. 01R05PA
                 string locNameA = string.Format("{0}{1}{2}O", aisle, side, GetRackLocFields(current0, PSDSRackLocFields.Level));
