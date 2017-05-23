@@ -19,25 +19,24 @@ namespace Experior.Plugin
         public StringBuilder Sb = new StringBuilder();
     }
 
-    /// <summary>
-    /// MRP: We probably need this server if WCS disconnects after each ZPL script message...
-    /// </summary>
     public class ZplAsyncServer
     {
         // Thread signal.  
         private readonly ManualResetEvent allDone = new ManualResetEvent(false);
 
-        public void StartListening()
+        private Socket listener;
+        private bool disposed;
+
+        public event EventHandler<string> TelegramReceived;
+
+        public void StartListening(int port)
         {
             // Establish the local endpoint for the socket.  
-            // The DNS name of the computer  
-            // running the listener is "host.contoso.com".  
-            var ipHostInfo = Dns.GetHostEntry(Dns.GetHostName());
-            var ipAddress = ipHostInfo.AddressList[0];
-            var localEndPoint = new IPEndPoint(ipAddress, 11000);
-
+            var ipAddress = IPAddress.Parse("127.0.0.1"); 
+            var localEndPoint = new IPEndPoint(ipAddress, port);
+            
             // Create a TCP/IP socket.  
-            var listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
             // Bind the socket to the local endpoint and listen for incoming connections.  
             try
@@ -45,7 +44,7 @@ namespace Experior.Plugin
                 listener.Bind(localEndPoint);
                 listener.Listen(100);
 
-                while (true)
+                while (!disposed)
                 {
                     // Set the event to nonsignaled state.  
                     allDone.Reset();
@@ -63,16 +62,29 @@ namespace Experior.Plugin
             }
         }
 
+        public void Dispose()
+        {
+            //listener.Disconnect(false);
+            listener.Dispose();
+        }
+
         public void AcceptCallback(IAsyncResult ar)
         {
-            // Signal the main thread to continue.  
-            allDone.Set();
-            // Get the socket that handles the client request.  
-            var listener = (Socket)ar.AsyncState;
-            var handler = listener.EndAccept(ar);
-            // Create the state object.  
-            var state = new StateObject {WorkSocket = handler};
-            handler.BeginReceive(state.Buffer, 0, StateObject.BufferSize, 0, ReadCallback, state);
+            try
+            {
+                // Signal the main thread to continue.  
+                allDone.Set();
+                // Get the socket that handles the client request.  
+                var listener = (Socket)ar.AsyncState;
+                var handler = listener.EndAccept(ar);
+                // Create the state object.  
+                var state = new StateObject { WorkSocket = handler };
+                handler.BeginReceive(state.Buffer, 0, StateObject.BufferSize, 0, ReadCallback, state);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
         }
 
         public void ReadCallback(IAsyncResult ar)
@@ -94,11 +106,8 @@ namespace Experior.Plugin
                 var content = state.Sb.ToString();
                 if (content.IndexOf("^XZ", StringComparison.Ordinal) > -1)
                 {
-                    // All the data has been read from the   
-                    // client. Display it on the console.  
-                    Console.WriteLine(@"Read {0} bytes from socket. Data : {1}", content.Length, content);
-                    // Echo the data back to the client.  
-                    //Send(handler, content);
+                    // All the data has been read from the client   
+                    OnTelegramReceived(content);
                 }
                 else
                 {
@@ -106,6 +115,11 @@ namespace Experior.Plugin
                     handler.BeginReceive(state.Buffer, 0, StateObject.BufferSize, 0, ReadCallback, state);
                 }
             }
+        }
+
+        protected virtual void OnTelegramReceived(string e)
+        {
+            TelegramReceived?.Invoke(this, e);
         }
     }
 }

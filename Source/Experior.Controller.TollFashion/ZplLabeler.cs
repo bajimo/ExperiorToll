@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Experior.Plugin;
 using System.Globalization;
+using Experior.Core.Communication;
 
 namespace Experior.Controller.TollFashion
 {
@@ -15,28 +16,45 @@ namespace Experior.Controller.TollFashion
 
         public ZplLabeler(string connectionName)
         {
-            cartonLabelerConnection = Core.Communication.Connection.Items.Values.OfType<ZplSocket>().FirstOrDefault(c => c.Name == connectionName);
+            cartonLabelerConnection = Connection.Items.Values.OfType<ZplSocket>().FirstOrDefault(c => c.Name == connectionName);
             if (cartonLabelerConnection != null)
             {
-                cartonLabelerConnection.OnMessageReceived += CartonLabelerConnectionOnMessageReceived;
+                //cartonLabelerConnection.OnMessageReceived += CartonLabelerConnectionOnMessageReceived;
+                cartonLabelerConnection.ZplScriptReceived += CartonLabelerConnection_ZplScriptReceived;
             }
         }
 
-        private void CartonLabelerConnectionOnMessageReceived(Core.Communication.Connection sender, byte[] message)
+        private void CartonLabelerConnection_ZplScriptReceived(object sender, string zpl)
         {
-            var zpl = Encoding.ASCII.GetString(message);
             var barcode = ExtractBarcode(zpl);
+            var conn = sender as Connection;
             if (!string.IsNullOrWhiteSpace(barcode))
             {
                 Core.Environment.Invoke(() =>
                     {
-                        Log.Write(DateTime.Now.ToString(CultureInfo.InvariantCulture) + " MFH>PRT: " + sender.Id + " " + zpl);
+                        Log.Write(DateTime.Now.ToString(CultureInfo.InvariantCulture) + " MFH>PRT: " + conn?.Id + " " + zpl);
                         Log.Write($"Barcode extracted from ZPL script: {barcode}");
                         barcodes.Enqueue(barcode);
                     }
                 );
             }
         }
+
+        //private void CartonLabelerConnectionOnMessageReceived(Connection sender, byte[] message)
+        //{
+            //var zpl = Encoding.ASCII.GetString(message);
+            //var barcode = ExtractBarcode(zpl);
+            //if (!string.IsNullOrWhiteSpace(barcode))
+            //{
+            //    Core.Environment.Invoke(() =>
+            //        {
+            //            Log.Write(DateTime.Now.ToString(CultureInfo.InvariantCulture) + " MFH>PRT: " + sender.Id + " " + zpl);
+            //            Log.Write($"Barcode extracted from ZPL script: {barcode}");
+            //            barcodes.Enqueue(barcode);
+            //        }
+            //    );
+            //}
+        //}
 
         private string ExtractBarcode(string zpl)
         {
