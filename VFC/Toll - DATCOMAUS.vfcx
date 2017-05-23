@@ -10899,11 +10899,11 @@
       </Category>
       <triggerMessType>Disabled</triggerMessType>
       <RoutingTrigger>Arrival</RoutingTrigger>
-      <Distribution>First</Distribution>
-      <DestinationCode>CC61ECFA2,CC62SORTNP1</DestinationCode>
+      <Distribution>Random</Distribution>
+      <DestinationCode>CC62SORTNP1</DestinationCode>
       <DestinationCodeSecondary>CC61ECFA2</DestinationCodeSecondary>
       <TelegramDelay>0</TelegramDelay>
-      <RoutePercentage>100</RoutePercentage>
+      <RoutePercentage>95</RoutePercentage>
       <RouteController>PLC61</RouteController>
     </Routing>
     <Routing Name="CC61LPA1VP1" Type="DATCOMAUSRouting">
