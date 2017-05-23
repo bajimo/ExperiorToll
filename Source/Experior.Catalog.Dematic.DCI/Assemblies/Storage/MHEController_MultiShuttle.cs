@@ -62,117 +62,190 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
             MultiShuttle ms         = null;
 
             TelegramTypes type = telegram.GetTelegramType(this);
-            
 
-            //List<string> indexTags;
-            //List<string> messageBodies = Telegrams.DeMultaplise(telegram, telegram.GetTelegramType(), out indexTags);
-            //string[] messageBodySplit  = messageBodies.First().Split(',');//don't care which message is used as both on the same conveyor
-            string current            = telegram.GetFieldValue(this, TelegramFields.Current);
+            string current0            = telegram.GetFieldValue(this, TelegramFields.Current, 0);
+            string current1            = telegram.GetFieldValue(this, TelegramFields.Current, 1);
             string destLoc0            = telegram.GetFieldValue(this, TelegramFields.Destination, 0);
             string destLoc1            = telegram.GetFieldValue(this, TelegramFields.Destination, 1);
             string tuIdent0            = telegram.GetFieldValue(this, TelegramFields.TUIdent, 0);
             string tuIdent1            = telegram.GetFieldValue(this, TelegramFields.TUIdent, 1);
-            string aisle               = GetPSDSLocFields(current, PSDSRackLocFields.Aisle);
-            string side                = GetPSDSLocFields(current, PSDSRackLocFields.Side);
+            string aisle               = GetPSDSLocFields(current0, PSDSRackLocFields.Aisle);
+            string side                = GetPSDSLocFields(current0, PSDSRackLocFields.Side);
             string destA = null, destB = null;
 
-            // takes the form aasyyxz: aa=aisle, s = side, yy = level, x = conv type see enum ConveyorTypes , Z = loc A or B e.g. 01R05OA
-            string loc = string.Format("{0}{1}{2}P", aisle, side, GetPSDSLocFields(current, PSDSRackLocFields.Level));
-
-            ms           = GetMultishuttleFromAisleNum(loc + "A");
-            locA         = ms.ConveyorLocations.Find(x => x.LocName == loc + "A");
-            locB         = ms.ConveyorLocations.Find(x => x.LocName == loc + "B");
-
-            if((locA != null && locA.Active) && (locB != null && locB.Active))
+            if (current0.LocationType() == LocationTypes.PickStation)
             {
-                string messageA = telegram.Split(',').ToList().Find(x => x.Contains(locA.ActiveLoad.Identification));
-                string messageB = telegram.Split(',').ToList().Find(x => x.Contains(locB.ActiveLoad.Identification));
+                // takes the form aasyyxz: aa=aisle, s = side, yy = level, x = conv type see enum ConveyorTypes , Z = loc A or B e.g. 01R05PA
+                string loc = string.Format("{0}{1}{2}P", aisle, side, GetPSDSLocFields(current0, PSDSRackLocFields.Level));
 
-                if (destLoc0 == null || destLoc1 == null)
-                {
-                    Log.Write(string.Format("{0}: Invalid destinations sent in TUMission - Logically Grouped",  Name), Color.Red);
-                    return;
-                } 
+                ms = GetMultishuttleFromAisleNum(loc + "A");
+                locA = ms.ConveyorLocations.Find(x => x.LocName == loc + "A");
+                locB = ms.ConveyorLocations.Find(x => x.LocName == loc + "B");
 
-                if (telegram.GetFieldValue(this, TelegramFields.Destination, 0).LocationType() == LocationTypes.DropStation)  //Assume that both going to DS
+                if ((locA != null && locA.Active) && (locB != null && locB.Active))
                 {
-                    destA = string.Format("{0}{1}{2}{3}A", aisle,
-                                                          side,
-                                                          GetPSDSLocFields(destLoc0, PSDSRackLocFields.Level),
-                                                          GetPSDSLocFields(destLoc0, PSDSRackLocFields.ConvType));
-                    destB = destA;
-                }
-                else if (telegram.GetFieldValue(this, TelegramFields.Destination).LocationType() == LocationTypes.RackConvIn)
-                {
-                    //need to calculate which way around the loads are on the PS and ensure that the elevator task is correct
-                    if (locA.ActiveLoad.Identification == tuIdent0)
-                    {
-                        destA = string.Format("{0}{1}{2}{3}B", aisle, side, GetLocFields(destLoc0, PSDSRackLocFields.Level), GetLocFields(destLoc0, PSDSRackLocFields.ConvType));
+                    string messageA = telegram.Split(',').ToList().Find(x => x.Contains(locA.ActiveLoad.Identification));
+                    string messageB = telegram.Split(',').ToList().Find(x => x.Contains(locB.ActiveLoad.Identification));
 
-                    }
-                    else if (locA.ActiveLoad.Identification == tuIdent1)
+                    if (destLoc0 == null || destLoc1 == null)
                     {
-                        destA = string.Format("{0}{1}{2}{3}B", aisle, side, GetLocFields(destLoc1, PSDSRackLocFields.Level), GetLocFields(destLoc1, PSDSRackLocFields.ConvType));
-                    }
-                    else
-                    {
-                        Log.Write(string.Format("Error {0}: The tuIdent at the PS does not match the tuIdent in the TU Mission - Logically Grouped (Position A"), Color.Orange);
+                        Log.Write(string.Format("{0}: Invalid destinations sent in TUMission - Logically Grouped", Name), Color.Red);
                         return;
                     }
 
-                    if (locB.ActiveLoad.Identification == tuIdent0)
+                    if (telegram.GetFieldValue(this, TelegramFields.Destination, 0).LocationType() == LocationTypes.DropStation)  //Assume that both going to DS
                     {
-                        destB = string.Format("{0}{1}{2}{3}B", aisle, side, GetLocFields(destLoc0, PSDSRackLocFields.Level), GetLocFields(destLoc0, PSDSRackLocFields.ConvType));
-
+                        destA = string.Format("{0}{1}{2}{3}A", aisle,
+                                                              side,
+                                                              GetPSDSLocFields(destLoc0, PSDSRackLocFields.Level),
+                                                              GetPSDSLocFields(destLoc0, PSDSRackLocFields.ConvType));
+                        destB = destA;
                     }
-                    else if (locB.ActiveLoad.Identification == tuIdent1)
+                    else if (telegram.GetFieldValue(this, TelegramFields.Destination).LocationType() == LocationTypes.RackConvIn)
                     {
-                        destB = string.Format("{0}{1}{2}{3}B", aisle, side, GetLocFields(destLoc1, PSDSRackLocFields.Level), GetLocFields(destLoc1, PSDSRackLocFields.ConvType));
+                        //need to calculate which way around the loads are on the PS and ensure that the elevator task is correct
+                        if (locA.ActiveLoad.Identification == tuIdent0)
+                        {
+                            destA = string.Format("{0}{1}{2}{3}B", aisle, side, GetLocFields(destLoc0, PSDSRackLocFields.Level), GetLocFields(destLoc0, PSDSRackLocFields.ConvType));
+
+                        }
+                        else if (locA.ActiveLoad.Identification == tuIdent1)
+                        {
+                            destA = string.Format("{0}{1}{2}{3}B", aisle, side, GetLocFields(destLoc1, PSDSRackLocFields.Level), GetLocFields(destLoc1, PSDSRackLocFields.ConvType));
+                        }
+                        else
+                        {
+                            Log.Write(string.Format("Error {0}: The tuIdent at the PS does not match the tuIdent in the TU Mission - Logically Grouped (Position A"), Color.Orange);
+                            return;
+                        }
+
+                        if (locB.ActiveLoad.Identification == tuIdent0)
+                        {
+                            destB = string.Format("{0}{1}{2}{3}B", aisle, side, GetLocFields(destLoc0, PSDSRackLocFields.Level), GetLocFields(destLoc0, PSDSRackLocFields.ConvType));
+
+                        }
+                        else if (locB.ActiveLoad.Identification == tuIdent1)
+                        {
+                            destB = string.Format("{0}{1}{2}{3}B", aisle, side, GetLocFields(destLoc1, PSDSRackLocFields.Level), GetLocFields(destLoc1, PSDSRackLocFields.ConvType));
+                        }
+                        else
+                        {
+                            Log.Write(string.Format("Error {0}: The tuIdent at the PS does not match the tuIdent in the TU Mission - Logically Grouped (Position A"), Color.Orange);
+                            return;
+                        }
                     }
                     else
                     {
-                        Log.Write(string.Format("Error {0}: The tuIdent at the PS does not match the tuIdent in the TU Mission - Logically Grouped (Position A"), Color.Orange);
+                        destA = GetRackDestinationFromDCIBinLocation(telegram, 0);
+                        destB = GetRackDestinationFromDCIBinLocation(telegram, 1);
+                    }
+
+                    if (messageA != null && messageB != null)
+                    {
+                        ElevatorTask et = new ElevatorTask(locA.ActiveLoad.Identification, locB.ActiveLoad.Identification)
+                        {
+                            LoadCycle = Cycle.Double,
+                            Flow = TaskType.Infeed,
+                            SourceLoadA = locA.LocName,
+                            SourceLoadB = locB.LocName,
+                            DestinationLoadA = destA,
+                            DestinationLoadB = destB,
+                            UnloadCycle = Cycle.Single
+                        };
+                        if (et.DestinationLoadA == et.DestinationLoadB)
+                        {
+                            et.UnloadCycle = Cycle.Double;
+                        }
+
+                        UpDateLoadParameters(telegram, (Case_Load)locA.ActiveLoad, 1);
+                        UpDateLoadParameters(telegram, (Case_Load)locB.ActiveLoad, 0);
+
+                        ms.elevators.First(x => x.ElevatorName == side + aisle).ElevatorTasks.Add(et);
+                    }
+                    else
+                    {
+                        Log.Write("ERROR: Load ids from telegram do not match active load ids in TU Mission - Logically Grouped", Color.Red);
                         return;
                     }
                 }
                 else
                 {
-                    destA = GetRackDestinationFromDCIBinLocation(telegram, 0);
-                    destB = GetRackDestinationFromDCIBinLocation(telegram, 1);
-                }
-
-                if (messageA != null && messageB != null)
-                {
-                    ElevatorTask et     = new ElevatorTask(locA.ActiveLoad.Identification, locB.ActiveLoad.Identification)
-                    {
-                        LoadCycle        = Cycle.Double,
-                        Flow             = TaskType.Infeed,
-                        SourceLoadA      = locA.LocName,
-                        SourceLoadB      = locB.LocName,
-                        DestinationLoadA = destA,
-                        DestinationLoadB = destB,                        
-                        UnloadCycle = Cycle.Single
-                    };
-                    if (et.DestinationLoadA == et.DestinationLoadB)
-                    {
-                        et.UnloadCycle = Cycle.Double;
-                    }
-
-                    UpDateLoadParameters(telegram, (Case_Load)locA.ActiveLoad, 1);
-                    UpDateLoadParameters(telegram, (Case_Load)locB.ActiveLoad, 0);
-
-                    ms.elevators.First(x => x.ElevatorName == side + aisle).ElevatorTasks.Add(et);
-                    //ms.elevators[side+aisle].ElevatorTasks.Add(et);
-                }
-                else
-                {
-                    Log.Write("ERROR: Load ids from telegram do not match active load ids in TU Mission - Logically Grouped", Color.Red);
-                    return;
+                    Log.Write("ERROR: Can't find locations or can't find loads on the locations named in TU Mission - Logically Grouped", Color.Red);
                 }
             }
-            else
+            else if (current0.LocationType() == LocationTypes.RackConvOut)
             {
-                Log.Write("ERROR: Can't find locations or can't find loads on the locations named in TU Mission - Logically Grouped", Color.Red);
+                //Create task for two outfeed missions grouped together
+
+                //Loads can be either on the same level or on different levels - work this out first
+
+                // takes the form aasyyxz: aa=aisle, s = side, yy = level, x = conv type see enum ConveyorTypes , Z = loc A or B e.g. 01R05PA
+                string locNameA = string.Format("{0}{1}{2}O", aisle, side, GetRackLocFields(current0, PSDSRackLocFields.Level));
+                string locNameB = string.Format("{0}{1}{2}O", aisle, side, GetRackLocFields(current1, PSDSRackLocFields.Level));
+                Cycle loadCycle = Cycle.Double;
+
+                if (current0.RackLevel() == current1.RackLevel())
+                {
+                    //assume current0 is in front of current1
+                    locNameA += "B";
+                    locNameB += "A";
+                }
+                else
+                {
+                    //if both loads are on different levels then they must both be at the front position and the elevator need to do a sigle load cycle
+                    locNameA += "B";
+                    locNameB += "B";
+                    loadCycle = Cycle.Single;
+                }
+
+                ms = GetMultishuttleFromAisleNum(locNameA);
+                locA = ms.ConveyorLocations.Find(x => x.LocName == locNameA);
+                locB = ms.ConveyorLocations.Find(x => x.LocName == locNameB);
+
+                if ((locA != null && locA.Active) && (locB != null && locB.Active))
+                {
+                    string messageA = telegram.Split(',').ToList().Find(x => x.Contains(locA.ActiveLoad.Identification));
+                    string messageB = telegram.Split(',').ToList().Find(x => x.Contains(locB.ActiveLoad.Identification));
+
+                    if (destLoc0 == null || destLoc1 == null)
+                    {
+                        Log.Write(string.Format("{0}: Invalid destinations sent in TUMission - Logically Grouped", Name), Color.Red);
+                        return;
+                    }
+
+                    if (telegram.GetFieldValue(this, TelegramFields.Destination, 0).LocationType() == LocationTypes.DropStation)  //Assume that both going to DS
+                    {
+                        destA = string.Format("{0}{1}{2}{3}A", aisle,
+                                                              side,
+                                                              GetPSDSLocFields(destLoc0, PSDSRackLocFields.Level),
+                                                              GetPSDSLocFields(destLoc0, PSDSRackLocFields.ConvType));
+                        destB = destA;
+                    }
+
+                    if (messageA != null && messageB != null)
+                    {
+                        ElevatorTask et = new ElevatorTask(locA.ActiveLoad.Identification, locB.ActiveLoad.Identification)
+                        {
+                            LoadCycle = loadCycle,
+                            Flow = TaskType.Outfeed,
+                            SourceLoadA = locA.LocName,
+                            SourceLoadB = locB.LocName,
+                            DestinationLoadA = destA,
+                            DestinationLoadB = destB,
+                            UnloadCycle = Cycle.Double
+                        };
+
+                        UpDateLoadParameters(telegram, (Case_Load)locA.ActiveLoad, 1);
+                        UpDateLoadParameters(telegram, (Case_Load)locB.ActiveLoad, 0);
+
+                        ms.elevators.First(x => x.ElevatorName == side + aisle).ElevatorTasks.Add(et);
+                    }
+                    else
+                    {
+                        Log.Write("ERROR: Load ids from telegram do not match active load ids in TU Mission - Logically Grouped", Color.Red);
+                        return;
+                    }
+                }
             }
         }
 

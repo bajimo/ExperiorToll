@@ -109,11 +109,14 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
             }
             else //save the load reference so that if a second load arrives multipal telegram construction is easier
             {
-                caseData.Current = FormatPickDropLocation(string.Format("{0}B", e._locationName.Substring(0,6)), ConveyorTypes.Pick); //Update the location
-                caseData.Source = caseData.Current;
+                if (controller.SpecificNames)
+                {
+                    caseData.Current = FormatPickDropLocation(string.Format("{0}B", e._locationName.Substring(0, 6)), ConveyorTypes.Pick); //Update the location
+                    caseData.Source = caseData.Current;
 
-                caseLoad.UserData = ((string)caseLoad.UserData).SetFieldValue(controller, TelegramFields.Source, caseData.Current);
-                caseLoad.UserData = ((string)caseLoad.UserData).SetFieldValue(controller, TelegramFields.Current, caseData.Current);
+                    caseLoad.UserData = ((string)caseLoad.UserData).SetFieldValue(controller, TelegramFields.Source, caseData.Current);
+                    caseLoad.UserData = ((string)caseLoad.UserData).SetFieldValue(controller, TelegramFields.Current, caseData.Current);
+                }
                 conv.UserData = caseLoad; //save case load to userdata for easier multipal message creation i.e. when e._numberOfLoads == 2
             }
         }
@@ -134,21 +137,42 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
         /// <returns></returns>
         private string FormatPickDropLocation(string locationName, ConveyorTypes PorD)
         {
-            
-            return string.Format("MSAI{0}C{1}{2}{3}S1{4}", locationName.AisleNumber().ToString().PadLeft(2, '0'),
-                                                         (char)ExtensionMethods.Side(locationName),
-                                                         locationName.Level(),
-                                                         (char)PorD,
-                                                         (locationName.ConvPosition() == "A" ? "1" : "2"));
+            if (controller.SpecificNames)
+            {
+
+
+                return string.Format("MSAI{0}C{1}{2}{3}S1{4}", locationName.AisleNumber().ToString().PadLeft(2, '0'),
+                                                             (char)ExtensionMethods.Side(locationName),
+                                                             locationName.Level(),
+                                                             (char)PorD,
+                                                             (locationName.ConvPosition() == "A" ? "1" : "2"));
+            }
+            else
+            {
+                return string.Format("MSAI{0}C{1}{2}{3}S10", locationName.AisleNumber().ToString().PadLeft(2, '0'),
+                                                             (char)ExtensionMethods.Side(locationName),
+                                                             locationName.Level(),
+                                                             (char)PorD);
+            }
         }
 
         private string FormatRackConvLocation(string locationName, ConveyorTypes IorO)
         {
-            return string.Format("MSAI{0}L{1}{2}R{3}1{4}", locationName.AisleNumber().ToString().PadLeft(2, '0'),
-                                                         (char)ExtensionMethods.Side(locationName),
-                                                         locationName.Level(),
-                                                         (char)IorO,
-                                                         (locationName.ConvPosition() == "A" ? "1" : "2"));
+            if (controller.SpecificNames)
+            {
+                return string.Format("MSAI{0}L{1}{2}R{3}1{4}", locationName.AisleNumber().ToString().PadLeft(2, '0'),
+                                                             (char)ExtensionMethods.Side(locationName),
+                                                             locationName.Level(),
+                                                             (char)IorO,
+                                                             (locationName.ConvPosition() == "A" ? "1" : "2"));
+            }
+            else
+            {
+                return string.Format("MSAI{0}L{1}{2}R{3}10", locationName.AisleNumber().ToString().PadLeft(2, '0'),
+                                                             (char)ExtensionMethods.Side(locationName),
+                                                             locationName.Level(),
+                                                             (char)IorO);
+            }
 
         }
 

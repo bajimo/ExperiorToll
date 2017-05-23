@@ -631,6 +631,21 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies
             }
         }
 
+        [Category("DCI")]
+        [DisplayName("Specific Locations")]
+        [Description("Should the DMS report specific location names instead of logical names e.g. PS11 and PS12 instead of PS10")]
+        public bool SpecificNames
+        {
+            get
+            {
+                return baseControllerInfo.SpecificLocations;
+            }
+            set
+            {
+                baseControllerInfo.SpecificLocations = value;
+            }
+        }
+
 
         public int GetTelegramLength(TelegramTypes telegramType) //[BG] I hate this!!
         {
@@ -748,6 +763,7 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies
         public string ReceiverID;
         public bool LogAll;
         public DCIVersions DCIVersion = DCIVersions._1_60;
+        public bool SpecificLocations = false;
     }
 
     public class DCIPLCStateChangeEventArgs : EventArgs
