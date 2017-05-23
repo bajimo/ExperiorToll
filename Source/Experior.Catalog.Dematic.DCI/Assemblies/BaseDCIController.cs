@@ -646,9 +646,13 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies
             }
         }
 
+        private readonly Dictionary<TelegramTypes, int> telegramLengthCache = new Dictionary<TelegramTypes, int>();
 
-        public int GetTelegramLength(TelegramTypes telegramType) //[BG] I hate this!!
+        public int GetTelegramLength(TelegramTypes telegramType) 
         {
+            if (telegramLengthCache.ContainsKey(telegramType))
+                return telegramLengthCache[telegramType];
+
             var type = Template.GetTelegramName(telegramType);
 
             var experiorMvt = ControllerConnection.Templates.FirstOrDefault(t => t.Exists(f => f.Identifier && f.Identification == type));
@@ -657,6 +661,9 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies
                 return 0;
 
             var telegramLength = experiorMvt.Sum(field => field.Length);
+
+            telegramLengthCache[telegramType] = telegramLength;
+
             return telegramLength;
         }
         #endregion
