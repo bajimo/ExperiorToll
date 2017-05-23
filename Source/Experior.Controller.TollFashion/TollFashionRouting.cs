@@ -26,7 +26,7 @@ namespace Experior.Controller.TollFashion
         private readonly StraightAccumulationConveyor emptyToteLine;
         private readonly StraightConveyor cartonErector1, cartonErector2, cartonErector3;
         private readonly Dictionary<string, string> cartonErectorSize = new Dictionary<string, string>();
-        private readonly ZplLabeler carton51Labeler, carton52Labeler, carton53Labeler;
+        private readonly ZplLabeler carton51Labeler, carton52Labeler, carton53Labeler, carton61Labeler1, carton61Labeler2;
 
         private ActionPoint lidnp2;
         private Load lidnp2Load;
@@ -47,6 +47,9 @@ namespace Experior.Controller.TollFashion
             carton51Labeler = new ZplLabeler("CAR51");
             carton52Labeler = new ZplLabeler("CAR52");
             carton53Labeler = new ZplLabeler("CAR53");
+
+            carton61Labeler1 = new ZplLabeler("LPA1");
+            carton61Labeler2 = new ZplLabeler("LPA2");
 
             emulationController = new EmulationController();
             emulationController.FeedReceived += EmulationController_FeedReceived;
@@ -500,6 +503,9 @@ namespace Experior.Controller.TollFashion
             carton52Labeler.Reset();
             carton53Labeler.Reset();
 
+            carton61Labeler1.Reset();
+            carton61Labeler2.Reset();
+
             base.Reset();
         }
 
@@ -550,6 +556,16 @@ namespace Experior.Controller.TollFashion
                 HandleFailedCartons(plc53, node.Name, load);
                 return;
             }
+            if (node.Name == "CC61ECFA1")
+            {
+                HandleFailedCartons(plc61, node.Name, load);
+                return;
+            }
+            if (node.Name == "CC61ECFA2")
+            {
+                HandleFailedCartons(plc61, node.Name, load);
+                return;
+            }
             if (node.Name == "SORTERWEIGHT")
             {
                 AddWeight(load);
@@ -586,6 +602,16 @@ namespace Experior.Controller.TollFashion
                 AddProfile(load);
                 return;
             }
+            if (node.Name == "CC61LPA1")
+            {
+                AddDispatchLabel(load, carton61Labeler1);
+                return;
+            }
+            if (node.Name == "CC61LPA2")
+            {
+                AddDispatchLabel(load, carton61Labeler2);
+                return;
+            }
             if (node.Name.StartsWith("CLEARSWAP"))
             {
                 ClearSwap(load);
@@ -617,6 +643,18 @@ namespace Experior.Controller.TollFashion
             {
                 //Arrived at online pack station. Set arrival timestamp 
                 onlinePackingStations[ap] = Environment.Time.Simulated;
+            }
+        }
+
+        private void AddDispatchLabel(Load load, ZplLabeler labeler)
+        {
+            //var barcode2 = labeler.GetNextValidBarcode();
+            var barcode2 = load.Identification; 
+            var caseload = load as Case_Load;
+            var casedata = caseload?.Case_Data as CaseData;
+            if (casedata != null)
+            {
+                casedata.Barcode2 = barcode2;
             }
         }
 
