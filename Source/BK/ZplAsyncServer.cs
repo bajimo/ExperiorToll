@@ -25,7 +25,7 @@ namespace Experior.Plugin
         private readonly ManualResetEvent allDone = new ManualResetEvent(false);
 
         private Socket listener;
-        private bool disposed;
+        private bool listening;
 
         public event EventHandler<string> TelegramReceived;
 
@@ -34,6 +34,7 @@ namespace Experior.Plugin
             // Establish the local endpoint for the socket.  
             var ipAddress = IPAddress.Parse("127.0.0.1"); 
             var localEndPoint = new IPEndPoint(ipAddress, port);
+            listening = true;
             
             // Create a TCP/IP socket.  
             listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -44,7 +45,7 @@ namespace Experior.Plugin
                 listener.Bind(localEndPoint);
                 listener.Listen(100);
 
-                while (!disposed)
+                while (listening)
                 {
                     // Set the event to nonsignaled state.  
                     allDone.Reset();
@@ -66,6 +67,7 @@ namespace Experior.Plugin
         {
             //listener.Disconnect(false);
             listener.Dispose();
+            listening = false;
         }
 
         public void AcceptCallback(IAsyncResult ar)
