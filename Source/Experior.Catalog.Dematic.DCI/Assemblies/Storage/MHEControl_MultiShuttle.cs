@@ -320,11 +320,11 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
                     et.CreateNewDoubleLoadCycleTask(et, e._rackConveyor.LocationB.ActiveLoad.Identification);
                 }
             }
-            else
-            {
-                string sendMessage = controller.CreateTelegramFromLoad(TelegramTypes.TUReport, e._caseLoad);
-                controller.SendTelegram(sendMessage); //Always Send a notification at location A
-            }
+            //else
+            //{
+            //    string sendMessage = controller.CreateTelegramFromLoad(TelegramTypes.TUReport, e._caseLoad);
+            //    controller.SendTelegram(sendMessage); //Always Send a notification at location A
+            //}
         }
 
         void theMultishuttle_OnArrivedAtOutfeedRackConvPosB(object sender, RackConveyorArrivalEventArgs e)
@@ -355,6 +355,11 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
                     string elevatorName = string.Format("{0}{1}", side, aisle);
                     theMultishuttle.elevators.First(x => x.ElevatorName == elevatorName).ElevatorTasks.Add(et);
                 }
+            }
+            else
+            {
+                string sendMessage = controller.CreateTelegramFromLoad(TelegramTypes.TUReport, e._caseLoad);
+                controller.SendTelegram(sendMessage); //Always Send a notification at location B
             }
         }
 
