@@ -26,7 +26,7 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies
         public Text3D DisplayText;
         private Cube plcCube, door1, door2, plinth;
         public bool plcConnected;
-        public Color DefaultLoadColour = Color.LightPink;
+    
         public List<string> ProjectFields = new List<string>();
 
         //DCI Telegram ack handling 
@@ -646,6 +646,20 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies
             }
         }
 
+        [Category("Project")]
+        [DisplayName("Default Load Color")]
+        [Description("Loads in rack are created with this color")]
+        [PropertyOrder(3)]
+        public Color DefaultLoadColor
+        {
+            get { return Color.FromArgb(baseControllerInfo.DefaultLoadColor); }
+            set
+            {
+                
+                baseControllerInfo.DefaultLoadColor = value.ToArgb();
+            }
+        }
+
         private readonly Dictionary<TelegramTypes, int> telegramLengthCache = new Dictionary<TelegramTypes, int>();
 
         public int GetTelegramLength(TelegramTypes telegramType) 
@@ -689,7 +703,7 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies
             caseData.Width = width / 1000;
             caseData.Height = height / 1000;
             caseData.Weight = weight;
-            caseData.colour = Color.Blue;
+            caseData.colour = DefaultLoadColor;
             caseData.DropIndex = dropIndex;
 
             caseData.TUIdent = telegram.GetFieldValue(this, TelegramFields.TUIdent, blockPosition);
@@ -771,6 +785,7 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies
         public bool LogAll;
         public DCIVersions DCIVersion = DCIVersions._1_60;
         public bool SpecificLocations = false;
+        public int DefaultLoadColor = System.Drawing.Color.Blue.ToArgb();
     }
 
     public class DCIPLCStateChangeEventArgs : EventArgs
