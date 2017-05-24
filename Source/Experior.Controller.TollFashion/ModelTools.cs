@@ -13,11 +13,9 @@ namespace Experior.Controller
             this.controller = controller;
             InitializeComponent();
 
-            Core.Environment.Invoke(() =>
-            {
-                dataGridViewEquipmentStatuses.DataSource = controller.EquipmentStatuses;
-                dataGridViewEquipmentStatuses.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.ColumnHeader);
-            });
+            dataGridViewEquipmentStatuses.DataSource = controller.EquipmentStatuses;
+            dataGridViewEquipmentStatuses.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.ColumnHeader);
+
         }
     }
 }

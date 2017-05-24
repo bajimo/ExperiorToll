@@ -42,8 +42,6 @@ namespace Experior.Controller.TollFashion
 
         public TollFashionRouting() : base("TollFashionRouting")
         {
-            StandardConstructor();
-
             carton51Labeler = new ZplLabeler("CAR51");
             carton52Labeler = new ZplLabeler("CAR52");
             carton53Labeler = new ZplLabeler("CAR53");
@@ -113,7 +111,7 @@ namespace Experior.Controller.TollFashion
             Environment.Time.ContinuouslyRunning = true;
             Environment.Scene.OnLoaded += Scene_OnLoaded;
             Environment.Scene.OnStarting += Scene_OnStarting;
-            CreateEquipmentStatuses();
+            
             lidnp2Resend = new Timer(2.5f);
             lidnp2Resend.OnElapsed += Lidnp2Resend_Elapsed;
 
@@ -146,6 +144,9 @@ namespace Experior.Controller.TollFashion
             dispatchLanes.Add(Core.Assemblies.Assembly.Items["P11161"] as StraightBeltConveyor);
             dispatchLanes.Add(Core.Assemblies.Assembly.Items["P11181"] as StraightBeltConveyor);
             dispatchLanes.Add(Core.Assemblies.Assembly.Items["P11201"] as StraightBeltConveyor);
+
+            CreateEquipmentStatuses();
+            StandardConstructor();
         }
 
         private void CartonErectorResendTimer_OnElapsed(Timer sender)
