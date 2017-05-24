@@ -379,6 +379,8 @@ namespace Experior.Catalog.Dematic.Case.Components
 
             private void Clear_OnEnter(ActionPoint sender, Load load)
             {
+                load.OnDisposing -= Load_OnDisposing;
+
                 if (lifting)
                     return;
                 if (top.Active)
@@ -393,8 +395,25 @@ namespace Experior.Catalog.Dematic.Case.Components
             private void Top_OnEnter(ActionPoint sender, Load load)
             {
                 lifting = false;
+                load.OnDisposing += Load_OnDisposing;
+
                 liftingFinished();
                 arrival(new PickPutStationArrivalArgs(load));
+            }
+
+            private void Load_OnDisposing(Load load)
+            {
+                //Top load disposed. 
+                load.OnDisposing -= Load_OnDisposing;
+
+                Core.Environment.Invoke(() =>
+                {
+                    //Release bottom
+                    if (bottom.Active)
+                    {
+                        Bottom_OnEnter(bottom, bottom.ActiveLoad);
+                    }
+                });
             }
 
             private void Bottom_OnEnter(ActionPoint sender, Load load)
