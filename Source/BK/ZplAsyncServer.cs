@@ -42,7 +42,7 @@ namespace Experior.Plugin
             try
             {
                 listener.Bind(localEndPoint);
-                listener.Listen(100);
+                listener.Listen(1);
 
                 while (listening)
                 {
