@@ -115,7 +115,7 @@ namespace Experior.Controller.TollFashion
             lidnp2Resend = new Timer(2.5f);
             lidnp2Resend.OnElapsed += Lidnp2Resend_Elapsed;
 
-            cartonErectorTimer = new Timer(1);
+            cartonErectorTimer = new Timer(4);
             cartonErectorTimer.AutoReset = true;
             cartonErectorTimer.OnElapsed += CartonErectorTimer_OnElapsed;
 
