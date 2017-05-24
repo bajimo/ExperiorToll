@@ -525,8 +525,7 @@ namespace Experior.Controller.TollFashion
                         plc = plc53;
 
                     //Set the destination so the case load will cross the main line
-                    if (!plc.RoutingTable.ContainsKey(load.Identification))
-                        plc.RoutingTable[load.Identification] = dest;
+                    plc.RoutingTable[load.Identification] = dest;
 
                 }
                 return;
