@@ -377,6 +377,12 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             {
                 //Search by barcode
                 caseload = Case_Load.GetCaseFromIdentification(barcode1);
+
+                if (caseload == null)
+                {
+                    //Try search by location
+                    caseload = Case_Load.AllCases.FirstOrDefault(c => c.CurrentActionPoint != null && c.CurrentActionPoint.Name == current);
+                }
             }
 
             var destination = telegram.GetFieldValue(this, TelegramFields.Destination).Trim();

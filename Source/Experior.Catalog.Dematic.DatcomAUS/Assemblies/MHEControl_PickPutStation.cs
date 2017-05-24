@@ -23,6 +23,8 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             //Add event subscriptions here
             theLift.OnArrivedAtRightPosition += TheLiftOnArrivedAtRightPosition;
             theLift.OnArrivedAtLeftPosition += TheLiftOnArrivedAtLeftPosition;
+            theLift.RightStationName = RightPositionName;
+            theLift.LeftStationName = LeftPositionName;
             casePLC.OnTransportOrderTelegramReceived += CasePLC_OnTransportOrderTelegramReceived;  
         }
 

@@ -238,6 +238,20 @@ namespace Experior.Catalog.Dematic.Case.Components
             get { return leftStation.ActiveLoad as Case_Load; }
         }
 
+        [Browsable(false)]
+        public string RightStationName
+        {
+            get { return rightStation.Name; }
+            set { rightStation.Name = value; }
+        }
+
+        [Browsable(false)]
+        public string LeftStationName
+        {
+            get { return leftStation.Name; }
+            set { leftStation.Name = value; }
+        }
+
         private StraightConveyorInfo NewStraightInfo()
         {
             StraightConveyorInfo straightInfo = new StraightConveyorInfo();
