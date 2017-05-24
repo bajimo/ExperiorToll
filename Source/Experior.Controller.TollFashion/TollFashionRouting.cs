@@ -32,12 +32,12 @@ namespace Experior.Controller.TollFashion
         private Load lidnp2Load;
         private readonly Timer lidnp2Resend;
         private readonly Timer cartonErectorTimer, cartonErectorResendTimer;
-        private readonly Timer onlinePackingStationTimer;
+        //private readonly Timer onlinePackingStationTimer;
         private EquipmentStatus cc51Cartona1, cc52Cartona1, cc53Cartona1;
         private DematicCommunicationPoint cc51Cartona1Comm, cc52Cartona1Comm, cc53Cartona1Comm;
-        private readonly Dictionary<ActionPoint, double> onlinePackingStations = new Dictionary<ActionPoint, double>();
-        private double onlinePackingTime = 20; //20 seconds from arrival to done
-        private readonly StraightConveyor emptyCartonOnlineTakeAway;
+        //private readonly Dictionary<ActionPoint, double> onlinePackingStations = new Dictionary<ActionPoint, double>();
+       // private double onlinePackingTime = 20; //20 seconds from arrival to done
+       // private readonly StraightConveyor emptyCartonOnlineTakeAway;
         private readonly HashSet<StraightBeltConveyor> dispatchLanes = new HashSet<StraightBeltConveyor>();
 
         public TollFashionRouting() : base("TollFashionRouting")
@@ -57,7 +57,7 @@ namespace Experior.Controller.TollFashion
             cartonErector2 = Core.Assemblies.Assembly.Get("P1052") as StraightConveyor;
             cartonErector3 = Core.Assemblies.Assembly.Get("P1053") as StraightConveyor;
 
-            emptyCartonOnlineTakeAway = Core.Assemblies.Assembly.Get("P7071") as StraightConveyor;
+            //emptyCartonOnlineTakeAway = Core.Assemblies.Assembly.Get("EMPTYCARTONRETURN") as StraightConveyor;
 
             plc51 = Core.Assemblies.Assembly.Get("PLC 51") as MHEControllerAUS_Case;
             plc52 = Core.Assemblies.Assembly.Get("PLC 52") as MHEControllerAUS_Case;
@@ -123,15 +123,15 @@ namespace Experior.Controller.TollFashion
             cartonErectorResendTimer.AutoReset = true;
             cartonErectorResendTimer.OnElapsed += CartonErectorResendTimer_OnElapsed;
 
-            //Init online packing stations (Actionpoint, arrival timestamp)
-            for (int i = 1; i <= 18; i++)
-            {
-                onlinePackingStations.Add(ActionPoint.Get("ONLINE" + i), -1f);
-            }
+            ////Init online packing stations (Actionpoint, arrival timestamp)
+            //for (int i = 1; i <= 18; i++)
+            //{
+            //    onlinePackingStations.Add(ActionPoint.Get("ONLINE" + i), -1f);
+            //}
 
-            onlinePackingStationTimer = new Timer(1);
-            onlinePackingStationTimer.AutoReset = true;
-            onlinePackingStationTimer.OnElapsed += OnlinePackingStationTimer_OnElapsed;
+            //onlinePackingStationTimer = new Timer(1);
+            //onlinePackingStationTimer.AutoReset = true;
+            //onlinePackingStationTimer.OnElapsed += OnlinePackingStationTimer_OnElapsed;
 
             dispatchLanes.Add(Core.Assemblies.Assembly.Items["P5162-4"] as StraightBeltConveyor);
             dispatchLanes.Add(Core.Assemblies.Assembly.Items["P6162-4"] as StraightBeltConveyor);
@@ -185,7 +185,7 @@ namespace Experior.Controller.TollFashion
             }
         }
 
-        private void Dispatch_LineReleasePhotocell_OnPhotocellStatusChanged(object sender, Dematic.Base.Devices.PhotocellStatusChangedEventArgs e)
+        private void Dispatch_LineReleasePhotocell_OnPhotocellStatusChanged(object sender, PhotocellStatusChangedEventArgs e)
         {
             if (e._PhotocellStatus == PhotocellState.Blocked)
             {
@@ -198,31 +198,31 @@ namespace Experior.Controller.TollFashion
             }
         }
 
-        private void OnlinePackingStationTimer_OnElapsed(Timer sender)
-        {
-            //Check we have space on empty line
-            if (emptyCartonOnlineTakeAway.ThisRouteStatus.Available == RouteStatuses.Blocked)
-                return;
+        //private void OnlinePackingStationTimer_OnElapsed(Timer sender)
+        //{
+        //    //Check we have space on empty line
+        //    if (emptyCartonOnlineTakeAway.ThisRouteStatus.Available == RouteStatuses.Blocked)
+        //        return;
 
-            if (emptyCartonOnlineTakeAway.LoadCount > 50)
-                return;
+        //    if (emptyCartonOnlineTakeAway.LoadCount > 50)
+        //        return;
 
-            //Check all online packing stations
-            foreach (var p in onlinePackingStations)
-            {
-                if (p.Value > 0 && Environment.Time.Simulated > p.Value + onlinePackingTime)
-                {
-                    if (p.Key.Active)
-                    {
-                        //Switch to empty line
-                        var carton = p.Key.ActiveLoad;
-                        carton.Yaw = 0;
-                        carton.Switch(emptyCartonOnlineTakeAway.TransportSection.Route);
-                        carton.Release();
-                    }
-                }
-            }
-        }
+        //    //Check all online packing stations
+        //    foreach (var p in onlinePackingStations)
+        //    {
+        //        if (p.Value > 0 && Environment.Time.Simulated > p.Value + onlinePackingTime)
+        //        {
+        //            if (p.Key.Active)
+        //            {
+        //                //Switch to empty line
+        //                var carton = p.Key.ActiveLoad;
+        //                carton.Yaw = 0;
+        //                carton.Switch(emptyCartonOnlineTakeAway.TransportSection.Route);
+        //                carton.Release();
+        //            }
+        //        }
+        //    }
+        //}
 
         private void OnTransportOrderTelegramReceived61(object sender, MessageEventArgs e)
         {
@@ -494,11 +494,11 @@ namespace Experior.Controller.TollFashion
         {
             lidnp2Load = null;
 
-            //Reset packing arrival
-            foreach (var onlinePackingStation in onlinePackingStations.Keys.ToList())
-            {
-                onlinePackingStations[onlinePackingStation] = -1;
-            }
+            ////Reset packing arrival
+            //foreach (var onlinePackingStation in onlinePackingStations.Keys.ToList())
+            //{
+            //    onlinePackingStations[onlinePackingStation] = -1;
+            //}
 
             carton51Labeler.Reset();
             carton52Labeler.Reset();
@@ -638,12 +638,12 @@ namespace Experior.Controller.TollFashion
                 RequestValidBarcodes();
                 return;
             }
-            var ap = node as ActionPoint;
-            if (ap != null && onlinePackingStations.ContainsKey(ap))
-            {
-                //Arrived at online pack station. Set arrival timestamp 
-                onlinePackingStations[ap] = Environment.Time.Simulated;
-            }
+            //var ap = node as ActionPoint;
+            //if (ap != null && onlinePackingStations.ContainsKey(ap))
+            //{
+            //    //Arrived at online pack station. Set arrival timestamp 
+            //    onlinePackingStations[ap] = Environment.Time.Simulated;
+            //}
         }
 
         private void AddDispatchLabel(Load load, ZplLabeler labeler)
@@ -938,8 +938,8 @@ namespace Experior.Controller.TollFashion
             cartonErectorResendTimer.Dispose();
             lidnp2Resend.OnElapsed -= Lidnp2Resend_Elapsed;
             lidnp2Resend.Dispose();
-            onlinePackingStationTimer.OnElapsed -= OnlinePackingStationTimer_OnElapsed;
-            onlinePackingStationTimer.Dispose();
+            //onlinePackingStationTimer.OnElapsed -= OnlinePackingStationTimer_OnElapsed;
+            //onlinePackingStationTimer.Dispose();
             base.Dispose();
         }
     }
