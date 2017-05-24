@@ -32,8 +32,7 @@ namespace Experior.Plugin
         public void StartListening(int port)
         {
             // Establish the local endpoint for the socket.  
-            var ipAddress = IPAddress.Parse("127.0.0.1"); 
-            var localEndPoint = new IPEndPoint(ipAddress, port);
+            var localEndPoint = new IPEndPoint(IPAddress.Any, port);
             listening = true;
             
             // Create a TCP/IP socket.  
