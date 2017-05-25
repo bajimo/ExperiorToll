@@ -409,8 +409,15 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies
         {
             int dropIndex = 0;
             int.TryParse(telegram.GetFieldValue(this, TelegramFields.DropIndex, blockPosition), out dropIndex);
+            DCICaseData caseData = null;
 
-            DCICaseData caseData = load.Case_Data as DCICaseData;
+            //Check that the load has the correct case data type
+            if (!(load.Case_Data is DCICaseData))
+            {
+                load.Case_Data = new DCICaseData();
+            }
+            
+            caseData = load.Case_Data as DCICaseData;
             load.Identification = telegram.GetFieldValue(this, TelegramFields.TUIdent, blockPosition);
             caseData.TUIdent = telegram.GetFieldValue(this, TelegramFields.TUIdent, blockPosition);
             caseData.TUType = telegram.GetFieldValue(this, TelegramFields.TUType, blockPosition);
@@ -430,7 +437,6 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies
             float.TryParse(telegram.GetFieldValue(this, TelegramFields.TUWeight), out weight);
             load.Weight = weight;
         }
-
 
         /// <summary>
         /// Create transport telegrams only from load, do not use for any other type of telegram 

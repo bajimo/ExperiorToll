@@ -161,10 +161,11 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
             if (controller.SpecificNames)
             {
                 return string.Format("MSAI{0}L{1}{2}R{3}1{4}", locationName.AisleNumber().ToString().PadLeft(2, '0'),
-                                                             (char)ExtensionMethods.Side(locationName),
-                                                             locationName.Level(),
-                                                             (char)IorO,
-                                                             (locationName.ConvPosition() == "A" ? "1" : "2"));
+                                                               (char)ExtensionMethods.Side(locationName),
+                                                               locationName.Level(),
+                                                               (char)IorO,
+                                                                //This is swapped over for the rack OUT conveyors
+                                                               (char)IorO == 'I' ? (locationName.ConvPosition() == "A" ? "1" : "2") : (locationName.ConvPosition() == "B" ? "1" : "2"));
             }
             else
             {
@@ -290,36 +291,42 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
 
         void theMultishuttle_OnArrivedAtOutfeedRackConvPosA(object sender, RackConveyorArrivalEventArgs e)
         { 
+            //RO12 - Position B
             DCICaseData caseData = e._caseLoad.Case_Data as DCICaseData;
             caseData.Current = FormatRackConvLocation(e._locationName, ConveyorTypes.OutfeedRack); //Update the location
 
-            if (BaseDCIController.GetLocFields(caseData.Destination, PSDSRackLocFields.ConvType) == "D")
-            {
-                string sendMessage = controller.CreateTelegramFromLoad(TelegramTypes.TUNotification, e._caseLoad);
-                controller.SendTelegram(sendMessage); //Always Send a notification at location A
+            //Send TU for every load that arrives here regardless of the flow
+            string sendMessage = controller.CreateTelegramFromLoad(TelegramTypes.TUNotification, e._caseLoad);
+            controller.SendTelegram(sendMessage); //Always Send a notification at location A
 
-                //Combine a task with an existing task but only if the final destination is a drop station because if destination is the rack conveyor then we need to wait for another message from the WMS
-                if (e._elevator.CurrentTask != null && e._rackConveyor.LocationB.Active && !e._elevator.CurrentTask.RelevantElevatorTask(e._rackConveyor.LocationB.ActiveLoad))
-                {
-                    string aisle = e._elevator.AisleNumber.ToString().PadLeft(2, '0');
-                    string level = BaseDCIController.GetLocFields(caseData.Destination, PSDSRackLocFields.Level);
-                    string destLoadA = string.Format("{0}{1}{2}{3}A", aisle, (char)ExtensionMethods.Side(e._locationName), level, (char)ConveyorTypes.Drop);
 
-                    //Create the task but do not add it to elevator tasks list
-                    ElevatorTask et = new ElevatorTask(e._caseLoad.Identification, null)
-                    {
-                        SourceLoadA = e._locationName,
-                        DestinationLoadA = destLoadA,
-                        SourceLoadAConv = theMultishuttle.GetConveyorFromLocName(e._locationName),
-                        DestinationLoadAConv = theMultishuttle.GetConveyorFromLocName(destLoadA),
-                        Elevator = e._elevator
-                    };
+            //if (BaseDCIController.GetLocFields(caseData.Destination, PSDSRackLocFields.ConvType) == "D")
+            //{
+            //    string sendMessage = controller.CreateTelegramFromLoad(TelegramTypes.TUNotification, e._caseLoad);
+            //    controller.SendTelegram(sendMessage); //Always Send a notification at location A
 
-                    //This task should just be added and not combined as the combining is now done later
-                    //TODO: Make it so that direct outfeed loads still work
-                    et.CreateNewDoubleLoadCycleTask(et, e._rackConveyor.LocationB.ActiveLoad.Identification);
-                }
-            }
+            //    //Combine a task with an existing task but only if the final destination is a drop station because if destination is the rack conveyor then we need to wait for another message from the WMS
+            //    if (e._elevator.CurrentTask != null && e._rackConveyor.LocationB.Active && !e._elevator.CurrentTask.RelevantElevatorTask(e._rackConveyor.LocationB.ActiveLoad))
+            //    {
+            //        string aisle = e._elevator.AisleNumber.ToString().PadLeft(2, '0');
+            //        string level = BaseDCIController.GetLocFields(caseData.Destination, PSDSRackLocFields.Level);
+            //        string destLoadA = string.Format("{0}{1}{2}{3}A", aisle, (char)ExtensionMethods.Side(e._locationName), level, (char)ConveyorTypes.Drop);
+
+            //        //Create the task but do not add it to elevator tasks list
+            //        ElevatorTask et = new ElevatorTask(e._caseLoad.Identification, null)
+            //        {
+            //            SourceLoadA = e._locationName,
+            //            DestinationLoadA = destLoadA,
+            //            SourceLoadAConv = theMultishuttle.GetConveyorFromLocName(e._locationName),
+            //            DestinationLoadAConv = theMultishuttle.GetConveyorFromLocName(destLoadA),
+            //            Elevator = e._elevator
+            //        };
+
+            //        //This task should just be added and not combined as the combining is now done later
+            //        //TODO: Make it so that direct outfeed loads still work
+            //        et.CreateNewDoubleLoadCycleTask(et, e._rackConveyor.LocationB.ActiveLoad.Identification);
+            //    }
+            //}
             //else
             //{
             //    string sendMessage = controller.CreateTelegramFromLoad(TelegramTypes.TUReport, e._caseLoad);
@@ -329,32 +336,38 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
 
         void theMultishuttle_OnArrivedAtOutfeedRackConvPosB(object sender, RackConveyorArrivalEventArgs e)
         {
-            DCICaseData caseData = e._caseLoad.Case_Data as DCICaseData;
+            //If the load already has a destination then, just send a TUNO otherwise send the TURP
 
+            DCICaseData caseData = e._caseLoad.Case_Data as DCICaseData;
+            caseData.Current = FormatRackConvLocation(e._locationName, ConveyorTypes.OutfeedRack); //Update the location
+            
             //If destination is a drop station ("D") there will be no new StartTransportTelegram so continue and create a elevator task
             if (BaseDCIController.GetLocFields(caseData.Destination, PSDSRackLocFields.ConvType) == "D" ) 
             {
-                if (e._elevator.CurrentTask == null || (e._elevator.CurrentTask != null && !e._elevator.CurrentTask.RelevantElevatorTask(e._caseLoad)))
-                {
-                    string level = BaseDCIController.GetPSDSLocFields(caseData.Destination, PSDSRackLocFields.Level);
+                string sendMessage = controller.CreateTelegramFromLoad(TelegramTypes.TUNotification, e._caseLoad);
+                controller.SendTelegram(sendMessage); //Always Send a notification at location B
 
-                    // create an elevator task            
-                    string aisle = e._locationName.AisleNumber().ToString().PadLeft(2, '0');
-                    char side = (char)ExtensionMethods.Side(e._locationName);
+                //if (e._elevator.CurrentTask == null || (e._elevator.CurrentTask != null && !e._elevator.CurrentTask.RelevantElevatorTask(e._caseLoad)))
+                //{
+                //    string level = BaseDCIController.GetPSDSLocFields(caseData.Destination, PSDSRackLocFields.Level);
 
-                    ElevatorTask et = new ElevatorTask(null, e._caseLoad.Identification)
-                    {
-                        SourceLoadB = e._locationName,
-                        DestinationLoadB = string.Format("{0}{1}{2}{3}A", aisle, side, level, (char)ConveyorTypes.Drop), // aasyyxz: a=aisle, s = side, yy = level, x = input or output, Z = loc A or B e.g. 01R05OA 
-                        DropIndexLoadB = caseData.DropIndex,
-                        LoadCycle = Cycle.Single,
-                        UnloadCycle = Cycle.Single,
-                        Flow = TaskType.Outfeed
-                    };
+                //    // create an elevator task            
+                //    string aisle = e._locationName.AisleNumber().ToString().PadLeft(2, '0');
+                //    char side = (char)ExtensionMethods.Side(e._locationName);
 
-                    string elevatorName = string.Format("{0}{1}", side, aisle);
-                    theMultishuttle.elevators.First(x => x.ElevatorName == elevatorName).ElevatorTasks.Add(et);
-                }
+                //    ElevatorTask et = new ElevatorTask(null, e._caseLoad.Identification)
+                //    {
+                //        SourceLoadB = e._locationName,
+                //        DestinationLoadB = string.Format("{0}{1}{2}{3}A", aisle, side, level, (char)ConveyorTypes.Drop), // aasyyxz: a=aisle, s = side, yy = level, x = input or output, Z = loc A or B e.g. 01R05OA 
+                //        DropIndexLoadB = caseData.DropIndex,
+                //        LoadCycle = Cycle.Single,
+                //        UnloadCycle = Cycle.Single,
+                //        Flow = TaskType.Outfeed
+                //    };
+
+                //    string elevatorName = string.Format("{0}{1}", side, aisle);
+                //    theMultishuttle.elevators.First(x => x.ElevatorName == elevatorName).ElevatorTasks.Add(et);
+                //}
             }
             else
             {
