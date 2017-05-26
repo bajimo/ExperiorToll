@@ -855,17 +855,21 @@ namespace Experior.Controller.TollFashion
             {
                 eqStatus.GroupStatus = "12";
             }
-            else if (fillLevel < 2 / 3f)
+            else if (fillLevel < 1 / 2f)
             {
                 eqStatus.GroupStatus = "13";
             }
-            else if (fillLevel < 5 / 6f)
+            else if (fillLevel < 2 / 3f)
             {
                 eqStatus.GroupStatus = "14";
             }
-            else
+            else if (fillLevel < 5 / 6f)
             {
                 eqStatus.GroupStatus = "15";
+            }
+            else
+            {
+                eqStatus.GroupStatus = "16";
             }
         }
 
