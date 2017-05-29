@@ -85,6 +85,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             }
 
             mergeDivertConveyor.RouteLoad(load, validRoutes, priority);
+
             return true; //returns true if handled by this controller
         }
 
@@ -101,11 +102,23 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         {
             if (mergeDivertConveyor.failedToDivertLoad == caseLoad && FailedToDivertLocation != null) //Load has been routed to Default route so send failed to divert location
             {
+                if (StopAndWaitOnFailedToDivert)
+                {
+                    caseLoad.StopLoad_WCSControl();
+                    caseLoad.OnReleased += CaseLoad_OnReleased;
+                }
                 casePLC.SendExceptionMessage(FailedToDivertLocation, caseLoad, "08");
                 return true;
             }
-            else
-                return false;
+
+            return false;
+        }
+
+        void CaseLoad_OnReleased(Load load)
+        {
+            //Load is released when new routing is recieved after failed to divert. Trigger arrival again.
+            load.OnReleased -= CaseLoad_OnReleased;
+            divertArrival(load);
         }
 
         bool releasedStraight(Load load)
@@ -430,7 +443,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
 
         [Category("Priority Divert")]
         [DisplayName("Priority Routing Code")]
-        [Description("Routing code for priority loads: format destination1,destination2,...,destionation n")]
+        [Description("Routing code for priority loads: format destination1,destination2,...,destination n")]
         [PropertyAttributesProvider("DynamicPropertyRouteBlockedTimeout")]
         [PropertyOrder(13)]
         public string PriorityRoutingCode
@@ -452,6 +465,16 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
                     mergeDivertDatcomInfo.priorityRoutingCode = value;
                 }
             }
+        }
+
+        [Category("Priority Divert")]
+        [DisplayName("Stop and Wait")]
+        [Description("Stop and wait for new destination if divert failed.")]
+        [PropertyOrder(14)]
+        public bool StopAndWaitOnFailedToDivert
+        {
+            get { return mergeDivertDatcomInfo.StopAndWaitOnFailedToDivert; }
+            set { mergeDivertDatcomInfo.StopAndWaitOnFailedToDivert = value; }
         }
 
         public void DynamicPropertyRouteBlockedTimeout(PropertyAttributes attributes)
@@ -487,5 +510,7 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
         public string rightRoutingLocation = null;
 
         public string priorityRoutingCode = null;
+
+        public bool StopAndWaitOnFailedToDivert { get; set; }
     }
 }
