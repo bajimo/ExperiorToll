@@ -22,6 +22,16 @@ namespace Experior.Catalog.Dematic.Storage.MultiShuttle.Assemblies
         }
     }
 
+    public class MultishuttleEvent : EventArgs
+    {
+        public MultiShuttle MultiShuttle { get; }
+
+        public MultishuttleEvent(MultiShuttle multiShuttle)
+        {
+            MultiShuttle = multiShuttle;
+        }
+    }
+
     //public class RackConveyorArrivalEventArgs : EventArgs
     //{
     //    public readonly string _locationName;

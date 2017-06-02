@@ -121,6 +121,8 @@ namespace Experior.Catalog.Dematic.Storage.MultiShuttle.Assemblies
 
             elevators.ForEach(x => x.Reset());
 
+            MultishuttleReset(new MultishuttleEvent(this));
+
             base.Reset();
         }
 
@@ -2128,6 +2130,9 @@ namespace Experior.Catalog.Dematic.Storage.MultiShuttle.Assemblies
 
         public event EventHandler<TaskEventArgs> OnArrivedAtRackLocation;
         public static event EventHandler<LoadCreatedEventArgs> OnLoadCreated;
+
+        public event EventHandler<MultishuttleEvent> OnReset; 
+
         //public event EventHandler<EventArgs> OnElevatorArrived;
 
         //public void ElevatorArrived(EventArgs eventArgs)
@@ -2266,6 +2271,11 @@ namespace Experior.Catalog.Dematic.Storage.MultiShuttle.Assemblies
             {
                 OnLoadCreated(this, eventArgs);
             }
+        }
+
+        protected virtual void MultishuttleReset(MultishuttleEvent e)
+        {
+            OnReset?.Invoke(this, e);
         }
     }
 }

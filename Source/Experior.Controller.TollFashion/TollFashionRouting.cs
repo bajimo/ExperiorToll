@@ -12,6 +12,7 @@ using Experior.Dematic.Base;
 using Experior.Core;
 using Experior.Dematic.Base.Devices;
 using Environment = Experior.Core.Environment;
+using Experior.Catalog.Dematic.Storage.MultiShuttle.Assemblies;
 
 namespace Experior.Controller.TollFashion
 {
@@ -32,12 +33,8 @@ namespace Experior.Controller.TollFashion
         private Load lidnp2Load;
         private readonly Timer lidnp2Resend;
         private readonly Timer cartonErectorTimer, cartonErectorResendTimer;
-        //private readonly Timer onlinePackingStationTimer;
         private EquipmentStatus cc51Cartona1, cc52Cartona1, cc53Cartona1;
         private DematicCommunicationPoint cc51Cartona1Comm, cc52Cartona1Comm, cc53Cartona1Comm;
-        //private readonly Dictionary<ActionPoint, double> onlinePackingStations = new Dictionary<ActionPoint, double>();
-       // private double onlinePackingTime = 20; //20 seconds from arrival to done
-       // private readonly StraightConveyor emptyCartonOnlineTakeAway;
         private readonly HashSet<StraightBeltConveyor> dispatchLanes = new HashSet<StraightBeltConveyor>();
 
         public TollFashionRouting() : base("TollFashionRouting")
@@ -56,8 +53,6 @@ namespace Experior.Controller.TollFashion
             cartonErector1 = Core.Assemblies.Assembly.Get("P1051") as StraightConveyor;
             cartonErector2 = Core.Assemblies.Assembly.Get("P1052") as StraightConveyor;
             cartonErector3 = Core.Assemblies.Assembly.Get("P1053") as StraightConveyor;
-
-            //emptyCartonOnlineTakeAway = Core.Assemblies.Assembly.Get("EMPTYCARTONRETURN") as StraightConveyor;
 
             plc51 = Core.Assemblies.Assembly.Get("PLC 51") as MHEControllerAUS_Case;
             plc52 = Core.Assemblies.Assembly.Get("PLC 52") as MHEControllerAUS_Case;
@@ -123,16 +118,6 @@ namespace Experior.Controller.TollFashion
             cartonErectorResendTimer.AutoReset = true;
             cartonErectorResendTimer.OnElapsed += CartonErectorResendTimer_OnElapsed;
 
-            ////Init online packing stations (Actionpoint, arrival timestamp)
-            //for (int i = 1; i <= 18; i++)
-            //{
-            //    onlinePackingStations.Add(ActionPoint.Get("ONLINE" + i), -1f);
-            //}
-
-            //onlinePackingStationTimer = new Timer(1);
-            //onlinePackingStationTimer.AutoReset = true;
-            //onlinePackingStationTimer.OnElapsed += OnlinePackingStationTimer_OnElapsed;
-
             dispatchLanes.Add(Core.Assemblies.Assembly.Items["P5162-4"] as StraightBeltConveyor);
             dispatchLanes.Add(Core.Assemblies.Assembly.Items["P6162-4"] as StraightBeltConveyor);
             dispatchLanes.Add(Core.Assemblies.Assembly.Items["P7162-4"] as StraightBeltConveyor);
@@ -147,6 +132,20 @@ namespace Experior.Controller.TollFashion
 
             CreateEquipmentStatuses();
             StandardConstructor();
+
+            foreach (var multishuttle in Core.Assemblies.Assembly.Items.Values.OfType<MultiShuttle>())
+            {
+                multishuttle.OnReset += Multishuttle_OnReset;
+            }
+        }
+
+        private void Multishuttle_OnReset(object sender, MultishuttleEvent e)
+        {
+            //Reset of entire model will have Simulated time == 0. Dont send reset for each MS, just one ALL 
+            if (Environment.Time.Simulated > 0)
+            {
+                emulationController.SendReset(e.MultiShuttle.ControllerName.Replace("MSC ", "MS"));
+            }
         }
 
         private void CartonErectorResendTimer_OnElapsed(Timer sender)
@@ -197,32 +196,6 @@ namespace Experior.Controller.TollFashion
                 }, 5);
             }
         }
-
-        //private void OnlinePackingStationTimer_OnElapsed(Timer sender)
-        //{
-        //    //Check we have space on empty line
-        //    if (emptyCartonOnlineTakeAway.ThisRouteStatus.Available == RouteStatuses.Blocked)
-        //        return;
-
-        //    if (emptyCartonOnlineTakeAway.LoadCount > 50)
-        //        return;
-
-        //    //Check all online packing stations
-        //    foreach (var p in onlinePackingStations)
-        //    {
-        //        if (p.Value > 0 && Environment.Time.Simulated > p.Value + onlinePackingTime)
-        //        {
-        //            if (p.Key.Active)
-        //            {
-        //                //Switch to empty line
-        //                var carton = p.Key.ActiveLoad;
-        //                carton.Yaw = 0;
-        //                carton.Switch(emptyCartonOnlineTakeAway.TransportSection.Route);
-        //                carton.Release();
-        //            }
-        //        }
-        //    }
-        //}
 
         private void OnTransportOrderTelegramReceived61(object sender, MessageEventArgs e)
         {
@@ -506,6 +479,7 @@ namespace Experior.Controller.TollFashion
 
             carton61Labeler1.Reset();
             carton61Labeler2.Reset();
+            emulationController.SendReset();
 
             base.Reset();
         }
@@ -604,12 +578,14 @@ namespace Experior.Controller.TollFashion
             }
             if (node.Name == "CC61LPA1")
             {
-                AddDispatchLabel(load, carton61Labeler1);
+                //AddDispatchLabel(load, carton61Labeler1);
+                AddDispatchLabel(load);
                 return;
             }
             if (node.Name == "CC61LPA2")
             {
-                AddDispatchLabel(load, carton61Labeler2);
+                //AddDispatchLabel(load, carton61Labeler2);
+                AddDispatchLabel(load);
                 return;
             }
             if (node.Name.StartsWith("CLEARSWAP"))
@@ -632,21 +608,16 @@ namespace Experior.Controller.TollFashion
                 }
                 lidnp2Load = load;
                 lidnp2Resend.Start();
+                return;
             }
             if (node.Name.EndsWith("CARTONA1"))
             {
                 RequestValidBarcodes();
-                return;
+
             }
-            //var ap = node as ActionPoint;
-            //if (ap != null && onlinePackingStations.ContainsKey(ap))
-            //{
-            //    //Arrived at online pack station. Set arrival timestamp 
-            //    onlinePackingStations[ap] = Environment.Time.Simulated;
-            //}
         }
 
-        private void AddDispatchLabel(Load load, ZplLabeler labeler)
+        private void AddDispatchLabel(Load load)
         {
             //var barcode2 = labeler.GetNextValidBarcode();
             var barcode2 = load.Identification; 

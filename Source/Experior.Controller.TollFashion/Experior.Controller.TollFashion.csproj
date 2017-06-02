@@ -151,6 +151,10 @@
       <Name>Experior.Catalog.Dematic.DatcomAUS</Name>
       <Private>False</Private>
     </ProjectReference>
+    <ProjectReference Include="..\Experior.Catalog.Dematic.Storage.MultiShuttle\Branched - DriveThrough\Experior.Catalog.Dematic.Storage.MultiShuttle.csproj">
+      <Project>{66cd6d1d-2ae7-43dc-88e7-3f1505a40f44}</Project>
+      <Name>Experior.Catalog.Dematic.Storage.MultiShuttle</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">

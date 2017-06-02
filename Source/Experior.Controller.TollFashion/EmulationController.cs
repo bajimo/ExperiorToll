@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
+using System.Linq;
 using Experior.Catalog.Dematic.Case;
 using Experior.Catalog.Dematic.Case.Components;
 using Experior.Catalog.Dematic.DatcomAUS.Assemblies;
@@ -16,7 +17,7 @@ namespace Experior.Controller.TollFashion
         private readonly Dictionary<string, float> loadWeight = new Dictionary<string, float>();
         private readonly Core.Communication.TCPIP.Connection emuconnection;
 
-        public event EventHandler<string[]> FeedReceived; 
+        public event EventHandler<string[]> FeedReceived;
         //private int noBarcodesCount;
 
         //public bool CartonBarcodesNeeded => validCartonErectionBarcodes.Count < 20;
@@ -27,7 +28,29 @@ namespace Experior.Controller.TollFashion
             if (emuconnection != null)
             {
                 emuconnection.OnTelegramReceived += Emuconnection_OnTelegramReceived;
+                emuconnection.OnConnected += Emuconnection_OnConnected;
             }
+        }
+
+        private void Emuconnection_OnConnected(Core.Communication.Connection connection)
+        {
+            Core.Environment.Invoke(CheckResetMessage);
+        }
+
+        private void CheckResetMessage()
+        {
+            //var loads = Experior.Core.Loads.Load.Items.Where(l => l.Route?.Parent?.Parent?.Name == )
+            var loadCount = Core.Loads.Load.Items.Count(l => !l.Embedded);
+            if (loadCount == 0)
+                SendReset();
+
+            if (loadCount > 6)
+                return; //Carton erectors hold up to 6 cartons. If > 6 then system has been running
+
+            var cartonErectorConveyrs = new List<string>() {"P1051", "P1052", "P1053"};
+            var loadsNotOnCartonErector = Core.Loads.Load.Items.Count(l => !l.Embedded && !cartonErectorConveyrs.Contains(l.Route?.Parent?.Parent?.Name));
+            if (loadsNotOnCartonErector == 0)
+                SendReset();
         }
 
         private void Emuconnection_OnTelegramReceived(Core.Communication.TCPIP.Connection sender, string telegram)
@@ -78,7 +101,7 @@ namespace Experior.Controller.TollFashion
 
         //private void AutoFeedTelegramRecieved(string[] telegramFields, string subtype)
         //{
-      
+
         //}
 
         private void DataTelegramRecieved(string[] telegramFields, string subtype)
@@ -317,6 +340,20 @@ namespace Experior.Controller.TollFashion
         protected virtual void OnFeedReceived(string[] telegramFields)
         {
             FeedReceived?.Invoke(this, telegramFields);
+        }
+
+        public void SendReset()
+        {
+            SendReset("ALL");
+        }
+
+        public void SendReset(string area)
+        {
+            //Send reset message to WCS
+            var header = "MODEL001" + EmuCycleNumber();
+            var telegram = header + "," + area;
+            Core.Environment.Log.Write(DateTime.Now.ToString(CultureInfo.InvariantCulture) + " MFH<EMU: " + emuconnection.Id + " " + telegram);
+            emuconnection.Send(telegram);
         }
     }
 }
