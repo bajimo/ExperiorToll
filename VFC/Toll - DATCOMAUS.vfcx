@@ -10541,7 +10541,7 @@
       <triggerMessType>Disabled</triggerMessType>
       <RoutingTrigger>Arrival</RoutingTrigger>
       <Distribution>RoundRobin</Distribution>
-      <DestinationCode>CC62LANE1,CC62LANE2,CC62LANE3,CC62LANE4,CC62LANE5,CC62LANE6,CC62LANE7,CC62LANE8,CC62LANE9,CC62RECIRC</DestinationCode>
+      <DestinationCode>CC62LANE1B1,CC62LANE2B1,CC62LANE3B1,CC62LANE4B1,CC62LANE5B1,CC62LANE6B1,CC62LANE7B1,CC62LANE8B1,CC62LANE9B1,CC62RECIRC</DestinationCode>
       <DestinationCodeSecondary>
       </DestinationCodeSecondary>
       <TelegramDelay>0</TelegramDelay>
