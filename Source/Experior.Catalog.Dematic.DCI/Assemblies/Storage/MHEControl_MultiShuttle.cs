@@ -68,7 +68,23 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
 
         private void TheMultishuttle_OnVehicleException(object sender, MultishuttleVehicleEvent e)
         {
-            var telegram = controller.CreateTelegramFromCaseData(TelegramTypes.TUException, e.Task.caseData as DCICaseData);
+            var caseData = e.Task.caseData as DCICaseData;
+            if (caseData == null)
+            {
+                //Case data was not found. Search for case data on the load if any
+                var loadOnBoard = e.Vehicle.LoadOnBoard as Case_Load;
+                if (loadOnBoard != null)
+                {
+                    caseData = loadOnBoard.Case_Data as DCICaseData;                    
+                }
+            }
+            if (caseData == null)
+            {
+                Log.Write("Error sending MS vehicle exception: No case data found for vehicle exception!");
+                return;                
+            }
+
+            var telegram = controller.CreateTelegramFromCaseData(TelegramTypes.TUException, caseData);
             var eventCode = "";
             switch (e.Vehicle.ExceptionType)
             {

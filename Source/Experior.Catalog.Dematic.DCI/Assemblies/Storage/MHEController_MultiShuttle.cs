@@ -40,6 +40,21 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
                     TUMissionSingleBlock(telegram);
                 }
             }
+            else if (type == TelegramTypes.TUMissionCancel)
+            {
+                //Just reply with a TUCA to acknowledge mission cancel.
+                //TODO check we have a mission to cancel and then cancel it. 
+                //Currently MS will clear all task before sending bin empty, bin full etc.
+                string sendTelegram = Template.CreateTelegram(this, TelegramTypes.TUCancel);
+                sendTelegram = sendTelegram.SetFieldValue(this, TelegramFields.EventCode, "OK");
+                //Populate the field values from TUMC
+                sendTelegram = sendTelegram.SetFieldValue(this, TelegramFields.Source, telegram.GetFieldValue(this, TelegramFields.Source));
+                sendTelegram = sendTelegram.SetFieldValue(this, TelegramFields.Current, telegram.GetFieldValue(this, TelegramFields.Current));
+                sendTelegram = sendTelegram.SetFieldValue(this, TelegramFields.Destination, telegram.GetFieldValue(this, TelegramFields.Destination));
+                sendTelegram = sendTelegram.SetFieldValue(this, TelegramFields.TUIdent, telegram.GetFieldValue(this, TelegramFields.TUIdent));
+                sendTelegram = sendTelegram.SetFieldValue(this, TelegramFields.TUType, telegram.GetFieldValue(this, TelegramFields.TUType));
+                SendTelegram(sendTelegram);
+            }
         }
 
         private void StatusRequest(string telegram)
