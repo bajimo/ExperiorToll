@@ -66,7 +66,7 @@ namespace Experior.Catalog.Dematic.Storage.MultiShuttle.Assemblies
         }
 
         public override void Reset()
-        {
+        {            
             ShuttleTasks.Clear();
             CurrentTask = null;
             Vehicle.Reset();
@@ -403,43 +403,76 @@ namespace Experior.Catalog.Dematic.Storage.MultiShuttle.Assemblies
 
                 if (Vehicle.DestAP.Distance == CurrentTask.SourcePosition && Vehicle.LoadsOnBoard == 0 && !HasArrivedAtRackInfeedConv()) //Retrieving from a bin location
                 {
-                    Case_Load boxLoad = ParentMS.Controller.CreateCaseLoad(CurrentTask.caseData);
-                    Load.Items.Add(boxLoad);
-                    boxLoad.Yaw = (float)Math.PI / 2;
-                    ParentMS.LoadCreated(new LoadCreatedEventArgs(boxLoad));
-                    boxLoad.Switch(Vehicle.shuttleAP2);
-
-                    float timeToTransfer;
-                    Vector3 transferVector;
-                    CreateTransferVector(boxLoad, out timeToTransfer, out transferVector);
-
-                    boxLoad.Translate(transferVector, 0);                                                                   //Translate away from the suttle AP in zero time
-                    Vehicle.shuttleAP2.ActiveLoad.Translate(() => boxLoad.Switch(Vehicle.shuttleAP), transferVector * -1, timeToTransfer);  //Then translate back (hence -1) in in time to transfer
-                }
-                else if (Vehicle.LoadsOnBoard != 0) //Delevering to a rackbin location or an outfeed point
-                {
-                    float timeToTransfer;
-                    Vector3 transferVector;
-                    CreateTransferVector((Case_Load)Vehicle.LoadOnBoard, out timeToTransfer, out transferVector);
-
-                    int dir = 1;
-                    if (CurrentTask.Source.Side() != CurrentTask.Destination.Side())
+                    if (Vehicle.ExceptionType == TrackVehicle.ExceptionTypes.BinRetrieveBlocked ||
+                        Vehicle.ExceptionType == TrackVehicle.ExceptionTypes.BinRetrieveEmpty)
                     {
-                        dir = -1;
-                    }
-                    Load load = Vehicle.LoadOnBoard;
-                    //Vehicle.LoadOnBoard.Translate(() => ArrivedAtDest(Vehicle.LoadOnBoard), transferVector * dir, timeToTransfer);
-
-                    if (load != null)
-                    {
-                        Vehicle.LoadOnBoard.Translate(() => ArrivedAtDest(load), transferVector * dir, timeToTransfer);
+                        //Clear tasks and be ready for a new task (bin empty or bin blocked)
+                        ShuttleTasks.Clear();
+                        var task = CurrentTask;
+                        CurrentTask = null;
+                        ParentMS.VehicleException(new MultishuttleVehicleEvent(ParentMS, Vehicle, task));
                     }
                     else
                     {
-                        Log.Write(string.Format("ERROR {0}: ShuttleOnArrived - load is null!", Name), Color.Red);
-                        Core.Environment.Scene.Pause();
-                    }
+                        Case_Load boxLoad = ParentMS.Controller.CreateCaseLoad(CurrentTask.caseData);
+                        Load.Items.Add(boxLoad);
+                        boxLoad.Yaw = (float)Math.PI / 2;
+                        ParentMS.LoadCreated(new LoadCreatedEventArgs(boxLoad));
+                        boxLoad.Switch(Vehicle.shuttleAP2);
 
+                        float timeToTransfer;
+                        Vector3 transferVector;
+                        CreateTransferVector(boxLoad, out timeToTransfer, out transferVector);
+
+                        boxLoad.Translate(transferVector, 0);                                                                   //Translate away from the suttle AP in zero time
+                        Vehicle.shuttleAP2.ActiveLoad.Translate(() => boxLoad.Switch(Vehicle.shuttleAP), transferVector * -1, timeToTransfer);  //Then translate back (hence -1) in in time to transfer
+                    }
+                    
+                }
+                else if (Vehicle.LoadsOnBoard != 0) //Delevering to a rackbin location or an outfeed point
+                {                   
+                    var exception = false;
+                    if (Vehicle.ExceptionType == TrackVehicle.ExceptionTypes.BinStoreFull ||
+                        Vehicle.ExceptionType == TrackVehicle.ExceptionTypes.BinStoreBlocked)
+                    {
+                        var rackbin = currentTask.Destination.ConvType() != ConveyorTypes.OutfeedRack;
+                        if (rackbin)
+                        {
+                            exception = true;
+                        }
+                    }
+                    if (exception)
+                    {
+                        //Clear tasks and be ready for a new task
+                        ShuttleTasks.Clear();
+                        var task = CurrentTask;
+                        CurrentTask = null;
+                        ParentMS.VehicleException(new MultishuttleVehicleEvent(ParentMS, Vehicle, task));
+                    }
+                    else
+                    {
+                        float timeToTransfer;
+                        Vector3 transferVector;
+                        CreateTransferVector((Case_Load)Vehicle.LoadOnBoard, out timeToTransfer, out transferVector);
+
+                        int dir = 1;
+                        if (CurrentTask.Source.Side() != CurrentTask.Destination.Side())
+                        {
+                            dir = -1;
+                        }
+                        Load load = Vehicle.LoadOnBoard;
+                        //Vehicle.LoadOnBoard.Translate(() => ArrivedAtDest(Vehicle.LoadOnBoard), transferVector * dir, timeToTransfer);
+
+                        if (load != null)
+                        {
+                            Vehicle.LoadOnBoard.Translate(() => ArrivedAtDest(load), transferVector * dir, timeToTransfer);
+                        }
+                        else
+                        {
+                            Log.Write(string.Format("ERROR {0}: ShuttleOnArrived - load is null!", Name), Color.Red);
+                            Core.Environment.Scene.Pause();
+                        }
+                    }
                 }
             }
         }

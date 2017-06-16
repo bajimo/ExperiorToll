@@ -61,6 +61,38 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
             //PickStation
             theMultishuttle.OnArrivedAtPickStationConvPosA += theMultishuttle_OnArrivedAtPickStationConvPosA;
             theMultishuttle.OnArrivedAtPickStationConvPosB += theMultishuttle_OnArrivedAtPickStationConvPosB;
+
+            //Exceptions
+            theMultishuttle.OnVehicleException += TheMultishuttle_OnVehicleException;
+        }
+
+        private void TheMultishuttle_OnVehicleException(object sender, MultishuttleVehicleEvent e)
+        {
+            var telegram = controller.CreateTelegramFromCaseData(TelegramTypes.TUException, e.Task.caseData as DCICaseData);
+            var eventCode = "";
+            switch (e.Vehicle.ExceptionType)
+            {
+                case TrackVehicle.ExceptionTypes.BinRetrieveEmpty:
+                    eventCode = "BE"; //Bin empty
+                    break;
+                case TrackVehicle.ExceptionTypes.BinRetrieveBlocked:
+                    eventCode = "SN"; //Source location is not reachable
+                    break;
+                case TrackVehicle.ExceptionTypes.BinStoreBlocked:
+                    eventCode = "DN"; //Destination location is not reachable
+                    break;
+                case TrackVehicle.ExceptionTypes.BinStoreFull:
+                    eventCode = "BO"; //Bin occupied
+                    break;
+                case TrackVehicle.ExceptionTypes.None:
+                    return;
+                default:
+                    return;
+            }
+            //Reset vehicle exception
+            e.Vehicle.ExceptionType = TrackVehicle.ExceptionTypes.None;
+            telegram = telegram.SetFieldValue(controller, TelegramFields.EventCode, eventCode);
+            controller.SendTelegram(telegram);
         }
 
         private void TheMultishuttle_OnElevatorTasksStatusChanged(object sender, ElevatorTasksStatusChangedEventArgs e)
@@ -500,6 +532,9 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
             //PickStation
             theMultishuttle.OnArrivedAtPickStationConvPosA -= theMultishuttle_OnArrivedAtPickStationConvPosA;
             theMultishuttle.OnArrivedAtPickStationConvPosB -= theMultishuttle_OnArrivedAtPickStationConvPosB;
+
+            //Exceptions
+            theMultishuttle.OnVehicleException -= TheMultishuttle_OnVehicleException;
         }
     }
 

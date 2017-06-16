@@ -58,7 +58,8 @@ namespace Experior.Catalog.Dematic.Storage.MultiShuttle.Assemblies
 
         public void Reset()
         {
-            if(LoadOnBoard != null)
+            ExceptionType = ExceptionTypes.None;
+            if (LoadOnBoard != null)
             {
                 LoadOnBoard.Dispose();
             }
@@ -111,13 +112,13 @@ namespace Experior.Catalog.Dematic.Storage.MultiShuttle.Assemblies
         {
             [Description("None")]
             None,
-            [Description("Bin Store Full (status 04)")]
+            [Description("Bin Store Full")]
             BinStoreFull,
-            [Description("Bin Store Blocked (status 12)")]
+            [Description("Bin Store Blocked")]
             BinStoreBlocked,
-            [Description("Bin Retrieve Empty (status 05)")]
+            [Description("Bin Retrieve Empty")]
             BinRetrieveEmpty,
-            [Description("Bin Retrieve Blocked (status 11)")]
+            [Description("Bin Retrieve Blocked")]
             BinRetrieveBlocked
         }
 
@@ -134,7 +135,6 @@ namespace Experior.Catalog.Dematic.Storage.MultiShuttle.Assemblies
             get { return exceptionType; }
             set { exceptionType = value; }
         }
-        public bool InException = false;
 
         [Category("Status")]
         [DisplayName("Motor status")]

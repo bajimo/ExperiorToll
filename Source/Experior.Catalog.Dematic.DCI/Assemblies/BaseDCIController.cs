@@ -474,6 +474,35 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies
             return telegram;
         }
 
+        public string CreateTelegramFromCaseData(TelegramTypes telegramType, DCICaseData caseData)
+        {
+            string telegram = Template.CreateTelegram(this, telegramType);
+  
+            //Populate the correct field values
+            telegram = telegram.SetFieldValue(this, TelegramFields.Source, caseData.Source);
+            telegram = telegram.SetFieldValue(this, TelegramFields.Current, caseData.Current);
+            telegram = telegram.SetFieldValue(this, TelegramFields.Destination, caseData.Destination);
+            telegram = telegram.SetFieldValue(this, TelegramFields.TUIdent, caseData.TUIdent);
+            telegram = telegram.SetFieldValue(this, TelegramFields.TUType, caseData.TUType);
+            telegram = telegram.SetFieldValue(this, TelegramFields.TULength, (caseData.Length * 1000).ToString("0000"));
+            telegram = telegram.SetFieldValue(this, TelegramFields.TUWidth, (caseData.Width * 1000).ToString("0000"));
+            telegram = telegram.SetFieldValue(this, TelegramFields.TUHeight, (caseData.Height * 1000).ToString("0000"));
+            telegram = telegram.SetFieldValue(this, TelegramFields.TUWeight, (caseData.Weight * 1000).ToString("000000"));
+            telegram = telegram.SetFieldValue(this, TelegramFields.EventCode, caseData.EventCode);
+            telegram = telegram.SetFieldValue(this, TelegramFields.DropIndex, caseData.DropIndex.ToString());
+            telegram = telegram.SetFieldValue(this, TelegramFields.ShuttleDynamics, caseData.ShuttleDynamics);
+            telegram = telegram.SetFieldValue(this, TelegramFields.LiftDynamics, caseData.LiftDynamics);
+            telegram = telegram.SetFieldValue(this, TelegramFields.SourceShuttleExtension, caseData.SourceShuttleExtension);
+            telegram = telegram.SetFieldValue(this, TelegramFields.DestinationShuttleExtension, caseData.DestinationShuttleExtension);
+
+            if (DCIVersion == DCIVersions._1_60)
+            {
+                telegram = telegram.SetFieldValue(this, TelegramFields.CaseConveyorDynamics, caseData.CaseConveyorDynamics);
+            }
+
+            return telegram;
+        }
+
         public static string GetBinLocField(string binLoc, BinLocFields field)
         {
             if (binLoc.Length == 14 || binLoc.Substring(0, 2) == "MS")

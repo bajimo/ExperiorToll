@@ -384,7 +384,6 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
                         ShuttleTask st = new ShuttleTask();
                         string destination = caseData.Destination;
 
-
                         if (destination.LocationType() != LocationTypes.BinLocation)
                         {
                             Log.Write("WARNING: Arrived at infeed rack and destination is NOT a binlocation.", Color.Red);
@@ -406,9 +405,41 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
 
                         ms.shuttlecars[level].ShuttleTasks.Add(st);
                     }
+                    else if (telegram.GetFieldValue(this, TelegramFields.Current).LocationType() ==
+                             LocationTypes.Shuttle &&
+                             caseData.Current == telegram.GetFieldValue(this, TelegramFields.Current)
+                    ) //Mission for load on the shuttle
+                    {
+                        //MRP 16.06.2017 dont think this is the correct way but seems to work for "modify mission after bin full"
+                        ShuttleTask st = new ShuttleTask();
+                        string destination = caseData.Destination;
+                    
+                        MultiShuttle ms = multishuttles.First();
+                        var levelstring = caseData.Current.Substring(8, 2);
+                        int level = int.Parse(levelstring);
+                      
+                        if (destination.LocationType() == LocationTypes.RackConvOut)//A move to a drop station
+                        {
+                            // takes the form aasyyxz: aa=aisle, s = side, yy = level, x = conv type see enum ConveyorTypes , Z = loc A or B e.g. 01R05OA
+                            st.Destination = DCIrackLocToMultiShuttleRackLoc(level, destination);
+                        }
+                        else
+                        {
+                            st.Destination = DCIbinLocToMultiShuttleLoc(destination, out level, ms);
+                        }
+                        
+                        st.Level = level;
+                        st.LoadID = caseLoad.Identification;
+                        st.Source = st.Destination; //Shuttle will start moving to source, but when done it will try drop because we have a load on board...
+
+                        ms.shuttlecars[level].ShuttleTasks.Add(st);
+                    }
                     else
                     {
-                        Log.Write(string.Format("{0}: MultishuttleStartTransportTelegram received but the load was found elsewhere in the model ({1}) message ignored", Name, caseData.Current), Color.Red);
+                        Log.Write(
+                            string.Format(
+                                "{0}: MultishuttleStartTransportTelegram received but the load was found elsewhere in the model ({1}) message ignored",
+                                Name, caseData.Current), Color.Red);
                     }
                 }
                 //Anything FROM a binloc will not have a load until the shuttle gets to the bin location at this point it will be created.

@@ -2127,6 +2127,7 @@ namespace Experior.Catalog.Dematic.Storage.MultiShuttle.Assemblies
         public event EventHandler<DropStationConvClearEventArgs> OnDropStationConvClear;
 
         public event EventHandler<TaskEventArgs> OnArrivedAtShuttle;
+        public event EventHandler<MultishuttleVehicleEvent> OnVehicleException;
 
         public event EventHandler<TaskEventArgs> OnArrivedAtRackLocation;
         public static event EventHandler<LoadCreatedEventArgs> OnLoadCreated;
@@ -2262,6 +2263,14 @@ namespace Experior.Catalog.Dematic.Storage.MultiShuttle.Assemblies
             if (OnArrivedAtShuttle != null)
             {
                 OnArrivedAtShuttle(this, eventArgs);
+            }
+        }
+
+        public virtual void VehicleException(MultishuttleVehicleEvent eventArgs)
+        {
+            if (OnVehicleException != null)
+            {
+                OnVehicleException(this, eventArgs);
             }
         }
 
