@@ -145,14 +145,28 @@ namespace Experior.Catalog.Dematic.Storage.MultiShuttle.Assemblies
 
         public ShuttleTask SetNewShuttleTask()
         {
+            if (Vehicle.LoadOnBoard != null)
+            {
+                //MRP. After a bin full we need to search for tasks with the right ID. Other tasks must wait!
+                //We have a load on board. New task must have same ID!
+                var id = Vehicle.LoadOnBoard.Identification;
+                var next = ShuttleTasks.FirstOrDefault(t => t.LoadID == id);
+                if (next == null)
+                    return null;
+
+                ShuttleTasks.Remove(next);
+                CurrentTask = next;
+                return next;
+            }
+
             ShuttleTask newTask = null;
             if (CurrentTask == null && ShuttleTasks.Count != 0)
             {
-                string logMess = "";
-                foreach (ShuttleTask st in ShuttleTasks)
-                {
-                    logMess += string.Format("{0}:", st.LoadID);
-                }
+                //string logMess = "";
+                //foreach (ShuttleTask st in ShuttleTasks)
+                //{
+                //    logMess += string.Format("{0}:", st.LoadID);
+                //}
                 //Log.Write(string.Format("SHUTTLETASKS - {0} - {1}", Name, logMess));
 
                 foreach (ShuttleTask st in ShuttleTasks)
