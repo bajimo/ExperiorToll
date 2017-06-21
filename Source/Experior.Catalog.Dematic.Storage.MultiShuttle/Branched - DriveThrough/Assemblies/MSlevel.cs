@@ -145,7 +145,7 @@ namespace Experior.Catalog.Dematic.Storage.MultiShuttle.Assemblies
 
         public ShuttleTask SetNewShuttleTask()
         {
-            if (Vehicle.LoadOnBoard != null)
+            if (Vehicle.LoadOnBoard != null && CurrentTask == null)
             {
                 //MRP. After a bin full we need to search for tasks with the right ID. Other tasks must wait!
                 //We have a load on board. New task must have same ID!
