@@ -10918,6 +10918,19 @@
       <RoutePercentage>95</RoutePercentage>
       <RouteController>PLC61</RouteController>
     </Routing>
+    <Routing Name="CC63QA2NP1" Type="DATCOMAUSRouting">
+      <Category>
+      </Category>
+      <triggerMessType>Disabled</triggerMessType>
+      <RoutingTrigger>Arrival</RoutingTrigger>
+      <Distribution>RoundRobin</Distribution>
+      <DestinationCode>CC63QA2A1,CC63QA2NP1</DestinationCode>
+      <DestinationCodeSecondary>
+      </DestinationCodeSecondary>
+      <TelegramDelay>0</TelegramDelay>
+      <RoutePercentage>100</RoutePercentage>
+      <RouteController>PLC63</RouteController>
+    </Routing>
   </Routings>
   <Functions>
   </Functions>
