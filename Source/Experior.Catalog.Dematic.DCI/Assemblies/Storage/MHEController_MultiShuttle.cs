@@ -18,7 +18,7 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
         List<MHEControl> controls = new List<MHEControl>();
         MHEControl_MultiShuttle control;
 
-        public MHEController_Multishuttle(MHEController_MultishuttleDCIInfo info):base(info)
+        public MHEController_Multishuttle(MHEController_MultishuttleDCIInfo info) : base(info)
         {
             mHEController_MultishuttleInfo = info;
         }
@@ -42,19 +42,24 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
             }
             else if (type == TelegramTypes.TUMissionCancel)
             {
-                //Just reply with a TUCA to acknowledge mission cancel.
-                //TODO check we have a mission to cancel and then cancel it. 
-                //Currently MS will clear all task before sending bin empty, bin full etc.
-                string sendTelegram = Template.CreateTelegram(this, TelegramTypes.TUCancel);
-                sendTelegram = sendTelegram.SetFieldValue(this, TelegramFields.EventCode, "OK");
-                //Populate the field values from TUMC
-                sendTelegram = sendTelegram.SetFieldValue(this, TelegramFields.Source, telegram.GetFieldValue(this, TelegramFields.Source));
-                sendTelegram = sendTelegram.SetFieldValue(this, TelegramFields.Current, telegram.GetFieldValue(this, TelegramFields.Current));
-                sendTelegram = sendTelegram.SetFieldValue(this, TelegramFields.Destination, telegram.GetFieldValue(this, TelegramFields.Destination));
-                sendTelegram = sendTelegram.SetFieldValue(this, TelegramFields.TUIdent, telegram.GetFieldValue(this, TelegramFields.TUIdent));
-                sendTelegram = sendTelegram.SetFieldValue(this, TelegramFields.TUType, telegram.GetFieldValue(this, TelegramFields.TUType));
-                SendTelegram(sendTelegram);
+                HandleMissionCancel(telegram);
             }
+        }
+
+        private void HandleMissionCancel(string telegram)
+        {
+            //Just reply with a TUCA to acknowledge mission cancel.
+            //TODO check we have a mission to cancel and then cancel it. 
+            //Currently MS will clear all task before sending bin empty, bin full etc.
+            string sendTelegram = Template.CreateTelegram(this, TelegramTypes.TUCancel);
+            sendTelegram = sendTelegram.SetFieldValue(this, TelegramFields.EventCode, "OK");
+            //Populate the field values from TUMC
+            sendTelegram = sendTelegram.SetFieldValue(this, TelegramFields.Source, telegram.GetFieldValue(this, TelegramFields.Source));
+            sendTelegram = sendTelegram.SetFieldValue(this, TelegramFields.Current, telegram.GetFieldValue(this, TelegramFields.Current));
+            sendTelegram = sendTelegram.SetFieldValue(this, TelegramFields.Destination, telegram.GetFieldValue(this, TelegramFields.Destination));
+            sendTelegram = sendTelegram.SetFieldValue(this, TelegramFields.TUIdent, telegram.GetFieldValue(this, TelegramFields.TUIdent));
+            sendTelegram = sendTelegram.SetFieldValue(this, TelegramFields.TUType, telegram.GetFieldValue(this, TelegramFields.TUType));
+            SendTelegram(sendTelegram);
         }
 
         private void StatusRequest(string telegram)
@@ -72,18 +77,18 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
 
         private void TUMissionMultiBlock(string telegram)
         {
-            string currentLoc       = string.Empty;
+            string currentLoc = string.Empty;
             DematicActionPoint locA = null, locB = null;
-            MultiShuttle ms         = null;
+            MultiShuttle ms = null;
 
             TelegramTypes type = telegram.GetTelegramType(this);
 
-            string current0            = telegram.GetFieldValue(this, TelegramFields.Current, 0);
-            string current1            = telegram.GetFieldValue(this, TelegramFields.Current, 1);
-            string destLoc0            = telegram.GetFieldValue(this, TelegramFields.Destination, 0);
-            string destLoc1            = telegram.GetFieldValue(this, TelegramFields.Destination, 1);
-            string tuIdent0            = telegram.GetFieldValue(this, TelegramFields.TUIdent, 0);
-            string tuIdent1            = telegram.GetFieldValue(this, TelegramFields.TUIdent, 1);
+            string current0 = telegram.GetFieldValue(this, TelegramFields.Current, 0);
+            string current1 = telegram.GetFieldValue(this, TelegramFields.Current, 1);
+            string destLoc0 = telegram.GetFieldValue(this, TelegramFields.Destination, 0);
+            string destLoc1 = telegram.GetFieldValue(this, TelegramFields.Destination, 1);
+            string tuIdent0 = telegram.GetFieldValue(this, TelegramFields.TUIdent, 0);
+            string tuIdent1 = telegram.GetFieldValue(this, TelegramFields.TUIdent, 1);
 
             string destA = null, destB = null;
 
@@ -428,11 +433,11 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
                         //MRP 16.06.2017 dont think this is the correct way but seems to work for "modify mission after bin full"
                         ShuttleTask st = new ShuttleTask();
                         string destination = caseData.Destination;
-                    
+
                         MultiShuttle ms = multishuttles.First();
                         var levelstring = caseData.Current.Substring(8, 2);
                         int level = int.Parse(levelstring);
-                      
+
                         if (destination.LocationType() == LocationTypes.RackConvOut)//A move to a drop station
                         {
                             // takes the form aasyyxz: aa=aisle, s = side, yy = level, x = conv type see enum ConveyorTypes , Z = loc A or B e.g. 01R05OA
@@ -442,7 +447,7 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
                         {
                             st.Destination = DCIbinLocToMultiShuttleLoc(destination, out level, ms);
                         }
-                        
+
                         st.Level = level;
                         st.LoadID = caseLoad.Identification;
                         st.Source = st.Destination; //Shuttle will start moving to source, but when done it will try drop because we have a load on board...
@@ -462,7 +467,7 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
                 {
                     CreateShuttleTask(telegram);
                 }
-                else if (telegram.GetFieldValue(this, TelegramFields.Current).LocationType() == LocationTypes.BinLocation && 
+                else if (telegram.GetFieldValue(this, TelegramFields.Current).LocationType() == LocationTypes.BinLocation &&
                     telegram.GetFieldValue(this, TelegramFields.Destination).LocationType() == LocationTypes.DropStation) //It's a shuffle move
                 {
                     SingleLoadOut(telegram);
@@ -603,24 +608,24 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
                 // takes the form aasyyxz: aa=aisle, s = side, yy = level, x = conv type see enum ConveyorTypes , Z = loc A or B e.g. 01R05OA
                 destination = string.Format("{0}{1}{2}OA", GetPSDSLocFields(tlgDest, PSDSRackLocFields.Aisle),
                                                            GetPSDSLocFields(tlgDest, PSDSRackLocFields.Side),
-                                                           level.ToString().PadLeft(2, '0'));                
+                                                           level.ToString().PadLeft(2, '0'));
             }
-            else if(tlgDest.LocationType() == LocationTypes.RackConvOut)
+            else if (tlgDest.LocationType() == LocationTypes.RackConvOut)
             {
                 destination = DCIrackLocToMultiShuttleRackLoc(level, tlgDest);//Create the rack location destination for the shuttle task
             }
 
             st.Destination = destination;
-            st.Level       = level;
-            st.LoadID      = telegram.GetFieldValue(this, TelegramFields.TUIdent);
-            st.caseData    = CreateDCICaseData(telegram);
-            ms.shuttlecars[level].ShuttleTasks.Add(st);            
+            st.Level = level;
+            st.LoadID = telegram.GetFieldValue(this, TelegramFields.TUIdent);
+            st.caseData = CreateDCICaseData(telegram);
+            ms.shuttlecars[level].ShuttleTasks.Add(st);
         }
 
         public static string DCIrackLocToMultiShuttleRackLoc(int level, string dest, string pos = "A")
         {
             // takes the form aasyyxz: aa=aisle, s = side, yy = level, x = conv type see enum ConveyorTypes , Z = loc A or B e.g. 01R05OA
-            return  string.Format("{0}{1}{2}O{3}", GetRackLocFields(dest, PSDSRackLocFields.Aisle),
+            return string.Format("{0}{1}{2}O{3}", GetRackLocFields(dest, PSDSRackLocFields.Aisle),
                                                    GetRackLocFields(dest, PSDSRackLocFields.Side),
                                                    level.ToString().PadLeft(2, '0'),
                                                    pos);
@@ -717,7 +722,7 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
                 }
                 else
                 {
-                    dest = string.Format("{0}{1}{2}{3}A", 
+                    dest = string.Format("{0}{1}{2}{3}A",
                                         aisle,
                                         side,
                                         GetPSDSLocFields(destLoc, PSDSRackLocFields.Level),
@@ -741,11 +746,11 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
 
             ElevatorTask et = new ElevatorTask(null, caseLoad.Identification)
             {
-                SourceLoadB      = sourceLoadB,
+                SourceLoadB = sourceLoadB,
                 DestinationLoadB = dest,
-                LoadCycle        = Cycle.Single,
-                UnloadCycle      = Cycle.Single,
-                Flow             = TaskType.Infeed
+                LoadCycle = Cycle.Single,
+                UnloadCycle = Cycle.Single,
+                Flow = TaskType.Infeed
             };
 
             ms.elevators.First(x => x.ElevatorName == side + aisle).ElevatorTasks.Add(et);
@@ -760,17 +765,17 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
         private MultiShuttle GetMultishuttleFromAisleNum(string location)
         {
             int aNum;
-            int.TryParse(location.Substring(0,2), out aNum);
+            int.TryParse(location.Substring(0, 2), out aNum);
             if (aNum == 0) return null;
 
             var aisleNum = multishuttles.Where(x => x.AisleNumber == aNum);
-            if(aisleNum.Count() > 1)
+            if (aisleNum.Count() > 1)
             {
                 Log.Write("ERROR: List of multishuttles [Experior.Catalog.Dematic.ATC.Assemblies.Storage.MHEController_Multishuttle.multishuttles] do not have unique aisle numbers.", Color.Red);
                 Log.Write("List of multishuttles accessed in Experior.Catalog.Dematic.ATC.Assemblies.Storage.MHEController_Multishuttle.GetMultishuttleFromAisleNum().", Color.Red);
                 return null;
             }
-            else if(aisleNum.Any())
+            else if (aisleNum.Any())
             {
                 return aisleNum.First();
             }
@@ -795,7 +800,7 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
             }
             else
             {
-                Experior.Core.Environment.Log.Write("Can't create MHE Control, object is not defined in the 'CreateMHEControl' of the controller",Color.Red);
+                Experior.Core.Environment.Log.Write("Can't create MHE Control, object is not defined in the 'CreateMHEControl' of the controller", Color.Red);
                 return null;
             }
             //......other assemblies should be added here....do this with generics...correction better to do this with reflection...That is BaseController should use reflection
