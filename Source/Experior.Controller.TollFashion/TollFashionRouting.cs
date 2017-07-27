@@ -610,12 +610,23 @@ namespace Experior.Controller.TollFashion
                 lidnp2Resend.Start();
                 return;
             }
+            if (node.Name == "CC54DOC1A1")
+            {
+                docInserterCounter++;
+                var docinserter = "CC54DOCINS605";
+                if (docInserterCounter % 2 == 0)
+                {
+                    docinserter = "CC54DOCINS615";
+                }
+                plc54.SendArrivalMessage(docinserter, load as Case_Load);
+            }
             if (node.Name.EndsWith("CARTONA1"))
             {
                 RequestValidBarcodes();
-
             }
         }
+
+        private int docInserterCounter;
 
         private void AddDispatchLabel(Load load)
         {
