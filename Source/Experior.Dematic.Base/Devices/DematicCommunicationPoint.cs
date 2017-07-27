@@ -201,7 +201,8 @@ namespace Experior.Dematic.Base.Devices
 
         public void controller_OnControllerDeletedEvent(object sender, EventArgs e)
         {
-            controller.OnControllerDeletedEvent -= controller_OnControllerDeletedEvent;
+            if (controller != null)
+                controller.OnControllerDeletedEvent -= controller_OnControllerDeletedEvent;
             ControllerName = "No Controller";
             Controller = null;
             commPointInfo.ProtocolInfo = null;
