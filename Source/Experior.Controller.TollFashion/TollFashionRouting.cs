@@ -321,9 +321,9 @@ namespace Experior.Controller.TollFashion
             //00 is ok, 01 is fault. Some function groups use different statuses.
 
             //Table 50 Functional Groups – Order Fulfilment     
-            equipmentStatuses.Add(new EquipmentStatus(plc51, "CC51CBUFFIN", "11")); //11 induction running
-            equipmentStatuses.Add(new EquipmentStatus(plc52, "CC52CBUFFIN", "11")); //11 induction running
-            equipmentStatuses.Add(new EquipmentStatus(plc53, "CC53CBUFFIN", "11")); //11 induction running
+            equipmentStatuses.Add(new EquipmentStatus(plc51, "CC51CBUFFIN", "01")); //01 induction running
+            equipmentStatuses.Add(new EquipmentStatus(plc52, "CC52CBUFFIN", "01")); //01 induction running
+            equipmentStatuses.Add(new EquipmentStatus(plc53, "CC53CBUFFIN", "01")); //01 induction running
             equipmentStatuses.Add(new EquipmentStatus(plc51, "CC51OBUFFIN"));
             equipmentStatuses.Add(new EquipmentStatus(plc52, "CC52OBUFFIN"));
             equipmentStatuses.Add(new EquipmentStatus(plc53, "CC53OBUFFIN"));
@@ -349,7 +349,7 @@ namespace Experior.Controller.TollFashion
             equipmentStatuses.Add(new EquipmentStatus(plc53, "CC53QA"));
 
             //Table 59 Functional Groups – Finishing
-            equipmentStatuses.Add(new EquipmentStatus(plc54, "CC54LOOP", "11")); //11 loop is running
+            equipmentStatuses.Add(new EquipmentStatus(plc54, "CC54LOOP", "01")); //01 loop is running
             equipmentStatuses.Add(new EquipmentStatus(plc54, "CC54FINISHLINE"));
             equipmentStatuses.Add(new EquipmentStatus(plc54, "CC54RECYCLE"));
             equipmentStatuses.Add(new EquipmentStatus(plc54, "CC54GOH"));
@@ -372,7 +372,7 @@ namespace Experior.Controller.TollFashion
             //Table 65 Functional Groups – Sorter
             equipmentStatuses.Add(new EquipmentStatus(plc62, "CC62TOSORT"));
             equipmentStatuses.Add(new EquipmentStatus(plc62, "CC62DBIN"));
-            equipmentStatuses.Add(new EquipmentStatus(plc62, "CC62LOOP", "11")); //11 loop is running
+            equipmentStatuses.Add(new EquipmentStatus(plc62, "CC62LOOP", "01")); //01 loop is running
             for (int i = 1; i <= 9; i++)
             {
                 equipmentStatuses.Add(new EquipmentStatus(plc62, $"CC62LANE{i}"));
@@ -381,7 +381,7 @@ namespace Experior.Controller.TollFashion
 
             //Table 71 Functional Groups – Decant
             equipmentStatuses.Add(new EquipmentStatus(plc63, "CC63ETL", "10"));  //10 is empty
-            equipmentStatuses.Add(new EquipmentStatus(plc63, "CC63LOOP", "11")); //11 loop is running
+            equipmentStatuses.Add(new EquipmentStatus(plc63, "CC63LOOP", "01")); //01 loop is running
             equipmentStatuses.Add(new EquipmentStatus(plc63, "CC63QA1"));
             equipmentStatuses.Add(new EquipmentStatus(plc63, "CC63QA2"));
 
