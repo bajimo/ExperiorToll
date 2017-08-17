@@ -10424,7 +10424,7 @@
       <triggerMessType>Disabled</triggerMessType>
       <RoutingTrigger>Arrival</RoutingTrigger>
       <Distribution>RoundRobin</Distribution>
-      <DestinationCode>CC54GOHB1,CC54DOC1A1,CC61DOCLIDNP1,CC53QAA1,CC53AI32NP2,CC52AI30NP2,CC51AI28NP2</DestinationCode>
+      <DestinationCode>CC54GOHNP1,CC53QAA1,CC53AI32NP2,CC52AI30NP2,CC51AI28NP2</DestinationCode>
       <DestinationCodeSecondary>
       </DestinationCodeSecondary>
       <TelegramDelay>0</TelegramDelay>
