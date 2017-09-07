@@ -10824,7 +10824,7 @@
       <RoutingTrigger>Arrival</RoutingTrigger>
       <Distribution>Random</Distribution>
       <DestinationCode>CC61DOCLIDNP1</DestinationCode>
-      <DestinationCodeSecondary>CC54GOHB1,CC54DOC1A1</DestinationCodeSecondary>
+      <DestinationCodeSecondary>CC54GOHNP2</DestinationCodeSecondary>
       <TelegramDelay>0</TelegramDelay>
       <RoutePercentage>80</RoutePercentage>
       <RouteController>PLC54</RouteController>
