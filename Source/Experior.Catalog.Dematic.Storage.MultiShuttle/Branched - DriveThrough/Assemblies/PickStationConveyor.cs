@@ -8,6 +8,7 @@ using Experior.Dematic.Base;
 using Experior.Dematic.Base.Devices;
 using System.ComponentModel;
 using System.Drawing;
+using System.Linq;
 
 namespace Experior.Catalog.Dematic.Storage.MultiShuttle.Assemblies
 {
@@ -162,6 +163,7 @@ namespace Experior.Catalog.Dematic.Storage.MultiShuttle.Assemblies
 
         public void sensor_OnEnterA(DematicSensor sender, Load load)
         {
+            load.UserData = null;
             if (TransportSection.Route.Loads.Count == 2)
             {
                 load.Stop();
@@ -179,10 +181,11 @@ namespace Experior.Catalog.Dematic.Storage.MultiShuttle.Assemblies
 
         private void sensor_OnEnterB(DematicSensor sender, Load load)
         {
-            if (RouteAvailable == RouteStatuses.Blocked)
+            if (RouteAvailable == RouteStatuses.Blocked && TransportSection.Route.Loads.Count < 2)
             {
-                return;
+                 return;
             }
+
             load.Stop();
             psTimeoutTimer.Start();
             //ParentMultiShuttle.ArrivedAtPickStationConvPosB(new PickDropStationArrivalEventArgs(LocationB.LocName, (Case_Load)load, Elevator));
