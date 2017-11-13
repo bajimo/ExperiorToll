@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using Dematic.DATCOMAUS;
+using Experior.Catalog.Dematic.Case;
 using Experior.Catalog.Dematic.Case.Components;
 using Experior.Catalog.Dematic.DatcomAUS.Assemblies;
 using Experior.Core.Loads;
@@ -31,7 +32,7 @@ namespace Experior.Controller.TollFashion
 
         private ActionPoint lidnp2;
         private Load lidnp2Load;
-        private readonly Timer msBeltOutReleaseCheck;
+        private readonly Timer mainlineCrossCheck;
         private readonly Timer lidnp2Resend;
         private readonly Timer cartonErectorTimer, cartonErectorResendTimer;
         private EquipmentStatus cc51Cartona1, cc52Cartona1, cc53Cartona1;
@@ -39,6 +40,9 @@ namespace Experior.Controller.TollFashion
         private readonly HashSet<StraightBeltConveyor> dispatchLanes = new HashSet<StraightBeltConveyor>();
 
         private readonly Dictionary<ActionPoint, StraightAccumulationConveyor> multishuttleOutCheck = new Dictionary<ActionPoint, StraightAccumulationConveyor>();
+        private readonly Dictionary<ActionPoint, StraightAccumulationConveyor> mainlineInfrontCheck = new Dictionary<ActionPoint, StraightAccumulationConveyor>();
+        private readonly Dictionary<ActionPoint, MergeDivertConveyor> mainlineCheck = new Dictionary<ActionPoint, MergeDivertConveyor>();
+        private readonly Dictionary<ActionPoint, MergeDivertConveyor> mainlineCheck2 = new Dictionary<ActionPoint, MergeDivertConveyor>();
 
         public TollFashionRouting() : base("TollFashionRouting")
         {
@@ -109,7 +113,7 @@ namespace Experior.Controller.TollFashion
             Environment.Time.ContinuouslyRunning = true;
             Environment.Scene.OnLoaded += Scene_OnLoaded;
             Environment.Scene.OnStarting += Scene_OnStarting;
-            
+
             lidnp2Resend = new Timer(2.5f);
             lidnp2Resend.OnElapsed += Lidnp2Resend_Elapsed;
 
@@ -121,9 +125,9 @@ namespace Experior.Controller.TollFashion
             cartonErectorResendTimer.AutoReset = true;
             cartonErectorResendTimer.OnElapsed += CartonErectorResendTimer_OnElapsed;
 
-            msBeltOutReleaseCheck = new Timer(4);
-            msBeltOutReleaseCheck.AutoReset = true;
-            msBeltOutReleaseCheck.OnElapsed += MsBeltOutReleaseCheck_OnElapsed;
+            mainlineCrossCheck = new Timer(2);
+            mainlineCrossCheck.AutoReset = true;
+            mainlineCrossCheck.OnElapsed += MainlineCrossCheckOnElapsed;
 
             dispatchLanes.Add(Core.Assemblies.Assembly.Items["P5162-4"] as StraightBeltConveyor);
             dispatchLanes.Add(Core.Assemblies.Assembly.Items["P6162-4"] as StraightBeltConveyor);
@@ -154,9 +158,66 @@ namespace Experior.Controller.TollFashion
                 ap.OnEnter += ArrivedAtCrossAfterMsBeltOut;
                 multishuttleOutCheck[ap] = accu;
             }
+
+            var mainlineInfrontCheckList = new List<int> {2, 3, 4, 10, 11, 12, 18, 19, 20};
+            for (int i = 2; i <= 24; i++)
+            {
+                var mainline = Core.Assemblies.Assembly.Items["Mainline" + i.ToString("D2")] as StraightAccumulationConveyor;
+                var divert1 = Core.Assemblies.Assembly.Items["DivertGtpPut" + i.ToString("D2")] as MergeDivertConveyor;
+                var divert2 = Core.Assemblies.Assembly.Items["DivertGtpPick" + i.ToString("D2")] as MergeDivertConveyor;              
+                var offset = 0.39f;
+                if (mainline.OutfeedSection == OutfeedLength._250mm)
+                    offset = 0.27f;
+                if (mainline.OutfeedSection == OutfeedLength._125mm)
+                    offset = 0.14f;
+                if (mainline.OutfeedSection == OutfeedLength._0mm)
+                    offset = 0.02f;
+                var d = mainline.Length - offset;
+                var ap = mainline.TransportSection.Route.InsertActionPoint(d);
+                ap.Edge = ActionPoint.Edges.Leading;
+                ap.OnEnter += ArrivedAtCrossOnMainline;
+                mainlineCheck[ap] = divert1;
+                mainlineCheck2[ap] = divert2;
+                if (mainlineInfrontCheckList.Contains(i))
+                {
+                    var mainlineInFront = Core.Assemblies.Assembly.Items["Mainline" + (i-1).ToString("D2")] as StraightAccumulationConveyor;
+                    mainlineInfrontCheck[ap] = mainlineInFront;
+                }
+            }
         }
 
-        private void MsBeltOutReleaseCheck_OnElapsed(Timer sender)
+        private void ArrivedAtCrossOnMainline(ActionPoint sender, Load load)
+        {
+            var divert1 = mainlineCheck[sender];
+            var divert2 = mainlineCheck2[sender];
+            //Check we have free space on the divert conveyors so we dont block the cross
+            if (!mainlineInfrontCheck.ContainsKey(sender))
+            {   
+                if (divert1.LoadCount + divert2.LoadCount > 0)
+                {
+                    load.Stop();
+                }
+                else
+                {
+                    load.Release();
+                }
+            }
+            else
+            {
+                var mainLine = mainlineInfrontCheck[sender];
+                var free = mainLine.Positions - mainLine.LoadCount;
+                if (divert1.LoadCount + divert2.LoadCount == 0 && free > 1)
+                {
+                    load.Release();
+                }
+                else
+                {
+                    load.Stop();
+                }
+            }
+        }
+
+        private void MainlineCrossCheckOnElapsed(Timer sender)
         {
             //Check if any load is waiting at the MS Belt out conv (before crossing main line)
             foreach (var pair in multishuttleOutCheck)
@@ -164,6 +225,14 @@ namespace Experior.Controller.TollFashion
                 if (pair.Key.Active)
                 {
                     ArrivedAtCrossAfterMsBeltOut(pair.Key, pair.Key.ActiveLoad);
+                }
+            }
+
+            foreach (var pair in mainlineCheck)
+            {
+                if (pair.Key.Active)
+                {
+                    ArrivedAtCrossOnMainline(pair.Key, pair.Key.ActiveLoad);
                 }
             }
         }
@@ -288,7 +357,7 @@ namespace Experior.Controller.TollFashion
             cartonErectorTimer.Start();
             //onlinePackingStationTimer.Start(); //MRP disabled. WCS sends delete and feed messages for EMPTYCARTONRETURN instead
             cartonErectorResendTimer.Start();
-            msBeltOutReleaseCheck.Start();
+            mainlineCrossCheck.Start();
         }
 
         private void CartonErectorTimer_OnElapsed(Timer sender)
@@ -675,7 +744,7 @@ namespace Experior.Controller.TollFashion
         private void AddDispatchLabel(Load load)
         {
             //var barcode2 = labeler.GetNextValidBarcode();
-            var barcode2 = load.Identification; 
+            var barcode2 = load.Identification;
             var caseload = load as Case_Load;
             var casedata = caseload?.Case_Data as CaseData;
             if (casedata != null)
@@ -968,8 +1037,8 @@ namespace Experior.Controller.TollFashion
             cartonErectorResendTimer.Dispose();
             lidnp2Resend.OnElapsed -= Lidnp2Resend_Elapsed;
             lidnp2Resend.Dispose();
-            msBeltOutReleaseCheck.OnElapsed -= MsBeltOutReleaseCheck_OnElapsed;
-            msBeltOutReleaseCheck.Dispose();
+            mainlineCrossCheck.OnElapsed -= MainlineCrossCheckOnElapsed;
+            mainlineCrossCheck.Dispose();
             //onlinePackingStationTimer.OnElapsed -= OnlinePackingStationTimer_OnElapsed;
             //onlinePackingStationTimer.Dispose();
             base.Dispose();
