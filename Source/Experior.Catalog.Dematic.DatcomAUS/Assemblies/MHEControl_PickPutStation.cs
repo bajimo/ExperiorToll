@@ -33,9 +33,12 @@ namespace Experior.Catalog.Dematic.DatcomAUS.Assemblies
             if (e.Load == null)
                 return;
 
-            if (e.Location == RightPositionName || e.Location == LeftPositionName)
+            if (e.Location == RightPositionName && e.Load == theLift.RightLoad)
             {
-                //check if barcode from order match barcode at location?
+                e.Load.Release();
+            }
+            else if (e.Location == LeftPositionName && e.Load == theLift.LeftLoad)
+            {
                 e.Load.Release();
             }
         }
