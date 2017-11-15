@@ -42,6 +42,7 @@ namespace Experior.Controller.TollFashion
         private readonly Dictionary<ActionPoint, StraightAccumulationConveyor> multishuttleOutCheck = new Dictionary<ActionPoint, StraightAccumulationConveyor>();
         private readonly Dictionary<ActionPoint, StraightAccumulationConveyor> mainlineInfrontCheck = new Dictionary<ActionPoint, StraightAccumulationConveyor>();
         private readonly Dictionary<ActionPoint, MergeDivertConveyor> mainlineCheck = new Dictionary<ActionPoint, MergeDivertConveyor>();
+        private readonly Dictionary<ActionPoint, StraightBeltConveyor> mainlineCheckTransferPlate = new Dictionary<ActionPoint, StraightBeltConveyor>();
         private readonly Dictionary<ActionPoint, MergeDivertConveyor> mainlineCheck2 = new Dictionary<ActionPoint, MergeDivertConveyor>();
 
         public TollFashionRouting() : base("TollFashionRouting")
@@ -165,6 +166,7 @@ namespace Experior.Controller.TollFashion
                 var mainline = Core.Assemblies.Assembly.Items["Mainline" + i.ToString("D2")] as StraightAccumulationConveyor;
                 var divert1 = Core.Assemblies.Assembly.Items["DivertGtpPut" + i.ToString("D2")] as MergeDivertConveyor;
                 var divert2 = Core.Assemblies.Assembly.Items["DivertGtpPick" + i.ToString("D2")] as MergeDivertConveyor;              
+                var transferPlate = Core.Assemblies.Assembly.Items["PP" + i.ToString("D2")] as StraightBeltConveyor;              
                 var offset = 0.39f;
                 if (mainline.OutfeedSection == OutfeedLength._250mm)
                     offset = 0.27f;
@@ -178,6 +180,7 @@ namespace Experior.Controller.TollFashion
                 ap.OnEnter += ArrivedAtCrossOnMainline;
                 mainlineCheck[ap] = divert1;
                 mainlineCheck2[ap] = divert2;
+                mainlineCheckTransferPlate[ap] = transferPlate;
                 if (mainlineInfrontCheckList.Contains(i))
                 {
                     var mainlineInFront = Core.Assemblies.Assembly.Items["Mainline" + (i-1).ToString("D2")] as StraightAccumulationConveyor;
@@ -190,10 +193,11 @@ namespace Experior.Controller.TollFashion
         {
             var divert1 = mainlineCheck[sender];
             var divert2 = mainlineCheck2[sender];
+            var transferPlate = mainlineCheckTransferPlate[sender];
             //Check we have free space on the divert conveyors so we dont block the cross
             if (!mainlineInfrontCheck.ContainsKey(sender))
             {   
-                if (divert1.LoadCount + divert2.LoadCount > 0)
+                if (divert1.LoadCount + divert2.LoadCount + transferPlate.LoadCount > 0)
                 {
                     load.Stop();
                 }
@@ -206,7 +210,7 @@ namespace Experior.Controller.TollFashion
             {
                 var mainLine = mainlineInfrontCheck[sender];
                 var free = mainLine.Positions - mainLine.LoadCount;
-                if (divert1.LoadCount + divert2.LoadCount == 0 && free > 1)
+                if (divert1.LoadCount + divert2.LoadCount + transferPlate.LoadCount == 0 && free > 1)
                 {
                     load.Release();
                 }
@@ -389,7 +393,7 @@ namespace Experior.Controller.TollFashion
 
         private void FeedCarton(StraightConveyor cartonErector, string size)
         {
-            var caseData = new CaseData { Length = 0.580f, Width = 0.480f, Height = 0.365f, colour = Color.Peru, Weight = 0 };
+            var caseData = new CaseData { Length = 0.580f, Width = 0.380f, Height = 0.365f, colour = Color.Peru, Weight = 0 };
 
             if (size == "10")
             {
