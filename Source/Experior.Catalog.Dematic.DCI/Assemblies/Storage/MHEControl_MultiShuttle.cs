@@ -24,7 +24,7 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
         Dictionary<ElevatorTask, List<Case_Load>> currentTasks = new Dictionary<ElevatorTask, List<Case_Load>>();
         MultiShuttleDCIInfo multiShuttleATCInfo;
         //private Func<ObservableCollection<ElevatorTask>, ElevatorTask, ElevatorTask> elevatorPriority;
-        
+
         public MHEControl_MultiShuttle(MultiShuttleDCIInfo info, MultiShuttle multishuttle)
         {
             Info = info;  // set this to save properties 
@@ -35,22 +35,22 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
             multishuttle.AutoNewElevatorTask = false;  // Let this controller decide when a new task is created call Elevator.GetNewElevatorTask to assign the next task if there is one
 
             //Shuttle
-            theMultishuttle.OnArrivedAtShuttle             += theMultishuttle_OnArrivedAtShuttle;
-                                                          
+            theMultishuttle.OnArrivedAtShuttle += theMultishuttle_OnArrivedAtShuttle;
+
             //Bin Location                                
-            theMultishuttle.OnArrivedAtRackLocation        += theMultishuttle_OnArrivedAtRackLocation;
-                                                          
+            theMultishuttle.OnArrivedAtRackLocation += theMultishuttle_OnArrivedAtRackLocation;
+
             //InfeedRack                                  
-            theMultishuttle.OnArrivedAtInfeedRackConvPosA  += theMultishuttle_OnArrivedAtInfeedRackConvPosA;
-            theMultishuttle.OnArrivedAtInfeedRackConvPosB  += theMultishuttle_OnArrivedAtInfeedRackConvPosB;
+            theMultishuttle.OnArrivedAtInfeedRackConvPosA += theMultishuttle_OnArrivedAtInfeedRackConvPosA;
+            theMultishuttle.OnArrivedAtInfeedRackConvPosB += theMultishuttle_OnArrivedAtInfeedRackConvPosB;
 
             //OutfeedRack
             theMultishuttle.OnArrivedAtOutfeedRackConvPosA += theMultishuttle_OnArrivedAtOutfeedRackConvPosA;
             theMultishuttle.OnArrivedAtOutfeedRackConvPosB += theMultishuttle_OnArrivedAtOutfeedRackConvPosB;
 
             //Elevator Conv
-            theMultishuttle.OnArrivedAtElevatorConvPosA    += theMultishuttle_OnArrivedAtElevatorConvPosA;
-            theMultishuttle.OnArrivedAtElevatorConvPosB    += theMultishuttle_OnArrivedAtElevatorConvPosB;
+            theMultishuttle.OnArrivedAtElevatorConvPosA += theMultishuttle_OnArrivedAtElevatorConvPosA;
+            theMultishuttle.OnArrivedAtElevatorConvPosB += theMultishuttle_OnArrivedAtElevatorConvPosB;
             theMultishuttle.OnElevatorTasksStatusChanged += TheMultishuttle_OnElevatorTasksStatusChanged;
 
             //DropStation
@@ -75,13 +75,13 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
                 var loadOnBoard = e.Vehicle.LoadOnBoard as Case_Load;
                 if (loadOnBoard != null)
                 {
-                    caseData = loadOnBoard.Case_Data as DCICaseData;                    
+                    caseData = loadOnBoard.Case_Data as DCICaseData;
                 }
             }
             if (caseData == null)
             {
                 Log.Write("Error sending MS vehicle exception: No case data found for vehicle exception!");
-                return;                
+                return;
             }
 
             var telegram = controller.CreateTelegramFromCaseData(TelegramTypes.TUException, caseData);
@@ -212,7 +212,7 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
                                                                (char)ExtensionMethods.Side(locationName),
                                                                locationName.Level(),
                                                                (char)IorO,
-                                                                //This is swapped over for the rack OUT conveyors
+                                                               //This is swapped over for the rack OUT conveyors
                                                                (char)IorO == 'I' ? (locationName.ConvPosition() == "A" ? "1" : "2") : (locationName.ConvPosition() == "B" ? "1" : "2"));
             }
             else
@@ -244,7 +244,7 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
             {
                 //Need to create a RI to RO task to the shuttle
                 int level;
-                if (!int.TryParse(e._locationName.Substring(3,2), out level))
+                if (!int.TryParse(e._locationName.Substring(3, 2), out level))
                 {
                     Log.Write(string.Format("Multishuttle Control {0} Error: Error arriving at infeed rack conveyor when trying to find level", ParentAssembly.Name));
                     return; //Error!
@@ -277,6 +277,11 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
 
         void theMultishuttle_OnArrivedAtInfeedRackConvPosA(object sender, RackConveyorArrivalEventArgs e)
         {
+            DCICaseData caseData = e._caseLoad.Case_Data as DCICaseData;
+            caseData.Current = FormatRackConvLocation(e._locationName, ConveyorTypes.InfeedRack); //Update the location
+            string sendMessage = controller.CreateTelegramFromLoad(TelegramTypes.TUNotification, e._caseLoad);
+            controller.SendTelegram(sendMessage); //Always Send a notification at location A
+
             if (e._elevator.ElevatorConveyor.Route.Loads.Count == 0)
             {
                 e._elevator.SetNewElevatorTask();
@@ -285,13 +290,21 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
 
         void theMultishuttle_OnArrivedAtElevatorConvPosA(object sender, ArrivedOnElevatorEventArgs e)
         {
+            if (e._loadA != null)
+            {
+                string current = string.Format("MSAI{0}E{1}01LO01",
+                    e._elevator.AisleNumber.ToString().PadLeft(2, '0'), (char)e._elevator.Side);
+
+                if (current != ((DCICaseData) e._loadA.Case_Data).Current)
+                {
+                    ((DCICaseData) e._loadA.Case_Data).Current = current;
+                    string sendMessage = controller.CreateTelegramFromLoad(TelegramTypes.TUNotification, e._loadA);
+                    controller.SendTelegram(sendMessage);
+                }
+            }
+
             if (e._loadB == null) //Only send the arrival for the load once when it arrves at position A - Do not send again if a double pick is detected (LoadB is populated)
             {
-                Case_Load load = e._loadA;
-                ((DCICaseData)load.Case_Data).Current = string.Format("MSAI{0}E{1}01LO00", e._elevator.AisleNumber.ToString().PadLeft(2, '0'), (char)e._elevator.Side);
-                string sendMessage = controller.CreateTelegramFromLoad(TelegramTypes.TUNotification, load);
-                controller.SendTelegram(sendMessage);
-
                 if (((ElevatorTask)e._task).NumberOfLoadsInTask == 1 && ((ElevatorTask)e._task).Flow == TaskType.Outfeed)
                 {
                     ((ElevatorTask)e._task).OptimiseTask(e._elevator);
@@ -301,6 +314,19 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
 
         void theMultishuttle_OnArrivedAtElevatorConvPosB(object sender, ArrivedOnElevatorEventArgs e)
         {
+            if (e._loadB != null)
+            {
+                string current = string.Format("MSAI{0}E{1}01LO02",
+                    e._elevator.AisleNumber.ToString().PadLeft(2, '0'), (char)e._elevator.Side);
+
+                if (current != ((DCICaseData) e._loadB.Case_Data).Current)
+                {
+                    ((DCICaseData) e._loadB.Case_Data).Current = current;
+                    string sendMessage = controller.CreateTelegramFromLoad(TelegramTypes.TUNotification, e._loadB);
+                    controller.SendTelegram(sendMessage);
+                }
+            }
+
             if (e._elevator.CurrentTask.SourceLoadB.ConvType() == ConveyorTypes.Pick && e._elevator.CurrentTask.DestinationLoadB.ConvType() == ConveyorTypes.Drop)
             {
                 //Deals with a sinlge or double load from PS to DS
@@ -338,7 +364,7 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
         }
 
         void theMultishuttle_OnArrivedAtOutfeedRackConvPosA(object sender, RackConveyorArrivalEventArgs e)
-        { 
+        {
             //RO12 - Position B
             DCICaseData caseData = e._caseLoad.Case_Data as DCICaseData;
             caseData.Current = FormatRackConvLocation(e._locationName, ConveyorTypes.OutfeedRack); //Update the location
@@ -388,9 +414,9 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
 
             DCICaseData caseData = e._caseLoad.Case_Data as DCICaseData;
             caseData.Current = FormatRackConvLocation(e._locationName, ConveyorTypes.OutfeedRack); //Update the location
-            
+
             //If destination is a drop station ("D") there will be no new StartTransportTelegram so continue and create a elevator task
-            if (BaseDCIController.GetLocFields(caseData.Destination, PSDSRackLocFields.ConvType) == "D" ) 
+            if (BaseDCIController.GetLocFields(caseData.Destination, PSDSRackLocFields.ConvType) == "D")
             {
                 string sendMessage = controller.CreateTelegramFromLoad(TelegramTypes.TUNotification, e._caseLoad);
                 controller.SendTelegram(sendMessage); //Always Send a notification at location B
@@ -471,11 +497,11 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
             int.TryParse(xBayLoc, out ixxx);
             int.TryParse(bayPosition, out iBayPos);
 
-            int xLoc = ((ixxx-1)* LocationsPerBay) + iBayPos;
+            int xLoc = ((ixxx - 1) * LocationsPerBay) + iBayPos;
 
             if (xLoc <= theMultishuttle.RackLocations + theMultishuttle.PSDSlocations)
             {
-                return xLoc.ToString().PadLeft(3,'0');
+                return xLoc.ToString().PadLeft(3, '0');
             }
             else
             {
@@ -489,7 +515,7 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies.Storage
         [DescriptionAttribute("The number of bays in the rack.")]
         public int NumOfBays
         {
-            get { return multiShuttleATCInfo.numOfBays;}
+            get { return multiShuttleATCInfo.numOfBays; }
             set
             {
                 multiShuttleATCInfo.numOfBays = value;
