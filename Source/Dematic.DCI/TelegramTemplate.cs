@@ -255,7 +255,7 @@ namespace Dematic.DCI
             string flow = "R";
 
             if (type == TelegramTypes.TUDataRequest || type == TelegramTypes.Status || type == TelegramTypes.StatusEnd)
-                flow = "";
+                flow = ".";
 
             //Is the message Grouped
             string group = "NG";
