@@ -254,6 +254,9 @@ namespace Dematic.DCI
             //Which messages require Ack?
             string flow = "R";
 
+            if (type == TelegramTypes.TUDataRequest || type == TelegramTypes.Status || type == TelegramTypes.StatusEnd)
+                flow = "";
+
             //Is the message Grouped
             string group = "NG";
             if (grouped) { group = "LG"; }
