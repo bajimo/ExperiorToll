@@ -33,7 +33,7 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies
         bool waitingForAck;
         string waitingAckTelegram;
         System.Timers.Timer ackTimer = new System.Timers.Timer();
-        int ackTimerInterval = 1000;
+        int ackTimerInterval = 2000;
         private List<string> sendList = new List<string>();
         int ackResendCount = 0;
         int lastAckCycle = 0;
@@ -213,24 +213,39 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies
                         string telegram = string.Copy(sendList[0]);
                         sendList.Remove(sendList[0]);
                         SendTelegram(telegram);
+                        if (!waitingForAck)
+                            SendBuffer();
                     }
                 }
             }
-            catch { }
+            catch (Exception e)
+            {
+                Log.Write("Exception sending DCI buffer:");
+                Log.Write(e.ToString());
+            }
         }
 
         private void AckTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            if (ackResendCount > 2)
-            {    
-                if (ControllerConnection.State == State.Connected)
-                    ControllerConnection.Disconnect();
-            }
-            else
+            Environment.Invoke(() =>
             {
-                SendTelegram(waitingAckTelegram, true);
-                ackResendCount++;
-            }
+                if (!waitingForAck)
+                    return;
+                if (ackResendCount > 4)
+                {
+                    if (ControllerConnection.State == State.Connected)
+                    {
+                        Log.Write("ACK queue > 4. Disconnecting.");
+                        ControllerConnection.Disconnect();
+                    }
+                }
+                else
+                {
+                    Log.Write("DCI Ack timer elapsed. Resending message.");
+                    SendTelegram(waitingAckTelegram, true);
+                    ackResendCount++;
+                }
+            });
         }
 
         private void Send(string telegram)
@@ -338,7 +353,7 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies
         protected virtual void Connection_OnConnected(Core.Communication.Connection connection)
         {
             DisplayText.Color = Color.LightGreen;  // PLC object text
-            Experior.Core.Environment.Log.Write(DateTime.Now.ToString() + " " + this.Name + " connection established for ID " + ControllerConnection.Id.ToString() + " on IP " + ControllerConnection.Ip.ToString() + " and port " + ControllerConnection.Port.ToString(), Color.DarkGreen);
+            Experior.Core.Environment.Log.Write(DateTime.Now + " " + this.Name + " connection established for ID " + ControllerConnection.Id + " on IP " + ControllerConnection.Ip + " and port " + ControllerConnection.Port, Color.DarkGreen);
             plcConnected = true;
             PLC_State = DCIPLCStates.Disconnected;
         }
@@ -351,7 +366,7 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies
         {
             if (InvokeRequired)
             {
-                Core.Environment.Invoke(() => Connection_OnTelegramReceived(sender, telegram));
+                Environment.Invoke(() => Connection_OnTelegramReceived(sender, telegram));
                 return;
             }
             try
@@ -367,6 +382,7 @@ namespace Experior.Catalog.Dematic.DCI.Assemblies
                         }
 
                         waitingForAck = false;
+                        waitingAckTelegram = "";
                         ackResendCount = 0;
                         ackTimer.Stop();
                         SendBuffer();
