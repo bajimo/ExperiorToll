@@ -99,6 +99,7 @@
     <Compile Include="Components\BeltSorterMerge.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Components\GravityConveyor.cs" />
     <Compile Include="Components\LoadRotateConveyor.cs" />
     <Compile Include="Components\MiniloadDropStation.cs" />
     <Compile Include="Components\MiniloadPickStation.cs" />

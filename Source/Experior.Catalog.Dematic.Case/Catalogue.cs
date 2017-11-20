@@ -28,6 +28,7 @@ namespace Experior.Catalog.Dematic.Case
             Add(Common.Icons.Get("accumulation"), "StraightAccumulation", Environment.Simulation.Events, Create.StraightAccumulation);
             Add(Common.Icons.Get("Straight"), "Rotate Load", Environment.Simulation.Events, Create.RotateLoad);
             Add(Common.Icons.Get("RaRoller"),"Roller", Environment.Simulation.Events, Create.Roller);
+            Add(Common.Icons.Get("RaRoller"),"Gravity Conveyor", Environment.Simulation.Events, Create.GravityConveyor);
             Add(Common.Icons.Get("CurveClockwise"), "Belt Curve", "(Clockwise)", Environment.Simulation.Events, Create.BeltCurve);
             Add(Common.Icons.Get("CurveCounterClockwise"), "Belt Curve", "(Counter Clockwise)", Environment.Simulation.Events, Create.BeltCurve);
             Add(Common.Icons.Get("AngledDivert"),"AngledDivert","", Environment.Simulation.Events, Create.AngledDivert);

@@ -72,6 +72,20 @@ namespace Experior.Catalog.Dematic.Case
             return new StraightConveyor(info);
         }
 
+        public static Assembly GravityConveyor(string title, string subtitle, object properties)
+        {
+            var info = new GravityConveyorInfo();
+            info.name = Assembly.GetValidName("GV ");
+            info.FillPercent = 85;
+            info.thickness = 0.05f;
+            info.spacing = 0.0f;
+            info.width = 0.5f;
+            info.length = 1.5f;
+            info.height = 0.7f;
+            info.speed = 0.7f;
+            return new GravityConveyor(info);
+        }
+
         public static Assembly RotateLoad(string title, string subtitle, object properties)
         {
             LoadRotateConveyorInfo loadrotateconveyorinfo = new LoadRotateConveyorInfo();
