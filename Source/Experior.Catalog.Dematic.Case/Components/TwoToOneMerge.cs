@@ -289,6 +289,17 @@ namespace Experior.Catalog.Dematic.Case.Components
 
         #region User Interface Size and Speed
 
+        [DisplayName("Load Count")]
+        [Category("Status")]
+        [Description("Number of loads on this transport section")]
+        public int LoadCount
+        {
+            get
+            {
+                return lhsConveyor.LoadCount + rhsConveyor.LoadCount;
+            }
+        }
+
         [Category("Size and Speed")]
         [DisplayName("Length")]
         [Description("Length of the merge conveyor (meter)")]
