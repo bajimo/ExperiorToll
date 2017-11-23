@@ -36,6 +36,7 @@ namespace Experior.Controller.TollFashion
         private EquipmentStatus cc51Cartona1, cc52Cartona1, cc53Cartona1;
         private DematicCommunicationPoint cc51Cartona1Comm, cc52Cartona1Comm, cc53Cartona1Comm;
         private readonly HashSet<StraightBeltConveyor> dispatchLanes = new HashSet<StraightBeltConveyor>();
+        private LoopControl loopControl = new LoopControl();
 
         public TollFashionRouting() : base("TollFashionRouting")
         {
@@ -465,6 +466,7 @@ namespace Experior.Controller.TollFashion
 
         protected override void Reset()
         {
+            loopControl.Reset();
             lidnp2Load = null;
 
             ////Reset packing arrival
@@ -867,6 +869,7 @@ namespace Experior.Controller.TollFashion
 
         public override void Dispose()
         {
+            loopControl.Dispose();
             Environment.UI.Toolbar.Remove(speed1);
             Environment.UI.Toolbar.Remove(speed2);
             Environment.UI.Toolbar.Remove(speed5);
