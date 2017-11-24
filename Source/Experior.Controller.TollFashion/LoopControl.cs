@@ -20,8 +20,8 @@ namespace Experior.Controller.TollFashion
 
         private int nextReleaseLine1;
         private int nextReleaseLine2;
-        private int loopBlock = 150;
-        private int loopOk = 120;
+        private int loopBlock = 125;
+        private int loopOk = 100;
         private bool loopBlocked;
 
         public LoopControl()
